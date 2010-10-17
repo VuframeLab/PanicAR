@@ -1,0 +1,435 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		5995EBC110556E7500615176 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5995EBC010556E7500615176 /* CoreGraphics.framework */; };
+		59E6379E104F5A3200B26E5C /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E6379D104F5A3200B26E5C /* OpenGLES.framework */; };
+		59E637A3104F5A4400B26E5C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E637A2104F5A4400B26E5C /* QuartzCore.framework */; };
+		992B64BF1265C92B00903220 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 992B64BE1265C92B00903220 /* Icon.png */; };
+		992B64EA1265C9CD00903220 /* box.obj in Resources */ = {isa = PBXBuildFile; fileRef = 992B64CF1265C9CD00903220 /* box.obj */; };
+		992B64EB1265C9CD00903220 /* bubble_hitMask.png in Resources */ = {isa = PBXBuildFile; fileRef = 992B64D01265C9CD00903220 /* bubble_hitMask.png */; };
+		992B64ED1265C9CD00903220 /* bubble_wAlpha.png in Resources */ = {isa = PBXBuildFile; fileRef = 992B64D21265C9CD00903220 /* bubble_wAlpha.png */; };
+		992B64EF1265C9CD00903220 /* bubble_wAlpha_512.png in Resources */ = {isa = PBXBuildFile; fileRef = 992B64D41265C9CD00903220 /* bubble_wAlpha_512.png */; };
+		992B64F11265C9CD00903220 /* coordinateBox.png in Resources */ = {isa = PBXBuildFile; fileRef = 992B64D61265C9CD00903220 /* coordinateBox.png */; };
+		992B64F31265C9CD00903220 /* imagebubble_hitMask.png in Resources */ = {isa = PBXBuildFile; fileRef = 992B64D81265C9CD00903220 /* imagebubble_hitMask.png */; };
+		992B64F51265C9CD00903220 /* imagebubble_wAlpha_512.png in Resources */ = {isa = PBXBuildFile; fileRef = 992B64DA1265C9CD00903220 /* imagebubble_wAlpha_512.png */; };
+		992B64F71265C9CD00903220 /* ImageLabelTemplate_512.xib in Resources */ = {isa = PBXBuildFile; fileRef = 992B64DC1265C9CD00903220 /* ImageLabelTemplate_512.xib */; };
+		992B64F81265C9CD00903220 /* LabelTemplate.xib in Resources */ = {isa = PBXBuildFile; fileRef = 992B64DD1265C9CD00903220 /* LabelTemplate.xib */; };
+		992B64F91265C9CD00903220 /* LabelTemplate_512.xib in Resources */ = {isa = PBXBuildFile; fileRef = 992B64DE1265C9CD00903220 /* LabelTemplate_512.xib */; };
+		992B64FA1265C9CD00903220 /* plane.obj in Resources */ = {isa = PBXBuildFile; fileRef = 992B64DF1265C9CD00903220 /* plane.obj */; };
+		992B64FB1265C9CD00903220 /* radar.png in Resources */ = {isa = PBXBuildFile; fileRef = 992B64E01265C9CD00903220 /* radar.png */; };
+		992B64FD1265C9CD00903220 /* radar_dot.png in Resources */ = {isa = PBXBuildFile; fileRef = 992B64E21265C9CD00903220 /* radar_dot.png */; };
+		992B64FF1265C9CD00903220 /* cinemaxx.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 992B64E51265C9CD00903220 /* cinemaxx.jpg */; };
+		992B65001265C9CD00903220 /* dez.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 992B64E61265C9CD00903220 /* dez.jpg */; };
+		992B65011265C9CD00903220 /* rathaus.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 992B64E71265C9CD00903220 /* rathaus.jpg */; };
+		992B65021265C9CD00903220 /* regensburgerdom.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 992B64E81265C9CD00903220 /* regensburgerdom.jpg */; };
+		993AE5361230E77C001134AF /* PanicARDemoAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 993AE5351230E77C001134AF /* PanicARDemoAppDelegate.mm */; };
+		9974E3B6126B8EDC0039FC3E /* libPanicAR.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9974E3AF126B8EC70039FC3E /* libPanicAR.a */; };
+		99B7BAE9121ADC2E00E497BB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99B7BAE8121ADC2E00E497BB /* CoreLocation.framework */; };
+		99CB255C1221C42D00776548 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99CB255B1221C42D00776548 /* MobileCoreServices.framework */; };
+		99F3D6A412536D93004C3D14 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99F3D6A312536D93004C3D14 /* MainWindow.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5995EBC010556E7500615176 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		59E6379D104F5A3200B26E5C /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		59E637A2104F5A4400B26E5C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		992B64BE1265C92B00903220 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		992B64CF1265C9CD00903220 /* box.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = box.obj; sourceTree = "<group>"; };
+		992B64D01265C9CD00903220 /* bubble_hitMask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubble_hitMask.png; sourceTree = "<group>"; };
+		992B64D21265C9CD00903220 /* bubble_wAlpha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubble_wAlpha.png; sourceTree = "<group>"; };
+		992B64D41265C9CD00903220 /* bubble_wAlpha_512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubble_wAlpha_512.png; sourceTree = "<group>"; };
+		992B64D61265C9CD00903220 /* coordinateBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coordinateBox.png; sourceTree = "<group>"; };
+		992B64D81265C9CD00903220 /* imagebubble_hitMask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imagebubble_hitMask.png; sourceTree = "<group>"; };
+		992B64DA1265C9CD00903220 /* imagebubble_wAlpha_512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imagebubble_wAlpha_512.png; sourceTree = "<group>"; };
+		992B64DC1265C9CD00903220 /* ImageLabelTemplate_512.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageLabelTemplate_512.xib; sourceTree = "<group>"; };
+		992B64DD1265C9CD00903220 /* LabelTemplate.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelTemplate.xib; sourceTree = "<group>"; };
+		992B64DE1265C9CD00903220 /* LabelTemplate_512.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelTemplate_512.xib; sourceTree = "<group>"; };
+		992B64DF1265C9CD00903220 /* plane.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = plane.obj; sourceTree = "<group>"; };
+		992B64E01265C9CD00903220 /* radar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radar.png; sourceTree = "<group>"; };
+		992B64E21265C9CD00903220 /* radar_dot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radar_dot.png; sourceTree = "<group>"; };
+		992B64E51265C9CD00903220 /* cinemaxx.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cinemaxx.jpg; sourceTree = "<group>"; };
+		992B64E61265C9CD00903220 /* dez.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dez.jpg; sourceTree = "<group>"; };
+		992B64E71265C9CD00903220 /* rathaus.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rathaus.jpg; sourceTree = "<group>"; };
+		992B64E81265C9CD00903220 /* regensburgerdom.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = regensburgerdom.jpg; sourceTree = "<group>"; };
+		993AE5341230E77C001134AF /* PanicARDemoAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanicARDemoAppDelegate.h; sourceTree = "<group>"; };
+		993AE5351230E77C001134AF /* PanicARDemoAppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PanicARDemoAppDelegate.mm; sourceTree = "<group>"; };
+		9974E37F126B8D830039FC3E /* ARController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARController.h; sourceTree = "<group>"; };
+		9974E380126B8D830039FC3E /* AREventHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AREventHandler.h; sourceTree = "<group>"; };
+		9974E381126B8D830039FC3E /* ARLabelTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARLabelTemplate.h; sourceTree = "<group>"; };
+		9974E382126B8D830039FC3E /* ARMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARMarker.h; sourceTree = "<group>"; };
+		9974E383126B8D830039FC3E /* ARMarkerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARMarkerDelegate.h; sourceTree = "<group>"; };
+		9974E384126B8D830039FC3E /* ARView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARView.h; sourceTree = "<group>"; };
+		9974E3A9126B8EC70039FC3E /* libPanicAR.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPanicAR.a; sourceTree = "<group>"; };
+		9974E3AB126B8EC70039FC3E /* libPanicAR.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPanicAR.a; sourceTree = "<group>"; };
+		9974E3AD126B8EC70039FC3E /* libPanicAR.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPanicAR.a; sourceTree = "<group>"; };
+		9974E3AF126B8EC70039FC3E /* libPanicAR.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPanicAR.a; sourceTree = "<group>"; };
+		99B7BAE8121ADC2E00E497BB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		99CB255B1221C42D00776548 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		99E91EF911A02FD6000D9125 /* PanicARDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PanicARDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		99E91F1311A030DE000D9125 /* PanicARDemo_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanicARDemo_Prefix.pch; sourceTree = "<group>"; };
+		99E91F1411A030DE000D9125 /* PanicARDemo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PanicARDemo-Info.plist"; sourceTree = "<group>"; };
+		99F3D6A312536D93004C3D14 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9974E3B6126B8EDC0039FC3E /* libPanicAR.a in Frameworks */,
+				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				59E6379E104F5A3200B26E5C /* OpenGLES.framework in Frameworks */,
+				59E637A3104F5A4400B26E5C /* QuartzCore.framework in Frameworks */,
+				5995EBC110556E7500615176 /* CoreGraphics.framework in Frameworks */,
+				99B7BAE9121ADC2E00E497BB /* CoreLocation.framework in Frameworks */,
+				99CB255C1221C42D00776548 /* MobileCoreServices.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				99E91EF911A02FD6000D9125 /* PanicARDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				9974E37E126B8D830039FC3E /* libPanicAR */,
+				992B64CD1265C9CD00903220 /* ARAssets */,
+				992B64E41265C9CD00903220 /* MarkerAssets */,
+				5943D86A116E547C00039BDB /* Application */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				99CB255B1221C42D00776548 /* MobileCoreServices.framework */,
+				5995EBC010556E7500615176 /* CoreGraphics.framework */,
+				59E637A2104F5A4400B26E5C /* QuartzCore.framework */,
+				59E6379D104F5A3200B26E5C /* OpenGLES.framework */,
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				99B7BAE8121ADC2E00E497BB /* CoreLocation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5943D86A116E547C00039BDB /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				992B64BE1265C92B00903220 /* Icon.png */,
+				993AE5341230E77C001134AF /* PanicARDemoAppDelegate.h */,
+				993AE5351230E77C001134AF /* PanicARDemoAppDelegate.mm */,
+				99E91F1311A030DE000D9125 /* PanicARDemo_Prefix.pch */,
+				99E91F1411A030DE000D9125 /* PanicARDemo-Info.plist */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+				99F3D6A312536D93004C3D14 /* MainWindow.xib */,
+			);
+			name = Application;
+			sourceTree = "<group>";
+		};
+		992B64CD1265C9CD00903220 /* ARAssets */ = {
+			isa = PBXGroup;
+			children = (
+				992B64CF1265C9CD00903220 /* box.obj */,
+				992B64D01265C9CD00903220 /* bubble_hitMask.png */,
+				992B64D21265C9CD00903220 /* bubble_wAlpha.png */,
+				992B64D41265C9CD00903220 /* bubble_wAlpha_512.png */,
+				992B64D61265C9CD00903220 /* coordinateBox.png */,
+				992B64D81265C9CD00903220 /* imagebubble_hitMask.png */,
+				992B64DA1265C9CD00903220 /* imagebubble_wAlpha_512.png */,
+				992B64DC1265C9CD00903220 /* ImageLabelTemplate_512.xib */,
+				992B64DD1265C9CD00903220 /* LabelTemplate.xib */,
+				992B64DE1265C9CD00903220 /* LabelTemplate_512.xib */,
+				992B64DF1265C9CD00903220 /* plane.obj */,
+				992B64E01265C9CD00903220 /* radar.png */,
+				992B64E21265C9CD00903220 /* radar_dot.png */,
+			);
+			path = ARAssets;
+			sourceTree = "<group>";
+		};
+		992B64E41265C9CD00903220 /* MarkerAssets */ = {
+			isa = PBXGroup;
+			children = (
+				992B64E51265C9CD00903220 /* cinemaxx.jpg */,
+				992B64E61265C9CD00903220 /* dez.jpg */,
+				992B64E71265C9CD00903220 /* rathaus.jpg */,
+				992B64E81265C9CD00903220 /* regensburgerdom.jpg */,
+			);
+			path = MarkerAssets;
+			sourceTree = "<group>";
+		};
+		9974E37E126B8D830039FC3E /* libPanicAR */ = {
+			isa = PBXGroup;
+			children = (
+				9974E3A8126B8EC70039FC3E /* Debug-iphoneos */,
+				9974E3AA126B8EC70039FC3E /* Debug-iphonesimulator */,
+				9974E3AC126B8EC70039FC3E /* Release-iphoneos */,
+				9974E3AE126B8EC70039FC3E /* Release-iphonesimulator */,
+				9974E37F126B8D830039FC3E /* ARController.h */,
+				9974E380126B8D830039FC3E /* AREventHandler.h */,
+				9974E381126B8D830039FC3E /* ARLabelTemplate.h */,
+				9974E382126B8D830039FC3E /* ARMarker.h */,
+				9974E383126B8D830039FC3E /* ARMarkerDelegate.h */,
+				9974E384126B8D830039FC3E /* ARView.h */,
+			);
+			path = libPanicAR;
+			sourceTree = "<group>";
+		};
+		9974E3A8126B8EC70039FC3E /* Debug-iphoneos */ = {
+			isa = PBXGroup;
+			children = (
+				9974E3A9126B8EC70039FC3E /* libPanicAR.a */,
+			);
+			path = "Debug-iphoneos";
+			sourceTree = "<group>";
+		};
+		9974E3AA126B8EC70039FC3E /* Debug-iphonesimulator */ = {
+			isa = PBXGroup;
+			children = (
+				9974E3AB126B8EC70039FC3E /* libPanicAR.a */,
+			);
+			path = "Debug-iphonesimulator";
+			sourceTree = "<group>";
+		};
+		9974E3AC126B8EC70039FC3E /* Release-iphoneos */ = {
+			isa = PBXGroup;
+			children = (
+				9974E3AD126B8EC70039FC3E /* libPanicAR.a */,
+			);
+			path = "Release-iphoneos";
+			sourceTree = "<group>";
+		};
+		9974E3AE126B8EC70039FC3E /* Release-iphonesimulator */ = {
+			isa = PBXGroup;
+			children = (
+				9974E3AF126B8EC70039FC3E /* libPanicAR.a */,
+			);
+			path = "Release-iphonesimulator";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D6058900D05DD3D006BFB54 /* PanicAR */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "PanicAR" */;
+			buildPhases = (
+				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588E0D05DD3D006BFB54 /* Sources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PanicAR;
+			productName = Sample2D;
+			productReference = 99E91EF911A02FD6000D9125 /* PanicARDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "PanicARDemo" */;
+			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D6058900D05DD3D006BFB54 /* PanicAR */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				99F3D6A412536D93004C3D14 /* MainWindow.xib in Resources */,
+				992B64BF1265C92B00903220 /* Icon.png in Resources */,
+				992B64EA1265C9CD00903220 /* box.obj in Resources */,
+				992B64EB1265C9CD00903220 /* bubble_hitMask.png in Resources */,
+				992B64ED1265C9CD00903220 /* bubble_wAlpha.png in Resources */,
+				992B64EF1265C9CD00903220 /* bubble_wAlpha_512.png in Resources */,
+				992B64F11265C9CD00903220 /* coordinateBox.png in Resources */,
+				992B64F31265C9CD00903220 /* imagebubble_hitMask.png in Resources */,
+				992B64F51265C9CD00903220 /* imagebubble_wAlpha_512.png in Resources */,
+				992B64F71265C9CD00903220 /* ImageLabelTemplate_512.xib in Resources */,
+				992B64F81265C9CD00903220 /* LabelTemplate.xib in Resources */,
+				992B64F91265C9CD00903220 /* LabelTemplate_512.xib in Resources */,
+				992B64FA1265C9CD00903220 /* plane.obj in Resources */,
+				992B64FB1265C9CD00903220 /* radar.png in Resources */,
+				992B64FD1265C9CD00903220 /* radar_dot.png in Resources */,
+				992B64FF1265C9CD00903220 /* cinemaxx.jpg in Resources */,
+				992B65001265C9CD00903220 /* dez.jpg in Resources */,
+				992B65011265C9CD00903220 /* rathaus.jpg in Resources */,
+				992B65021265C9CD00903220 /* regensburgerdom.jpg in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				993AE5361230E77C001134AF /* PanicARDemoAppDelegate.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1D6058940D05DD3E006BFB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = PanicARDemo_Prefix.pch;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "PanicARDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
+				LIBRARY_SEARCH_PATHS = "${PROJECT_DIR}/libPanicAR/${BUILD_STYLE}-${PLATFORM_NAME}/";
+				OTHER_CFLAGS = "-DDEBUG";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = PanicARDemo;
+				SDKROOT = iphoneos4.1;
+				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = "$(PanicAR)/**";
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = PanicARDemo_Prefix.pch;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "PanicARDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
+				LIBRARY_SEARCH_PATHS = "${PROJECT_DIR}/libPanicAR/${BUILD_STYLE}-${PLATFORM_NAME}/";
+				PRODUCT_NAME = PanicARDemo;
+				SDKROOT = iphoneos4.1;
+				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = "$(PanicAR)/**";
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_THUMB_SUPPORT = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "-DDEBUG";
+				OTHER_LDFLAGS = "-ObjC";
+				PREBINDING = NO;
+				PRODUCT_NAME = PanicAR;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos4.1;
+				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = "$(PanicAR)";
+				VALID_ARCHS = "armv7 i386 armv6";
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_THUMB_SUPPORT = YES;
+				GCC_VERSION = 4.2;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos4.1;
+				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = "$(PanicAR)";
+				VALID_ARCHS = "armv7 i386 armv6";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "PanicAR" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD3E006BFB54 /* Debug */,
+				1D6058950D05DD3E006BFB54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "PanicARDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}
