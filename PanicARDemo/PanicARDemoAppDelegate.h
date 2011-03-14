@@ -1,44 +1,33 @@
 #import <UIKit/UIKit.h>
-#import "ARController.h"
-#import <MobileCoreServices/UTCoreTypes.h>
-#import <MobileCoreServices/UTType.h>
+#import <PanicARLib_Demo/PanicARLib.h>
 
 @class ARController;
 
-@interface PanicARDemoAppDelegate : NSObject <UIApplicationDelegate, AREventHandler> 
-{
+@interface PanicARDemoAppDelegate : NSObject <UIApplicationDelegate, ARControllerDelegate, UITabBarControllerDelegate> {
     UIWindow *window;
-    UIWindow *overlay;
+    UITabBarController *tabBarController;
 	ARController* m_ARController;
-	bool arActive;
 	
-	UIButton *startButton;
-	UIButton *stopButton;
-	UIButton *radarButton;
-	UILabel *debugLabel;
-	UISlider *cameraXSlider;
-	UISlider *cameraYSlider;
+	UIButton *showModalView;
+	UIButton *createARController;
+	UIButton *releaseARController;
+	UIButton *addARMarkers;
+	UIButton *clearARMarkers;
+	UILabel *labelController;
+	UILabel *labelMarkers;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow* window;
-@property (nonatomic, retain) IBOutlet UIView* overlay;
+@property (nonatomic, retain) IBOutlet UITabBarController* tabBarController;
 
-@property (nonatomic, retain) IBOutlet UIButton *startButton;
-@property (nonatomic, retain) IBOutlet UIButton *stopButton;
-@property (nonatomic, retain) IBOutlet UIButton *radarButton;
-@property (nonatomic, retain) IBOutlet UILabel *debugLabel;
-@property (nonatomic, retain) IBOutlet UISlider *cameraXSlider;
-@property (nonatomic, retain) IBOutlet UISlider *cameraYSlider;
+- (IBAction)webButton_click;
 
-- (IBAction)doStartButton;
-- (IBAction)doStopButton;
-- (IBAction)doRadarButton;
-- (IBAction)changeCameraXSlider;
-- (IBAction)changeCameraYSlider;
-
-- (void) setupAR;
-- (void) markerClicked:(ARMarker*)marker;
+- (void) showAR;
+- (void) createAR;
+- (void) createMarkers;
+- (void) releaseAR;
+- (void) updateButtons;
+- (void) markerTapped:(ARMarker*)marker;
 
 
 @end
-

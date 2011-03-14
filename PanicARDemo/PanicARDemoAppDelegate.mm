@@ -7,203 +7,165 @@
 
 @implementation PanicARDemoAppDelegate
 
-@synthesize window, overlay;
-@synthesize startButton;
-@synthesize stopButton;
-@synthesize radarButton;
-@synthesize debugLabel;
-@synthesize cameraXSlider;
-@synthesize cameraYSlider;
+@synthesize window;
+@synthesize tabBarController;
 
-
-- (void)applicationDidFinishLaunching:(UIApplication *)application 
-{	
-	// show status bar (gets overwritten by UIImagePicker otherwise)
-	window.autoresizesSubviews = YES;
-	window.clipsToBounds = YES;
-	window.frame = CGRectMake(0, 20, 320, 460);
-	window.bounds = CGRectMake(0, 20, 320, 460);
-	
-	[self setupAR];
-	
+- (void)applicationDidFinishLaunching:(UIApplication *)application {	
+    tabBarController.delegate = self;
+    [self.window addSubview:tabBarController.view];
 	[window makeKeyAndVisible];
+	
+	[self createAR];
+	[self createMarkers];
+    
+	[self showAR];
 }
 
-- (void) setupAR {
-	
-	//create ARController and autostart
-	m_ARController = [[ARController alloc] initWithFrame:CGRectMake(0, 20, 320, 460) autostart:YES useAccelerom:YES useAutoSwitchToRadar:YES useViewRotation:YES eventHandler:self]; 
-	
-	// returns nil if AR not available on device
-	if (m_ARController) { 
-		
-		// add to main window beneath the overlay-window
-		[window insertSubview:m_ARController.mainView atIndex:0];
-		
-		
-		// now add markers
-		// WARNING: use double-precision coordinates
-		
-		NSString* textureFilename = [[NSString alloc] initWithFormat:@"%@/regensburgerdom.jpg", [[NSBundle mainBundle] resourcePath]];
-		UIImage* texture1 = [[UIImage alloc] initWithContentsOfFile:textureFilename];
-		[textureFilename release];
-		textureFilename = [[NSString alloc] initWithFormat:@"%@/cinemaxx.jpg", [[NSBundle mainBundle] resourcePath]];
-		UIImage* texture2 = [[UIImage alloc] initWithContentsOfFile:textureFilename];
-		[textureFilename release];
-		textureFilename = [[NSString alloc] initWithFormat:@"%@/dez.jpg", [[NSBundle mainBundle] resourcePath]];
-		UIImage* texture3 = [[UIImage alloc] initWithContentsOfFile:textureFilename];
-		[textureFilename release];
-		/*textureFilename = [[NSString alloc] initWithFormat:@"%@/rathaus.jpg", [[NSBundle mainBundle] resourcePath]];
-		 UIImage* texture4 = [[UIImage alloc] initWithContentsOfFile:textureFilename];
-		 [textureFilename release];*/
-		
-		ARLabelTemplate* imageLabel = [ARLabelTemplate loadLabelTemplate:@"ImageLabelTemplate_512"];
-		
-		//[m_ARController addMarker:nil title:@"Kupferwerk GmbH" content:@"Im Gewerbepark C35\n93053 Regensburg" image:texture location:[[[CLLocation alloc] initWithLatitude:49.02945177431651 longitude:12.125371098518372] autorelease]];
-		
-		[m_ARController addMarkerAtLocation:[[ARMarker alloc] init:@"Dom" contentOrNil:@"keine Beschreibung" imageOrNil:texture1 templateOrNil:imageLabel] atLocation:[[CLLocation alloc] initWithLatitude:49.0186773 longitude:12.0980308]];
-		
-		[m_ARController addMarkerAtLocation:[[ARMarker alloc] init:@"DEZ" contentOrNil:@"keine Beschreibung" imageOrNil:texture2] atLocation:[[CLLocation alloc] initWithLatitude:49.023241 longitude:12.115811]];
-		[m_ARController addMarkerAtLocation:[[ARMarker alloc] init:@"Cinemaxx" contentOrNil:@"in den Arcaden" imageOrNil:texture3] atLocation:[[CLLocation alloc] initWithLatitude:49.010514581750044 longitude:12.1004319190979]];
-		//[m_ARController addMarkerAtLocation:[[ARMarker alloc] init:@"Altes Rathaus" contentOrNil:@"Historische Altstadt" imageOrNil:texture4 templateOrNil:imageLabel] atLocation:[[CLLocation alloc] initWithLatitude:49.020279 longitude:12.094955]];
-		
-		[m_ARController addMarkerAtLocation:[[ARMarker alloc] init:@"Furtmayrstraße" contentOrNil:@"Ecke Landshuter" imageOrNil:nil] atLocation:[[CLLocation alloc] initWithLatitude:49.009050809382046 longitude:12.113370895385742]];
-		[m_ARController addMarkerAtLocation:[[ARMarker alloc] init:@"Furtmayrstraße" contentOrNil:@"Ecke Hermann-Geib-Straße" imageOrNil:nil] atLocation:[[CLLocation alloc] initWithLatitude:49.009304157679125 longitude:12.11066722869873]];
-		[m_ARController addMarkerAtLocation:[[ARMarker alloc] init:@"Hermann-Geib-Straße" contentOrNil:@"Ecke Landshuter" imageOrNil:nil] atLocation:[[CLLocation alloc] initWithLatitude:49.01026123961204 longitude:12.111096382141113]];
-		[m_ARController addMarkerAtLocation:[[ARMarker alloc] init:@"Furtmayrstraße" contentOrNil:@"Ecke Galgenbergbrücke" imageOrNil:nil] atLocation:[[CLLocation alloc] initWithLatitude:49.01028938880215 longitude:12.101826667785645]];
-		
-#ifdef DEBUG
-		m_ARController.debugLabel = debugLabel;
+- (void) showAR {
+#if !(TARGET_IPHONE_SIMULATOR)
+    if (![ARController deviceSupportsAR]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"No AR Error Title", @"No AR Support")
+                                                        message:NSLocalizedString(@"No AR Error Message"@, "This device does not support AR functionality!") 
+                                                       delegate:nil 
+                                              cancelButtonTitle:NSLocalizedString(@"OK Button", @"OK") 
+                                              otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
 #endif
-		debugLabel.text = [[NSString alloc] initWithFormat:@""];
-		/*[m_ARController addMarker:nil title:@"lat-" location:[[CLLocation alloc] initWithLatitude:39.009860 longitude:12.108049]];
-		 [m_ARController addMarker:nil title:@"lat+" location:[[CLLocation alloc] initWithLatitude:49.009861 longitude:12.108049]];
-		 [m_ARController addMarker:nil title:@"lat+" location:[[CLLocation alloc] initWithLatitude:59.009860 longitude:12.108049]];
-		 [m_ARController addMarker:nil title:@"lat+" location:[[CLLocation alloc] initWithLatitude:50.009860 longitude:12.108049]];
-		 
-		 [m_ARController addMarker:nil title:@"lon-" location:[[CLLocation alloc] initWithLatitude:49.009860 longitude:2.108049]];
-		 [m_ARController addMarker:nil title:@"lon-" location:[[CLLocation alloc] initWithLatitude:49.009860 longitude:12.108050]];
-		 [m_ARController addMarker:nil title:@"lon+" location:[[CLLocation alloc] initWithLatitude:49.009860 longitude:22.108049]];
-		 [m_ARController addMarker:nil title:@"lon+" location:[[CLLocation alloc] initWithLatitude:49.009860 longitude:13.108049]];*/
-		
-		
-		/* //test items for long-lat displacements
-		 [m_ARController addMarker:@"lat-" location:[[CLLocation alloc] initWithLatitude:39.009860 longitude:12.108049]];
-		 [m_ARController addMarker:@"lat+" location:[[CLLocation alloc] initWithLatitude:59.009860 longitude:12.108049]];
-		 [m_ARController addMarker:@"lon-" location:[[CLLocation alloc] initWithLatitude:49.009860 longitude:2.108049]];
-		 [m_ARController addMarker:@"lon+" location:[[CLLocation alloc] initWithLatitude:49.009860 longitude:22.108049]];
-		 
-		 [m_ARController addMarker:@"lon-" location:[[CLLocation alloc] initWithLatitude:49.009860 longitude:12.108049]];
-		 [m_ARController addMarker:@"lon-" location:[[CLLocation alloc] initWithLatitude:44.009860 longitude:7.108049]];
-		 [m_ARController addMarker:@"lon-" location:[[CLLocation alloc] initWithLatitude:39.009860 longitude:2.108049]];
-		 
-		 [m_ARController addMarker:@"lat-" location:[[CLLocation alloc] initWithLatitude:44.009860 longitude:12.108049]];
-		 [m_ARController addMarker:@"lat+" location:[[CLLocation alloc] initWithLatitude:54.009860 longitude:12.108049]];
-		 [m_ARController addMarker:@"lon-" location:[[CLLocation alloc] initWithLatitude:49.009860 longitude:7.108049]];
-		 [m_ARController addMarker:@"lon+" location:[[CLLocation alloc] initWithLatitude:49.009860 longitude:17.108049]];*/
-		
-		
-		/*float tD = 700;
-		 int t = 0;
-		 for (int i = 0; i < 15; i++) {
-		 [m_ARController addMarker:nil title:[[NSString alloc] initWithFormat:@"Test %d", t] content:@"" angle:100 distance:tD+t];
-		 t++;
-		 }
-		 for (int i = 0; i < 18; i++) {
-		 [m_ARController addMarker:nil title:[[NSString alloc] initWithFormat:@"Test %d", t] content:@"" angle:5+i*20 distance:tD+t];
-		 t++;
-		 }
-		 for (int i = 0; i < 9; i++) {
-		 [m_ARController addMarker:nil title:[[NSString alloc] initWithFormat:@"Test %d", t] content:@"" angle:10+i*30 distance:tD+t];
-		 t++;
-		 }*/
-		
-		/*[m_ARController addMarker:@"Test" angle:170 distance:tD];
-		 [m_ARController addMarker:@"Test" angle:180 distance:tD];
-		 [m_ARController addMarker:@"Test" angle:190 distance:tD];*/
-		
-		/*[m_ARController addMarker:@"Test" location:[[CLLocation alloc] initWithLatitude:49.010514581750044 longitude:12.1004319190979]];
-		 [m_ARController addMarker:@"Test" location:[[CLLocation alloc] initWithLatitude:48.982989 longitude:12.2738]];
-		 [m_ARController addMarker:@"Test" location:[[CLLocation alloc] initWithLatitude:49.0186773 longitude:12.0308]];
-		 [m_ARController addMarker:@"Test" location:[[CLLocation alloc] initWithLatitude:19.241 longitude:12.0]];
-		 [m_ARController addMarker:@"Test" location:[[CLLocation alloc] initWithLatitude:16.00550044 longitude:12.49190979]];
-		 [m_ARController addMarker:@"Test" location:[[CLLocation alloc] initWithLatitude:48.92989 longitude:5]];
-		 [m_ARController addMarker:@"Test" location:[[CLLocation alloc] initWithLatitude:49.01773 longitude:12.0308]];
-		 [m_ARController addMarker:@"Test" location:[[CLLocation alloc] initWithLatitude:49.023241 longitude:12.115811]];
-		 [m_ARController addMarker:@"Test" location:[[CLLocation alloc] initWithLatitude:25.010514581750044 longitude:12.1004319190979]];
-		 [m_ARController addMarker:@"Test" location:[[CLLocation alloc] initWithLatitude:48.9982989 longitude:12.0952738]];
-		 [m_ARController addMarker:@"Test" location:[[CLLocation alloc] initWithLatitude:49.0186773 longitude:45.0980308]];
-		 [m_ARController addMarker:@"Test" location:[[CLLocation alloc] initWithLatitude:49.023241 longitude:12.115811]];
-		 [m_ARController addMarker:@"Test" location:[[CLLocation alloc] initWithLatitude:36 longitude:12.1004319190979]];
-		 [m_ARController addMarker:@"Test" location:[[CLLocation alloc] initWithLatitude:48.9982989 longitude:12.0952738]];
-		 [m_ARController addMarker:@"Test" location:[[CLLocation alloc] initWithLatitude:49.0186773 longitude:13.0980308]];
-		 [m_ARController addMarker:@"Test" location:[[CLLocation alloc] initWithLatitude:4.023241 longitude:11.11811]];*/
-		
-		// hide button to switch to radar if autoswitch is enabled
-		radarButton.hidden = m_ARController.autoSwitchToRadar;
-		
-		
+    
+    if (m_ARController != nil) {
+        NSLog(@"ARView selected in TabBar");
+        [ARController setRadarPosition:0 y:0];
+        [[tabBarController.viewControllers objectAtIndex:0] setView:m_ARController.view];
+        [m_ARController showController:NO showStatusBar:YES];
+        [m_ARController setViewport:CGRectMake(0, 0, 320, 411)];
+        //[m_ARController setViewport:CGRectMake(20, 40, 280, 300)];
+    }
+    else NSLog(@"No ARController available!");
+    
+}
+
+- (void) updateButtons {
+	createARController.enabled = m_ARController == nil;
+	createARController.alpha = createARController.enabled ? 1.0 : 0.5;
+	
+	labelController.text = [[[NSString alloc] initWithFormat:m_ARController == nil ? @"AR Controller not allocated" : @"AR Controller allocated"] autorelease];
+	
+	releaseARController.enabled = m_ARController != nil;
+	releaseARController.alpha = releaseARController.enabled ? 1.0 : 0.5;
+	
+	addARMarkers.enabled = m_ARController != nil;
+	if (m_ARController != nil) addARMarkers.enabled = [m_ARController numberOfMarkers] < 1;
+	addARMarkers.alpha = addARMarkers.enabled ? 1.0 : 0.5;
+	
+	clearARMarkers.enabled = m_ARController != nil;
+	if (m_ARController != nil) clearARMarkers.enabled = [m_ARController numberOfMarkers] > 0;
+	clearARMarkers.alpha = clearARMarkers.enabled ? 1.0 : 0.5;
+	
+	showModalView.enabled = m_ARController != nil;
+	showModalView.alpha = showModalView.enabled ? 1.0 : 0.5;
+	
+	labelMarkers.hidden = m_ARController == nil;
+	if (m_ARController != nil) 
+		labelMarkers.text = [[[NSString alloc] initWithFormat:@"Number of markers: %d", [m_ARController numberOfMarkers]] autorelease];
+}
+
+- (void) createAR {
+	//setup ARController properties
+	[ARController setEnableCameraView:YES];
+	[ARController setEnableRadar:YES];
+	[ARController setEnableInteraction:YES];
+	[ARController setEnableAccelerometer:YES];
+	[ARController setEnableAutoswitchToRadar:YES];
+	[ARController setEnableViewOrientationUpdate:YES];
+	[ARController setFadeInAnim:UIViewAnimationTransitionCurlDown];
+	[ARController setFadeOutAnim:UIViewAnimationTransitionCurlUp];
+	[ARController setCameraTint:0 g:0 b:0 a:0];
+	[ARController setCameraTransform:1.25 y:1.25];
+	
+	//create ARController
+	m_ARController = [[ARController alloc] initWithDelegate:self];
+	
+	[[tabBarController.viewControllers objectAtIndex:0] setView:nil];
+	
 #if (TARGET_IPHONE_SIMULATOR)
+	// returns nil if AR not available on device
+	if (m_ARController) {
 		// simulator testing coordinates
 		m_ARController.myLocation = [[CLLocation alloc] initWithLatitude:49.009860 longitude:12.108049];
+	}
 #endif
-	}
-	
-	
-	overlay.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-	[m_ARController.mainView addSubview:overlay];
-	overlay.frame = CGRectMake(0, 0, 320, 460);
-	
-	arActive = YES;
 }
 
 
-- (void) markerClicked:(ARMarker*)marker {
+
+- (void) releaseAR {
+	[m_ARController release];
+	m_ARController = nil;
+}
+
+- (void) createMarkers {
+	// now add markers
+	// WARNING: use double-precision coordinates
+    
+	[m_ARController addMarkerAtLocation:
+	 [[ARMarker alloc] initWithTitle:@"New York City" 
+                        contentOrNil:@"New York, United States"] 
+							 atLocation:[[[CLLocation alloc] initWithLatitude:40.708231 longitude:-74.005966] autorelease]
+	 ];
+	[m_ARController addMarkerAtLocation:
+	 [[ARMarker alloc] initWithTitle:@"Berlin" 
+                        contentOrNil:@"Germany"] 
+							 atLocation:[[[CLLocation alloc] initWithLatitude:52.523402 longitude:13.41141] autorelease]
+	 ];
+	[m_ARController addMarkerAtLocation:
+	 [[ARMarker alloc] initWithTitle:@"London" 
+                        contentOrNil:@"United Kingdom"] 
+							 atLocation:[[[CLLocation alloc] initWithLatitude:51.500141 longitude:-0.126257] autorelease]
+	 ];
+}
+
+
+
+
+
+- (IBAction) webButton_click {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"http://www.dopanic.com/ar"]];
+}
+
+- (void) markerTapped:(ARMarker*)marker {
 	if (marker != nil) {
-		DLog(@"markerClicked: %@", marker.title);
-		debugLabel.text = [[[NSString alloc] initWithFormat:@"%@ - %@", marker.title, marker.content] autorelease];
+		marker.touchDownColorR = 1;
+		marker.touchDownColorG = 0.5;
+		marker.touchDownColorB = 0.5;
+		marker.touchDownColorA = 1;
+		marker.touchDownScale = 1.25;
+		
+		NSLog(@"markerClicked: %@", marker.title);
+		m_ARController.infoLabel.text = [[[NSString alloc] initWithFormat:@"%@ - %@", marker.title, marker.content] autorelease];
 	}
-	else debugLabel.text = [[[NSString alloc] initWithFormat:@""] autorelease];
+	else m_ARController.infoLabel.text = [[[NSString alloc] initWithFormat:@""] autorelease];
 }
 
 
-- (void)dealloc 
-{
-	[m_ARController release];//release OpenGL view
+- (void)tabBarController:(UITabBarController *)tabBar didSelectViewController:(UIViewController *)viewController {
+	if ([tabBarController.viewControllers indexOfObject:viewController] == 0) {
+		[self showAR];
+	}
+	else {
+		[[tabBarController.viewControllers objectAtIndex:0] setView:nil];
+		[m_ARController hideController];
+	}
+	
+}
+
+
+- (void)dealloc {
+	if (m_ARController != nil) [m_ARController release];
 	[window release];
 	[super dealloc];
 }
 
-- (IBAction) doStartButton {
-	if (arActive) return;
-	
-	[overlay removeFromSuperview];
-    [self setupAR];
-}
-
-- (IBAction) doStopButton {
-	if (!arActive) return;
-	
-	[overlay removeFromSuperview];
-	[window addSubview:overlay];
-	overlay.frame = CGRectMake(0, 20, 320, 460);
-	[m_ARController stop];
-	[m_ARController clearMarkers];
-    [m_ARController.mainView removeFromSuperview];
-    [m_ARController release];
-	arActive = NO;
-}
-
-- (IBAction) doRadarButton {
-	if (!m_ARController.inRadarMode) [m_ARController showRadar];
-	else [m_ARController hideRadar];
-}
-
-- (IBAction) changeCameraXSlider {
-	m_ARController.m_ARView.cameraTargetAngleX = cameraXSlider.value;
-}
-- (IBAction) changeCameraYSlider {
-	m_ARController.directionFromAccelerometer = cameraYSlider.value;
-}
 
 @end
