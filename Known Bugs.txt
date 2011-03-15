@@ -1,0 +1,17 @@
+PanicAR Framework
+Known Bugs
+========================
+Last Changed: 15-03-2011
+
+
+BETA
+========================
+these bugs will be fixed ASAP
+- ARController, showController: non-modal option will cause the ARView to shift 20px down
+
+
+GLOBAL
+========================
+- iPhone 3G may crash without being able to display "Not Supported" dialog
+- non-metric distances are not supported at the moment
+- implementation of Localisation.strings file is mandatory

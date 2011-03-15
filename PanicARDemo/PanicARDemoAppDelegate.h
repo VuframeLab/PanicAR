@@ -1,33 +1,34 @@
+//
+//  PanicARDemoAppDelegate.h
+//  PanicAR Demo
+//
+//  Created by Andreas Zeitler on 9/1/11.
+//  Copyright doPanic 2011. All rights reserved.
+//
 #import <UIKit/UIKit.h>
-#import <PanicARLib_Demo/PanicARLib.h>
+#import <PanicARLib-Demo/PanicARLib.h>
 
 @class ARController;
 
+// include the ARControllerDelegate Protocol to receive events from the ARController
 @interface PanicARDemoAppDelegate : NSObject <UIApplicationDelegate, ARControllerDelegate, UITabBarControllerDelegate> {
     UIWindow *window;
     UITabBarController *tabBarController;
-	ARController* m_ARController;
-	
-	UIButton *showModalView;
-	UIButton *createARController;
-	UIButton *releaseARController;
-	UIButton *addARMarkers;
-	UIButton *clearARMarkers;
-	UILabel *labelController;
-	UILabel *labelMarkers;
+    
+	ARController* m_ARController; // the AR controller instance of the app
 }
 
+// a standard UI definitions
 @property (nonatomic, retain) IBOutlet UIWindow* window;
 @property (nonatomic, retain) IBOutlet UITabBarController* tabBarController;
 
-- (IBAction)webButton_click;
-
-- (void) showAR;
+// AR functionality
 - (void) createAR;
 - (void) createMarkers;
-- (void) releaseAR;
-- (void) updateButtons;
+- (void) showAR;
 - (void) markerTapped:(ARMarker*)marker;
 
+// additional UI functionality (not AR-relevant)
+- (IBAction)webButton_click;
 
 @end

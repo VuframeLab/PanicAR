@@ -1,9 +1,9 @@
 //
 //  main.m
-//  Sample2D
+//  PanicAR Demo
 //
-//  Created by Noel on 9/2/09.
-//  Copyright __MyCompanyName__ 2009. All rights reserved.
+//  Created by Andreas Zeitler on 9/1/11.
+//  Copyright doPanic 2011. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

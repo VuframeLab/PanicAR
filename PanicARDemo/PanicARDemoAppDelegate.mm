@@ -1,3 +1,11 @@
+//
+//  PanicARDemoAppDelegate.mm
+//  PanicAR Demo
+//
+//  Created by Andreas Zeitler on 9/1/11.
+//  Copyright doPanic 2011. All rights reserved.
+//
+
 #import "PanicARDemoAppDelegate.h"
 
 #ifdef __APPLE__
@@ -10,6 +18,8 @@
 @synthesize window;
 @synthesize tabBarController;
 
+
+// application delegate method
 - (void)applicationDidFinishLaunching:(UIApplication *)application {	
     tabBarController.delegate = self;
     [self.window addSubview:tabBarController.view];
@@ -21,56 +31,16 @@
 	[self showAR];
 }
 
-- (void) showAR {
-#if !(TARGET_IPHONE_SIMULATOR)
-    if (![ARController deviceSupportsAR]) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"No AR Error Title", @"No AR Support")
-                                                        message:NSLocalizedString(@"No AR Error Message"@, "This device does not support AR functionality!") 
-                                                       delegate:nil 
-                                              cancelButtonTitle:NSLocalizedString(@"OK Button", @"OK") 
-                                              otherButtonTitles:nil];
-        [alert show];
-        return;
-    }
-#endif
-    
-    if (m_ARController != nil) {
-        NSLog(@"ARView selected in TabBar");
-        [ARController setRadarPosition:0 y:0];
-        [[tabBarController.viewControllers objectAtIndex:0] setView:m_ARController.view];
-        [m_ARController showController:NO showStatusBar:YES];
-        [m_ARController setViewport:CGRectMake(0, 0, 320, 411)];
-        //[m_ARController setViewport:CGRectMake(20, 40, 280, 300)];
-    }
-    else NSLog(@"No ARController available!");
-    
+// standard dealloc of the delegate
+- (void)dealloc {
+	if (m_ARController != nil) [m_ARController release];
+	[window release];
+	[super dealloc];
 }
 
-- (void) updateButtons {
-	createARController.enabled = m_ARController == nil;
-	createARController.alpha = createARController.enabled ? 1.0 : 0.5;
-	
-	labelController.text = [[[NSString alloc] initWithFormat:m_ARController == nil ? @"AR Controller not allocated" : @"AR Controller allocated"] autorelease];
-	
-	releaseARController.enabled = m_ARController != nil;
-	releaseARController.alpha = releaseARController.enabled ? 1.0 : 0.5;
-	
-	addARMarkers.enabled = m_ARController != nil;
-	if (m_ARController != nil) addARMarkers.enabled = [m_ARController numberOfMarkers] < 1;
-	addARMarkers.alpha = addARMarkers.enabled ? 1.0 : 0.5;
-	
-	clearARMarkers.enabled = m_ARController != nil;
-	if (m_ARController != nil) clearARMarkers.enabled = [m_ARController numberOfMarkers] > 0;
-	clearARMarkers.alpha = clearARMarkers.enabled ? 1.0 : 0.5;
-	
-	showModalView.enabled = m_ARController != nil;
-	showModalView.alpha = showModalView.enabled ? 1.0 : 0.5;
-	
-	labelMarkers.hidden = m_ARController == nil;
-	if (m_ARController != nil) 
-		labelMarkers.text = [[[NSString alloc] initWithFormat:@"Number of markers: %d", [m_ARController numberOfMarkers]] autorelease];
-}
 
+
+// create the ARController
 - (void) createAR {
 	//setup ARController properties
 	[ARController setEnableCameraView:YES];
@@ -98,42 +68,61 @@
 #endif
 }
 
-
-
-- (void) releaseAR {
-	[m_ARController release];
-	m_ARController = nil;
-}
-
+// create a few test markers
 - (void) createMarkers {
-	// now add markers
-	// WARNING: use double-precision coordinates
+    // first: setup a new marker with title and content
+    ARMarker* newMarker = [[ARMarker alloc] initWithTitle:@"New York City" contentOrNil:@"New York, United States"];
     
-	[m_ARController addMarkerAtLocation:
-	 [[ARMarker alloc] initWithTitle:@"New York City" 
-                        contentOrNil:@"New York, United States"] 
-							 atLocation:[[[CLLocation alloc] initWithLatitude:40.708231 longitude:-74.005966] autorelease]
-	 ];
-	[m_ARController addMarkerAtLocation:
-	 [[ARMarker alloc] initWithTitle:@"Berlin" 
-                        contentOrNil:@"Germany"] 
-							 atLocation:[[[CLLocation alloc] initWithLatitude:52.523402 longitude:13.41141] autorelease]
-	 ];
-	[m_ARController addMarkerAtLocation:
-	 [[ARMarker alloc] initWithTitle:@"London" 
-                        contentOrNil:@"United Kingdom"] 
-							 atLocation:[[[CLLocation alloc] initWithLatitude:51.500141 longitude:-0.126257] autorelease]
-	 ];
+    // second: add the marker to the ARController using the addMarkerAtLocation method
+    // pass the geolocation (latitude, longitude) that specifies where the marker should be located
+    // WARNING: use double-precision coordinates whenever possible (the following coordinates are from Google Maps which only provides 8-9 digit coordinates
+	[m_ARController addMarkerAtLocation: newMarker atLocation:[[[CLLocation alloc] initWithLatitude:40.708231 longitude:-74.005966] autorelease]];
+    
+    
+    // add a second marker
+    newMarker = [[ARMarker alloc] initWithTitle:@"Berlin" contentOrNil:@"Germany"];
+    [m_ARController addMarkerAtLocation:newMarker atLocation:[[[CLLocation alloc] initWithLatitude:52.523402 longitude:13.41141] autorelease]];
+    
+    // add a third marker, this time allocation of a new marker and adding to the ARController are wrapped up in one line
+	[m_ARController addMarkerAtLocation:[[ARMarker alloc] initWithTitle:@"London" contentOrNil:@"United Kingdom"] atLocation:[[[CLLocation alloc] initWithLatitude:51.500141 longitude:-0.126257] autorelease]];
 }
 
-
-
-
-
-- (IBAction) webButton_click {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"http://www.dopanic.com/ar"]];
+// display the ARView in the tab bar (non-modal)
+- (void) showAR {
+    // on DEVICE: show error if device does not support AR functionality
+    // AR is not supported if either camera or compass is not available
+#if !(TARGET_IPHONE_SIMULATOR)
+    if (![ARController deviceSupportsAR]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"No AR Error Title", @"No AR Support")
+                                                        message:NSLocalizedString(@"No AR Error Message"@, "This device does not support AR functionality!") 
+                                                       delegate:nil 
+                                              cancelButtonTitle:NSLocalizedString(@"OK Button", @"OK") 
+                                              otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+#endif
+    
+    // check if ARController instance is valid
+    if (m_ARController == nil) {
+        NSLog(@"No ARController available!");
+        return;
+    }
+    
+    // show AR Controller in tab bar by assigning the ARView to the first view controller of the tab bar
+    [[tabBarController.viewControllers objectAtIndex:0] setView:m_ARController.view];
+    // now tell the ARController to become visbiel in a non-modal way while keeping the status bar visible
+    // NOTE: the camera feed will mess with the status bar's visibility while being loaded, so far there is no way to avoid that (iOS SDK weakness)
+    [m_ARController showController:NO showStatusBar:YES];
+    // when showing the ARView non-modal the viewport has to be set each time it becomes visible in order to avoid positioning and resizing problems
+    [m_ARController setViewport:CGRectMake(0, 0, 320, 411)];
+    
+    NSLog(@"ARView selected in TabBar");
 }
 
+// marker interaction delegate
+// called when the AR view is tapped
+// marker is the marker that was tapped, or nil if none was hit
 - (void) markerTapped:(ARMarker*)marker {
 	if (marker != nil) {
 		marker.touchDownColorR = 1;
@@ -149,6 +138,8 @@
 }
 
 
+
+// tab bar delegate method, switches the views displayed by the app
 - (void)tabBarController:(UITabBarController *)tabBar didSelectViewController:(UIViewController *)viewController {
 	if ([tabBarController.viewControllers indexOfObject:viewController] == 0) {
 		[self showAR];
@@ -160,12 +151,9 @@
 	
 }
 
-
-- (void)dealloc {
-	if (m_ARController != nil) [m_ARController release];
-	[window release];
-	[super dealloc];
+// about dialog weblink action
+- (IBAction) webButton_click {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"http://www.dopanic.com/ar"]];
 }
-
 
 @end

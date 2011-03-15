@@ -1,0 +1,20 @@
+/* Small Unit of Distance */
+"Small Unit of Distance" = "# m";
+
+/* Large Unit of Distance */
+"Large Unit of Distance" = "0.0 km";
+
+/* Location Error Message */
+"Location Error Message" = "Current Location not available";
+
+/* Location Error Title */
+"Location Error Title" = "Error";
+
+/* OK Button */
+"OK Button" = "OK";
+
+/* No AR Error Title */
+"No AR Error Title" = "No AR Support";
+
+/* No AR Error Message */
+"No AR Error Message" = "This device does not support AR functionality!";
