@@ -53,6 +53,8 @@
 	[ARController setFadeOutAnim:UIViewAnimationTransitionCurlUp];
 	[ARController setCameraTint:0 g:0 b:0 a:0];
 	[ARController setCameraTransform:1.25 y:1.25];
+    [ARController setRange:5 Maximum:4003*1000];
+     
 	
 	//create ARController
 	m_ARController = [[ARController alloc] initWithDelegate:self];
