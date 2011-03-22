@@ -31,6 +31,19 @@
 	[self showAR];
 }
 
+
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+    NSLog(@"applicationDidEnterBackground");
+	[m_ARController suspendToBackground];
+}
+
+
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+    NSLog(@"applicationWillEnterForeground");
+	[m_ARController resumeFromBackground];
+}
+
+
 // standard dealloc of the delegate
 - (void)dealloc {
 	if (m_ARController != nil) [m_ARController release];
@@ -54,7 +67,8 @@
 	[ARController setFadeOutAnim:UIViewAnimationTransitionCurlUp];
 	[ARController setCameraTint:0 g:0 b:0 a:0];
 	[ARController setCameraTransform:1.25 y:1.25];
-    [ARController setRange:5 Maximum:4003*1000];
+    [ARController setRange:5 Maximum:-1];
+    [ARController setRadarPosition:0 y:-17];
      
 	
 	//create ARController
@@ -88,6 +102,12 @@
     
     // add a third marker, this time allocation of a new marker and adding to the ARController are wrapped up in one line
 	[m_ARController addMarkerAtLocation:[[ARMarker alloc] initWithTitle:@"London" contentOrNil:@"United Kingdom"] atLocation:[[[CLLocation alloc] initWithLatitude:51.500141 longitude:-0.126257] autorelease]];
+    
+    /*newMarker = [[ARMarker alloc] initAs3DObject:@"msh_box.obj" 
+                                         texture:@"59-info.png" 
+                                        position:[ARVector vectorWithCoords:0 Y:0 Z:0] 
+                                        rotation:[ARVector vectorWithCoords:0 Y:0 Z:0] 
+                                           scale:1];*/
 }
 
 // display the ARView in the tab bar (non-modal)

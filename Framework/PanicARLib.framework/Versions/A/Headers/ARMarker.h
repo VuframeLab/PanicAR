@@ -18,7 +18,7 @@
 @class ARController;
 @class ARMarkerTemplate;
 @class ARView;
-@class Vector;
+@class ARVector;
 
 /*! @class ARMarker
  @brief marker object to be rendered in the ARController's view
@@ -58,10 +58,10 @@
 	float colorID;
 	
 	// ogl space transform
-	Vector *position; // position
-	Vector *rotation; // rotation
-	Vector *size; // scale
-	Vector *inputPosition; // position on screen
+	ARVector *position; // position
+	ARVector *rotation; // rotation
+	ARVector *size; // scale
+	ARVector *inputPosition; // position on screen
 	float yOffset;
 	float scale;
 	float scaleFac;
@@ -119,7 +119,7 @@
 - (id) initWithTitle:(NSString*)pTitle contentOrNil:(NSString*)pContent;
 - (id) initWithTitle:(NSString*)pTitle contentOrNil:(NSString*)pContent imageOrNil:(UIImage*)pImage;
 - (id) initWithTitle:(NSString*)pTitle contentOrNil:(NSString*)pContent imageOrNil:(UIImage*)pImage templateOrNil:(ARMarkerTemplate*)pTemplate;
-- (id) initAs3DObject:(NSString*)meshFile texture:(NSString*)textureFile scale:(float)pScale;
+- (id) initAs3DObject:(NSString*)meshFile texture:(NSString*)textureFile position:(ARVector*)position rotation:(ARVector*)rotation scale:(float)pScale;
 
 - (void) updateGeoInfo;
 - (void) updateTexture;

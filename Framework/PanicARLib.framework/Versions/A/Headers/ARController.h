@@ -39,6 +39,7 @@
 	bool wasModalView;
     bool readyForRendering;
     bool hasBeenVisibleBefore;
+	bool freeze;
     
 	bool freeMemoryOnWarning;
 	
@@ -99,6 +100,7 @@
 #pragma mark Properties
 //is active
 @property (readonly) bool isVisible;
+@property (readonly) bool freeze;
 @property (readonly) bool readyForRendering;
 //camera
 @property (readonly) UIImagePickerController* cameraView;

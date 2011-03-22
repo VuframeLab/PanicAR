@@ -14,3 +14,4 @@
 #include "ARView.h";
 #include "ARMarker.h";
 #include "ARUtils.h";
+#include "ARVector.h";
