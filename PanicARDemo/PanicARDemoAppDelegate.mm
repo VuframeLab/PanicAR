@@ -43,7 +43,7 @@
 // create the ARController
 - (void) createAR {
 	//setup ARController properties
-    [ARController setAPIKey:@""];
+    [ARController setAPIKey:@"none"];
 	[ARController setEnableCameraView:YES];
 	[ARController setEnableRadar:YES];
 	[ARController setEnableInteraction:YES];

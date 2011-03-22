@@ -277,23 +277,12 @@
 
 
 /*! 
- @brief CONFIGURATION: use of the accelerometer
- @param state set to YES or NO
- 
- needs to be YES in ordner to set enableViewOrientationUpdate or enableAutoSwitchToRadar
- 
- can only be set before ARController is initialized
- 
- default: NO
- */
-+ (void)setEnableMovieCapture:(bool)state;
-
-
-/*! 
  @brief CONFIGURATION: use movie capture mode of camera for better image (but with ipod playback interruption while ARView is visible)
  @param state set to YES or NO
  
  can only be set before ARController is initialized
+ 
+ disabling will also disable EnableAutoswitchToRadar and EnableViewOrientationUpdate
  
  default: NO
  */
@@ -308,9 +297,28 @@
  
  can only be set before ARController is initialized
  
+ disabling will also disable EnableMovieCapture
+ 
  default: YES
  */
 + (void)setEnableCameraView:(bool)state;
+
+
+/*! 
+ @brief CONFIGURATION: use movie capture mode of UIImagePickerController
+ @param state set to YES or NO
+ 
+ needs EnableCameraView to be YES
+ 
+ can only be set before ARController is initialized
+ 
+ if enabled, UIImagePickerController will use movie capture mode which will
+ create a better preview image of the camera, but will cause iPod playback to be interrupted
+ as soon as the ARController is shown
+ 
+ default: NO
+ */
++ (void)setEnableMovieCapture:(bool)state;
 
 
 /*! 
