@@ -6,7 +6,7 @@
 //  Copyright doPanic 2011. All rights reserved.
 //
 #import <UIKit/UIKit.h>
-#import <PanicARLib-Demo/PanicARLib.h>
+#import <PanicARLib/PanicARLib.h>
 
 @class ARController;
 

@@ -17,7 +17,6 @@
 		9908EBD7132FB697004217E3 /* msh_plane.obj in Resources */ = {isa = PBXBuildFile; fileRef = 9908EBCD132FB697004217E3 /* msh_plane.obj */; };
 		9908EBD8132FB697004217E3 /* RadarScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 9908EBCE132FB697004217E3 /* RadarScreen.png */; };
 		9908EBD9132FB697004217E3 /* RadarScreen_Dot.png in Resources */ = {isa = PBXBuildFile; fileRef = 9908EBCF132FB697004217E3 /* RadarScreen_Dot.png */; };
-		9908EBE3132FB9F2004217E3 /* PanicARLib-Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9908EBE2132FB9F2004217E3 /* PanicARLib-Demo.framework */; };
 		99A1BCD1132EBA9700C915F4 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99CB255B1221C42D00776548 /* MobileCoreServices.framework */; };
 		99A1BCD2132EBA9700C915F4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E637A2104F5A4400B26E5C /* QuartzCore.framework */; };
 		99A1BCD3132EBA9700C915F4 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E6379D104F5A3200B26E5C /* OpenGLES.framework */; };
@@ -37,6 +36,7 @@
 		99B37E8D132EB7DA00A0FA99 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 992A2B0F132EB2C700C1D5C1 /* Default.png */; };
 		99B37E8E132EB7DC00A0FA99 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 992A2B10132EB2C700C1D5C1 /* Default@2x.png */; };
 		99B37E8F132EB7DE00A0FA99 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 992A2B11132EB2C700C1D5C1 /* Icon.png */; };
+		99BD015E1338A5740005986E /* PanicARLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99BD015D1338A5740005986E /* PanicARLib.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,7 +56,6 @@
 		9908EBCD132FB697004217E3 /* msh_plane.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = msh_plane.obj; sourceTree = "<group>"; };
 		9908EBCE132FB697004217E3 /* RadarScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RadarScreen.png; sourceTree = "<group>"; };
 		9908EBCF132FB697004217E3 /* RadarScreen_Dot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RadarScreen_Dot.png; sourceTree = "<group>"; };
-		9908EBE2132FB9F2004217E3 /* PanicARLib-Demo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "PanicARLib-Demo.framework"; path = "../Framework/PanicARLib-Demo.framework"; sourceTree = SOURCE_ROOT; };
 		992A2B0E132EB2C700C1D5C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		992A2B0F132EB2C700C1D5C1 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		992A2B10132EB2C700C1D5C1 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
@@ -68,6 +67,7 @@
 		9990B18712B14985006AA069 /* 164-glasses-2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "164-glasses-2@2x.png"; sourceTree = "<group>"; };
 		99A1BCF1132EBB7200C915F4 /* ARController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ARController.xib; sourceTree = "<group>"; };
 		99B7BAE8121ADC2E00E497BB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		99BD015D1338A5740005986E /* PanicARLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PanicARLib.framework; path = ../Framework/PanicARLib.framework; sourceTree = SOURCE_ROOT; };
 		99CB255B1221C42D00776548 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		99D15BCE132EC0FC00EB33DE /* PanicAR Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PanicAR Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		99D952C9132EB53F007365FB /* 59-info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "59-info.png"; sourceTree = "<group>"; };
@@ -89,7 +89,7 @@
 				99B37E77132EB75000A0FA99 /* UIKit.framework in Frameworks */,
 				99B37E78132EB75000A0FA99 /* Foundation.framework in Frameworks */,
 				99A1BCD4132EBA9700C915F4 /* CoreLocation.framework in Frameworks */,
-				9908EBE3132FB9F2004217E3 /* PanicARLib-Demo.framework in Frameworks */,
+				99BD015E1338A5740005986E /* PanicARLib.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,7 +119,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9908EBE2132FB9F2004217E3 /* PanicARLib-Demo.framework */,
+				99BD015D1338A5740005986E /* PanicARLib.framework */,
 				99CB255B1221C42D00776548 /* MobileCoreServices.framework */,
 				5995EBC010556E7500615176 /* CoreGraphics.framework */,
 				59E637A2104F5A4400B26E5C /* QuartzCore.framework */,

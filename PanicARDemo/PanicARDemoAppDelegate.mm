@@ -43,6 +43,7 @@
 // create the ARController
 - (void) createAR {
 	//setup ARController properties
+    [ARController setAPIKey:@""];
 	[ARController setEnableCameraView:YES];
 	[ARController setEnableRadar:YES];
 	[ARController setEnableInteraction:YES];
@@ -57,9 +58,9 @@
      
 	
 	//create ARController
-	m_ARController = [[ARController alloc] initWithDelegate:self];
+	m_ARController = [[ARController alloc] initWithNibName:@"ARController" bundle:nil delegate:self];
 	
-	[[tabBarController.viewControllers objectAtIndex:0] setView:nil];
+	//[[tabBarController.viewControllers objectAtIndex:0] setView:nil];
 	
 #if (TARGET_IPHONE_SIMULATOR)
 	// returns nil if AR not available on device
