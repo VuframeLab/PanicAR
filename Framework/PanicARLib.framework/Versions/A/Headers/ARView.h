@@ -25,6 +25,7 @@
 
 @interface ARView : UIView 
 {
+@private
 	ARUtils::FrameBuffer m_frameBuffer;
 	
 	//infra
@@ -48,11 +49,11 @@
 	float cameraTargetY;
 	int cameraSector;
 	
-	bool isSetup;
-	bool hasTimer;
+	BOOL isSetup;
+	BOOL hasTimer;
 	
-	bool m_touched;
-	bool m_touchMoved;
+	BOOL m_touched;
+	BOOL m_touchMoved;
 	
 	CGPoint initialTouchPosition;
 	CGPoint touchDistance;
@@ -73,11 +74,11 @@
 @property (nonatomic, retain) ARController	*m_ARController;
 
 
-- (void)initializeOGL:(EAGLContext*)oglContext getOGLContext:(bool)getOGL;
+- (void)initializeOGL:(EAGLContext*)oglContext getOGLContext:(BOOL)getOGL;
 - (void)releaseOGL;
 - (void)updateRotation;
 - (void)bind;
-- (bool)popTouch;
+- (BOOL)popTouch;
 
 
 - (id)initWithARController:(ARController*)controller;

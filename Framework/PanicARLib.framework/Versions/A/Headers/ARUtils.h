@@ -67,7 +67,7 @@ assert(0); \
 
 namespace MeshUtils		
 {
-	bool LoadMesh(Mesh& mesh, const char* filename);
+	BOOL LoadMesh(Mesh& mesh, const char* filename);
 	void UnloadMesh(Mesh& mesh);	
 };
 

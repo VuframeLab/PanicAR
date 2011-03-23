@@ -31,10 +31,10 @@
  */
 @interface ARMarker : NSObject {
 	
-	bool enabled; // is marker updated?
-	bool visible; // is marker visible?
-	bool isGeoMarker;
-	bool isContentMarker;
+	BOOL enabled; // is marker updated?
+	BOOL visible; // is marker visible?
+	BOOL isGeoMarker;
+	BOOL isContentMarker;
 	
 	NSString* title; // title of the marker's infoLabel
 	NSString* content; // title of the marker's infoLabel
@@ -45,14 +45,14 @@
 	
 	double distance; // distance to user's position
 	double angle;
-	bool jump;
+	BOOL jump;
 	float lookAtAngle;
 	
-	bool suppressFirstTextureUpdate;
+	BOOL suppressFirstTextureUpdate;
 	
 	// ogl object handles
 	Mesh mesh;
-    bool hasTexture;
+    BOOL hasTexture;
 	uint textureHandle;
 	uint hitMaskHandle;
 	float colorID;
@@ -104,9 +104,9 @@
 @property int yStep;
 @property double distance;
 @property double angle;
-@property bool jump;
-@property bool enabled;
-@property bool isGeoMarker;
+@property BOOL jump;
+@property BOOL enabled;
+@property BOOL isGeoMarker;
 @property float scale;
 @property float colorID;
 @property float touchDownScale;
@@ -115,9 +115,17 @@
 @property float touchDownColorB;
 @property float touchDownColorA;
 
+/** create ARMarker with Title
+ */
 - (id) initWithTitle:(NSString*)pTitle;
+/** create ARMarker with Title and Description (content)
+ */
 - (id) initWithTitle:(NSString*)pTitle contentOrNil:(NSString*)pContent;
+/** create ARMarker with Title, Description (content) and Image, Title is a mandatory parameter.
+ */
 - (id) initWithTitle:(NSString*)pTitle contentOrNil:(NSString*)pContent imageOrNil:(UIImage*)pImage;
+/** create ARMarker at Geolocation with Title, Description (content) and Image, Title is a mandatory parameter. Optional: use a custom template for this marker.
+ */
 - (id) initWithTitle:(NSString*)pTitle contentOrNil:(NSString*)pContent imageOrNil:(UIImage*)pImage templateOrNil:(ARMarkerTemplate*)pTemplate;
 - (id) initAs3DObject:(NSString*)meshFile texture:(NSString*)textureFile position:(ARVector*)position rotation:(ARVector*)rotation size:(ARVector*)pSize scale:(float)pScale;
 
@@ -132,6 +140,9 @@
 - (void) drawBounds;
 - (void) drawOnRadar;
 
+/* calculates the direction towards a location, heads-up line isthe north
+ pole at 0 degrees does not take into account the earth's curve and therefore 
+ will grow more inaccurate the farther the locations are apart */
 + (double)bearingTowardsLocation:(CLLocation *)fromLocation to:(CLLocation *)towardsLocation;
 
 @end

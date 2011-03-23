@@ -47,10 +47,10 @@
 -(void) initHitMask;
 
 
-/*! @brief load a Marker Templated from a XIB file */
+/*!  load a Marker Templated from a XIB file */
 + (ARMarkerTemplate*) loadMarkerTemplate:(NSString*)xibFilename;
 
-/*! @brief load a Marker Templated from a XIB file and force it to be displayed in aspect */
+/*!  load a Marker Templated from a XIB file and force it to be displayed in aspect */
 + (ARMarkerTemplate*) loadMarkerTemplate:(NSString*)xibFilename aspect:(float)pAspect;
 
 @end
