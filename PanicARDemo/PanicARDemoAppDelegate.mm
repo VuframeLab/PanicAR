@@ -88,12 +88,12 @@
 // create a few test markers
 - (void) createMarkers {
     // first: setup a new marker with title and content
-    ARMarker* newMarker = [[ARMarker alloc] initWithTitle:@"New York City" contentOrNil:@"New York, United States"];
+    ARMarker* newMarker = [[ARMarker alloc] initWithTitle:@"Rome" contentOrNil:@"Italy"];
     
     // second: add the marker to the ARController using the addMarkerAtLocation method
     // pass the geolocation (latitude, longitude) that specifies where the marker should be located
     // WARNING: use double-precision coordinates whenever possible (the following coordinates are from Google Maps which only provides 8-9 digit coordinates
-	[m_ARController addMarkerAtLocation: newMarker atLocation:[[[CLLocation alloc] initWithLatitude:40.708231 longitude:-74.005966] autorelease]];
+	[m_ARController addMarkerAtLocation: newMarker atLocation:[[[CLLocation alloc] initWithLatitude:41.890156 longitude:12.492304] autorelease]];
     
     
     // add a second marker

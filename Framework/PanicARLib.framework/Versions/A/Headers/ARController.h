@@ -147,6 +147,7 @@
 -(bool) enableViewOrientationUpdate;
 -(bool) enableMovieCapture;
 -(bool) enableLoadingView;
+-(bool) enableContinuousGPS;
 -(bool) isDemoMode;
 -(UIDeviceOrientation) defaultOrientation;
 -(id<ARControllerDelegate>) delegate;
@@ -226,6 +227,7 @@
 - (void) removeMarker:(ARMarker*)marker;
 - (void) clearMarkers;
 - (int) numberOfMarkers;
+
 
 //internal use only
 - (bool) markerSector:(int)y sector:(int)i;
@@ -378,6 +380,15 @@
 
 
 /*! 
+ @brief CONFIGURATION: by default locationManager does not do updates when ARView not shown, set this setting to YES to update the locationManager continuosly
+ @param state set to YES or NO
+ 
+ default: NO
+ */
++ (void)setEnableContinuousGPS:(bool)state;
+
+
+/*! 
  @brief CONFIGURATION: the default orientation of the ARController's view
  @param orientation the default device orientation
  
@@ -461,6 +472,27 @@
  i.e. if the hardware model is iPhone 3Gs or later
  */
 + (BOOL)deviceSupportsAR;
+
+/*! 
+ @brief load a mesh for use in the AR view (pass mesh as pointer to Mesh struct)
+ 
+ supports loading of OBJ-files, specs: triangulated, single UV set, need to have material
+ please note that popular 3d model tools may export OBJ without UVs when using materials without textures
+ 
+ make sure mesh file is added to XCode first
+ 
+ @return YES if mesh successfully loaded, otherwise NO
+ */
++ (BOOL) loadMesh:(NSString*)meshFilename mesh:(Mesh&)mesh;
+
+/*! 
+ @brief load a texture into OpenGL for use in the AR view
+ 
+ loads all image formats supported by the SDK and creates a OpenGL texture name for it
+ 
+ @return the OpenGL texture name (uint)
+ */
++ (uint) loadTexture:(NSString*)textureFilename;
 
 
 /*! 

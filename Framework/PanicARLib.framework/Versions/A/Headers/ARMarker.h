@@ -119,7 +119,7 @@
 - (id) initWithTitle:(NSString*)pTitle contentOrNil:(NSString*)pContent;
 - (id) initWithTitle:(NSString*)pTitle contentOrNil:(NSString*)pContent imageOrNil:(UIImage*)pImage;
 - (id) initWithTitle:(NSString*)pTitle contentOrNil:(NSString*)pContent imageOrNil:(UIImage*)pImage templateOrNil:(ARMarkerTemplate*)pTemplate;
-- (id) initAs3DObject:(NSString*)meshFile texture:(NSString*)textureFile position:(ARVector*)position rotation:(ARVector*)rotation scale:(float)pScale;
+- (id) initAs3DObject:(NSString*)meshFile texture:(NSString*)textureFile position:(ARVector*)position rotation:(ARVector*)rotation size:(ARVector*)pSize scale:(float)pScale;
 
 - (void) updateGeoInfo;
 - (void) updateTexture;
