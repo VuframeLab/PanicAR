@@ -53,6 +53,7 @@
     NSError* locationFailError;
 	
 	BOOL isSupported;
+	BOOL isInitialized;
 	
     BOOL hasLocation;
     BOOL needsSorting;
@@ -69,6 +70,7 @@
 	BOOL isLandscapeView;
 	
 	UIDeviceOrientation arOrientation;
+	UIDeviceOrientation radarOrientation;
 	float osVersion;
 	
 	//markers
@@ -110,6 +112,8 @@
 //is active
 /*! @property is ARView visible?  */
 @property (readonly) BOOL isVisible;
+/*! @property is ARView visible as modal view?  */
+@property (readonly) BOOL isModalView;
 @property (readonly) BOOL freeze;
 @property (readonly) BOOL readyForRendering;
 //camera
@@ -123,7 +127,7 @@
 /*! @property does AR system have location?  */
 @property (readonly) BOOL hasLocation;
 /*! @property current device location  */
-@property (nonatomic, copy) CLLocation	*currentLocation;
+@property (nonatomic, retain) CLLocation *currentLocation;
 //accelerometer
 @property (assign) double directionFromAccelerometer;
 //views and viewport
@@ -152,7 +156,7 @@
 #pragma mark Class Properties
 
 
--(ARView*) sharedView;
+-(ARView*) oglView;
 
 -(BOOL) enableCameraView;
 -(BOOL) enableAccelerometer;
@@ -198,7 +202,6 @@
 -(float) lastDeltaTime;
 -(void) setLastDeltaTime:(float)value;
 -(BOOL) inRadarMode;
-
 
 
 #pragma mark -

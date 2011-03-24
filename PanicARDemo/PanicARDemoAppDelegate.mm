@@ -200,6 +200,7 @@
 	else m_ARController.infoLabel.text = [[[NSString alloc] initWithFormat:@""] autorelease];
 }
 
+// update callback, fills the info label of the ARController with signal quality information
 - (void) infoLabelUpdate {
     if (m_ARController.currentLocation == nil) {
         m_ARController.infoLabel.text = @"could not retrieve location";
@@ -208,6 +209,17 @@
     else {
         m_ARController.infoLabel.text = [NSString stringWithFormat:@"GPS signal quality: %f Meters", m_ARController.currentLocation.horizontalAccuracy];
         m_ARController.infoLabel.textColor = [UIColor whiteColor];
+    }
+}
+
+// orientation update callback: updates orientation and positioning of radar screen
+- (void) arOrientationChanged:(UIDeviceOrientation)orientation radarOrientation:(UIDeviceOrientation)radarOrientation {
+    if (!m_ARController.isVisible || (m_ARController.isVisible && !m_ARController.isModalView)) {
+        if (radarOrientation == UIDeviceOrientationPortrait) [ARController setRadarPosition:0 y:-11];
+        else if (radarOrientation == UIDeviceOrientationPortraitUpsideDown) [ARController setRadarPosition:0 y:11];
+        else if (radarOrientation == UIDeviceOrientationFaceUp) [ARController setRadarPosition:0 y:-11];
+        else if (radarOrientation == UIDeviceOrientationLandscapeLeft) [ARController setRadarPosition:-11 y:0];
+        else if (radarOrientation == UIDeviceOrientationLandscapeRight) [ARController setRadarPosition:11 y:0];
     }
 }
 
