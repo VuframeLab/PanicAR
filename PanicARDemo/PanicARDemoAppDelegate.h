@@ -14,6 +14,8 @@
 @interface PanicARDemoAppDelegate : NSObject <UIApplicationDelegate, ARControllerDelegate, UITabBarControllerDelegate> {
     UIWindow *window;
     UITabBarController *tabBarController;
+    UITabBarItem *arBarItem;
+    BOOL arIsVisible;
     
 	ARController* m_ARController; // the AR controller instance of the app
 }
@@ -21,12 +23,13 @@
 // a standard UI definitions
 @property (nonatomic, retain) IBOutlet UIWindow* window;
 @property (nonatomic, retain) IBOutlet UITabBarController* tabBarController;
+@property (nonatomic, retain) IBOutlet UITabBarItem *arBarItem;
 
 // AR functionality
 - (void) createAR;
 - (void) createMarkers;
 - (void) showAR;
-- (void) markerTapped:(ARMarker*)marker;
+- (BOOL) checkForAR:(BOOL)showErrors;
 
 // additional UI functionality (not AR-relevant)
 - (IBAction)webButton_click;

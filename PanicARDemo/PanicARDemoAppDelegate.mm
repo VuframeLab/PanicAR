@@ -17,6 +17,7 @@
 
 @synthesize window;
 @synthesize tabBarController;
+@synthesize arBarItem;
 
 
 // application delegate method
@@ -24,11 +25,13 @@
     tabBarController.delegate = self;
     [self.window addSubview:tabBarController.view];
 	[window makeKeyAndVisible];
-	
-	[self createAR];
+    
+    // create ARController and Markers
+ 	[self createAR];
 	[self createMarkers];
     
-	[self showAR];
+    // check if AR is available and if so show the controller in first view of TabBarController
+    if ([self checkForAR:YES]) [self showAR];
 }
 
 
@@ -40,6 +43,7 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     NSLog(@"applicationWillEnterForeground");
+    [self checkForAR:NO];
 	[m_ARController resumeFromBackground];
 }
 
@@ -51,7 +55,41 @@
 	[super dealloc];
 }
 
-
+// check if AR is available, show error if it's not and set bar item
+- (BOOL) checkForAR:(BOOL)showErrors {
+    BOOL supportsAR = [ARController deviceSupportsAR];
+    BOOL supportsLocations = [ARController locationServicesAvailable:NO];
+    BOOL result = supportsLocations && supportsAR;
+    
+    arBarItem.enabled = result;
+    if (!result) {
+        [tabBarController setSelectedIndex:1];
+    }
+    
+    if (showErrors) {
+        if (!supportsAR) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"AR not supported"
+                                                            message:@"This device does not support AR functionality"
+                                                           delegate:self 
+                                                  cancelButtonTitle:NSLocalizedString(@"OK Button", @"OK") 
+                                                  otherButtonTitles:nil, nil];
+            [alert show];
+            [alert release];
+        }
+        
+        if (!supportsLocations) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Location Denied Title", @"Error")
+                                                            message:NSLocalizedString(@"Location Denied Message", @"GPS not available")
+                                                           delegate:self 
+                                                  cancelButtonTitle:NSLocalizedString(@"OK Button", @"OK") 
+                                                  otherButtonTitles:nil, nil];
+            [alert show];
+            [alert release];
+        }
+    }
+    
+    return result;
+}
 
 // create the ARController
 - (void) createAR {
@@ -68,7 +106,7 @@
 	[ARController setCameraTint:0 g:0 b:0 a:0];
 	[ARController setCameraTransform:1.25 y:1.25];
     [ARController setRange:5 Maximum:-1];
-    [ARController setRadarPosition:0 y:-17];
+    [ARController setRadarPosition:0 y:-24];
      
 	
 	//create ARController
@@ -83,6 +121,8 @@
 		m_ARController.myLocation = [[CLLocation alloc] initWithLatitude:49.009860 longitude:12.108049];
 	}
 #endif
+    
+    arBarItem.enabled = [ARController locationServicesAvailable:NO];
 }
 
 // create a few test markers
@@ -160,16 +200,32 @@
 	else m_ARController.infoLabel.text = [[[NSString alloc] initWithFormat:@""] autorelease];
 }
 
+- (void) infoLabelUpdate {
+    if (m_ARController.currentLocation == nil) {
+        m_ARController.infoLabel.text = @"could not retrieve location";
+        m_ARController.infoLabel.textColor = [UIColor redColor];
+    }
+    else {
+        m_ARController.infoLabel.text = [NSString stringWithFormat:@"GPS signal quality: %f Meters", m_ARController.currentLocation.horizontalAccuracy];
+        m_ARController.infoLabel.textColor = [UIColor whiteColor];
+    }
+}
+
+- (void) didFailWithErrorCode:(int)code {
+    
+}
 
 
 // tab bar delegate method, switches the views displayed by the app
 - (void)tabBarController:(UITabBarController *)tabBar didSelectViewController:(UIViewController *)viewController {
 	if ([tabBarController.viewControllers indexOfObject:viewController] == 0) {
 		[self showAR];
+        arIsVisible = YES;
 	}
 	else {
 		[[tabBarController.viewControllers objectAtIndex:0] setView:nil];
 		[m_ARController hideController];
+        arIsVisible = NO;
 	}
 	
 }
