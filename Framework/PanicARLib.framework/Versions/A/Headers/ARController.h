@@ -20,10 +20,12 @@
 #import "ARMarker.h"
 #import "ARMarkerTemplate.h"
 
-@class ARController;
 @class ARMarker;
 @class ARMarkerTemplate;
 @class ARView;
+
+
+
 
 #pragma mark -
 #pragma mark Interface
@@ -36,7 +38,26 @@
  */
 @interface ARController : UIViewController <CLLocationManagerDelegate, UIAccelerometerDelegate> {
     
+
 @private
+    id<ARControllerDelegate> delegate;
+    ARMarkerTemplate* defaultMarkerTemplate;
+    struct Mesh defaultMarkerMesh;
+    struct Mesh radarMesh;
+    uint radarDot;
+    uint radarBG;
+    ARMarker* lastTappedMarker;
+    BOOL inRadarMode;
+    BOOL needsStatusBar;
+    UIStatusBarStyle savedStatusBarStyle;
+    struct Mesh coordinatesMesh;
+    uint coordinatesTexture;
+   // float lastDeltaTime;
+    ARMarker* highlightedMarker;
+    ARView* oglView;
+    
+    
+    
     BOOL demoMode;
     
 	BOOL isVisible;
@@ -58,6 +79,7 @@
     BOOL hasLocation;
     BOOL needsSorting;
     BOOL needsGeneralRefresh;
+    BOOL freshlyLoaded;
 	
 	double directionFromAccelerometer;
 	double xRoll;
@@ -86,8 +108,12 @@
 	
 	UIAccelerometer *accelerometer;
 	CLLocationManager	*locationManager;
-	CLLocation	*currentLocation;
-	double currentHeading;
+	CLLocation	*lastLocation;
+    float lastLocationQuality;
+    float lastLocationAccuracy;
+    float lastLocationAge;
+	double lastHeading;
+    float lastHeadingAccuracy;
 	
 	BOOL hasTimer;
 	NSTimer* m_timer;
@@ -116,18 +142,26 @@
 @property (readonly) BOOL isModalView;
 @property (readonly) BOOL freeze;
 @property (readonly) BOOL readyForRendering;
+
 //camera
 /*! @property camera view pointer  */
 @property (readonly) UIImagePickerController* cameraView;
+
 //location and bearing
 /*! @property location manager  */
 @property (readonly) CLLocationManager	*locationManager;
 /*! @property current device heading  */
-@property (assign) double currentHeading;
+@property (assign) double lastHeading;
+@property (assign) float lastHeadingAccuracy;
 /*! @property does AR system have location?  */
 @property (readonly) BOOL hasLocation;
 /*! @property current device location  */
-@property (nonatomic, retain) CLLocation *currentLocation;
+@property (nonatomic, retain) CLLocation *lastLocation;
+@property (assign) float lastLocationQuality;
+@property (assign) float lastLocationAccuracy;
+@property (assign) float lastLocationAge;
+
+
 //accelerometer
 @property (assign) double directionFromAccelerometer;
 //views and viewport
@@ -147,16 +181,56 @@
 @property (nonatomic, retain) IBOutlet UIView* loadingView;
 @property (nonatomic, retain) IBOutlet UILabel *loadingLabel;
 
+
+#pragma mark -
+#pragma mark Public Properties
+/*! INTERNAL: default marker mesh */
+-(Mesh) defaultMarkerMesh;
+/*! INTERNAL: default marker template */
+-(ARMarkerTemplate*) defaultMarkerTemplate;
+/*! INTERNAL: radar base mesh */
+-(Mesh) radarMesh;
+/*! INTERNAL: radar marker texture */
+-(uint) radarDot;
+/*! INTERNAL: radar background texture */
+-(uint) radarBG;
+
+/*! last tapped marker */
+-(ARMarker*) lastTappedMarker;
+
+/*! is ARView in Radar Mode? */
+-(BOOL) inRadarMode;
+
+-(Mesh) coordinatesMesh;
+-(uint) coordinatesTexture;
+-(BOOL) needsStatusBar;
+-(UIStatusBarStyle) savedStatusBarStyle;
+-(int) lastErrorCode;
+-(ARMarker*) highlightedMarker;
+
+
+
+
 //actions
 - (IBAction)doHideButton;
 - (IBAction)doRadarButton;
 
 
 #pragma mark -
-#pragma mark Class Properties
+#pragma mark Public Properties
 
 
 -(ARView*) oglView;
+
+/*! 
+ set the delegate object to handle all ARController events
+ @param _delegate the delegate you want to use
+ */
+- (void)setDelegate:(id<ARControllerDelegate>)_delegate;
+- (id<ARControllerDelegate>) delegate;
+
+
+
 
 -(BOOL) enableCameraView;
 -(BOOL) enableAccelerometer;
@@ -169,7 +243,6 @@
 -(BOOL) enableContinuousGPS;
 -(BOOL) isDemoMode;
 -(UIDeviceOrientation) defaultOrientation;
--(id<ARControllerDelegate>) delegate;
 
 -(float) CameraViewTransformX;
 -(float) CameraViewTransformX;
@@ -188,24 +261,16 @@
 -(UIViewAnimationTransition) FadeInAnim;
 -(UIViewAnimationTransition) FadeOutAnim;
 
--(ARMarkerTemplate*) defaultMarkerTemplate;
--(Mesh) defaultMarkerMesh;
--(Mesh) radarMesh;
--(uint) radarDot;
--(uint) radarBG;
--(Mesh) coordinatesMesh;
--(uint) coordinatesTexture;
--(ARMarker*) lastTappedMarker;
--(ARMarker*) tappedMarker;
--(BOOL) needsStatusBar;
--(UIStatusBarStyle) savedStatusBarStyle;
--(float) lastDeltaTime;
--(void) setLastDeltaTime:(float)value;
--(BOOL) inRadarMode;
+
+
+
+
+
+
 
 
 #pragma mark -
-#pragma mark Public Isntance Methods
+#pragma mark Public Instance Methods
 
 /*!  create ARController with startup parameters
  
@@ -240,13 +305,19 @@
 
 - (void) failWithErrorCodeImmediately:(int)code;
 - (void) failWithErrorCodeDelayed:(int)code;
-- (BOOL) startLocationServicesIfNeccessary:(BOOL)displayError;
+- (BOOL) startLocationServicesIfNeccessary;
 - (void) stopLocationServices:(BOOL)force;
+- (void) processLocation:(CLLocation*)location;
 
 //marker management
 
+/*!  adds an ARMarker to the controller
+ Marker needs to have location!
+ */
+- (ARMarker*)addMarker:(ARMarker*)marker;
+
 /*!  adds the ARMarker at the given location
- 
+ @param atLocation: set this location to the marker and add it to the controller
  */
 - (ARMarker*)addMarkerAtLocation:(ARMarker*)marker atLocation:(CLLocation*)cllocation;
 
@@ -254,6 +325,12 @@
  
  */
 - (ARMarker*)addMarkerAsVirtual:(ARMarker*)marker angle:(float)angle distance:(float)distance;
+
+
+/*!  adds an array of ARMarker-type objects to the controller
+ Markers need to have locations assign, markers without will be omitted!
+ */
+- (void)addMarkers:(NSArray*)array;
 
 /*!  remove a ARMarker object
  
@@ -276,6 +353,7 @@
 - (int) markerSector:(int)i;
 - (void) occupyMarkerSector:(int)y sector:(int)i;
 - (void) sortMarkers;
+- (void) getOGLScreenshot:(NSString*)file;
 
 //view management
 
@@ -448,12 +526,6 @@
 + (void)setDefaultOrientation:(UIDeviceOrientation)orientation;
 
 /*! 
-  CONFIGURATION: set the delegate object to handle all ARController events
- @param _delegate the delegate you want to use
- */
-+ (void)setDelegate:(id<ARControllerDelegate>)_delegate;
-
-/*! 
   CONFIGURATION: set the fade in animation transition used when displaying the ARController as a modal view
  @param anim the animation style used for showing the AR View
  
@@ -522,6 +594,8 @@
  */
 + (BOOL)deviceSupportsAR;
 
+
+
 /*! 
  checks if location services are available/allowed for the device/user
  
@@ -532,7 +606,22 @@
  
  Returns YES if location services are available to app
  */
-+ (BOOL)locationServicesAvailable:(BOOL)displayError;
++ (BOOL)locationServicesAvailable;
+/*! 
+ checks if location services are available/allowed for the device/user
+ @param raiseError: if YES a error will be dispatched to the delegate using arDidReceiveError
+ @param delayError: if YES a error will be dispatched to the delegate the next time the ARView becomes visible
+ 
+ only checks if location services are turned on and the app is authorized to use them
+ will not take into account if Airplane Mode is turned on
+ 
+ use deviceSupportsAR to check if device supports camera and location services in general
+ 
+ Returns YES if location services are available to app
+ */
++ (BOOL)locationServicesAvailable:(BOOL)raiseError delayError:(BOOL)delayError;
+
+
 
 /*! 
   load a mesh for use in the AR view (pass mesh as pointer to Mesh struct)

@@ -49,6 +49,7 @@
 	float lookAtAngle;
 	
 	BOOL suppressFirstTextureUpdate;
+	BOOL forceTextureUpdate;
 	
 	// ogl object handles
 	Mesh mesh;
@@ -115,19 +116,47 @@
 @property float touchDownColorB;
 @property float touchDownColorA;
 
+
 /** create ARMarker with Title
+ @param Title: title of the marker (may not be nil)
  */
 - (id) initWithTitle:(NSString*)pTitle;
+
+
 /** create ARMarker with Title and Description (content)
+ @param Title: title of the marker (may not be nil)
+ @param contentOrNil: description/content of the marker (may be nil)
  */
 - (id) initWithTitle:(NSString*)pTitle contentOrNil:(NSString*)pContent;
+
+
 /** create ARMarker with Title, Description (content) and Image, Title is a mandatory parameter.
+ @param Title: title of the marker (may not be nil)
+ @param contentOrNil: description/content of the marker (may be nil)
+ @param imageOrNil: image to be rendered as specified in marker template, can be used for anything: icon, thumbnail, portrait, etc. (may be nil)
  */
 - (id) initWithTitle:(NSString*)pTitle contentOrNil:(NSString*)pContent imageOrNil:(UIImage*)pImage;
+
+
 /** create ARMarker at Geolocation with Title, Description (content) and Image, Title is a mandatory parameter. Optional: use a custom template for this marker.
+ @param Title: title of the marker (may not be nil)
+ @param contentOrNil: description/content of the marker (may be nil)
+ @param imageOrNil: image to be rendered as specified in marker template, can be used for anything: icon, thumbnail, portrait, etc. (may be nil)
+ @param templateOrNil: template that will be used to render the marker (may be nil); if nil: default template will be used
  */
 - (id) initWithTitle:(NSString*)pTitle contentOrNil:(NSString*)pContent imageOrNil:(UIImage*)pImage templateOrNil:(ARMarkerTemplate*)pTemplate;
+
+
+
+/** refresh the AR marker (after changing content)
+ @param immediately: use to force immediate update, if NO marker will be updated the next time it is rendered
+ */
+- (void) refresh:(BOOL)immediately;
+
+
+
 - (id) initAs3DObject:(NSString*)meshFile texture:(NSString*)textureFile position:(ARVector*)position rotation:(ARVector*)rotation size:(ARVector*)pSize scale:(float)pScale;
+
 
 - (void) updateGeoInfo;
 - (void) updateTexture;

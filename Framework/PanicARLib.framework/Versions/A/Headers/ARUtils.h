@@ -8,8 +8,8 @@
 
 #import <OpenGLES/EAGLDrawable.h>
 #import <OpenGLES/ES1/glext.h>
-#include <stdint.h>
-#include <cstddef>
+#import <stdint.h>
+#import <cstddef>
 
 
 

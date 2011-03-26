@@ -6,7 +6,7 @@
 //  Copyright 2010 doPanic. All rights reserved.
 //
 
-#include <QuartzCore/QuartzCore.h>
+#import <QuartzCore/QuartzCore.h>
 #import <OpenGLES/EAGL.h>
 #import <OpenGLES/EAGLDrawable.h>
 #import <OpenGLES/ES1/glext.h>
@@ -28,6 +28,8 @@
 @private
 	ARUtils::FrameBuffer m_frameBuffer;
 	
+    float dt;
+    
 	//infra
 	ARController* m_ARController;
 	ARMarker* currentMarker;

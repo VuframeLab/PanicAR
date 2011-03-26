@@ -58,7 +58,7 @@
 // check if AR is available, show error if it's not and set bar item
 - (BOOL) checkForAR:(BOOL)showErrors {
     BOOL supportsAR = [ARController deviceSupportsAR];
-    BOOL supportsLocations = [ARController locationServicesAvailable:NO];
+    BOOL supportsLocations = [ARController locationServicesAvailable];
     BOOL result = supportsLocations && supportsAR;
     
     arBarItem.enabled = result;
@@ -122,7 +122,7 @@
 	}
 #endif
     
-    arBarItem.enabled = [ARController locationServicesAvailable:NO];
+    arBarItem.enabled = [ARController locationServicesAvailable];
 }
 
 // create a few test markers
@@ -183,10 +183,15 @@
     NSLog(@"ARView selected in TabBar");
 }
 
+
+
+#pragma mark -
+#pragma mark AR Callbacks
+
 // marker interaction delegate
 // called when the AR view is tapped
 // marker is the marker that was tapped, or nil if none was hit
-- (void) markerTapped:(ARMarker*)marker {
+- (void) arDidTapMarker:(ARMarker*)marker {
 	if (marker != nil) {
 		marker.touchDownColorR = 1;
 		marker.touchDownColorG = 0.5;
@@ -201,19 +206,19 @@
 }
 
 // update callback, fills the info label of the ARController with signal quality information
-- (void) infoLabelUpdate {
-    if (m_ARController.currentLocation == nil) {
+- (void) arDidUpdateLocation {
+    if (m_ARController.lastLocation == nil) {
         m_ARController.infoLabel.text = @"could not retrieve location";
         m_ARController.infoLabel.textColor = [UIColor redColor];
     }
     else {
-        m_ARController.infoLabel.text = [NSString stringWithFormat:@"GPS signal quality: %f Meters", m_ARController.currentLocation.horizontalAccuracy];
+        m_ARController.infoLabel.text = [NSString stringWithFormat:@"GPS signal quality: %f Meters", m_ARController.lastLocationQuality];
         m_ARController.infoLabel.textColor = [UIColor whiteColor];
     }
 }
 
 // orientation update callback: updates orientation and positioning of radar screen
-- (void) arOrientationChanged:(UIDeviceOrientation)orientation radarOrientation:(UIDeviceOrientation)radarOrientation {
+- (void) arDidChangeOrientation:(UIDeviceOrientation)orientation radarOrientation:(UIDeviceOrientation)radarOrientation {
     if (!m_ARController.isVisible || (m_ARController.isVisible && !m_ARController.isModalView)) {
         if (radarOrientation == UIDeviceOrientationPortrait) [ARController setRadarPosition:0 y:-11];
         else if (radarOrientation == UIDeviceOrientationPortraitUpsideDown) [ARController setRadarPosition:0 y:11];
@@ -223,10 +228,14 @@
     }
 }
 
-- (void) didFailWithErrorCode:(int)code {
+- (void) arDidReceiveErrorCode:(int)code {
     
 }
 
+
+
+#pragma mark -
+#pragma mark UI Methods
 
 // tab bar delegate method, switches the views displayed by the app
 - (void)tabBarController:(UITabBarController *)tabBar didSelectViewController:(UIViewController *)viewController {

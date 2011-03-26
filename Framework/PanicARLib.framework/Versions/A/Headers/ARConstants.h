@@ -9,7 +9,6 @@
 
 //#define k_TextureSizeX 256
 //#define k_TextureSizeY 128
-#define k_MaxLocationAge 60 //in seconds
 
 #define k_RadarPlane -200
 #define k_RadarSize 2.3
