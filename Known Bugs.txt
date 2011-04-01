@@ -1,13 +1,7 @@
 PanicAR Framework
 Known Bugs
 ========================
-Last Changed: 15-03-2011
-
-
-BETA
-========================
-these bugs will be fixed ASAP
-- ARController, showController: non-modal option will cause the ARView to shift 20px down
+Last Changed: 04-04-2011
 
 
 GLOBAL
