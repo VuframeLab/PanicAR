@@ -118,7 +118,7 @@
 	// returns nil if AR not available on device
 	if (m_ARController) {
 		// simulator testing coordinates
-		m_ARController.myLocation = [[CLLocation alloc] initWithLatitude:49.009860 longitude:12.108049];
+		m_ARController.lastLocation = [[CLLocation alloc] initWithLatitude:49.009860 longitude:12.108049];
 	}
 #endif
     

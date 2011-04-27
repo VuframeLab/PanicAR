@@ -591,6 +591,9 @@
  
  Returns YES if GPS, Compass and Camera are available
  i.e. if the hardware model is iPhone 3Gs or later
+ 
+ will always return YES if running iOS 3.x: 
+ cannot check for AR availability automatically, use an instance of CLLocationManager and 'headingAvailable' to check for compass availability
  */
 + (BOOL)deviceSupportsAR;
 
@@ -605,6 +608,9 @@
  use deviceSupportsAR to check if device supports camera and location services in general
  
  Returns YES if location services are available to app
+ 
+ will always return YES if running iOS 3.x:
+ ARController.locationServicesAvailable: cannot check for availability on iOS 3.x, check manually for locationManager locationServicesAvailable
  */
 + (BOOL)locationServicesAvailable;
 /*! 
@@ -618,6 +624,9 @@
  use deviceSupportsAR to check if device supports camera and location services in general
  
  Returns YES if location services are available to app
+ 
+ will always return YES if running iOS 3.x:
+ ARController.locationServicesAvailable: cannot check for availability on iOS 3.x, check manually for locationManager locationServicesAvailable
  */
 + (BOOL)locationServicesAvailable:(BOOL)raiseError delayError:(BOOL)delayError;
 
