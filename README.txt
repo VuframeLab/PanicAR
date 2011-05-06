@@ -15,6 +15,7 @@ CHANGELOG
 ========================
 1.03b
 fix: validateAPIKey: unrecognized selector sent to class
+fix: authorizationStatus is asked in 4.2 and later
 
 1.02b
 fix: exception thrown in simulator and crashes on pre-iOS-4.0 devices (cf. Issues)

@@ -50,7 +50,9 @@
 /*!  load a Marker Templated from a XIB file */
 + (ARMarkerTemplate*) loadMarkerTemplate:(NSString*)xibFilename;
 
-/*!  load a Marker Templated from a XIB file and force it to be displayed in aspect */
+/*!  load a Marker Templated from a XIB file and force it to be displayed in aspect 
+ @param aspect: vertical size of the marker template (height / width) 
+ */
 + (ARMarkerTemplate*) loadMarkerTemplate:(NSString*)xibFilename aspect:(float)pAspect;
 
 @end
