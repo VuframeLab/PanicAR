@@ -12,6 +12,10 @@
 #include "ARControllerDelegate.h";
 #include "ARMarkerTemplate.h";
 #include "ARView.h";
+
+// AR Object Prototypes
+#include "ARObjectDelegate.h";
 #include "ARMarker.h";
+
 #include "ARUtils.h";
 #include "ARVector.h";

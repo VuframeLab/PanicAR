@@ -14,6 +14,7 @@
 #import <math.h>
 
 #import "ARController.h"
+#import "ARObjectDelegate.h"
 #import "ARUtils.h"
 
 
@@ -32,7 +33,7 @@
     
 	//infra
 	ARController* m_ARController;
-	ARMarker* currentMarker;
+	id<ARObjectDelegate> currentMarker;
 	
 	EAGLContext* m_oglContext;
 	

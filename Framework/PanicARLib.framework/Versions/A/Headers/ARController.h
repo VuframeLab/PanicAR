@@ -17,6 +17,7 @@
 #import "ARUtils.h"
 #import "ARView.h"
 #import "ARControllerDelegate.h"
+#import "ARObjectDelegate.h"
 #import "ARMarker.h"
 #import "ARMarkerTemplate.h"
 
@@ -234,7 +235,6 @@
 
 -(BOOL) enableCameraView;
 -(BOOL) enableAccelerometer;
--(BOOL) enableAccelerometer;
 -(BOOL) enableAutoswitchToRadar;
 -(BOOL) enableInteraction;
 -(BOOL) enableViewOrientationUpdate;
@@ -305,11 +305,21 @@
 
 - (void) failWithErrorCodeImmediately:(int)code;
 - (void) failWithErrorCodeDelayed:(int)code;
+
+/*! manually start location service update, only needed if stopped before, see: stopLocationServices */
 - (BOOL) startLocationServicesIfNeccessary;
+/*! manually stop location service update */
 - (void) stopLocationServices:(BOOL)force;
+
 - (void) processLocation:(CLLocation*)location;
+- (void) simulatorLocationUpdate;
 
 //marker management
+
+/*!  adds an ARMarker to the controller
+ Marker needs to have location!
+ */
+- (void)addObject:(id<ARObjectDelegate>)object;
 
 /*!  adds an ARMarker to the controller
  Marker needs to have location!
@@ -320,11 +330,6 @@
  @param atLocation: set this location to the marker and add it to the controller
  */
 - (ARMarker*)addMarkerAtLocation:(ARMarker*)marker atLocation:(CLLocation*)cllocation;
-
-/*!  adds the ARMarker as a virtual object (without geolocation information)
- 
- */
-- (ARMarker*)addMarkerAsVirtual:(ARMarker*)marker angle:(float)angle distance:(float)distance;
 
 
 /*!  adds an array of ARMarker-type objects to the controller
@@ -644,6 +649,7 @@
  */
 + (BOOL) loadMesh:(NSString*)meshFilename mesh:(Mesh&)mesh;
 
+
 /*! 
   load a texture into OpenGL for use in the AR view
  
@@ -652,6 +658,16 @@
  @return the OpenGL texture name (uint)
  */
 + (uint) loadTexture:(NSString*)textureFilename;
+
+
+/*!
+ calculates the direction towards a location, heads-up line isthe north
+ 
+ pole at 0 degrees does not take into account the earth's curve and therefore 
+ 
+ will grow more inaccurate the farther the locations are apart 
+ */
++ (double)bearingTowardsLocation:(CLLocation *)fromLocation to:(CLLocation *)towardsLocation;
 
 
 /*! 

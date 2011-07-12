@@ -22,7 +22,7 @@
 
 #define k_CameraMinTilt -45
 #define k_CameraMaxTilt 90
-#define k_SwipeSpeed 0.005f
+#define k_SwipeSpeed 0.015f
 #define k_SwipeSpeed_Y 0.2f
 
 #define k_AccelSmooth 5
