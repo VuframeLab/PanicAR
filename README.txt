@@ -11,11 +11,11 @@ For common build errors and other issues check:
 https://github.com/doPanic/PanicAR/wiki/Troubleshooting
 
 
-VERSION: 1.04 (iOS 5 hotfix)
+VERSION: 1.05
 ========================
-fix: enableLoadingView not supported in iOS 5
-change: enableLoadingView set to 'NO' by default
-
+adds an alternative build target which will use the licensed framework-version instead of the demo-version
+more information on demo and licensed build of the framework can be found here:
+https://github.com/doPanic/PanicAR/wiki/Framework-Versions-&-Demo-Limitations
 
 KNOWN ISSUES
 ========================
