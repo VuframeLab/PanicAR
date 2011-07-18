@@ -506,7 +506,9 @@
   CONFIGURATION: enable screens to cover up AR view transitions (e.g. iris animation of UIImagePickerController)
  @param state set to YES or NO
  
- default: YES
+ not yet supported on iOS 5
+ 
+ default: NO
  */
 + (void)setEnableLoadingView:(BOOL)state;
 

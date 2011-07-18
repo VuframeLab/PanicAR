@@ -98,6 +98,7 @@
 	[ARController setEnableCameraView:YES];
 	[ARController setEnableRadar:YES];
 	[ARController setEnableInteraction:YES];
+	[ARController setEnableLoadingView:YES]; // enable loading view, call has no effect on iOS 5 (not supported yet)
 	[ARController setEnableAccelerometer:YES];
 	[ARController setEnableAutoswitchToRadar:YES];
 	[ARController setEnableViewOrientationUpdate:YES];
