@@ -11,14 +11,14 @@ For common build errors and other issues check:
 https://github.com/doPanic/PanicAR/wiki/Troubleshooting
 
 
-CHANGELOG
+VERSION: 1.04 (iOS 5 hotfix)
 ========================
-1.03b
-fix: validateAPIKey: unrecognized selector sent to class
-fix: authorizationStatus is asked in 4.2 and later
-
-1.02b
-fix: exception thrown in simulator and crashes on pre-iOS-4.0 devices (cf. Issues)
+fix: loading view freeze on iOS 5 devices
+fix: enableLoadingView not supported in iOS 5
+change: enableLoadingView set to 'NO' by default
+move: ARMarker to ARObjects/ARMarker
+add: pre-requisites for marker archetypes
+add: ARObjectDelegate Protocol to identify AR objects
 
 
 KNOWN ISSUES
