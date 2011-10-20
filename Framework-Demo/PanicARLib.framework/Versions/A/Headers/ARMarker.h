@@ -9,16 +9,29 @@
 #import <OpenGLES/ES1/glext.h>
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
-
-#import "ARUtils.h"
-#import "ARController.h"
-#import "ARObjectDelegate.h"
+#import "ARObject.h"
 
 
 @class ARController;
 @class ARMarkerTemplate;
 @class ARView;
+@class ARMesh;
 @class ARVector;
+
+
+#pragma mark - CONSTANTS
+
+#define NUMBER_OF_STACKINGSECTORS 36 
+#define NUMBER_OF_SLOTS_PER_STACKINGSECTOR 100
+#define STACKINGSECTOR_WIDTH_IN_DEGREES()(360.0/NUMBER_OF_STACKINGSECTORS)
+#define ARMARKER_DEFAULT_SIZE 50
+#define DISABLE_AT_ANGLE_DEVIATION 50
+
+#define ARMARKER_DEFAULT_HEIGHT_FOR_STACKING 1.6
+#define ARMARKER_DEFAULT_BASELINE_Y -2
+
+
+#pragma mark - Interface
 
 /*! @class ARMarker
  @brief marker object to be rendered in the ARController's view
@@ -27,55 +40,36 @@
  a marker template will be used to render the marker
  if no special template is assigned the default infoLabel template will be used
  
- markers can be subclassed to extend their functionality
+ arObjects can be subclassed to extend their functionality
  */
-@interface ARMarker : NSObject <ARObjectDelegate> {	
-	NSString* title; // title of the marker's infoLabel
-	NSString* content; // title of the marker's infoLabel
-	UIImage* image; // image of the marker's infoLabel
-	CLLocation* location; // geo location of the marker
+@interface ARMarker : ARObject {	
+	NSString* _title; // title of the marker's infoLabel
+	NSString* _content; // title of the marker's infoLabel
+	UIImage* _image; // image of the marker's infoLabel
+	CLLocation* _location; // geo location of the marker
 	
-	ARMarkerTemplate* markerTemplate;
+	ARMarkerTemplate* _markerTemplate;
 	
-	double distance; // distance to user's position
-	double angle;
-	BOOL jump;
-	float lookAtAngle;
+	double _distance; // distance to user's position
+	double _angle;
+	float _lookAtAngle;
 	
-	BOOL suppressFirstTextureUpdate;
-	BOOL forceTextureUpdate;
+	BOOL _suppressFirstTextureUpdate;
+	BOOL _forceTextureUpdate;
 	
 	// ogl object handles
-	uint hitMaskHandle;
-	ARVector *inputPosition; // position on screen
-	float yOffset;
-	float scaleFac;
+	uint _hitMaskHandle;
+	float _lowerMeshBounds;
 	
-	int sector;
-	int yStep;
-	float lastUpdateAtDistance;
-	float lastUpdateAtBearing;
+	int _stackingSectorID;
+	int _stackingSlotID;
+	float _lastUpdateAtDistance;
+	float _lastUpdateAtBearing;
 	
-	float touchDownScale;
-	float touchDownColorR;
-	float touchDownColorG;
-	float touchDownColorB;
-	float touchDownColorA;
-	
-	
-	// general variables
-	BOOL enabled; // is marker updated?
-	BOOL visible; // is marker visible?
-	float colorID; // color id for touch handling
 	// ogl object handles
-	Mesh mesh;
-    BOOL hasTexture;
-	uint textureHandle;
-	// ogl space transform
-	ARVector *position; // position
-	ARVector *rotation; // rotation
-	ARVector *size; // scale
-	float scale;
+	ARMesh* _mesh;
+    BOOL _hasTexture;
+	uint _textureHandle;
 }
 
 /*
@@ -100,29 +94,21 @@
  **/
 @property (nonatomic, retain) UIImage *image;
 
-@property int sector;
-@property int yStep;
-@property double angle;
-@property BOOL jump;
-@property float scale;
-@property float touchDownScale;
-@property float touchDownColorR;
-@property float touchDownColorG;
-@property float touchDownColorB;
-@property float touchDownColorA;
+@property int stackingSectorID;
+@property int stackingSlotID;
 
 
 /** create ARMarker with Title
  @param Title: title of the marker (may not be nil)
  */
-- (id) initWithTitle:(NSString*)pTitle;
+- (id)initWithTitle:(NSString *)pTitle atLocation:(CLLocation *)theLocation;
 
 
 /** create ARMarker with Title and Description (content)
  @param Title: title of the marker (may not be nil)
  @param contentOrNil: description/content of the marker (may be nil)
  */
-- (id) initWithTitle:(NSString*)pTitle contentOrNil:(NSString*)pContent;
+- (id)initWithTitle:(NSString *)pTitle contentOrNil:(NSString *)pContent atLocation:(CLLocation *)theLocation;
 
 
 /** create ARMarker with Title, Description (content) and Image, Title is a mandatory parameter.
@@ -130,7 +116,7 @@
  @param contentOrNil: description/content of the marker (may be nil)
  @param imageOrNil: image to be rendered as specified in marker template, can be used for anything: icon, thumbnail, portrait, etc. (may be nil)
  */
-- (id) initWithTitle:(NSString*)pTitle contentOrNil:(NSString*)pContent imageOrNil:(UIImage*)pImage;
+- (id)initWithTitle:(NSString *)pTitle contentOrNil:(NSString *)pContent imageOrNil:(UIImage *)pImage atLocation:(CLLocation *)theLocation;
 
 
 /** create ARMarker at Geolocation with Title, Description (content) and Image, Title is a mandatory parameter. Optional: use a custom template for this marker.
@@ -139,7 +125,10 @@
  @param imageOrNil: image to be rendered as specified in marker template, can be used for anything: icon, thumbnail, portrait, etc. (may be nil)
  @param templateOrNil: template that will be used to render the marker (may be nil); if nil: default template will be used
  */
-- (id) initWithTitle:(NSString*)pTitle contentOrNil:(NSString*)pContent imageOrNil:(UIImage*)pImage templateOrNil:(ARMarkerTemplate*)pTemplate;
+- (id)initWithTitle:(NSString *)pTitle contentOrNil:(NSString *)pContent imageOrNil:(UIImage *)pImage templateOrNil:(ARMarkerTemplate *)pTemplate atLocation:(CLLocation *)theLocation;
+
+
++ (void)updateStacking;
 
 
 

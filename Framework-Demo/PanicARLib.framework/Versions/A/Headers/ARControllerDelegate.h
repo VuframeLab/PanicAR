@@ -21,9 +21,9 @@
 
 
 /** Marker Interaction Callback 
- sent to the delegate when a marker is tapped
+ sent to the delegate when a object is tapped
  */
-- (void) arDidTapMarker:(ARMarker*)marker;
+- (void)arDidTapObject:(ARObject *)object;
 
 
 /** AR System Error Callback 
@@ -35,18 +35,30 @@
  kCLErrorDenied
  kCLErrorNetwork
  */
-- (void) arDidReceiveErrorCode:(int)code;
+- (void)arDidReceiveErrorCode:(int)code;
 
 
 /** Info Update Callback
  sent to delegate when location or heading changes
  use this to change the output in the infoLabel or to perform other output functions
  */
-- (void) arDidUpdateLocation;
+- (void)arDidUpdateLocation;
 
 /** Device Orientation Changed Callback
  sent to delegate when arOrientation changed, use it to adjust AR views (like radar)
  */
-- (void) arDidChangeOrientation:(UIDeviceOrientation)orientation radarOrientation:(UIDeviceOrientation)radarOrientation;
+- (void)arDidChangeOrientation:(UIDeviceOrientation)orientation radarOrientation:(UIDeviceOrientation)radarOrientation;
+
+- (void)arSignalQualityChanged;
+
+- (void)arPreRenderPass;
+- (void)arPostRenderPass;
+
+- (void)arBeganToTakePicture;
+- (void)arDidTakePicture:(UIImage *)image;
+
+#if DEBUG
+- (void)arConsoleCallback;
+#endif
 
 @end

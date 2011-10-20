@@ -40,38 +40,43 @@ assert(0); \
 
 
 
-	
+
 #pragma mark -
 #pragma mark Mesh & OBJ Loader
-	const int Mesh_MaxVertices = 10000;
-	const int Mesh_MaxIndices = 10000;
-	struct Mesh_Vertex
-	{
-		float x, y, z;
-		float nx, ny, nz;
-		float u, v;
-	};
-	struct Mesh
-	{
-		Mesh() 
-		: m_vertexCount(0)
-		, m_indexCount(0)
-		{}
-		
-		int m_vertexCount;
-		int m_indexCount;
-		
-		Mesh_Vertex m_vertices[Mesh_MaxVertices];
-		uint16_t m_indices[Mesh_MaxIndices];
-	};
+const int Mesh_MaxVertices = 10000;
+const int Mesh_MaxIndices = 10000;
+struct Mesh_Vertex
+{
+    float x, y, z;
+    float nx, ny, nz;
+    float u, v;
+};
+struct Mesh
+{
+    Mesh() 
+    : _vertexCount(0)
+    , _indexCount(0)
+    {}
+    
+    int _vertexCount;
+    int _indexCount;
+    
+    Mesh_Vertex _vertices[Mesh_MaxVertices];
+    uint16_t _indices[Mesh_MaxIndices];
+};
 
 namespace MeshUtils		
 {
 	BOOL LoadMesh(Mesh& mesh, const char* filename);
 	void UnloadMesh(Mesh& mesh);	
+    void PrintMesh(Mesh& mesh);
+	uint64_t GetVertexKey(int p, int t, int n);
+	void GetVertexData(Mesh_Vertex& vertex, int p, int t, int n);
+	void AddVertexAndIndex(int p, int t, int n, Mesh& mesh);
+	void Clear();
 };
 
-	
+
 namespace ARUtils {
 #pragma mark -
 #pragma mark Render Tools
@@ -82,7 +87,9 @@ namespace ARUtils {
 #pragma mark -
 #pragma mark Texture Tools
 	uint CreateTex(UIImage* uiimage);
+	uint CreateTex(UIImage* uiimage, uint8_t* textureData, uint tWidth, uint tHeight);
 	void UpdateTex(UIImage* uiimage, uint handle);
+	void UpdateTex(uint8_t* textureData, uint handle, uint tWidth, uint tHeight);
 	void ReleaseTex(uint handle);
 	void SaveTexToDocuments(UIImage* uiimage, NSString* filename);
 	
@@ -91,17 +98,21 @@ namespace ARUtils {
 #pragma mark FrameBuffer Tools
 	struct FrameBuffer
 	{
-		uint m_frameBufferHandle;
-		uint m_colorBufferHandle;
-		uint m_depthBufferHandle;
-		int m_width;
-		int m_height;
+		GLuint _frameBufferHandle;
+		GLuint _colorBufferHandle;
+		GLuint _depthBufferHandle;
+		GLuint _stencilBufferHandle;
+		int _width;
+        BOOL seperateStencilBuffer;
+		int _height;
 	};
 	
-	void CreateFB(FrameBuffer& buffer, int width, int height);
+	//void CreateFB(FrameBuffer& buffer, int width, int height);
 	void CreateFB(FrameBuffer& buffer, EAGLContext* eaglContext, id<EAGLDrawable> drawable);
+    void CreateFB(FrameBuffer& buffer, int width, int height);
 	void DestroyFB(FrameBuffer& buffer);
 	void SetFB(const FrameBuffer& buffer);
+	void ResizeFB(FrameBuffer& buffer, EAGLContext* eaglContext, id<EAGLDrawable> drawable);
 	UIImage* CreateImageFromFB(int x, int y, int width, int height);
 	
 	
@@ -119,13 +130,13 @@ namespace ARUtils {
 		double GetTime() const;		
 		
 	private:
-		double m_clockToSeconds;
+		double _clockToSeconds;
 		
-		uint64_t m_startAbsTime;
-		uint64_t m_lastAbsTime;
+		uint64_t _startAbsTime;
+		uint64_t _lastAbsTime;
 		
-		double m_time;
-		float m_deltaTime;
+		double _time;
+		float _deltaTime;
 	};
 	
 	
