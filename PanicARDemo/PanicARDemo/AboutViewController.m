@@ -74,4 +74,8 @@
     }*/
 }
 
+- (IBAction) webButtonAction {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"http://www.dopanic.com/ar"]];
+}
+
 @end
