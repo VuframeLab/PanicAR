@@ -48,16 +48,24 @@
 - (void)initHitMask;
 
 
-/*!  load a Marker Templated from a XIB file */
+/*! @brief load a Marker Templated from a XIB file
+ @param xibFilename name of the marker template xib file 
+ @remarks assumes aspect of 1.0 and size of 50
+ */
 + (ARMarkerTemplate *)loadMarkerTemplate:(NSString *)xibFilename;
 
 /*!  load a Marker Templated from a XIB file and force it to be displayed in aspect 
- @param aspect: vertical size of the marker template (height / width) 
+ @param xibFilename name of the marker template xib file
+ @param aspect vertical size of the marker template (height / width) 
+ @remarks assumes size of 50
  */
 + (ARMarkerTemplate *)loadMarkerTemplate:(NSString *)xibFilename aspect:(float)pAspect;
 
 /*!  load a Marker Templated from a XIB file and force it to be displayed in aspect 
- @param aspect: vertical size of the marker template (height / width) 
+ @param xibFilename name of the marker template xib file
+ @param theSize the size of the marker
+ @param aspect vertical size of the marker template (height / width) 
+ @remarks default size for a marker is 50
  */
 + (ARMarkerTemplate *)loadMarkerTemplate:(NSString *)xibFilename size:(float)theSize aspect:(float)pAspect;//stackingHeight:(float)theHeight;
 

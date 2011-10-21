@@ -24,17 +24,6 @@ typedef enum {
     ARViewWithHorizonUpdate = 5,
 } ARViewMode;
 
-typedef enum {
-    SensorNone = 0,
-    SensorAccelerometer = 1,
-    SensorDeviceMotion = 2,
-} ARSensorMode;
-
-#define RADAR_POSITION_Y -2
-#define RADAR_BG_SIZE 100
-#define RADAR_BLIP_SIZE 7
-#define RADAR_FADE_BLIPS NO
-
 
 @interface ARController : NSObject <CLLocationManagerDelegate> {
 @private
@@ -117,19 +106,23 @@ typedef enum {
     // config
     BOOL _objectsRespondToTouch;
     BOOL _radarEnabled;
-    BOOL _radarAssetsLoaded;
+    float _radarRange;
+    BOOL _radarClipsObjects;
     float _clipObjectFarLimit;
     float _clipObjectNearLimit;
     BOOL _isConsoleEnabled;
     ARViewMode _arViewMode;
-    ARSensorMode _arSensorMode;
     UIColor* _arViewBackgroundTint;
     NSString* _apiKey;
+    BOOL _hasValidApiKey;
     BOOL _continuousGPS;
     BOOL _doesViewOrientationUpdate;
     UIDeviceOrientation _defaultOrientation;
+    BOOL _enableErrorMessages;
     
     // assets
+    BOOL _radarAssetsLoaded;
+    BOOL _defaultAssetsLoaded;
     ARMarkerTemplate* _defaultMarkerTemplate;
     ARMesh* _defaultMarkerMesh;
     ARMesh* _radarMesh;
@@ -173,6 +166,11 @@ typedef enum {
 @property (nonatomic, readonly, assign) float deviceSideAxis;
 @property (nonatomic, readonly, assign) UIDeviceOrientation arOrientation;
 
+
+#pragma mark - Api Key
+
+- (void)setApiKey:(NSString *)theKey;
+- (BOOL)hasValidApiKey;
 
 #pragma mark - Updating
 
@@ -221,7 +219,7 @@ typedef enum {
 /*! 
  checks if the device supports Augmented Reality functionality
  
- Returns YES if GPS, Compass and Camera are available
+ @return YES if GPS, Compass and Camera are available
  i.e. if the hardware model is iPhone 3Gs or later
  
  will always return YES if running iOS 3.x: 

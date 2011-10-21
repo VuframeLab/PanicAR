@@ -11,8 +11,8 @@
 @class ARVector;
 
 #define CLIP_AT_ANGLE_DEVIATION 35
-#define HEAVY_SMOOTH 25
-#define LIGHT_SMOOTH 10
+#define HEAVY_SMOOTH 10
+#define LIGHT_SMOOTH 5
 
 
 @interface ARObject : NSObject {

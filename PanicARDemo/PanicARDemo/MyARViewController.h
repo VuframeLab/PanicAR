@@ -27,7 +27,8 @@ typedef enum {
 
 
 - (BOOL)checkForAR:(BOOL)showErrors;
-- (void)createMarkers;
-- (void)createARDebugContent;
+- (void)createARMarkers;
+- (void)createARContent;
+- (void)createARBuilding;
 
 @end

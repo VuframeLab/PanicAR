@@ -10,13 +10,13 @@
 #import "ARUtils.h"
 
 @interface ARTexture : NSObject {
-    uint m_handle;
-    BOOL m_loaded;
-    UIImage* m_texture;
-    uint m_width;
-    uint m_height;
-    NSString* m_fileId;
-    BOOL m_hasAlpha;
+    uint _handle;
+    BOOL _loaded;
+    UIImage* _texture;
+    uint _width;
+    uint _height;
+    NSString* _fileId;
+    BOOL _hasAlpha;
 }
 
 - (id)initFromFile:(NSString *)file;

@@ -12,16 +12,24 @@
 @class ARMarker; 
 @class ARObject; 
 
+/*!
+ @name Object Management
+ */
+
 @interface ARController (Objects)
 
 
 #pragma mark - Management
 
-/*!  adds an ARObject to the controller */
+/*!  adds an ARObject to the controller
+ @param anObject the object to add
+ */
 - (void)addObject:(ARObject *)anObject;
 
 /*!  adds an array of ARObject-type Objects to the controller
- Objects need to have locations assign, markers without will be omitted! */
+ Objects need to have locations assign, markers without will be omitted! 
+ @param anArray the collection of objects to be added
+ */
 - (void)addObjects:(NSArray *)anArray;
 
 /*!  remove a ARObject object */
@@ -30,7 +38,7 @@
 /*!  remove all ARObjects from the controller */
 - (void)clearObjects;
 
-/*!  returns the number of ARObjects currently added to the Controller */
+/*! @return the number of ARObjects currently added to the Controller */
 - (int) numberOfObjects;
 
 
@@ -48,18 +56,18 @@
 #pragma mark - Deprecated  Methods
 
 /*!  adds an ARMarker to the controller Marker needs to have location! */
-- (ARMarker *)addMarker:(ARMarker *)marker DEPRECATED_ATTRIBUTE;
+- (ARMarker *)addMarker:(ARMarker *)marker  __attribute__ ((deprecated));
 /*!  adds the ARMarker at the given location
  @param atLocation: set this location to the marker and add it to the controller
  */
-- (ARMarker *)addMarkerAtLocation:(ARMarker *)marker atLocation:(CLLocation *)_location DEPRECATED_ATTRIBUTE;
+- (ARMarker *)addMarkerAtLocation:(ARMarker *)marker atLocation:(CLLocation *)_location  __attribute__ ((deprecated));
 /*!  adds an array of ARMarker-type Objects to the controller Markers need to have locations assign, markers without will be omitted! */
-- (void)addMarkers:(NSArray *)array DEPRECATED_ATTRIBUTE;
+- (void)addMarkers:(NSArray *)array  __attribute__ ((deprecated));
 /*!  remove a ARMarker object */
-- (void)removeMarker:(ARMarker *)object DEPRECATED_ATTRIBUTE;
+- (void)removeMarker:(ARMarker *)object  __attribute__ ((deprecated));
 /*!  remove all ARMarkers from the controller */
-- (void)clearMarkers DEPRECATED_ATTRIBUTE;
-/*!  returns the number of ARMarkers currently added to the Controller */
-- (int) numberOfMarkers DEPRECATED_ATTRIBUTE;
+- (void)clearMarkers  __attribute__ ((deprecated));
+/*!  @return  the number of ARMarkers currently added to the Controller */
+- (int) numberOfMarkers  __attribute__ ((deprecated));
 
 @end

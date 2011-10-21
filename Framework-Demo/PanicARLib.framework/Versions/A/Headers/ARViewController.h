@@ -47,6 +47,8 @@ typedef enum {
     CGPoint _initialTouchPosition;
     CGPoint _overallTouchDistance;
     CGPoint _lastTouchDistance;
+    
+    UILabel* _watermark;
 }
 
 /*!

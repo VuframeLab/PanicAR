@@ -98,34 +98,34 @@
 @property int stackingSlotID;
 
 
-/** create ARMarker with Title
- @param Title: title of the marker (may not be nil)
+/** @brief create ARMarker with Title
+ @param theTitle title of the marker (may not be nil)
  */
-- (id)initWithTitle:(NSString *)pTitle atLocation:(CLLocation *)theLocation;
+- (id)initWithTitle:(NSString *)theTitle atLocation:(CLLocation *)theLocation;
 
 
-/** create ARMarker with Title and Description (content)
- @param Title: title of the marker (may not be nil)
- @param contentOrNil: description/content of the marker (may be nil)
+/** @brief create ARMarker with Title and Description (content)
+ @param theTitle title of the marker (may not be nil)
+ @param theContent description/content of the marker (may be nil)
  */
-- (id)initWithTitle:(NSString *)pTitle contentOrNil:(NSString *)pContent atLocation:(CLLocation *)theLocation;
+- (id)initWithTitle:(NSString *)theTitle theContent:(NSString *)theContent atLocation:(CLLocation *)theLocation;
 
 
-/** create ARMarker with Title, Description (content) and Image, Title is a mandatory parameter.
- @param Title: title of the marker (may not be nil)
- @param contentOrNil: description/content of the marker (may be nil)
- @param imageOrNil: image to be rendered as specified in marker template, can be used for anything: icon, thumbnail, portrait, etc. (may be nil)
+/** @brief create ARMarker with Title, Description (content) and Image, Title is a mandatory parameter.
+ @param theTitle title of the marker (may not be nil)
+ @param theContent description/content of the marker (may be nil)
+ @param theImage image to be rendered as specified in marker template, can be used for anything: icon, thumbnail, portrait, etc. (may be nil)
  */
-- (id)initWithTitle:(NSString *)pTitle contentOrNil:(NSString *)pContent imageOrNil:(UIImage *)pImage atLocation:(CLLocation *)theLocation;
+- (id)initWithTitle:(NSString *)theTitle theContent:(NSString *)theContent theImage:(UIImage *)theImage atLocation:(CLLocation *)theLocation;
 
 
 /** create ARMarker at Geolocation with Title, Description (content) and Image, Title is a mandatory parameter. Optional: use a custom template for this marker.
- @param Title: title of the marker (may not be nil)
- @param contentOrNil: description/content of the marker (may be nil)
- @param imageOrNil: image to be rendered as specified in marker template, can be used for anything: icon, thumbnail, portrait, etc. (may be nil)
- @param templateOrNil: template that will be used to render the marker (may be nil); if nil: default template will be used
+ @param theTitle title of the marker (may not be nil)
+ @param theContent description/content of the marker (may be nil)
+ @param theImage image to be rendered as specified in marker template, can be used for anything: icon, thumbnail, portrait, etc. (may be nil)
+ @param theTemplate template that will be used to render the marker (may be nil); if nil: default template will be used
  */
-- (id)initWithTitle:(NSString *)pTitle contentOrNil:(NSString *)pContent imageOrNil:(UIImage *)pImage templateOrNil:(ARMarkerTemplate *)pTemplate atLocation:(CLLocation *)theLocation;
+- (id)initWithTitle:(NSString *)theTitle theContent:(NSString *)theContent theImage:(UIImage *)theImage theTemplate:(ARMarkerTemplate *)theTemplate atLocation:(CLLocation *)theLocation;
 
 
 + (void)updateStacking;

@@ -39,6 +39,12 @@
 {
     [super loadView];
     
+    if ([self checkForAR:YES]) {
+        [[ARController sharedARController] enableConsole];
+        [[ARController sharedARController] enableRadar];
+        [[ARController sharedARController] setRadarRange:5*1000];
+    }
+    
 }
 
 
@@ -48,17 +54,10 @@
 {
     [super viewDidLoad];
     
-    
-    [[ARController sharedARController] enableConsole];
-    [[ARController sharedARController] enableRadar];
-    
-    [self checkForAR:YES];
-    
     [ARController sharedARController].delegate = self;
-    [self createMarkers];
-#if DEBUG
-    [self createARDebugContent];
-#endif
+    [self createARMarkers];
+    [self createARContent];
+    [self createARBuilding];
 }
 
 
@@ -87,7 +86,6 @@
 
 - (void)arDidReceiveErrorCode:(int)code {
     [self updateInfoLabel];
-    
 }
 
 
@@ -215,20 +213,20 @@
     
     if (showErrors) {
         if (!supportsAR) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"AR not supported"
-                                                            message:@"This device does not support AR functionality"
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"AR not supported", @"AR not supported")
+                                                            message:NSLocalizedString(@"This device does not support AR functionality", @"This device does not support AR functionality")
                                                            delegate:self 
-                                                  cancelButtonTitle:NSLocalizedString(@"OK Button", @"OK") 
+                                                  cancelButtonTitle:NSLocalizedString(@"OK", @"OK") 
                                                   otherButtonTitles:nil, nil];
             [alert show];
             [alert release];
         }
         
         if (!supportsLocations) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Location Denied Title", @"Error")
-                                                            message:NSLocalizedString(@"Location Denied Message", @"GPS not available")
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"Error")
+                                                            message:NSLocalizedString(@"App is not allowed to use GPS", @"App is not allowed to use GPS")
                                                            delegate:self 
-                                                  cancelButtonTitle:NSLocalizedString(@"OK Button", @"OK") 
+                                                  cancelButtonTitle:NSLocalizedString(@"OK", @"OK") 
                                                   otherButtonTitles:nil, nil];
             [alert show];
             [alert release];
@@ -241,9 +239,9 @@
 
 
 // create a few test markers
-- (void)createMarkers {
+- (void)createARMarkers {
     // first: setup a new marker with title and content
-    ARMarker* newMarker = [[ARMarker alloc] initWithTitle:@"Rome" contentOrNil:@"Italy" atLocation:[[[CLLocation alloc] initWithLatitude:41.890156 longitude:12.492304] autorelease]];
+    ARMarker* newMarker = [[ARMarker alloc] initWithTitle:@"Rome" theContent:@"Italy" atLocation:[[[CLLocation alloc] initWithLatitude:41.890156 longitude:12.492304] autorelease]];
     
     // second: add the marker to the ARController using the addMarkerAtLocation method
     // pass the geolocation (latitude, longitude) that specifies where the marker should be located
@@ -251,42 +249,52 @@
 	[[ARController sharedARController] addObject: newMarker];
     
     // add a second marker
-    newMarker = [[ARMarker alloc] initWithTitle:@"Berlin" contentOrNil:@"Germany" atLocation:[[[CLLocation alloc] initWithLatitude:52.523402 longitude:13.41141] autorelease]];
+    newMarker = [[ARMarker alloc] initWithTitle:@"Berlin" theContent:@"Germany" atLocation:[[[CLLocation alloc] initWithLatitude:52.523402 longitude:13.41141] autorelease]];
     [[ARController sharedARController] addObject:newMarker];
     
     // add a third marker, this time allocation of a new marker and adding to the ARController are wrapped up in one line
-	newMarker = [[ARMarker alloc] initWithTitle:@"London" contentOrNil:@"United Kingdom" atLocation:[[[CLLocation alloc] initWithLatitude:51.500141 longitude:-0.126257] autorelease]];
+	newMarker = [[ARMarker alloc] initWithTitle:@"London" theContent:@"United Kingdom" atLocation:[[[CLLocation alloc] initWithLatitude:51.500141 longitude:-0.126257] autorelease]];
     [[ARController sharedARController] addObject:newMarker];
     
     NSLog(@"AR Objects Created: %d", [[ARController sharedARController] numberOfObjects]);
 }
 
 
-- (void)createARDebugContent {
-    ARFreeObject* scaleY = [[ARFreeObject alloc] initWithParams:[ARMesh fromFile:@"scale.obj"] texture:[ARTexture fromFile:@"scale.png"] position:nil rotation:nil size:[ARVector vectorWithCoords:1 Y:0.25 Z:1] scale:0.5];
-    [[ARController sharedARController] addObject:scaleY];
+- (void)createARContent {
+    ARMesh* scaleMesh = [[ARMesh alloc] initFromFile:@"scale.obj"];
+    ARTexture* scaleTexture = [[ARTexture alloc] initFromFile:@"scale.png"];
     
-    ARFreeObject* scaleZ = [[ARFreeObject alloc] initWithParams:[ARMesh fromFile:@"scale.obj"] texture:[ARTexture fromFile:@"scale.png"] position:nil rotation:[ARVector vectorWithCoords:90 Y:0 Z:0] size:[ARVector vectorWithCoords:1 Y:0.25 Z:1] scale:0.5];
-    [[ARController sharedARController] addObject:scaleZ];
+    ARFreeObject* scale = [[ARFreeObject alloc] initWithParams:scaleMesh texture:scaleTexture position:nil rotation:nil size:[ARVector vectorWithCoords:1 Y:0.25 Z:1] scale:0.5];
+    [[ARController sharedARController] addObject:scale];
     
-    ARFreeObject* scaleX = [[ARFreeObject alloc] initWithParams:[ARMesh fromFile:@"scale.obj"] texture:[ARTexture fromFile:@"scale.png"] position:nil rotation:[ARVector vectorWithCoords:0 Y:0 Z:90] size:[ARVector vectorWithCoords:1 Y:0.25 Z:1] scale:0.5];
-    [[ARController sharedARController] addObject:scaleX];
+    scale = [[ARFreeObject alloc] initWithParams:scaleMesh texture:scaleTexture position:nil rotation:[ARVector vectorWithCoords:90 Y:0 Z:0] size:[ARVector vectorWithCoords:1 Y:0.25 Z:1] scale:0.5];
+    [[ARController sharedARController] addObject:scale];
+    
+    scale = [[ARFreeObject alloc] initWithParams:scaleMesh texture:scaleTexture position:nil rotation:[ARVector vectorWithCoords:0 Y:0 Z:90] size:[ARVector vectorWithCoords:1 Y:0.25 Z:1] scale:0.5];
+    [[ARController sharedARController] addObject:scale];
     
     
-    ARFreeObject* cube = [[ARFreeObject alloc] initWithParams:[ARMesh fromFile:@"cube1.obj"] texture:[ARTexture fromFile:@"cube.png"] position:[ARVector vectorWithCoords:0 Y:0 Z:-10] rotation:nil size:nil scale:1];
+    ARMesh* cubeMesh = [[ARMesh alloc] initFromFile:@"cube1.obj"];
+    ARTexture* cubeTexture = [[ARTexture alloc] initFromFile:@"cube.png"];
+    
+    ARFreeObject* cube = [[ARFreeObject alloc] initWithParams:cubeMesh texture:cubeTexture position:[ARVector vectorWithCoords:0 Y:0 Z:-10] rotation:nil size:nil scale:1];
     [[ARController sharedARController] addObject:cube];
     
-    cube = [[ARFreeObject alloc] initWithParams:[ARMesh fromFile:@"cube1.obj"] texture:[ARTexture fromFile:@"cube.png"] position:[ARVector vectorWithCoords:0 Y:0 Z:10] rotation:nil size:nil scale:1];
+    cube = [[ARFreeObject alloc] initWithParams:cubeMesh texture:cubeTexture position:[ARVector vectorWithCoords:0 Y:0 Z:10] rotation:nil size:nil scale:1];
     [[ARController sharedARController] addObject:cube];
     
-    cube = [[ARFreeObject alloc] initWithParams:[ARMesh fromFile:@"cube1.obj"] texture:[ARTexture fromFile:@"cube.png"] position:[ARVector vectorWithCoords:10 Y:0 Z:0] rotation:nil size:nil scale:1];
+    cube = [[ARFreeObject alloc] initWithParams:cubeMesh texture:cubeTexture position:[ARVector vectorWithCoords:10 Y:0 Z:0] rotation:nil size:nil scale:1];
     [[ARController sharedARController] addObject:cube];
     
-    cube = [[ARFreeObject alloc] initWithParams:[ARMesh fromFile:@"cube1.obj"] texture:[ARTexture fromFile:@"cube.png"] position:[ARVector vectorWithCoords:-10 Y:0 Z:0] rotation:nil size:nil scale:1];
+    cube = [[ARFreeObject alloc] initWithParams:cubeMesh texture:cubeTexture position:[ARVector vectorWithCoords:-10 Y:0 Z:0] rotation:nil size:nil scale:1];
     [[ARController sharedARController] addObject:cube];
-    
-    /*cube = [[ARFreeObject alloc] initWithParams:[ARMesh fromFile:@"msh_plane.obj"] texture:[ARTexture fromFile:@"RadarScreen.png"] position:[ARVector vectorWithCoords:0 Y:0 Z:0] rotation:[ARVector vectorWithCoords:-90 Y:0 Z:0] size:nil scale:100];
-     [[ARController sharedARController] addObject:cube];*/
+}
+
+- (void)createARBuilding {
+    ARMesh* buildingMesh = [[ARMesh alloc] initFromFile:@"building.obj"];
+    ARTexture* buildingTexture = [[ARTexture alloc] initFromFile:@"building.png"];
+    ARGeoObject* building = [[ARGeoObject alloc] initWithParams:buildingMesh texture:buildingTexture latitude:49.01028938880215 longitude:12.101826667785645 altitude:320 heading:135 scale:5];
+    [[ARController sharedARController] addObject:building];
 }
 
 @end

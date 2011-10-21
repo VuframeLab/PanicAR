@@ -36,8 +36,8 @@
 	float _geoRotation; // rotation
     
 	CLLocation* _location; // geo location of the marker
-	double _distanceToUser;
-	double _angleDifferenceToCenter;
+	float _distance;
+	float _angle;
     
 	// general variables
 	// ogl object handles

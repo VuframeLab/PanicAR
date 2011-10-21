@@ -10,6 +10,9 @@
 
 
 
+/*!
+ @name Config
+ */
 
 @interface ARController (Config)
 
@@ -21,10 +24,24 @@
 - (void)enableRadar;
 - (void)disableRadar;
 - (BOOL)isRadarEnabled;
+/*! set radar range in meters, objects outside range will not be displayed on radar
+ @param theRange the range the radar will display markers in
+ */
+- (void)setRadarRange:(float)theRange;
+/*! radar range in meters, objects outside range will not be displayed on radar
+ @return the range
+ @remarks default = 10.000 meters
+ */
+- (float)radarRange;
+- (void)setRadarClipping:(BOOL)theState;
+- (BOOL)radarClipsObjects;
 
 - (void)enableConsole;
 - (void)disableConsole;
 - (BOOL)isConsoleEnabled;
+
+- (void)enableErrorMessages;
+- (void)disableErrorMessages;
 
 - (void)enableContinuousGPS;
 - (void)disableContinuousGPS;
@@ -40,18 +57,6 @@
 - (BOOL)isOrientationUpdateEnabled;
 - (UIDeviceOrientation)defaultOrientation;
 - (void)setDefaultOrientation:(UIDeviceOrientation)theOrientation;
-
-- (void)setAPIKey:(NSString *)theKey;
-- (NSString *)APIKey;
-
-
-#pragma mark - Sensor Mode
-- (ARSensorMode) sensorMode;
-/*! 
- CONFIGURATION: the sensor type used for determening the device orientation in 3d space
- @param theMode
- */
-- (void)setSensorMode:(ARSensorMode)theMode;
 
 
 #pragma mark - ARView Mode

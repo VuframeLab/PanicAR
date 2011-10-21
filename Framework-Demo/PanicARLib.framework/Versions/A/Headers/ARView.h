@@ -15,7 +15,13 @@
 
 #import "ARUtils.h"
 
-#define FADE_SPEED 1.0f//5.0f
+#define FADE_SPEED 5.0f
+
+#define RADAR_POSITION_Y -2.0f
+#define RADAR_BG_SIZE 1.850f
+#define RADAR_MAX_RADIUS 0.90f
+#define RADAR_BLIP_SIZE 0.2f
+#undef RADAR_FADE_BLIPS
 
 @class EAGLContext;
 @class ARController;
@@ -43,7 +49,7 @@ extern ARView* _active;
 	
 	EAGLContext* _oglContext;
 	
-	struct ARUtils::ARHardwareTimer _clock;
+	ARUtils::ARHardwareTimer _clock;
 	NSTimer* _renderingTimer;
     
     // the target position and rotation
@@ -79,6 +85,7 @@ extern ARView* _active;
     //CGRect _targetRadarRect;
     //BOOL _radarRectNeedsAnimation;
     BOOL _radarHidesObjects;
+    BOOL _radarIsFullscreen;
     float _radarAlpha;
 }
 

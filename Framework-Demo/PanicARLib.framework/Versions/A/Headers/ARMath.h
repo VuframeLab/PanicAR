@@ -19,11 +19,11 @@ inline double Meter2Feet(double meters) { return meters * 3.2808399; }
 inline double Mile2Meters(double x) { return (x * 1.609344 * 1000.0); }
 
 inline double lerp(double a, double b, double t) {
-    return a + (b - a) * t;
+    return a + (b - a) * fmin(t, 1.00);
 }
 
 inline float lerpf(float a, float b, float t) {
-    return a + (b - a) * t;
+    return a + (b - a) * fminf(t, 1.00f);
 }
 
 #define SMOOTHSTEP(x) ((x) * (x) * (3 - 2 * (x)))
