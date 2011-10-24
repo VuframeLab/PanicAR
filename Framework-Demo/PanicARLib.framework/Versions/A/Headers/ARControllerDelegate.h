@@ -57,8 +57,6 @@
 - (void)arBeganToTakePicture;
 - (void)arDidTakePicture:(UIImage *)image;
 
-#if DEBUG
 - (void)arConsoleCallback;
-#endif
 
 @end
