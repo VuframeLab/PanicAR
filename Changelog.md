@@ -25,20 +25,23 @@ This version of PanicAR brings major updates and heavy refactoring in the API an
 
 **New Features**
 
-- 3D Objects can be used in Augmented Reality view
+- 3D Objects can be used in Augmented Reality view (anything you want: architecture, cars, etc.)
 - virtual objects, that are not tied to a GPS location can be used in AR (i.e. for user interface)
 - many different object types: Billboard, Poi Object, Virtual Object
 - more usable, Apple-style documentation
 - better demo project / application
+- take picture of camera and AR content rendered in (in any resolution you want)
+- access the render pipeline for advanced rendering effects (like 110 Stories, www.110stories.com)
+- radar can now be displayed in fullscreen mode or as a thumbnail, size and position are fully controllable
 
 ## v1.10 
 
 **iPad 2 Support**
 
-* add: support for iPad 2
-* add: support for iPad
-* add: support for different device orientations
-* add: now using CoreMotion for better motion tracking
+- add: support for iPad 2
+- add: support for iPad
+- add: support for different device orientations
+- add: now using CoreMotion for better motion tracking
 
 
 ## v1.05

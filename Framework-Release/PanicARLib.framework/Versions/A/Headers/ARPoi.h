@@ -16,7 +16,7 @@
  implements MKAnnotation protocol
  */
 @interface ARPoi : ARObject <MKAnnotation> {
-    CLLocationCoordinate2D coordinate;
+    CLLocationCoordinate2D _coordinate;
 }
 
 @end

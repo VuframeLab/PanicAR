@@ -136,6 +136,7 @@ extern ARView* _active;
 - (void)setRadarToFullscreen;
 - (void)setRadarToThumbnail;
 - (void)setRadarToThumbnail:(ARRadarPosition)thePosition;
+- (void)setRadarToThumbnail:(ARRadarPosition)thePosition withAdditionalOffset:(CGRect)theOffset;
 - (void)setRadarToThumbnail:(CGPoint)thePosition withSize:(float)theSize;
 - (void)showRadar;
 - (void)hideRadar;

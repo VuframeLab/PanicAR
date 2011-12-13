@@ -10,7 +10,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 
-#import "ARObject.h"
+#import "ARPoi.h"
 
 
 @class ARObjectDelegate;
@@ -29,7 +29,7 @@
  
  arObjects can be subclassed to extend their functionality
  */
-@interface ARPoiObject : ARObject {
+@interface ARPoiObject : ARPoi {
 	
     // geo space
 	ARVector*_geoPosition; // position: latitude, longitude, altitude

@@ -102,6 +102,13 @@ typedef enum {
  */
 - (void) showRadarThumbnail:(ARRadarPosition)thePosition;
 
+/*! 
+ shows the radar in Thumbnail mode in the specific position of the AR view
+ @param thePosition – @ref ARRadarPosition
+ @param theOffset – offset from the respective borders of the screen
+ */
+- (void) showRadarThumbnail:(ARRadarPosition)thePosition withAdditionalOffset:(CGRect)theOffset;
+
 /*!
  hide the radar
  */

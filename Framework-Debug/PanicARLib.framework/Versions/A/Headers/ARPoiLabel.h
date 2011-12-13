@@ -9,7 +9,7 @@
 #import <OpenGLES/ES1/glext.h>
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
-#import "ARObject.h"
+#import "ARPoi.h"
 
 
 @class ARController;
@@ -46,7 +46,7 @@
  
  ARPoiLabel can be subclassed to extend its functionality
  */
-@interface ARPoiLabel : ARObject {	
+@interface ARPoiLabel : ARPoi {	
 	NSString* _title; // title of the marker's infoLabel
 	NSString* _content; // title of the marker's infoLabel
 	UIImage* _image; // image of the marker's infoLabel
