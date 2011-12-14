@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import <PanicARLib/PanicARLib.h>
 #import "MyARViewController.h"
+#import "ConfigViewController.h"
 #import "AboutViewController.h"
 
 
@@ -30,24 +31,29 @@
     
     
     // Override point for customization after application launch.
-    UIViewController *viewController1, *viewController2;
+    UIViewController *viewController1, *viewController2, *viewController3;
     UINavigationController* navigation1 = [[UINavigationController alloc] init];
     UINavigationController* navigation2 = [[UINavigationController alloc] init];
+    UINavigationController* navigation3 = [[UINavigationController alloc] init];
     navigation1.navigationBar.barStyle = UIBarStyleBlackOpaque;
     navigation2.navigationBar.barStyle = UIBarStyleBlackOpaque;
+    navigation3.navigationBar.barStyle = UIBarStyleBlackOpaque;
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         viewController1 = [[[MyARViewController alloc] initWithNibName:@"MyARViewController_iPhone" bundle:nil] autorelease];
-        viewController2 = [[[AboutViewController alloc] initWithNibName:@"AboutViewController_iPhone" bundle:nil] autorelease];
+        viewController2 = [[[ConfigViewController alloc] initWithNibName:@"ConfigViewController_iPhone" bundle:nil] autorelease];
+        viewController3 = [[[AboutViewController alloc] initWithNibName:@"AboutViewController_iPhone" bundle:nil] autorelease];
     } else {
         viewController1 = [[[MyARViewController alloc] initWithNibName:@"MyARViewController_iPad" bundle:nil] autorelease];
-        viewController2 = [[[AboutViewController alloc] initWithNibName:@"AboutViewController_iPad" bundle:nil] autorelease];
+        viewController2 = [[[ConfigViewController alloc] initWithNibName:@"ConfigViewController_iPad" bundle:nil] autorelease];
+        viewController3 = [[[AboutViewController alloc] initWithNibName:@"AboutViewController_iPad" bundle:nil] autorelease];
     }
     navigation1.viewControllers = [NSArray arrayWithObjects:viewController1, nil];
     navigation2.viewControllers = [NSArray arrayWithObjects:viewController2, nil];
+    navigation3.viewControllers = [NSArray arrayWithObjects:viewController3, nil];
     
     self.tabBarController = [[[UITabBarController alloc] init] autorelease];
-    self.tabBarController.viewControllers = [NSArray arrayWithObjects:navigation1, navigation2, nil];
+    self.tabBarController.viewControllers = [NSArray arrayWithObjects:navigation1, navigation2, navigation3, nil];
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
     

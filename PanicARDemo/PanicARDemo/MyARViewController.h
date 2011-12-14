@@ -10,24 +10,23 @@
 #import <MapKit/MapKit.h>
 
 
-typedef enum {
-    RadarOff,
-    RadarSmall,
-    RadarFullscreen
-} RadarMode;
 
 @interface MyARViewController : ARViewController <ARControllerDelegate> {
     IBOutlet UILabel* _infoLabel;
     IBOutlet UIImageView* _signalDisplay;
-    
-    RadarMode _radarMode;
+    ARRadarPosition _radarThumbnailPosition;
+    BOOL _hasARContent;
+    BOOL _hasARPoiObjects;
+    BOOL _hasARBuilding;
+    ARPoiObject* _building;
 }
 
 - (void)updateInfoLabel;
 
+- (IBAction)switchConsole:(id)sender;
 
 - (BOOL)checkForAR:(BOOL)showErrors;
-- (void)createARMarkers;
+- (void)createARPoiObjects;
 - (void)createARContent;
 - (void)createARBuilding;
 

@@ -14,9 +14,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "993A8E30144FB14B00414EB3"
-               BuildableName = "PanicARDemo.app"
-               BlueprintName = "PanicARDemo"
-               ReferencedContainer = "container:PanicARDemo.xcodeproj">
+               BuildableName = "PanicAR-Demo.app"
+               BlueprintName = "PanicAR-Demo"
+               ReferencedContainer = "container:PanicAR-Demo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,9 +32,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "993A8E30144FB14B00414EB3"
-            BuildableName = "PanicARDemo.app"
-            BlueprintName = "PanicARDemo"
-            ReferencedContainer = "container:PanicARDemo.xcodeproj">
+            BuildableName = "PanicAR-Demo.app"
+            BlueprintName = "PanicAR-Demo"
+            ReferencedContainer = "container:PanicAR-Demo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -50,9 +50,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "993A8E30144FB14B00414EB3"
-            BuildableName = "PanicARDemo.app"
-            BlueprintName = "PanicARDemo"
-            ReferencedContainer = "container:PanicARDemo.xcodeproj">
+            BuildableName = "PanicAR-Demo.app"
+            BlueprintName = "PanicAR-Demo"
+            ReferencedContainer = "container:PanicAR-Demo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -62,15 +62,15 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Release"
+      buildConfiguration = "Debug"
       debugDocumentVersioning = "YES">
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "993A8E30144FB14B00414EB3"
-            BuildableName = "PanicARDemo.app"
-            BlueprintName = "PanicARDemo"
-            ReferencedContainer = "container:PanicARDemo.xcodeproj">
+            BuildableName = "PanicAR-Demo.app"
+            BlueprintName = "PanicAR-Demo"
+            ReferencedContainer = "container:PanicAR-Demo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
@@ -78,7 +78,7 @@
       buildConfiguration = "Debug">
    </AnalyzeAction>
    <ArchiveAction
-      buildConfiguration = "Release"
+      buildConfiguration = "Debug"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>
