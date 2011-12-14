@@ -263,10 +263,6 @@
 	newPoiLabel = [[ARPoiLabel alloc] initWithTitle:@"London" theContent:@"United Kingdom" atLocation:[[[CLLocation alloc] initWithLatitude:51.500141 longitude:-0.126257] autorelease]];
     [[ARController sharedARController] addObject:newPoiLabel];
     
-    // local markers
-    newPoiLabel = [[ARPoiLabel alloc] initWithTitle:@"Dom" theContent:@"Regensburger Dom" atLocation:[[[CLLocation alloc] initWithLatitude:49.019512 longitude:12.097709] autorelease]];
-    [[ARController sharedARController] addObject:newPoiLabel];
-    
     NSLog(@"AR Objects Created: %d", [[ARController sharedARController] numberOfObjects]);
     _hasARPoiObjects = YES;
 }

@@ -494,7 +494,7 @@
 		993A8E61144FB14C00414EB3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -522,7 +522,7 @@
 		993A8E62144FB14C00414EB3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -545,7 +545,7 @@
 		993A8E64144FB14C00414EB3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = "Framework-Debug/**";
+				FRAMEWORK_SEARCH_PATHS = "../Framework-Debug/**";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PanicARDemo/PanicAR-Demo-Prefix.pch";
 				INFOPLIST_FILE = "PanicARDemo/PanicARDemo-Info.plist";
@@ -558,7 +558,7 @@
 		993A8E65144FB14C00414EB3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = "Framework-Release/**";
+				FRAMEWORK_SEARCH_PATHS = "../Framework-Release/**";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PanicARDemo/PanicAR-Demo-Prefix.pch";
 				INFOPLIST_FILE = "PanicARDemo/PanicARDemo-Info.plist";
