@@ -56,6 +56,8 @@
     [self createARPoiObjects];
     [self createARContent];
     [self createARBuilding];
+    
+    [ARController sharedARController].console.hidden = YES;
 }
 
 
