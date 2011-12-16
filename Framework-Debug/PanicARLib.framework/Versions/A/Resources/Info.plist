@@ -5,9 +5,9 @@
 	<key>CFBuildBaseVersion</key>
 	<string>1.20</string>
 	<key>CFBuildDate</key>
-	<string>2011-12-16 12:45:33</string>
+	<string>2011-12-16 13:30:59</string>
 	<key>CFBuildNumber</key>
-	<string>238</string>
+	<string>268</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
@@ -21,6 +21,6 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1.20.238</string>
+	<string>1.20.268</string>
 </dict>
 </plist>

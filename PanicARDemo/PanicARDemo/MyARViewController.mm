@@ -151,13 +151,10 @@
 
 #pragma mark - DEBUG
 
-#if DEBUG
-
 /*! the console callback only happens with the Debug Build of the Framework */
 - (void)arConsoleCallback {
     [self updateInfoLabel];
 }
-#endif
 
 - (void)updateInfoLabel {
     if ([ARController sharedARController].userLocation == nil) {
