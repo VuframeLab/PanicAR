@@ -23,7 +23,10 @@
 
 - (void)updateInfoLabel;
 
+#if DEBUG
+/*! console is only used in debug mode */
 - (IBAction)switchConsole:(id)sender;
+#endif
 
 - (BOOL)checkForAR:(BOOL)showErrors;
 - (void)createARPoiObjects;

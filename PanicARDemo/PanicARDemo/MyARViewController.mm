@@ -17,7 +17,9 @@
         self.title = NSLocalizedString(@"AR", @"AR");
         self.tabBarItem.image = [UIImage imageNamed:@"first"];
         self.navigationItem.title = self.title;
+#if DEBUG
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(switchConsole:)];
+#endif
     }
     return self;
 }
@@ -71,7 +73,7 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-    return YES;//(interfaceOrientation == UIInterfaceOrientationPortrait);
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 
@@ -150,11 +152,12 @@
 #pragma mark - DEBUG
 
 #if DEBUG
+
+/*! the console callback only happens with the Debug Build of the Framework */
 - (void)arConsoleCallback {
     [self updateInfoLabel];
-    
 }
-
+#endif
 
 - (void)updateInfoLabel {
     if ([ARController sharedARController].userLocation == nil) {
@@ -162,18 +165,22 @@
         _infoLabel.textColor = [UIColor redColor];
     }
     else {
-        _infoLabel.text = [NSString stringWithFormat:@"GPS signal quality: %d ~%f Meters", [ARController sharedARController].userSignalQuality, [ARController sharedARController].userLocationQuality];
+        if (_hasARBuilding) {
+            _infoLabel.text = [NSString stringWithFormat:@"GPS signal quality: %.1d (~%.1f Meters)\ndistance to building: %.1f Meters", [ARController sharedARController].userSignalQuality, [ARController sharedARController].userLocationQuality, [_building distance]];
+        }
+        else {
+            _infoLabel.text = [NSString stringWithFormat:@"GPS signal quality: %.1d (~%.1f Meters)", [ARController sharedARController].userSignalQuality, [ARController sharedARController].userLocationQuality];
+        }
         _infoLabel.textColor = [UIColor whiteColor];
     }
 }
-#endif
 
 
 
 #pragma mark - Actions
 
 - (IBAction)radarButtonAction {
-    CGRect rect = CGRectMake(0, 160, 0, 40);
+    CGRect rect = CGRectMake(0, 0, 0, 40);
     if (!radarVisible || radarMode == ARRadarOff) {
         [self showRadarThumbnail:ARRadarPositionTopLeft withAdditionalOffset:rect];
         _radarThumbnailPosition = ARRadarPositionTopLeft;
@@ -214,11 +221,6 @@
     BOOL supportsAR = [ARController deviceSupportsAR];
     BOOL supportsLocations = [ARController locationServicesAvailable];
     BOOL result = supportsLocations && supportsAR;
-    
-    /*arBarItem.enabled = result;
-     if (!result) {
-     [tabBarController setSelectedIndex:1];
-     }*/
     
     if (showErrors) {
         if (!supportsAR) {

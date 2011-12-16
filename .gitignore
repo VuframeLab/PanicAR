@@ -4,3 +4,5 @@ build
 *.perspectivev3
 *.pbxuser
 .DS_Store
+
+PanicARDemo/PanicAR-Demo.xcodeproj/project.xcworkspace/
