@@ -12,128 +12,72 @@
 #import "ARPoi.h"
 
 
+#define SMALL_DISTANCE_INTERVAL 5.0f
+#define LARGE_DISTANCE_INTERVAL 1000.0f
+
 @class ARController;
 @class ARPoiLabelTemplate;
-@class ARView;
-@class ARMesh;
-@class ARVector;
 
-
-#pragma mark - CONSTANTS
-
-#define NUMBER_OF_STACKINGSECTORS 36 
-#define NUMBER_OF_SLOTS_PER_STACKINGSECTOR 100
-#define STACKINGSECTOR_WIDTH_IN_DEGREES()(360.0/NUMBER_OF_STACKINGSECTORS)
-#define ARPoiLabel_DEFAULT_SIZE_IPHONE 50
-#define ARPoiLabel_DEFAULT_SIZE_IPAD 25
-#define DISABLE_AT_ANGLE_DEVIATION 50
-
-#define ARPoiLabel_DEFAULT_HEIGHT_FOR_STACKING 1.6
-#define ARPoiLabel_DEFAULT_BASELINE_Y -2
-
+extern BOOL _loadsDefaultRadarGfx;
 
 #pragma mark - Interface
 
 /*! @class ARPoiLabel
- @brief marker object to be rendered in the ARController's view
- 
- a marker contains the geolocation and description (title, content, distance, image)
- a marker template will be used to render the marker
- if no special template is assigned the default DefaultMarker template will be used
- 
- default size: iPhone=50, iPad=35
- default aspect: 0.5 (i.e. 512x256 marker)
- 
- ARPoiLabel can be subclassed to extend its functionality
- */
-@interface ARPoiLabel : ARPoi {	
-	NSString* _title; // title of the marker's infoLabel
-	NSString* _content; // title of the marker's infoLabel
-	UIImage* _image; // image of the marker's infoLabel
-	CLLocation* _location; // geo location of the marker
-	
-	ARPoiLabelTemplate* _markerTemplate;
-	
-	double _distance; // distance to user's position
-	double _angle;
-	float _lookAtAngle;
-	
-	BOOL _suppressFirstTextureUpdate;
-	BOOL _forceTextureUpdate;
-	
-	// ogl object handles
-	uint _hitMaskHandle;
-	float _lowerMeshBounds;
-	
-	int _stackingSectorID;
-	int _stackingSlotID;
-	float _lastUpdateAtDistance;
-	float _lastUpdateAtBearing;
-	
-	// ogl object handles
-	ARMesh* _mesh;
-    BOOL _hasTexture;
-	uint _textureHandle;
+ @brief marker object to be rendered in the ARController's view */
+@interface ARPoiLabel : ARPoi {
+    NSString* _title; // title of the marker's infoLabel
+    NSString* _description; // title of the marker's infoLabel
+    NSString* _distance; // distance of the marker's infoLabel
+    UIImage* _image; // image of the marker's infoLabel
+    float _lastUpdateAtDistance;
+    BOOL _loadedFromNib;
+    NSString* _xibFileName;
 }
 
-/*
- location of the marker (retained)
- **/
-@property (nonatomic, retain) CLLocation *location;
-
-/*
- title of the marker (retained)
- **/
+/*! title of the marker (retained) */
 @property (nonatomic, retain) NSString *title;
 
-/*
- content (description) of the marker (retained)
- **/
-@property (nonatomic, retain) NSString *content;
+/*! content (description) of the marker (retained) */
+@property (nonatomic, retain) NSString *description;
 
-/*
- image of the marker (retained)
+/*! image of the marker (retained)
  depending on the size of the template this can be a icon or thumbnail
- but also a full-sized image
- **/
+ but also a full-sized image */
 @property (nonatomic, retain) UIImage *image;
 
-@property int stackingSectorID;
-@property int stackingSlotID;
-
-
 /** @brief create ARPoiLabel with Title
- @param theTitle title of the marker (may not be nil)
- */
+ @param theTitle title of the marker (may not be nil) */
 - (id)initWithTitle:(NSString *)theTitle atLocation:(CLLocation *)theLocation;
 
 
 /** @brief create ARPoiLabel with Title and Description (content)
  @param theTitle title of the marker (may not be nil)
- @param theContent description/content of the marker (may be nil)
- */
-- (id)initWithTitle:(NSString *)theTitle theContent:(NSString *)theContent atLocation:(CLLocation *)theLocation;
+ @param theContent description/content of the marker (may be nil) */
+- (id)initWithTitle:(NSString *)theTitle theDescription:(NSString *)theDescription atLocation:(CLLocation *)theLocation;
 
 
 /** @brief create ARPoiLabel with Title, Description (content) and Image, Title is a mandatory parameter.
  @param theTitle title of the marker (may not be nil)
  @param theContent description/content of the marker (may be nil)
- @param theImage image to be rendered as specified in marker template, can be used for anything: icon, thumbnail, portrait, etc. (may be nil)
- */
-- (id)initWithTitle:(NSString *)theTitle theContent:(NSString *)theContent theImage:(UIImage *)theImage atLocation:(CLLocation *)theLocation;
+ @param theImage image to be rendered as specified in marker template, can be used for anything: icon, thumbnail, portrait, etc. (may be nil) */
+- (id)initWithTitle:(NSString *)theTitle theDescription:(NSString *)theDescription theImage:(UIImage *)theImage atLocation:(CLLocation *)theLocation;
 
 
 /** create ARPoiLabel at Geolocation with Title, Description (content) and Image, Title is a mandatory parameter. Optional: use a custom template for this marker.
  @param theTitle title of the marker (may not be nil)
  @param theContent description/content of the marker (may be nil)
  @param theImage image to be rendered as specified in marker template, can be used for anything: icon, thumbnail, portrait, etc. (may be nil)
- @param theTemplate template that will be used to render the marker (may be nil); if nil: default template will be used
- */
-- (id)initWithTitle:(NSString *)theTitle theContent:(NSString *)theContent theImage:(UIImage *)theImage theTemplate:(ARPoiLabelTemplate *)theTemplate atLocation:(CLLocation *)theLocation;
+ @param theTemplate template that will be used to render the marker (may be nil); if nil: default template will be used */
+- (id)initWithTitle:(NSString *)theTitle theDescription:(NSString *)theDescription theImage:(UIImage *)theImage fromTemplateXib:(NSString *)theTemplateXib atLocation:(CLLocation *)theLocation;
 
 
-+ (void)updateStacking;
 
+#pragma mark - Class Methods
+/*! returns YES if default radar gfx (RadarDot.png) should be loaded automatically when creating a new @ref AR PoiLabel */
++ (BOOL)loadsDefaultRadarGfx;
+/*! set to YES if default radar gfx (RadarDot.png) should be loaded automatically when creating a new @ref AR PoiLabel
+ @param theState YES to load default radar gfx*/
++ (void)setLoadsDefaultRadarGfx:(BOOL)theState;
 
 
 @end

@@ -6,3 +6,4 @@ build
 .DS_Store
 
 PanicARDemo/PanicAR-Demo.xcodeproj/project.xcworkspace/
+PanicARDemo/PanicAR-Demo.xcodeproj/xcuserdata/*

@@ -24,7 +24,7 @@
 /*!  adds an ARObject to the controller
  @param anObject the object to add
  */
-- (void)addObject:(ARObject *)anObject;
+- (void)addObject:(id<ARObjectDelegate>)anObject;
 
 /*!  adds an array of ARObject-type Objects to the controller
  Objects need to have locations assign, markers without will be omitted! 
@@ -33,7 +33,7 @@
 - (void)addObjects:(NSArray *)anArray;
 
 /*!  remove a ARObject object */
-- (void)removeObject:(ARObject *)anObject;
+- (void)removeObject:(id<ARObjectDelegate>)anObject;
 
 /*!  remove all ARObjects from the controller */
 - (void)clearObjects;
@@ -66,7 +66,7 @@
 /*!  remove a ARPoiLabel object */
 - (void)removeMarker:(ARPoiLabel *)object  __attribute__ ((deprecated));
 /*!  remove all ARPoiLabels from the controller */
-- (void)cleARPoiLabels  __attribute__ ((deprecated));
+- (void)clearMarkers  __attribute__ ((deprecated));
 /*!  @return  the number of ARPoiLabels currently added to the Controller */
 - (int) numberOfMarkers  __attribute__ ((deprecated));
 

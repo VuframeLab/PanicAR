@@ -10,6 +10,8 @@
 #import <QuartzCore/QuartzCore.h>
 
 @class ARPoiLabel;
+@class ARController;
+
 
 /*! @class ARPoiLabelTemplate
  @brief template for how a marker is styled and rendered
@@ -19,54 +21,38 @@
  3. make all necessary reference connections
  4. save to a *.xib file and load it as a ARPoiLabelTemplate
  5. pass loaded template to any ARPoiLabel you create
- */
+ 
+ @remarks more info at https://github.com/doPanic/PanicAR/wiki */
 @interface ARPoiLabelTemplate : UIView {
 	
-	IBOutlet UILabel* title;
-	IBOutlet UILabel* content;
-	IBOutlet UILabel* distance;
-	IBOutlet UIImageView* hitMask;
-	IBOutlet UIImageView* image;
-	uint hitMaskHandle;
-	UIImage* hitMaskTexture;
-	float _aspectRatio;
-    float _size;
+    UILabel* _title;
+    UILabel* _content;
+    UILabel* _distance;
+    UIImageView* _image;
+    ARPoiLabel* _poiLabel;
+    ARController* _controller;
 }
 
-@property (nonatomic ,assign) IBOutlet UILabel *title;
-@property (nonatomic ,assign) IBOutlet UILabel *content;
-@property (nonatomic ,assign) IBOutlet UILabel *distance;
-@property (nonatomic ,assign) IBOutlet UIImageView *hitMask;
-@property (nonatomic ,assign) IBOutlet UIImageView *image;
-@property (nonatomic, retain) UIImage *hitMaskTexture;
-@property (assign) uint hitMaskHandle;
-@property (assign) float aspectRatio;
-@property (assign) float size;
+@property (nonatomic,assign) IBOutlet UILabel *title;
+@property (nonatomic,assign) IBOutlet UILabel *content;
+@property (nonatomic,assign) IBOutlet UILabel *distance;
+@property (nonatomic,assign) IBOutlet UIImageView *image;
 
+@property (nonatomic,assign) ARPoiLabel *poiLabel;
 
-- (UIImage *)drawMarker:(ARPoiLabel *)marker;
-- (void)initHitMask;
+- (void)updateAppearance;
 
 
 /*! @brief load a Marker Templated from a XIB file
- @param xibFilename name of the marker template xib file 
- @remarks assumes aspect of 1.0 and size of 50
- */
+ @param xibFilename name of the marker template xib file */
 + (ARPoiLabelTemplate *)loadMarkerTemplate:(NSString *)xibFilename;
 
-/*!  load a Marker Templated from a XIB file and force it to be displayed in aspect 
- @param xibFilename name of the marker template xib file
- @param pAspect vertical size of the marker template (height / width) 
- @remarks assumes size of 50
- */
-+ (ARPoiLabelTemplate *)loadMarkerTemplate:(NSString *)xibFilename aspect:(float)pAspect;
-
-/*!  load a Marker Templated from a XIB file and force it to be displayed in aspect 
- @param xibFilename name of the marker template xib file
- @param theSize the size of the marker
- @param pAspect vertical size of the marker template (height / width) 
- @remarks default size for a marker is 50
- */
-+ (ARPoiLabelTemplate *)loadMarkerTemplate:(NSString *)xibFilename size:(float)theSize aspect:(float)pAspect;//stackingHeight:(float)theHeight;
+/*! @brief ranges for calculating appearance effects
+ @param closeRange if poi label is closer than closeRange no effects will be applied 
+ @param farRange animation of effects stops at farRange 
+ @remarks the defaul poi label template fades out over distance and gets smaller; implement your own effects in a sub-class */
++ (void)setAppearanceRange:(float)closeRange andFarRange:(float)farRange;
++ (float)appearanceCloseRange;
++ (float)appearanceFarRange;
 
 @end

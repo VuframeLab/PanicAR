@@ -7,11 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9926E787144FB3880066D383 /* cube.png in Resources */ = {isa = PBXBuildFile; fileRef = 9926E773144FB3880066D383 /* cube.png */; };
-		9926E788144FB3880066D383 /* cube1.obj in Resources */ = {isa = PBXBuildFile; fileRef = 9926E774144FB3880066D383 /* cube1.obj */; };
-		9926E78F144FB3880066D383 /* scale.obj in Resources */ = {isa = PBXBuildFile; fileRef = 9926E77B144FB3880066D383 /* scale.obj */; };
-		9926E791144FB3880066D383 /* DefaultImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 9926E77E144FB3880066D383 /* DefaultImage.png */; };
-		9926E797144FB3880066D383 /* msh_plane.obj in Resources */ = {isa = PBXBuildFile; fileRef = 9926E784144FB3880066D383 /* msh_plane.obj */; };
+		9909952914C311E7007390A8 /* DefaultImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 9909951914C311E7007390A8 /* DefaultImage.png */; };
+		9909952A14C311E7007390A8 /* DefaultPoiLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = 9909951A14C311E7007390A8 /* DefaultPoiLabel.png */; };
+		9909952B14C311E7007390A8 /* DefaultPoiLabel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9909951B14C311E7007390A8 /* DefaultPoiLabel.xib */; };
+		9909952C14C311E7007390A8 /* DefaultPoiLabel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9909951C14C311E7007390A8 /* DefaultPoiLabel@2x.png */; };
+		9909952D14C311E7007390A8 /* PoiLabelWithImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 9909951D14C311E7007390A8 /* PoiLabelWithImage.png */; };
+		9909952E14C311E7007390A8 /* PoiLabelWithImage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9909951E14C311E7007390A8 /* PoiLabelWithImage.xib */; };
+		9909952F14C311E7007390A8 /* PoiLabelWithImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9909951F14C311E7007390A8 /* PoiLabelWithImage@2x.png */; };
+		9909953014C311E7007390A8 /* RadarDot.png in Resources */ = {isa = PBXBuildFile; fileRef = 9909952014C311E7007390A8 /* RadarDot.png */; };
+		9909953114C311E7007390A8 /* RadarDot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9909952114C311E7007390A8 /* RadarDot@2x.png */; };
+		9909953214C311E7007390A8 /* RadarScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 9909952214C311E7007390A8 /* RadarScreen.png */; };
+		9909953314C311E7007390A8 /* RadarScreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9909952314C311E7007390A8 /* RadarScreen@2x.png */; };
 		9926E7C1144FB43C0066D383 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 9926E7BD144FB43C0066D383 /* first.png */; };
 		9926E7C2144FB43C0066D383 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9926E7BE144FB43C0066D383 /* first@2x.png */; };
 		9926E7C3144FB43C0066D383 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 9926E7BF144FB43C0066D383 /* second.png */; };
@@ -57,23 +63,6 @@
 		993A8E42144FB14B00414EB3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 993A8E41144FB14B00414EB3 /* main.m */; };
 		994606B21450CB7200DF25AD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 994606B11450CB7200DF25AD /* Localizable.strings */; };
 		994606B71450CD8000DF25AD /* App.strings in Resources */ = {isa = PBXBuildFile; fileRef = 994606B61450CD8000DF25AD /* App.strings */; };
-		994606BF1450EFC300DF25AD /* building.obj in Resources */ = {isa = PBXBuildFile; fileRef = 994606BD1450EFC300DF25AD /* building.obj */; };
-		994606C01450EFC300DF25AD /* building.png in Resources */ = {isa = PBXBuildFile; fileRef = 994606BE1450EFC300DF25AD /* building.png */; };
-		99559BCD1497AFC100BA24BB /* DefaultPoiLabel-mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 99559BC61497AFC100BA24BB /* DefaultPoiLabel-mask.png */; };
-		99559BCE1497AFC100BA24BB /* DefaultPoiLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = 99559BC71497AFC100BA24BB /* DefaultPoiLabel.png */; };
-		99559BCF1497AFC100BA24BB /* DefaultPoiLabel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99559BC81497AFC100BA24BB /* DefaultPoiLabel.xib */; };
-		99559BD01497AFC100BA24BB /* DefaultPoiLabel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 99559BC91497AFC100BA24BB /* DefaultPoiLabel@2x.png */; };
-		99559BD11497AFC100BA24BB /* DefaultPoiLabel@2x.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99559BCA1497AFC100BA24BB /* DefaultPoiLabel@2x.xib */; };
-		99559BD21497AFC100BA24BB /* radar-dot.png in Resources */ = {isa = PBXBuildFile; fileRef = 99559BCB1497AFC100BA24BB /* radar-dot.png */; };
-		99559BD31497AFC100BA24BB /* radar-screen.png in Resources */ = {isa = PBXBuildFile; fileRef = 99559BCC1497AFC100BA24BB /* radar-screen.png */; };
-		99559BDB1497AFD300BA24BB /* PoiLabelWithImage-mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 99559BD51497AFD300BA24BB /* PoiLabelWithImage-mask.png */; };
-		99559BDC1497AFD300BA24BB /* PoiLabelWithImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 99559BD61497AFD300BA24BB /* PoiLabelWithImage.png */; };
-		99559BDD1497AFD300BA24BB /* PoiLabelWithImage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99559BD71497AFD300BA24BB /* PoiLabelWithImage.xib */; };
-		99559BDE1497AFD300BA24BB /* PoiLabelWithImage@2x-mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 99559BD81497AFD300BA24BB /* PoiLabelWithImage@2x-mask.png */; };
-		99559BDF1497AFD300BA24BB /* PoiLabelWithImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 99559BD91497AFD300BA24BB /* PoiLabelWithImage@2x.png */; };
-		99559BE01497AFD300BA24BB /* PoiLabelWithImage@2x.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99559BDA1497AFD300BA24BB /* PoiLabelWithImage@2x.xib */; };
-		99559BE31497AFD800BA24BB /* scale1.png in Resources */ = {isa = PBXBuildFile; fileRef = 99559BE11497AFD800BA24BB /* scale1.png */; };
-		99559BE41497AFD800BA24BB /* scale2.png in Resources */ = {isa = PBXBuildFile; fileRef = 99559BE21497AFD800BA24BB /* scale2.png */; };
 		9955EE6C1498E6070081D085 /* ConfigViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9955EE681498E6070081D085 /* ConfigViewController_iPad.xib */; };
 		9955EE6D1498E6070081D085 /* ConfigViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9955EE691498E6070081D085 /* ConfigViewController_iPhone.xib */; };
 		9955EE6E1498E6070081D085 /* ConfigViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9955EE6B1498E6070081D085 /* ConfigViewController.mm */; };
@@ -82,11 +71,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9926E773144FB3880066D383 /* cube.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cube.png; sourceTree = "<group>"; };
-		9926E774144FB3880066D383 /* cube1.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cube1.obj; sourceTree = "<group>"; };
-		9926E77B144FB3880066D383 /* scale.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = scale.obj; sourceTree = "<group>"; };
-		9926E77E144FB3880066D383 /* DefaultImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DefaultImage.png; sourceTree = "<group>"; };
-		9926E784144FB3880066D383 /* msh_plane.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = msh_plane.obj; sourceTree = "<group>"; };
+		9909951914C311E7007390A8 /* DefaultImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DefaultImage.png; sourceTree = "<group>"; };
+		9909951A14C311E7007390A8 /* DefaultPoiLabel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DefaultPoiLabel.png; sourceTree = "<group>"; };
+		9909951B14C311E7007390A8 /* DefaultPoiLabel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DefaultPoiLabel.xib; sourceTree = "<group>"; };
+		9909951C14C311E7007390A8 /* DefaultPoiLabel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DefaultPoiLabel@2x.png"; sourceTree = "<group>"; };
+		9909951D14C311E7007390A8 /* PoiLabelWithImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PoiLabelWithImage.png; sourceTree = "<group>"; };
+		9909951E14C311E7007390A8 /* PoiLabelWithImage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PoiLabelWithImage.xib; sourceTree = "<group>"; };
+		9909951F14C311E7007390A8 /* PoiLabelWithImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PoiLabelWithImage@2x.png"; sourceTree = "<group>"; };
+		9909952014C311E7007390A8 /* RadarDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RadarDot.png; sourceTree = "<group>"; };
+		9909952114C311E7007390A8 /* RadarDot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RadarDot@2x.png"; sourceTree = "<group>"; };
+		9909952214C311E7007390A8 /* RadarScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RadarScreen.png; sourceTree = "<group>"; };
+		9909952314C311E7007390A8 /* RadarScreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RadarScreen@2x.png"; sourceTree = "<group>"; };
 		9926E7BD144FB43C0066D383 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		9926E7BE144FB43C0066D383 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
 		9926E7BF144FB43C0066D383 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
@@ -138,23 +133,6 @@
 		993A8E44144FB14B00414EB3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		994606B11450CB7200DF25AD /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		994606B61450CD8000DF25AD /* App.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = App.strings; sourceTree = "<group>"; };
-		994606BD1450EFC300DF25AD /* building.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = building.obj; sourceTree = "<group>"; };
-		994606BE1450EFC300DF25AD /* building.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = building.png; sourceTree = "<group>"; };
-		99559BC61497AFC100BA24BB /* DefaultPoiLabel-mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DefaultPoiLabel-mask.png"; sourceTree = "<group>"; };
-		99559BC71497AFC100BA24BB /* DefaultPoiLabel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DefaultPoiLabel.png; sourceTree = "<group>"; };
-		99559BC81497AFC100BA24BB /* DefaultPoiLabel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DefaultPoiLabel.xib; sourceTree = "<group>"; };
-		99559BC91497AFC100BA24BB /* DefaultPoiLabel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DefaultPoiLabel@2x.png"; sourceTree = "<group>"; };
-		99559BCA1497AFC100BA24BB /* DefaultPoiLabel@2x.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "DefaultPoiLabel@2x.xib"; sourceTree = "<group>"; };
-		99559BCB1497AFC100BA24BB /* radar-dot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "radar-dot.png"; sourceTree = "<group>"; };
-		99559BCC1497AFC100BA24BB /* radar-screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "radar-screen.png"; sourceTree = "<group>"; };
-		99559BD51497AFD300BA24BB /* PoiLabelWithImage-mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PoiLabelWithImage-mask.png"; sourceTree = "<group>"; };
-		99559BD61497AFD300BA24BB /* PoiLabelWithImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PoiLabelWithImage.png; sourceTree = "<group>"; };
-		99559BD71497AFD300BA24BB /* PoiLabelWithImage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PoiLabelWithImage.xib; sourceTree = "<group>"; };
-		99559BD81497AFD300BA24BB /* PoiLabelWithImage@2x-mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PoiLabelWithImage@2x-mask.png"; sourceTree = "<group>"; };
-		99559BD91497AFD300BA24BB /* PoiLabelWithImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PoiLabelWithImage@2x.png"; sourceTree = "<group>"; };
-		99559BDA1497AFD300BA24BB /* PoiLabelWithImage@2x.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "PoiLabelWithImage@2x.xib"; sourceTree = "<group>"; };
-		99559BE11497AFD800BA24BB /* scale1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scale1.png; sourceTree = "<group>"; };
-		99559BE21497AFD800BA24BB /* scale2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scale2.png; sourceTree = "<group>"; };
 		9955EE681498E6070081D085 /* ConfigViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfigViewController_iPad.xib; sourceTree = "<group>"; };
 		9955EE691498E6070081D085 /* ConfigViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfigViewController_iPhone.xib; sourceTree = "<group>"; };
 		9955EE6A1498E6070081D085 /* ConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigViewController.h; sourceTree = "<group>"; };
@@ -184,41 +162,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9926E772144FB3880066D383 /* AR Assets (Additional) */ = {
+		9909951814C311E7007390A8 /* ARAssets */ = {
 			isa = PBXGroup;
 			children = (
-				994606BD1450EFC300DF25AD /* building.obj */,
-				994606BE1450EFC300DF25AD /* building.png */,
-				9926E773144FB3880066D383 /* cube.png */,
-				9926E774144FB3880066D383 /* cube1.obj */,
-				99559BD51497AFD300BA24BB /* PoiLabelWithImage-mask.png */,
-				99559BD61497AFD300BA24BB /* PoiLabelWithImage.png */,
-				99559BD71497AFD300BA24BB /* PoiLabelWithImage.xib */,
-				99559BD81497AFD300BA24BB /* PoiLabelWithImage@2x-mask.png */,
-				99559BD91497AFD300BA24BB /* PoiLabelWithImage@2x.png */,
-				99559BDA1497AFD300BA24BB /* PoiLabelWithImage@2x.xib */,
-				9926E77B144FB3880066D383 /* scale.obj */,
-				99559BE11497AFD800BA24BB /* scale1.png */,
-				99559BE21497AFD800BA24BB /* scale2.png */,
+				9909951914C311E7007390A8 /* DefaultImage.png */,
+				9909951A14C311E7007390A8 /* DefaultPoiLabel.png */,
+				9909951B14C311E7007390A8 /* DefaultPoiLabel.xib */,
+				9909951C14C311E7007390A8 /* DefaultPoiLabel@2x.png */,
+				9909951D14C311E7007390A8 /* PoiLabelWithImage.png */,
+				9909951E14C311E7007390A8 /* PoiLabelWithImage.xib */,
+				9909951F14C311E7007390A8 /* PoiLabelWithImage@2x.png */,
+				9909952014C311E7007390A8 /* RadarDot.png */,
+				9909952114C311E7007390A8 /* RadarDot@2x.png */,
+				9909952214C311E7007390A8 /* RadarScreen.png */,
+				9909952314C311E7007390A8 /* RadarScreen@2x.png */,
 			);
-			name = "AR Assets (Additional)";
-			sourceTree = "<group>";
-		};
-		9926E77D144FB3880066D383 /* AR Assets (Required) */ = {
-			isa = PBXGroup;
-			children = (
-				9926E77E144FB3880066D383 /* DefaultImage.png */,
-				99559BC61497AFC100BA24BB /* DefaultPoiLabel-mask.png */,
-				99559BC71497AFC100BA24BB /* DefaultPoiLabel.png */,
-				99559BC81497AFC100BA24BB /* DefaultPoiLabel.xib */,
-				99559BC91497AFC100BA24BB /* DefaultPoiLabel@2x.png */,
-				99559BCA1497AFC100BA24BB /* DefaultPoiLabel@2x.xib */,
-				99559BCB1497AFC100BA24BB /* radar-dot.png */,
-				99559BCC1497AFC100BA24BB /* radar-screen.png */,
-				9926E784144FB3880066D383 /* msh_plane.obj */,
-			);
-			name = "AR Assets (Required)";
-			path = ../Required;
+			name = ARAssets;
+			path = ../ARAssets;
 			sourceTree = "<group>";
 		};
 		9926E7C5144FB4420066D383 /* Images */ = {
@@ -255,16 +215,6 @@
 			path = PanicARDemo;
 			sourceTree = "<group>";
 		};
-		9926E7C6144FB4690066D383 /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				9926E77D144FB3880066D383 /* AR Assets (Required) */,
-				9926E772144FB3880066D383 /* AR Assets (Additional) */,
-			);
-			name = Assets;
-			path = ../ARAssets/Additional;
-			sourceTree = "<group>";
-		};
 		9926E7C7144FB48A0066D383 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -288,7 +238,7 @@
 		993A8E26144FB14800414EB3 = {
 			isa = PBXGroup;
 			children = (
-				9926E7C6144FB4690066D383 /* Assets */,
+				9909951814C311E7007390A8 /* ARAssets */,
 				9955EED71498F60D0081D085 /* Classes */,
 				9926E7C7144FB48A0066D383 /* ViewController */,
 				993A8E3C144FB14B00414EB3 /* Supporting Files */,
@@ -399,11 +349,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				993A8E40144FB14B00414EB3 /* InfoPlist.strings in Resources */,
-				9926E787144FB3880066D383 /* cube.png in Resources */,
-				9926E788144FB3880066D383 /* cube1.obj in Resources */,
-				9926E78F144FB3880066D383 /* scale.obj in Resources */,
-				9926E791144FB3880066D383 /* DefaultImage.png in Resources */,
-				9926E797144FB3880066D383 /* msh_plane.obj in Resources */,
 				9926E7C1144FB43C0066D383 /* first.png in Resources */,
 				9926E7C2144FB43C0066D383 /* first@2x.png in Resources */,
 				9926E7C3144FB43C0066D383 /* second.png in Resources */,
@@ -436,25 +381,19 @@
 				992DE109145080CD001927F0 /* signal4@2x.png in Resources */,
 				994606B21450CB7200DF25AD /* Localizable.strings in Resources */,
 				994606B71450CD8000DF25AD /* App.strings in Resources */,
-				994606BF1450EFC300DF25AD /* building.obj in Resources */,
-				994606C01450EFC300DF25AD /* building.png in Resources */,
-				99559BCD1497AFC100BA24BB /* DefaultPoiLabel-mask.png in Resources */,
-				99559BCE1497AFC100BA24BB /* DefaultPoiLabel.png in Resources */,
-				99559BCF1497AFC100BA24BB /* DefaultPoiLabel.xib in Resources */,
-				99559BD01497AFC100BA24BB /* DefaultPoiLabel@2x.png in Resources */,
-				99559BD11497AFC100BA24BB /* DefaultPoiLabel@2x.xib in Resources */,
-				99559BD21497AFC100BA24BB /* radar-dot.png in Resources */,
-				99559BD31497AFC100BA24BB /* radar-screen.png in Resources */,
-				99559BDB1497AFD300BA24BB /* PoiLabelWithImage-mask.png in Resources */,
-				99559BDC1497AFD300BA24BB /* PoiLabelWithImage.png in Resources */,
-				99559BDD1497AFD300BA24BB /* PoiLabelWithImage.xib in Resources */,
-				99559BDE1497AFD300BA24BB /* PoiLabelWithImage@2x-mask.png in Resources */,
-				99559BDF1497AFD300BA24BB /* PoiLabelWithImage@2x.png in Resources */,
-				99559BE01497AFD300BA24BB /* PoiLabelWithImage@2x.xib in Resources */,
-				99559BE31497AFD800BA24BB /* scale1.png in Resources */,
-				99559BE41497AFD800BA24BB /* scale2.png in Resources */,
 				9955EE6C1498E6070081D085 /* ConfigViewController_iPad.xib in Resources */,
 				9955EE6D1498E6070081D085 /* ConfigViewController_iPhone.xib in Resources */,
+				9909952914C311E7007390A8 /* DefaultImage.png in Resources */,
+				9909952A14C311E7007390A8 /* DefaultPoiLabel.png in Resources */,
+				9909952B14C311E7007390A8 /* DefaultPoiLabel.xib in Resources */,
+				9909952C14C311E7007390A8 /* DefaultPoiLabel@2x.png in Resources */,
+				9909952D14C311E7007390A8 /* PoiLabelWithImage.png in Resources */,
+				9909952E14C311E7007390A8 /* PoiLabelWithImage.xib in Resources */,
+				9909952F14C311E7007390A8 /* PoiLabelWithImage@2x.png in Resources */,
+				9909953014C311E7007390A8 /* RadarDot.png in Resources */,
+				9909953114C311E7007390A8 /* RadarDot@2x.png in Resources */,
+				9909953214C311E7007390A8 /* RadarScreen.png in Resources */,
+				9909953314C311E7007390A8 /* RadarScreen@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

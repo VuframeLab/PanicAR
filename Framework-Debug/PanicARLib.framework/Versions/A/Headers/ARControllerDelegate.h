@@ -23,7 +23,7 @@
 /** Marker Interaction Callback 
  sent to the delegate when a object is tapped
  */
-- (void)arDidTapObject:(ARObject *)object;
+- (void)arDidTapObject:(id<ARObjectDelegate>)object;
 
 
 /** AR System Error Callback 
@@ -47,7 +47,7 @@
 /** Device Orientation Changed Callback
  sent to delegate when arOrientation changed, use it to adjust AR views (like radar)
  */
-- (void)arDidChangeOrientation:(UIDeviceOrientation)orientation radarOrientation:(UIDeviceOrientation)radarOrientation;
+- (void)arDidChangeOrientation:(UIDeviceOrientation)orientation;
 
 - (void)arSignalQualityChanged;
 

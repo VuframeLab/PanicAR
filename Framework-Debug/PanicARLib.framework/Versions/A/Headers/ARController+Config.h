@@ -6,13 +6,11 @@
 //  Copyright (c) 2011 doPanic. All rights reserved.
 //
 
-#import <PanicARLib/PanicARLib.h>
-
+#import "ARController.h"
 
 /*!
  @name Config
  */
-
 @interface ARController (Config)
 
 /*! resets the default config

@@ -1,6 +1,6 @@
 //
 //  AppDelegate.m
-//  PanicAR DevApp
+//  PanicAR-App
 //
 //  Created by Andreas Zeitler on 15.10.11.
 //  Copyright (c) 2011 doPanic. All rights reserved.

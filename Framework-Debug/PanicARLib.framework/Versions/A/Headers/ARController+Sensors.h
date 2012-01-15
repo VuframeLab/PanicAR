@@ -9,8 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 
-#define REFRESH_RATE_MOTION 30
-#define REFRESH_RATE_COREMOTION 30
+#define REFRESH_RATE_COREMOTION 60
 #define REFRESH_RATE_ACCELEROMETER_ACTIVE 30
 #define REFRESH_RATE_ACCELEROMETER_IDLE 10
 
@@ -33,17 +32,14 @@
  */
 - (void)stopLocationServices:(BOOL)force;
 
-- (void)processLocation:(CLLocation *)newLocation;
 - (void)triggerLocationUpdate;
-
+- (void)updateSignalQuality;
 
 - (void)startMotionUpdate;
 - (void)stopMotionUpdate;
 - (BOOL)isMotionUpdateRunning;
-- (void)putMotionUpdateToIdle;
 - (void)motionUpdate:(NSTimer *)theTimer;
 
-- (void)updateSignalQuality;
 
 /*! 
  @brief checks if location services are available/allowed for the device/user

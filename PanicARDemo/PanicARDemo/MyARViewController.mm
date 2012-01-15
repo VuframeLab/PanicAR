@@ -1,6 +1,6 @@
 //
 //  MyARViewController.m
-//  PanicAR DevApp
+//  PanicAR-App
 //
 //  Created by Andreas Zeitler on 16.10.11.
 //  Copyright (c) 2011 doPanic. All rights reserved.
@@ -42,7 +42,7 @@
     
     if ([self checkForAR:YES]) {
         [[ARController sharedARController] enableConsole];
-        [self setRadarRange:1500];
+        [_arRadarView setRadarRange:1500];
     }
     
 }
@@ -56,10 +56,14 @@
     
     [ARController sharedARController].delegate = self;
     [self createARPoiObjects];
-    [self createARContent];
-    [self createARBuilding];
     
     [ARController sharedARController].console.hidden = YES;
+    
+    // setup radar
+    CGRect rect = CGRectMake(0, [ARController sharedARController].console.hidden ? 0 : 160, 0, 32);
+    [_arRadarView setRadarToThumbnail:ARRadarPositionTopLeft withAdditionalOffset:rect];
+    _radarThumbnailPosition = ARRadarPositionTopLeft;
+    [_arRadarView showRadar];
 }
 
 
@@ -81,8 +85,13 @@
 
 
 
-- (void)arDidTapObject:(ARObject *)object {
-    
+- (void)arDidTapObject:(id<ARObjectDelegate>)object {
+   if ([ARController sharedARController].isFrozen) {
+       [[ARController sharedARController] unfreeze];
+   }
+   else {
+       [[ARController sharedARController] freeze];
+   }
 }
 
 
@@ -97,7 +106,7 @@
 }
 
 
-- (void)arDidChangeOrientation:(UIDeviceOrientation)orientation radarOrientation:(UIDeviceOrientation)radarOrientation {
+- (void)arDidChangeOrientation:(UIDeviceOrientation)orientation {
     
 }
 
@@ -162,12 +171,7 @@
         _infoLabel.textColor = [UIColor redColor];
     }
     else {
-        if (_hasARBuilding) {
-            _infoLabel.text = [NSString stringWithFormat:@"GPS signal quality: %.1d (~%.1f Meters)\ndistance to building: %.1f Meters", [ARController sharedARController].userSignalQuality, [ARController sharedARController].userLocationQuality, [_building distance]];
-        }
-        else {
-            _infoLabel.text = [NSString stringWithFormat:@"GPS signal quality: %.1d (~%.1f Meters)", [ARController sharedARController].userSignalQuality, [ARController sharedARController].userLocationQuality];
-        }
+        _infoLabel.text = [NSString stringWithFormat:@"GPS signal quality: %.1d (~%.1f Meters)", [ARController sharedARController].userSignalQuality, [ARController sharedARController].userLocationQuality];
         _infoLabel.textColor = [UIColor whiteColor];
     }
 }
@@ -177,30 +181,35 @@
 #pragma mark - Actions
 
 - (IBAction)radarButtonAction {
-    CGRect rect = CGRectMake(0, 0, 0, 40);
-    if (!radarVisible || radarMode == ARRadarOff) {
-        [self showRadarThumbnail:ARRadarPositionTopLeft withAdditionalOffset:rect];
+    CGRect rect = CGRectMake(0, [ARController sharedARController].console.hidden ? 0 : 160, 0, 32);
+    if (!_arRadarView.isRadarVisible || _arRadarView.radarMode == ARRadarOff) {
         _radarThumbnailPosition = ARRadarPositionTopLeft;
+        [_arRadarView setRadarToThumbnail:_radarThumbnailPosition withAdditionalOffset:rect];
+        [_arRadarView showRadar];
     }
-    else if (radarMode == ARRadarThumbnail) {
+    else if (_arRadarView.radarMode == ARRadarThumbnail) {
         if (_radarThumbnailPosition == ARRadarPositionTopLeft) {
-            [self showRadarThumbnail:ARRadarPositionTopRight withAdditionalOffset:rect];
             _radarThumbnailPosition = ARRadarPositionTopRight;
+            [_arRadarView setRadarToThumbnail:_radarThumbnailPosition withAdditionalOffset:rect];
+            [_arRadarView showRadar];
         }
         else if (_radarThumbnailPosition == ARRadarPositionTopRight) {
-            [self showRadarThumbnail:ARRadarPositionBottomLeft withAdditionalOffset:rect];
             _radarThumbnailPosition = ARRadarPositionBottomLeft;
+            [_arRadarView setRadarToThumbnail:_radarThumbnailPosition withAdditionalOffset:rect];
+            [_arRadarView showRadar];
         }
         else if (_radarThumbnailPosition == ARRadarPositionBottomLeft) {
-            [self showRadarThumbnail:ARRadarPositionBottomRight withAdditionalOffset:rect];
             _radarThumbnailPosition = ARRadarPositionBottomRight;
+            [_arRadarView setRadarToThumbnail:_radarThumbnailPosition withAdditionalOffset:rect];
+            [_arRadarView showRadar];
         }
         else {
-            [self showRadarInMode:ARRadarFullscreen];
+            [_arRadarView setRadarToFullscreen:CGPointMake(0, -32) withSizeOffset:0];
+            [_arRadarView showRadar];
         }
     }
     else {
-        [self hideRadar];
+        [_arRadarView hideRadar];
     }
 }
 
@@ -215,7 +224,12 @@
 
 // check if AR is available, show error if it's not and set bar item
 - (BOOL)checkForAR:(BOOL)showErrors {
+#if !TARGET_IPHONE_SIMULATOR
     BOOL supportsAR = [ARController deviceSupportsAR];
+#else
+    BOOL supportsAR = YES;
+#endif
+    
     BOOL supportsLocations = [ARController locationServicesAvailable];
     BOOL result = supportsLocations && supportsAR;
     
@@ -246,67 +260,33 @@
 
 
 
+
+
 // create a few test markers
 - (void)createARPoiObjects {
-    // first: setup a new marker with title and content
-    ARPoiLabel* newPoiLabel = [[ARPoiLabel alloc] initWithTitle:@"Rome" theContent:@"Italy" atLocation:[[[CLLocation alloc] initWithLatitude:41.890156 longitude:12.492304] autorelease]];
+    ARPoi* newPoi = nil;
+    ARPoiLabel* newPoiLabel = nil;
     
-    // second: add the marker to the ARController using the addMarkerAtLocation method
-    // pass the geolocation (latitude, longitude) that specifies where the marker should be located
+    // first: setup a new marker with title and content at the location you want
     // WARNING: use double-precision coordinates whenever possible (the following coordinates are from Google Maps which only provides 8-9 digit coordinates
+    newPoiLabel = [[ARPoiLabel alloc] initWithTitle:@"Rome" theDescription:@"Italy" atLocation:[[[CLLocation alloc] initWithLatitude:41.890156 longitude:12.492304] autorelease]];
+    // second: add the marker to the ARController using the addObject method
 	[[ARController sharedARController] addObject: newPoiLabel];
     
     // add a second marker
-    newPoiLabel = [[ARPoiLabel alloc] initWithTitle:@"Berlin" theContent:@"Germany" atLocation:[[[CLLocation alloc] initWithLatitude:52.523402 longitude:13.41141] autorelease]];
+    newPoiLabel = [[ARPoiLabel alloc] initWithTitle:@"Berlin" theDescription:@"Germany" atLocation:[[[CLLocation alloc] initWithLatitude:52.523402 longitude:13.41141] autorelease]];
     [[ARController sharedARController] addObject:newPoiLabel];
     
     // add a third marker, this time allocation of a new marker and adding to the ARController are wrapped up in one line
-	newPoiLabel = [[ARPoiLabel alloc] initWithTitle:@"London" theContent:@"United Kingdom" atLocation:[[[CLLocation alloc] initWithLatitude:51.500141 longitude:-0.126257] autorelease]];
+	newPoiLabel = [[ARPoiLabel alloc] initWithTitle:@"London" theDescription:@"United Kingdom" atLocation:[[[CLLocation alloc] initWithLatitude:51.500141 longitude:-0.126257] autorelease]];
     [[ARController sharedARController] addObject:newPoiLabel];
+    
+	newPoi = [[ARPoi alloc] initWithImage:@"DefaultImage" atLocation:[[[CLLocation alloc] initWithLatitude:51.500141 longitude:-0.126257] autorelease]];
+     newPoi.offset = CGPointMake(0, -64);
+     [[ARController sharedARController] addObject:newPoi];
     
     NSLog(@"AR Objects Created: %d", [[ARController sharedARController] numberOfObjects]);
     _hasARPoiObjects = YES;
-}
-
-
-- (void)createARContent {
-    ARMesh* scaleMesh = [[ARMesh alloc] initFromFile:@"scale.obj"];
-    ARTexture* scale1Texture = [[ARTexture alloc] initFromFile:@"scale1.png"];
-    ARTexture* scale2Texture = [[ARTexture alloc] initFromFile:@"scale2.png"];
-    
-    ARFreeObject* scale = [[ARFreeObject alloc] initWithParams:scaleMesh texture:scale1Texture position:nil rotation:nil size:[ARVector vectorWithCoords:1 Y:0.25 Z:1] scale:0.5];
-    [[ARController sharedARController] addObject:scale];
-    
-    scale = [[ARFreeObject alloc] initWithParams:scaleMesh texture:scale1Texture position:nil rotation:[ARVector vectorWithCoords:90 Y:0 Z:0] size:[ARVector vectorWithCoords:1 Y:0.25 Z:1] scale:0.5];
-    [[ARController sharedARController] addObject:scale];
-    
-    scale = [[ARFreeObject alloc] initWithParams:scaleMesh texture:scale2Texture position:nil rotation:[ARVector vectorWithCoords:0 Y:0 Z:90] size:[ARVector vectorWithCoords:1 Y:0.25 Z:1] scale:0.5];
-    [[ARController sharedARController] addObject:scale];
-    
-    
-    ARMesh* cubeMesh = [[ARMesh alloc] initFromFile:@"cube1.obj"];
-    ARTexture* cubeTexture = [[ARTexture alloc] initFromFile:@"cube.png"];
-    
-    ARFreeObject* cube = [[ARFreeObject alloc] initWithParams:cubeMesh texture:cubeTexture position:[ARVector vectorWithCoords:0 Y:0 Z:-10] rotation:nil size:nil scale:1];
-    [[ARController sharedARController] addObject:cube];
-    
-    cube = [[ARFreeObject alloc] initWithParams:cubeMesh texture:cubeTexture position:[ARVector vectorWithCoords:0 Y:0 Z:10] rotation:nil size:nil scale:1];
-    [[ARController sharedARController] addObject:cube];
-    
-    cube = [[ARFreeObject alloc] initWithParams:cubeMesh texture:cubeTexture position:[ARVector vectorWithCoords:10 Y:0 Z:0] rotation:nil size:nil scale:1];
-    [[ARController sharedARController] addObject:cube];
-    
-    cube = [[ARFreeObject alloc] initWithParams:cubeMesh texture:cubeTexture position:[ARVector vectorWithCoords:-10 Y:0 Z:0] rotation:nil size:nil scale:1];
-    [[ARController sharedARController] addObject:cube];
-    _hasARContent = YES;
-}
-
-- (void)createARBuilding {
-    ARMesh* buildingMesh = [[ARMesh alloc] initFromFile:@"building.obj"];
-    ARTexture* buildingTexture = [[ARTexture alloc] initFromFile:@"building.png"];
-    _building = [[ARPoiObject alloc] initWithMesh:buildingMesh andTexture:buildingTexture atLatitude:49.018301 atLongitude:12.095929 atAltitude:320 withHeading:135 withScale:2.5];
-    [[ARController sharedARController] addObject:_building];
-    _hasARBuilding = YES;
 }
 
 
