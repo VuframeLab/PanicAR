@@ -11,10 +11,10 @@
 
 
 
-@interface MyARViewController : ARViewController <ARControllerDelegate> {
+@interface MyARViewController : PARViewController <PARControllerDelegate> {
     IBOutlet UILabel* _infoLabel;
     IBOutlet UIImageView* _signalDisplay;
-    ARRadarPosition _radarThumbnailPosition;
+    PARRadarPosition _radarThumbnailPosition;
     BOOL _hasARPoiObjects;
 }
 
@@ -25,7 +25,6 @@
 - (IBAction)switchConsole:(id)sender;
 #endif
 
-- (BOOL)checkForAR:(BOOL)showErrors;
 - (void)createARPoiObjects;
 
 @end

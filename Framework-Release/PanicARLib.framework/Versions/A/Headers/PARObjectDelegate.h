@@ -1,5 +1,5 @@
 //
-//  ARObjectDelegate.h
+//  PARObjectDelegate.h
 //  ArchiApp
 //
 //  Created by Andreas Zeitler on 05.06.11.
@@ -8,29 +8,31 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
-#import "ARMath.h"
+#import "PARMath.h"
 
 #define CLIP_AT_ANGLE_DEVIATION 35
 #define HEAVY_SMOOTH 10
 #define LIGHT_SMOOTH 5
 
-@class ARView;
-@class ARRadarView;
+@class PARView;
+@class PARRadarView;
 
-@protocol ARObjectDelegate
+/*! @protocol PARObjectDelegate */
+@protocol PARObjectDelegate
 
-/*! unload content when ARView is unloaded */
+/*! unload content when PARView is unloaded */
 - (void)unloadContent;
-/*! load content when ARView is loaded or displayed and content is not yet loaded */
+/*! load content when PARView is loaded or displayed and content is not yet loaded */
 - (void)loadContent;
 
 - (void)updateLocation;
 - (void)updateContent;
+- (void)updateAppearance;
 
-- (void)renderInView:(ARView *)theView;
-- (void)renderInRadar:(ARRadarView *)theRadar;
+- (void)renderInView:(PARView *)theView;
+- (void)renderInRadar:(PARRadarView *)theRadar;
 - (float)angleToCamera;
-- (ARVector3)virtualPosition;
+- (PARVector3)virtualPosition;
 - (float)distanceToUser;
 
 - (CLLocation*)location;

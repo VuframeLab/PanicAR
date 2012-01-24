@@ -1,8 +1,8 @@
 /* App is not allowed to use GPS */
 "App is not allowed to use GPS" = "App is not allowed to use GPS";
 
-/* This device does not support AR functionality */
-"This device does not support AR functionality" = "This device does not support AR functionality";
+/* This device does not support PAR functionality */
+"This device does not support PAR functionality" = "This device does not support PAR functionality";
 
-/* AR not supported */
-"AR not supported" = "AR not supported";
+/* PAR not supported */
+"PAR not supported" = "PAR not supported";

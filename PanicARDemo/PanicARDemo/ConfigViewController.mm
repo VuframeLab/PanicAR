@@ -41,7 +41,7 @@
 	// Do any additional setup after loading the view, typically from a nib.
     
 	
-	MKCoordinateRegion region = MKCoordinateRegionMake([ARController sharedARController].userLocation.coordinate, MKCoordinateSpanMake(0.02, 0.02));
+	MKCoordinateRegion region = MKCoordinateRegionMake([PARController sharedARController].userLocation.coordinate, MKCoordinateSpanMake(0.02, 0.02));
 	[_mapView setRegion:region animated:TRUE];
 	[_mapView regionThatFits:region];
     [_mapView setUserTrackingMode:MKUserTrackingModeFollowWithHeading];
@@ -49,7 +49,7 @@
     [_mapView setDelegate:self];
 	
     
-    for (ARPoi* poi in [[ARController sharedARController] arObjects]) {
+    for (PARPoi* poi in [[PARController sharedARController] arObjects]) {
         if ([poi conformsToProtocol:@protocol(MKAnnotation)]) {
             [_mapView addAnnotation:poi];
         }
@@ -90,7 +90,7 @@
 {
     // Return YES for supported orientations
     return YES;
-    /*if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+    /*if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
     } else {
         return YES;

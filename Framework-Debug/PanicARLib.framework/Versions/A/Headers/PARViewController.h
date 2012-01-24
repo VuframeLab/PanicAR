@@ -1,5 +1,5 @@
 //
-//  ARViewController.h
+//  PARViewController.h
 //  PanicARLib
 //
 //  Created by Andreas Zeitler on 14.10.11.
@@ -9,20 +9,20 @@
 
 #import <AVFoundation/AVFoundation.h>
 #import <UIKit/UIKit.h>
-#import "ARRadarView.h"
 
 
 
-@class ARView;
-@class ARController;
+@class PARView;
+@class PARRadarView;
+@class PARController;
 
 /*!
- @class ARViewController
+ @class PARViewController
  */
-@interface ARViewController : UIViewController {
+@interface PARViewController : UIViewController {
     
     // ar view
-    ARView* _arView;
+    PARView* _arView;
     
     // live camera feed
     UIView* _cameraView;
@@ -34,7 +34,7 @@
     BOOL _isCapturingImage;
     
     // radar
-    ARRadarView* _arRadarView;
+    PARRadarView* _arRadarView;
     
     UILabel* _watermark;
     
@@ -47,33 +47,55 @@
     CGPoint _lastTouchDistance;
 }
 
-@property (nonatomic,retain) ARView *arView;
-@property (nonatomic,retain) ARRadarView *arRadarView;
+@property (nonatomic,retain) PARView *arView;
+@property (nonatomic,retain) PARRadarView *arRadarView;
 
 #pragma mark - Subviews
 - (void)createARView;
 - (void)createARRadarView;
 
-#pragma mark - Camera
+#pragma mark - Main Control
+
+- (void)startAR;
+- (void)stopAR;
+
+/*! @return YES if camera feed should be displayed */
 - (BOOL)usesCameraPreview;
-- (BOOL)shouldFadeInCameraPreview;
+/*! @return YES if camera feed should fade in and out */
+- (BOOL)fadesInCameraPreview;
+/*! @return YES if PAR functionality should start automatically */
+- (BOOL)startsARAutomatically;
+/*! @return YES if PARView should rotate freely with the device
+ @remarks don't return YES if your ViewController already supports Landscape orientations */
+- (BOOL)rotatesARView;
+
+#pragma mark - Camera
+
 - (void)startCameraPreview;
 - (void)updateCameraPreview;
 - (void)stopCameraPreview;
-- (void)takePicture;
 
+#if ADVANCED
+- (void)takePicture;
+#endif
 
 
 #pragma mark - Touch
-/*! AR Objects receive touch events?
- @return YES or NO
- default: YES */
-- (BOOL)doObjectsRespondToTouch;
+
+/*! X-distance moved since last touch position */
 - (float)touchDragX;
+/*! X-distance moved since initial touch position */
 - (float)touchMovedX;
+/*! Y-distance moved since last touch position */
 - (float)touchDragY;
+/*! Y-distance moved since initial touch position */
 - (float)touchMovedY;
+
+/*! reset last touch position to 0,0 */
 - (void)resetTouchDrag;
+
+/*! has the ar view been tapped
+ @remarks reset to NO after processing */
 - (BOOL)tapped;
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;

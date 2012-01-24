@@ -1,32 +1,33 @@
 //
-//  ARControllerDelegate.h
+//  PARControllerDelegate.h
 //  PanicAR
 //
 //  Created by Andreas Zeitler on 01.09.10.
 //  Copyright 2010 doPanic. All rights reserved.
 //
 
+#import "PARObjectDelegate.h"
 
 
-@class ARPoiLabel;
+@class PARPoiLabel;
 
 /*! 
- @protocol ARControllerDelegate
- @brief protocol that handles ARController callbacks
+ @protocol PARControllerDelegate
+ @brief protocol that handles PARController callbacks
  
- the ARControllerDelegate enables any class implementing it
- to receive events from the ARController instance (like the touch event of an ARPoiLabel)
+ the PARControllerDelegate enables any class implementing it
+ to receive events from the PARController instance (like the touch event of an PARPoiLabel)
  */
-@protocol ARControllerDelegate
+@protocol PARControllerDelegate
 
 
 /** Marker Interaction Callback 
  sent to the delegate when a object is tapped
  */
-- (void)arDidTapObject:(id<ARObjectDelegate>)object;
+- (void)arDidTapObject:(id<PARObjectDelegate>)object;
 
 
-/** AR System Error Callback 
+/** PAR System Error Callback 
  sent to the delegate when an error occured
  this will most likely be caused by an error in the locationManager
  @param integer code constant of the error code
@@ -45,9 +46,9 @@
 - (void)arDidUpdateLocation;
 
 /** Device Orientation Changed Callback
- sent to delegate when arOrientation changed, use it to adjust AR views (like radar)
+ sent to delegate when arOrientation changed, use it to adjust PAR views (like radar)
  */
-- (void)arDidChangeOrientation:(UIDeviceOrientation)orientation;
+- (void)arDidChangeOrientation:(UIInterfaceOrientation)orientation;
 
 - (void)arSignalQualityChanged;
 

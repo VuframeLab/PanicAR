@@ -7,17 +7,20 @@
  *
  */
 
-#include "ARController.h"
-#include "ARController+Config.h"
-#include "ARController+Sensors.h"
-#include "ARController+Objects.h"
-#include "ARControllerDelegate.h"
-#include "ARView.h"
-#include "ARViewController.h"
+#include "PARController.h"
+#include "PARController+Config.h"
+#include "PARController+Sensors.h"
+#include "PARController+Objects.h"
+#include "PARControllerDelegate.h"
+#include "PARView.h"
+#include "PARRadarView.h"
+#include "PARViewController.h"
 
-// AR Object Prototypes
-#include "ARObjectDelegate.h"
-#include "ARPoi.h"
-#include "ARPoiLabel.h"
+// PAR Object Prototypes
+#include "PARObjectDelegate.h"
+#include "PARPoi.h"
+#include "PARPoiLabel.h"
+#include "PARPoiAdvancedLabel.h"
+#include "PARPoiLabelTemplate.h"
 
-#include "ARMath.h"
+#include "PARMath.h"

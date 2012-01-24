@@ -39,7 +39,7 @@
     navigation2.navigationBar.barStyle = UIBarStyleBlackOpaque;
     navigation3.navigationBar.barStyle = UIBarStyleBlackOpaque;
     
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         viewController1 = [[[MyARViewController alloc] initWithNibName:@"MyARViewController_iPhone" bundle:nil] autorelease];
         viewController2 = [[[ConfigViewController alloc] initWithNibName:@"ConfigViewController_iPhone" bundle:nil] autorelease];
         viewController3 = [[[AboutViewController alloc] initWithNibName:@"AboutViewController_iPhone" bundle:nil] autorelease];
