@@ -47,7 +47,7 @@
 /*! manually start location service update, only needed if stopped before, @ref stopLocationServices */
 - (void)startLocationServices;
 /*! manually stop location service update 
- @param force stop immediately without questions asked */
+ @param forSuspendOrResume YES indicates that the method was called automatically on suspending the app */
 - (void)stopLocationServices:(BOOL)forSuspendOrResume;
 
 - (void)triggerLocationUpdate;
@@ -64,7 +64,7 @@
 + (double)bearingTowardsLocation:(CLLocation *)fromLocation to:(CLLocation *)towardsLocation;
 
 /*! @brief show default error message dialogs
- @param forErrorCode: the error code for which a message needs to be displayed
+ @param forErrorCode the error code for which a message needs to be displayed
  @remarks localizable */
 + (void)showDefaultErrorMessage:(int)forErrorCode;
 
@@ -79,8 +79,8 @@
  @deprecated use @ref deviceSupportsAR and @ref PARCapabilities instead */
 + (BOOL)locationServicesAvailable  __attribute__ ((deprecated));
 /*! @brief checks if location services are available/allowed for the device/user
- @param raiseError: if YES a error will be dispatched to the delegate using arDidReceiveError
- @param delayError: if YES a error will be dispatched to the delegate the next time the PARView becomes visible
+ @param raiseError if YES a error will be dispatched to the delegate using arDidReceiveError
+ @param delayError if YES a error will be dispatched to the delegate the next time the PARView becomes visible
  @remarks only checks if location services are turned on and the app is authorized to use them
  @remarks will not take into account if Airplane Mode is turned on
  @remarks use deviceSupportsAR to check if device supports camera and location services in general

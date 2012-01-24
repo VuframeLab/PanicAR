@@ -53,7 +53,7 @@ extern float _viewGravityY;
 - (id)initAtLocation:(CLLocation *)theLocation;
 
 /*! create an PARPoi with the image-name (default radar will be used)
- @param imageName will load an @ref UIImage from the file with the name; uses [UIImage imageNamed]
+ @param imageName will load an @ref UIImage from the file with the name; uses UIImage +imageNamed
  @remarks will create an UIImageView as @ref labelView and @ref radarView
  @param theLocation @ref CLLocation where the Poi will show up */
 - (id)initWithImage:(NSString *)imageName atLocation:(CLLocation *)theLocation;

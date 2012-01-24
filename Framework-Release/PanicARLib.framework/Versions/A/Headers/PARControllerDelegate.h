@@ -21,16 +21,16 @@
 @protocol PARControllerDelegate
 
 
-/** Marker Interaction Callback 
+/** Object Interaction Callback 
  sent to the delegate when a object is tapped
- */
+ @param object the object that was tapped */
 - (void)arDidTapObject:(id<PARObjectDelegate>)object;
 
 
 /** PAR System Error Callback 
  sent to the delegate when an error occured
  this will most likely be caused by an error in the locationManager
- @param integer code constant of the error code
+ @param code constant of the error code
  error types:
  kCLErrorLocationUnknown
  kCLErrorDenied
@@ -47,7 +47,7 @@
 
 /** Device Orientation Changed Callback
  sent to delegate when arOrientation changed, use it to adjust PAR views (like radar)
- */
+ @param orientation the new orientation */
 - (void)arDidChangeOrientation:(UIInterfaceOrientation)orientation;
 
 - (void)arSignalQualityChanged;

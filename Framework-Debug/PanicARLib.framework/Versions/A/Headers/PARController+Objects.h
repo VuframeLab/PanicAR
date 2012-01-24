@@ -53,13 +53,13 @@
 
 #pragma mark - Deprecated  Methods
 
-/*!  adds an PARPoiLabel to the controller Marker needs to have location! */
+/*! adds an PARPoiLabel to the controller Marker needs to have location! */
 - (PARPoiLabel *)addMarker:(PARPoiLabel *)marker  __attribute__ ((deprecated));
 /*!  adds the PARPoiLabel at the given location
  @param atLocation: set this location to the marker and add it to the controller
  */
 - (PARPoiLabel *)addMarkerAtLocation:(PARPoiLabel *)marker atLocation:(CLLocation *)_location  __attribute__ ((deprecated));
-/*!  adds an array of PARPoiLabel-type Objects to the controller Markers need to have locations assign, markers without will be omitted! */
+/*! adds an array of PARPoiLabel-type Objects to the controller Markers need to have locations assign, markers without will be omitted! */
 - (void)addMarkers:(NSArray *)array  __attribute__ ((deprecated));
 /*!  remove a PARPoiLabel object */
 - (void)removeMarker:(PARPoiLabel *)object  __attribute__ ((deprecated));

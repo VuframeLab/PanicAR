@@ -40,6 +40,8 @@
 {
     [super loadView];
     
+    [PARController sharedARController].delegate = self;
+    
     if ([PARController deviceSupportsAR:YES]) {
         [[PARController sharedARController] enableConsole];
         [_arRadarView setRadarRange:1500];

@@ -27,6 +27,7 @@ This version of PanicAR brings major updates and heavy refactoring in the API an
 - Terminology: 
 	- objects displayed in Augmented Reality are now called "AR or PAR (PanicAR) objects"
 	- AR objects tied to a Geolocation (formerly "PARMarkers") are now PanicAR POIs (Points of Interest)
+	- arOrientation now of type UIInterfaceOrientation (previously UIDeviceOrientation)
 	
 - ARMarker 
  	- ARMarker is now PARPoiLabel 
@@ -38,8 +39,13 @@ This version of PanicAR brings major updates and heavy refactoring in the API an
 	- ARMarkerTemplateis now PARPoiLabelTemplate and can be loaded with custom size allowing for labels of different size
 	- PARPoiLabelTemplate provides an updateAppearance method to update the appearance of a label template based on the distance to the user
 	- PARPoi implements and updateAppearance as well, which will allows to customize a ARPoi's appearance on a per-object basis; in order to be called during the PARPoi's update cycle PARPoi.updatesAppearance must return YES. 
-	
+
 - you can customize a lot of aspects of how POIs are animated and rendered – see the API Documentation for further detail!
+
+- AR Objects in General
+	- you can implement your own object types using ARObjectDelegate
+	- AR Objects are of type **id< ARObjectDelegate >**
+
 - UIImagePickerController has been dropped – the camera feed is now rendered using AVFoundation
 - the MapKit Framework is now a required dependency (my be weak linked)
 
