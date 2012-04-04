@@ -40,7 +40,6 @@
 		99AA58FD13D49A0E0092621B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		99AA58FE13D49A0E0092621B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		99AA58FF13D49A0E0092621B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99B7BAE8121ADC2E00E497BB /* CoreLocation.framework */; };
-		99AA590013D49A0E0092621B /* PanicARLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99AA58F213D49A000092621B /* PanicARLib.framework */; };
 		99AA590213D49A0E0092621B /* 59-info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 99D952CA132EB53F007365FB /* 59-info@2x.png */; };
 		99AA590313D49A0E0092621B /* 59-info.png in Resources */ = {isa = PBXBuildFile; fileRef = 99D952C9132EB53F007365FB /* 59-info.png */; };
 		99AA590413D49A0E0092621B /* 164-glasses-2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9990B18712B14985006AA069 /* 164-glasses-2@2x.png */; };
@@ -62,6 +61,7 @@
 		99AA591413D49A0E0092621B /* RadarScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 9908EBCE132FB697004217E3 /* RadarScreen.png */; };
 		99AA591513D49A0E0092621B /* RadarScreen_Dot.png in Resources */ = {isa = PBXBuildFile; fileRef = 9908EBCF132FB697004217E3 /* RadarScreen_Dot.png */; };
 		99AA591613D49A0E0092621B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 99888E41133950E60043F5D6 /* Localizable.strings */; };
+		99B28A4A152CBF5A007EF364 /* PanicARLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99B28A49152CBF5A007EF364 /* PanicARLib.framework */; };
 		99B37E77132EB75000A0FA99 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		99B37E78132EB75000A0FA99 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		99B37E79132EB75000A0FA99 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5995EBC010556E7500615176 /* CoreGraphics.framework */; };
@@ -98,9 +98,10 @@
 		9990B18612B14985006AA069 /* 164-glasses-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "164-glasses-2.png"; sourceTree = "<group>"; };
 		9990B18712B14985006AA069 /* 164-glasses-2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "164-glasses-2@2x.png"; sourceTree = "<group>"; };
 		99A1BCF1132EBB7200C915F4 /* ARController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ARController.xib; sourceTree = "<group>"; };
-		99AA58F213D49A000092621B /* PanicARLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PanicARLib.framework; path = "../Framework-Demo/PanicARLib.framework"; sourceTree = "<group>"; };
+		99AA58F213D49A000092621B /* PanicARLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PanicARLib.framework; path = ../Framework/PanicARLib.framework; sourceTree = "<group>"; };
 		99AA591A13D49A0E0092621B /* PanicARDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PanicARDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99AD7C6713D4A57D008E8AEA /* README.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = README.txt; path = ../README.txt; sourceTree = "<group>"; };
+		99B28A49152CBF5A007EF364 /* PanicARLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PanicARLib.framework; path = "../Framework-Release/PanicARLib.framework"; sourceTree = "<group>"; };
 		99B7BAE8121ADC2E00E497BB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		99CB255B1221C42D00776548 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		99D15BCE132EC0FC00EB33DE /* PanicAR Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PanicAR Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,7 +124,7 @@
 				99AA58FD13D49A0E0092621B /* UIKit.framework in Frameworks */,
 				99AA58FE13D49A0E0092621B /* Foundation.framework in Frameworks */,
 				99AA58FF13D49A0E0092621B /* CoreLocation.framework in Frameworks */,
-				99AA590013D49A0E0092621B /* PanicARLib.framework in Frameworks */,
+				99B28A4A152CBF5A007EF364 /* PanicARLib.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,6 +171,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				99B28A49152CBF5A007EF364 /* PanicARLib.framework */,
 				99AA58F213D49A000092621B /* PanicARLib.framework */,
 				99CB255B1221C42D00776548 /* MobileCoreServices.framework */,
 				5995EBC010556E7500615176 /* CoreGraphics.framework */,
@@ -392,8 +394,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../Framework-Licensed/\"";
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../Framework-Release\"";
 				INFOPLIST_FILE = "PanicARDemo-Info.plist";
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../Framework-Release\"";
 				PRODUCT_NAME = PanicARDemo;
 			};
 			name = Debug;
@@ -402,8 +405,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../Framework-Licensed/\"";
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../Framework-Release\"";
 				INFOPLIST_FILE = "PanicARDemo-Info.plist";
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../Framework-Release\"";
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PRODUCT_NAME = PanicARDemo;
 				VALIDATE_PRODUCT = YES;
@@ -414,10 +418,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../Framework-Demo\"",
-				);
 				INFOPLIST_FILE = "PanicARDemo-Info.plist";
 			};
 			name = Debug;
@@ -426,10 +426,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../Framework-Demo\"",
-				);
 				INFOPLIST_FILE = "PanicARDemo-Info.plist";
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				VALIDATE_PRODUCT = YES;
@@ -442,13 +438,14 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../Framework-Demo/\"";
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../Framework\"";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_THUMB_SUPPORT = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "PanicARDemo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../Framework\"";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-DDEBUG";
 				OTHER_LDFLAGS = "-ObjC";
@@ -465,13 +462,14 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../Framework-Demo/\"";
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../Framework\"";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_THUMB_SUPPORT = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "PanicARDemo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../Framework\"";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "PanicAR Demo";
