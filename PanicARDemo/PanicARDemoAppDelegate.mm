@@ -158,7 +158,7 @@
 #if !(TARGET_IPHONE_SIMULATOR)
     if (![ARController deviceSupportsAR]) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"No AR Error Title", @"No AR Support")
-                                                        message:NSLocalizedString(@"No AR Error Message"@, "This device does not support AR functionality!") 
+                                                        message:NSLocalizedString(@"No AR Error Message", @"This device does not support AR functionality!") 
                                                        delegate:nil 
                                               cancelButtonTitle:NSLocalizedString(@"OK Button", @"OK") 
                                               otherButtonTitles:nil];
