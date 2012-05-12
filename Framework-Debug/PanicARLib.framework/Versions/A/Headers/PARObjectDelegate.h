@@ -20,6 +20,11 @@
 /*! @protocol PARObjectDelegate */
 @protocol PARObjectDelegate
 
+- (void)addedToARController;
+- (void)removedFromARController;
+
+- (BOOL)enabled;
+
 /*! unload content when PARView is unloaded */
 - (void)unloadContent;
 /*! load content when PARView is loaded or displayed and content is not yet loaded */

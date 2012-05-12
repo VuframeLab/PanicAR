@@ -41,33 +41,12 @@
  @remarks DEBUG only */
 - (BOOL)isConsoleEnabled;
 
-/*! show alert box for any error that occurs (lost GPS signal, etc) */
-- (void)enableErrorMessages;
-/*! do not show alert box for errors */
-- (void)disableErrorMessages;
 
-#pragma mark - Radar
-
-/*! enable continuous gps
- @remarks use this if your app needs to retrieve the user's location outside the PAR functionality, this allows to use the locationManager the PARController has started to access location data; you don't need to do it a second time in your own code 
- @attention may drain battery */
-- (void)enableContinuousGPS;
-/*! disable continuous gps */
-- (void)disableContinuousGPS;
-/*! @return YES if location manager is not stopped when exiting the PAR view */
-- (BOOL)isContinuousGPSEnabled;
 
 - (float)clipObjectsNearLimit;
 - (float)clipObjectsFarLimit;
 - (void)clipObjectsNearerThan:(float)theNearLimit fartherThan:(float)theFarLimit;
 
-
-- (void)disableOrientationUpdate;
-- (void)enableOrientationUpdate;
-- (void)disableOrientationUpdate;
-- (BOOL)isOrientationUpdateEnabled;
-- (UIInterfaceOrientation)defaultOrientation;
-- (void)setDefaultOrientation:(UIInterfaceOrientation)theOrientation;
 
 
 

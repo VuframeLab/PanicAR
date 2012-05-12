@@ -29,9 +29,11 @@
     AVCaptureSession* _session;
     AVCaptureVideoPreviewLayer* _cameraPreview;
     BOOL _cameraPreviewVisible;
+#if PANICAR_3D
     // camera image capture
     AVCaptureStillImageOutput* _stillImageOutput;
     BOOL _isCapturingImage;
+#endif
     
     // radar
     PARRadarView* _arRadarView;
@@ -49,6 +51,10 @@
 
 @property (nonatomic,retain) PARView *arView;
 @property (nonatomic,retain) PARRadarView *arRadarView;
+#if PANICAR_3D
+@property (nonatomic,readonly) BOOL isCapturingImage;
+#endif
+
 
 #pragma mark - Subviews
 - (void)createARView;
@@ -75,7 +81,7 @@
 - (void)updateCameraPreview;
 - (void)stopCameraPreview;
 
-#if ADVANCED
+#if PANICAR_3D
 - (void)takePicture;
 #endif
 

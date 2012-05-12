@@ -9,7 +9,7 @@
 
 #include "PARController.h"
 #include "PARController+Config.h"
-#include "PARController+Sensors.h"
+#include "PARSensorManager.h"
 #include "PARController+Objects.h"
 #include "PARControllerDelegate.h"
 #include "PARView.h"

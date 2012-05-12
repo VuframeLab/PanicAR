@@ -4,8 +4,6 @@
 // No warranty is expressed or implied.
 
 // Helper methods for adding an alpha layer to an image
-@interface UIImage (Alpha)
+@interface UIImage (PanicAR_Alpha)
 - (BOOL)hasAlpha;
-- (UIImage *)imageWithAlpha;
-- (UIImage *)transparentBorderImage:(NSUInteger)borderSize;
 @end

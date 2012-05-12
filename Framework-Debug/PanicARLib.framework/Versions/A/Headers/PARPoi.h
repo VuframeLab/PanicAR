@@ -36,15 +36,17 @@ extern float _viewGravityY;
     UIView* _radarView;
 	PARVector4 _enuVector;
     double poiX, poiY, poiZ;
-    CGPoint _offset;
+    CGPoint _center;
     BOOL _useDefaultRadarGfx;
     double e,n,u;
     BOOL _hidden, _stacked;
+    BOOL _enabled;
 }
 
 @property (nonatomic, retain) UIView *labelView;
 @property (nonatomic, retain) UIView *radarView;
 @property (nonatomic, assign) CGPoint offset;
+@property (nonatomic, assign) BOOL enabled;
 
 /*! create an empty PARPoi 
  @remarks create and assign @ref labelView before it will show up in the @ref PARView

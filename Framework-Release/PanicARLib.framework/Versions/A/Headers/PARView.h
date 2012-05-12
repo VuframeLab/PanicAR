@@ -10,7 +10,10 @@
 #import "PARObjectDelegate.h"
 #import "PARMath.h"
 
+
 #define RENDER_FPS 15
+#define RENDER_PLANE_NEAR 0.25
+#define RENDER_PLANE_FAR 100000
 #define DEFAULT_STACKING_ANIMATION_SPEED_IPAD 0.25
 #define DEFAULT_STACKING_ANIMATION_SPEED_IPHONE 0.5
 #define DEFAULT_LABEL_BASELINE 0.5
@@ -20,6 +23,7 @@
 #define HALF_NUMBER_OF_STACKINGSECTORS (MAX_NUMBER_OF_STACKINGSECTORS/2)
 
 @class PARController;
+@class PARSensorManager;
 @class PARPoi;
 @class PARViewController;
 
@@ -35,12 +39,19 @@
 
 extern PARView* _activeView;
 
-/*! @class PARView */
+
+
+/*! @class PARView 
+ handles interface for rendering AR objects
+ provides functionality for non-3d rendering and stacking of labels
+ */
 @interface PARView : UIView {
 	PARController* _arController;
+	PARSensorManager* _arSensorManager;
 	PARViewController* _arViewController;
 	id<PARObjectDelegate> _currentObject;
     
+    double _fov;
 	PARMatrix4x4 _perspectiveMatrix;
 	PARMatrix4x4 _perspectiveCameraMatrix;
     
@@ -80,7 +91,7 @@ extern PARView* _activeView;
 - (void)stop;
 - (void)updateView:(NSTimer *)theTimer;
 
-
+- (void)setupProjectionMatrix;
 
 #pragma mark - Utilities
 - (UIImage *)renderToImageWithSize:(float)theWidth Height:(float)theHeight;

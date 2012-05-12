@@ -11,7 +11,6 @@
 #import "PARObjectDelegate.h"
 
 @class PARPoiLabel; 
-@class PARObject; 
 
 /*!
  @name Object Management
@@ -46,11 +45,13 @@
 
 
 #pragma mark - Sorting
+- (void)updateAfterLocationChange;
 - (void)sortMarkersByDistance;
 
 
 
 
+#ifdef PANICAR_LEGACY
 #pragma mark - Deprecated  Methods
 
 /*! adds an PARPoiLabel to the controller Marker needs to have location! */
@@ -67,5 +68,6 @@
 - (void)clearMarkers  __attribute__ ((deprecated));
 /*!  @return  the number of PARPoiLabels currently added to the Controller */
 - (int) numberOfMarkers  __attribute__ ((deprecated));
+#endif 
 
 @end

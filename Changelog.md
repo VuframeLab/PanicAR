@@ -18,8 +18,8 @@ This version of PanicAR brings major updates and heavy refactoring in the API an
 	- there is a detailed migration guide available here: [Migration Guide on gitHub.com](https://github.com/doPanic/PanicAR/wiki/Migration-Guide-1.0x----1.2)
 	
 - ARController
-	- the ARController class has been split into two seperate classes: the PARController and the PARViewController
-	- the PARController now handles sensors, configuration and all ar objects while the PARViewController handles rendering
+	- the ARController class has been split into two seperate classes: the PARController, PARSensorManager and the PARViewController
+	- the PARController now handles configuration and all ar objects while the PARSensorManager handles device sensors and fallbacks and the PARViewController handles rendering
 	- PARViewController and PARView now follow the example of UIViewController and UIView
  	- PARViewController can now be subclassed and extended with own functionality
  	- PARView should not be subclassed
@@ -90,13 +90,13 @@ We are offering an advanced edition of PanicAR which includes OpenGL-driven rend
 
 **iOS 5 Hotfix**
 
-- fix: loading view freeze on iOS 5 devices
+- fix: loading view setFrozen:NO on iOS 5 devices
 - add: build target for highly optimized Release-Framework-Build (only for licensees, missing in public repository)
 
 
 ## v1.04
 
-- fix: loading view freeze on iOS 5 devices
+- fix: loading view setFrozen:NO on iOS 5 devices
 - fix: enableLoadingView not supported in iOS 5
 - change: enableLoadingView set to 'NO' by default
 - move: PARMarker to PARObjects/PARMarker
