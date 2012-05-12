@@ -38,9 +38,11 @@
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
 - (void)loadView
 {
-    [super loadView];
+    // IMPORTANT: set Api Key before calling super:loadView!
+    [[PARController sharedARController] setApiKey:@""];
+    [[PARController sharedARController] setDelegate:self];
     
-    [PARController sharedARController].delegate = self;
+    [super loadView];
     
     if ([PARController deviceSupportsAR:YES]) {
         [[PARController sharedARController] enableConsole];
@@ -56,7 +58,7 @@
     [super viewDidLoad];
     
     // setup AR manager properties
-    [[[PARController sharedARController] locationManager] setDesiredAccuracy:kCLLocationAccuracyBestForNavigation];
+    [[[PARSensorManager sharedSensorManager] locationManager] setDesiredAccuracy:kCLLocationAccuracyBestForNavigation];
     [_arView setAlignLabelsToDeviceOrientation:YES];
     [_arView setLabelBaseline:0.7f];
     [[PARController sharedARController] hideConsole];
@@ -109,10 +111,10 @@
 
 - (void)arDidTapObject:(id<PARObjectDelegate>)object {
    if ([PARController sharedARController].isFrozen) {
-       [[PARController sharedARController] unfreeze];
+       [[PARController sharedARController] setFrozen:YES];
    }
    else {
-       [[PARController sharedARController] freeze];
+       [[PARController sharedARController] setFrozen:NO];
    }
 }
 
@@ -133,7 +135,7 @@
 }
 
 - (void)arSignalQualityChanged {
-    switch ([PARController sharedARController].userSignalQuality) {
+    switch ([PARSensorManager sharedSensorManager].userSignalQuality) {
         case 0:
             _signalDisplay.image = [UIImage imageNamed:@"signal4.png"];
             break;
@@ -179,12 +181,12 @@
 #pragma mark - Instance Methods
     
 - (void)updateInfoLabel {
-    if ([PARController sharedARController].userLocation == nil) {
+    if ([PARSensorManager sharedSensorManager].userLocation == nil) {
         _infoLabel.text = @"could not retrieve location";
         _infoLabel.textColor = [UIColor redColor];
     }
     else {
-        _infoLabel.text = [NSString stringWithFormat:@"GPS signal quality: %.1d (~%.1f Meters)", [PARController sharedARController].userSignalQuality, [PARController sharedARController].userLocationQuality];
+        _infoLabel.text = [NSString stringWithFormat:@"GPS signal quality: %.1d (~%.1f Meters)", [PARSensorManager sharedSensorManager].userSignalQuality, [PARSensorManager sharedSensorManager].userLocationQuality];
         _infoLabel.textColor = [UIColor whiteColor];
     }
 }
