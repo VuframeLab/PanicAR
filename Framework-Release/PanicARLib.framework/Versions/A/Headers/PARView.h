@@ -51,7 +51,7 @@ extern PARView* _activeView;
 	PARViewController* _arViewController;
 	id<PARObjectDelegate> _currentObject;
     
-    double _fov;
+    double _fov, _verticalFov;
 	PARMatrix4x4 _perspectiveMatrix;
 	PARMatrix4x4 _perspectiveCameraMatrix;
     

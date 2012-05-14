@@ -48,6 +48,7 @@ This version of PanicAR brings major updates and heavy refactoring in the API an
 
 - UIImagePickerController has been dropped – the camera feed is now rendered using AVFoundation
 - the MapKit Framework is now a required dependency (my be weak linked)
+- Console functionality has been removed – is no displayed directly in MyARViewController view UI
 
 **New Features**
 

@@ -18,7 +18,7 @@
         self.tabBarItem.image = [UIImage imageNamed:@"first"];
         self.navigationItem.title = self.title;
 #if DEBUG
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(switchConsole:)];
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Console" style:UIBarButtonItemStyleBordered target:self action:@selector(switchConsole:)];
 #endif
     }
     return self;
@@ -230,6 +230,8 @@
 
 - (IBAction)switchConsole:(id)sender { 
     [PARController sharedARController].console.hidden = ![PARController sharedARController].console.hidden;
+    CGRect rect = CGRectMake(0, [PARController sharedARController].console.hidden ? 0 : 160, 0, 32);
+    [_arRadarView setRadarToThumbnail:_radarThumbnailPosition withAdditionalOffset:rect];
 }
 
 

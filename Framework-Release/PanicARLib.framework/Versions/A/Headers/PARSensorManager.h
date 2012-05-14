@@ -97,8 +97,8 @@ void GetDeviceFOVs(double *hori, double *vert);
     int _numberOfLocationUpdates;
     
     // heading
-    CLHeading* _userHeading;
-    double _userHeadingFromMagnetometer;
+    double _userHeading;
+    CLHeading* _userHeadingFromMagnetometer;
     double _userHeadingFromMotionRaw;
     double _userHeadingFromMotion;
     double _userLastHeading;
@@ -205,10 +205,10 @@ void GetDeviceFOVs(double *hori, double *vert);
 @property (nonatomic, readonly, assign) float userLocationAge;
 
 /*! @property heading (retrieved from compass) */
-@property (nonatomic, readonly, assign) CLHeading *userHeading;
+@property (nonatomic, readonly, assign) CLHeading *userHeadingFromMagnetometer;
 
 @property (nonatomic, readonly, assign) double userHeadingFromMotion;
-@property (nonatomic, readonly, assign) double userHeadingFromMagnetometer;
+@property (nonatomic, readonly, assign) double userHeading;
 @property (nonatomic, readonly, assign) double userLastHeading;
 @property (nonatomic, readonly, assign) float userHeadingAccuracy;
 @property (nonatomic, readonly, assign, getter=isUserHeadingValid) BOOL userHeadingValid;
