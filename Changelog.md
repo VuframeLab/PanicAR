@@ -2,6 +2,10 @@
 
 **Important: Review this document before upgrading your project to a new revisions of PanicAR**
 
+## v1.20.995
+
+fix: PARPoi and subclass-objects are not removed from View when removing object from PARController
+
 ## v1.20
 
 **Major Update:** UIKit, AVFoundation, iOS 5, Gyroscope-Tracking, Point of Interests
@@ -48,7 +52,7 @@ This version of PanicAR brings major updates and heavy refactoring in the API an
 
 - UIImagePickerController has been dropped – the camera feed is now rendered using AVFoundation
 - the MapKit Framework is now a required dependency (my be weak linked)
-- Console functionality has been removed – is no displayed directly in MyARViewController view UI
+- Console functionality has been removed – is now displayed directly in MyARViewController view UI
 
 **New Features**
 

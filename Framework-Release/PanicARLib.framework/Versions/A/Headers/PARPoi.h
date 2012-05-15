@@ -11,7 +11,6 @@
 #import "PARObjectDelegate.h"
 
 extern BOOL _loadsDefaultRadarGfx;
-extern BOOL _alignToDeviceOrientation;
 extern float _stackingAnimationSpeed;
 extern float _labelBaseline;
 extern float _clipObjectFarLimit;

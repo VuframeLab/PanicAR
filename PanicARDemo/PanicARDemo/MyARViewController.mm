@@ -8,18 +8,19 @@
 
 #import "MyARViewController.h"
 
+//#define LABEL PARPoiLabel
+#define LABEL PARPoiAdvancedLabel
+static NSTimer *infoTimer = nil;
+
 @implementation MyARViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = NSLocalizedString(@"PAR", @"PAR");
-        self.tabBarItem.image = [UIImage imageNamed:@"first"];
+        self.title = NSLocalizedString(@"AR", @"AR");
         self.navigationItem.title = self.title;
-#if DEBUG
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Console" style:UIBarButtonItemStyleBordered target:self action:@selector(switchConsole:)];
-#endif
+        self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Options" style:UIBarButtonItemStyleBordered target:self action:@selector(showOptions:)] autorelease];
     }
     return self;
 }
@@ -39,14 +40,19 @@
 - (void)loadView
 {
     // IMPORTANT: set Api Key before calling super:loadView!
-    [[PARController sharedARController] setApiKey:@""];
+    [[PARController sharedARController] setApiKey:@"ef71d116b33ba7dce3305448"];
     [[PARController sharedARController] setDelegate:self];
     
     [super loadView];
     
+    // simulate ipad 1
+    //[PanicARHelper simulateiPad1WithOS:4.00f];
+    //[PanicARHelper simulateiPad2WithOS:4.20f];
+    //[PanicARHelper simulateAccelerometer];
+    
     if ([PARController deviceSupportsAR:YES]) {
-        [[PARController sharedARController] enableConsole];
         [_arRadarView setRadarRange:1500];
+        [[PARSensorManager sharedSensorManager] enableUpdateHeadingFromLocationManager];
     }
 }
 
@@ -58,19 +64,11 @@
     [super viewDidLoad];
     
     // setup AR manager properties
-    [[[PARSensorManager sharedSensorManager] locationManager] setDesiredAccuracy:kCLLocationAccuracyBestForNavigation];
-    [_arView setAlignLabelsToDeviceOrientation:YES];
-    [_arView setLabelBaseline:0.7f];
-    [[PARController sharedARController] hideConsole];
+    [[_sensorManager locationManager] setDesiredAccuracy:kCLLocationAccuracyBestForNavigation];
+    [_arView setLabelBaseline:0.0f];
     
     // create AR POIs
     [self createARPoiObjects];
-    
-    // setup radar
-    CGRect rect = CGRectMake(0, [PARController sharedARController].console.hidden ? 0 : 160, 0, 32);
-    [_arRadarView setRadarToThumbnail:PARRadarPositionTopLeft withAdditionalOffset:rect];
-    _radarThumbnailPosition = PARRadarPositionTopLeft;
-    [_arRadarView showRadar];
 }
 
 
@@ -81,19 +79,35 @@
     // e.g. self.myOutlet = nil;
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    infoTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(updateInfoLabel) userInfo:nil repeats:YES];
+    
+    // setup radar
+    CGRect rect = CGRectMake(0, 44, 0, 32);
+    [_arRadarView setRadarToThumbnail:PARRadarPositionBottomRight withAdditionalOffset:rect];
+    _radarThumbnailPosition = PARRadarPositionBottomRight;
+    [_arRadarView showRadar];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [infoTimer invalidate];
+    infoTimer = nil;
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    // Return YES for supported orientations – but only if PARView is not rotated dynamically
+    // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait)
-    || (!self.rotatesARView && (interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown
-                                || interfaceOrientation == UIInterfaceOrientationLandscapeLeft
-                                || interfaceOrientation == UIInterfaceOrientationLandscapeRight));
+            || (!self.rotatesARView && (interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown
+                                        || interfaceOrientation == UIInterfaceOrientationLandscapeLeft
+                                        || interfaceOrientation == UIInterfaceOrientationLandscapeRight));
 }
-    
-    
-    
+
+
 #pragma mark - AR Config
-    
+
 - (BOOL)usesCameraPreview {
     return YES;
 }
@@ -101,34 +115,49 @@
     return NO;
 }
 - (BOOL)rotatesARView {
-    return NO;
+    return YES;
 }
+
 
 
 #pragma mark - PAR Controller Delegate Methods
 
-
-
 - (void)arDidTapObject:(id<PARObjectDelegate>)object {
-   if ([PARController sharedARController].isFrozen) {
-       [[PARController sharedARController] setFrozen:YES];
-   }
-   else {
-       [[PARController sharedARController] setFrozen:NO];
-   }
+    if ([PARController sharedARController].isFrozen) {
+        [[PARSensorManager sharedSensorManager] setFrozen:YES];
+    }
+    else {
+        [[PARSensorManager sharedSensorManager] setFrozen:NO];
+    }
 }
-
 
 - (void)arDidReceiveErrorCode:(int)code {
     [self updateInfoLabel];
+    
 }
-
-
 
 - (void)arDidUpdateLocation {
-    [self updateInfoLabel];
+    CLLocation* l = [_sensorManager userLocation];
+    CLLocationCoordinate2D c = [l coordinate];
+    
+    UILabel *_locationLabel = [infoLabels objectAtIndex:1];
+    _locationLabel.hidden = NO;
+    UILabel *_locationDetailsLabel = [infoLabels objectAtIndex:2];
+    _locationDetailsLabel.hidden = NO;
+    
+    _locationLabel.text = [NSString stringWithFormat:@"%.4f° %.4f° %.2fm", c.latitude, c.longitude, l.altitude];
+    _locationDetailsLabel.text = [NSString stringWithFormat:@"±%.2fm ±%.2fm", l.horizontalAccuracy, l.verticalAccuracy];
 }
 
+- (void)arDidUpdateHeading {
+    UILabel *_headingLabel = [infoLabels objectAtIndex:3];
+    _headingLabel.hidden = NO;
+    UILabel *_headingDetailsLabel = [infoLabels objectAtIndex:4];
+    _headingDetailsLabel.hidden = NO;
+    
+    _headingLabel.text = [NSString stringWithFormat:@"%.2f°", [_sensorManager userHeading]];
+    _headingDetailsLabel.text = [NSString stringWithFormat:@" %.2f ±%.2f", [_sensorManager userHeadingFromMagnetometer].trueHeading, [_sensorManager userHeadingFromMagnetometer].headingAccuracy];
+}
 
 - (void)arDidChangeOrientation:(UIInterfaceOrientation)orientation {
     
@@ -153,50 +182,70 @@
             _signalDisplay.image = [UIImage imageNamed:@"signal0.png"];
             break;
     }
-}
-
-- (void)arPreRenderPass {
     
-}
-- (void)arPostRenderPass {
     
+    // optionally: hide GPS meter if signal is fine
+    _signalDisplay.hidden = NO;
+    
+    if ([PARSensorManager sharedSensorManager].userSignalQuality < 3) {
+        if (!_signalDisplay.hidden) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 3.0 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+                _signalDisplay.hidden = YES;
+            });
+        }
+    }
 }
 
 - (void)arBeganToTakePicture {
     
 }
+
 - (void)arDidTakePicture:(UIImage *)image {
     
 }
 
 
-#pragma mark - DEBUG
 
-/*! the console callback only happens with the Debug Build of the Framework */
-- (void)arConsoleCallback {
-    [self updateInfoLabel];
-}
-    
-    
 #pragma mark - Instance Methods
-    
+
 - (void)updateInfoLabel {
-    if ([PARSensorManager sharedSensorManager].userLocation == nil) {
-        _infoLabel.text = @"could not retrieve location";
+    UILabel *_infoLabel = [infoLabels objectAtIndex:0];
+    NSString *display = nil;
+    if (_sensorManager.userLocation == nil) {
         _infoLabel.textColor = [UIColor redColor];
+        display = @"could not retrieve location";
     }
     else {
-        _infoLabel.text = [NSString stringWithFormat:@"GPS signal quality: %.1d (~%.1f Meters)", [PARSensorManager sharedSensorManager].userSignalQuality, [PARSensorManager sharedSensorManager].userLocationQuality];
+        display = [NSString stringWithFormat:@"GPS signal quality: %.1d (~%.1f Meters)", _sensorManager.userSignalQuality, _sensorManager.userLocationQuality];
         _infoLabel.textColor = [UIColor whiteColor];
     }
+    
+    NSString *trackingDisplay = nil;
+    PARCapabilities c = _sensorManager.capabilities;
+    if (c.useAutoAttitude) {
+        trackingDisplay = @"\nTracking: Gyroscope (iOS 5): y:%+.4f, p:%+.4f, r:%+.4f";
+    }
+    else {
+        if (c.useSemiAutoAttitude) {
+            trackingDisplay = @"\nTracking: Gyroscope (iOS 4): y:%+.4f, p:%+.4f, r:%+.4f";
+        }
+        else {
+            trackingDisplay = @"\nTracking: Accelerometer: y:%+.4f, p:%+.4f, r:%+.4f";
+        }
+    }
+    _infoLabel.text = [display stringByAppendingFormat:trackingDisplay, _sensorManager.deviceYaw, _sensorManager.devicePitch, _sensorManager.deviceRoll];
 }
 
+
+- (void)changeTracking {
+    
+}
 
 
 #pragma mark - Actions
 
 - (IBAction)radarButtonAction {
-    CGRect rect = CGRectMake(0, [PARController sharedARController].console.hidden ? 0 : 160, 0, 32);
+    CGRect rect = CGRectMake(0, 44, 0, 0);
     if (!_arRadarView.isRadarVisible || _arRadarView.radarMode == PARRadarOff) {
         _radarThumbnailPosition = PARRadarPositionTopLeft;
         [_arRadarView setRadarToThumbnail:_radarThumbnailPosition withAdditionalOffset:rect];
@@ -228,44 +277,78 @@
     }
 }
 
-- (IBAction)switchConsole:(id)sender { 
-    [PARController sharedARController].console.hidden = ![PARController sharedARController].console.hidden;
-    CGRect rect = CGRectMake(0, [PARController sharedARController].console.hidden ? 0 : 160, 0, 32);
-    [_arRadarView setRadarToThumbnail:_radarThumbnailPosition withAdditionalOffset:rect];
+- (IBAction)showOptions:(id)sender { 
+    UIActionSheet* options = [[[UIActionSheet alloc] initWithTitle:@"Options" 
+                                                          delegate:self 
+                                                 cancelButtonTitle:@"Cancel" 
+                                            destructiveButtonTitle:@"Remove AR Objects" 
+                                                 otherButtonTitles:@"Re-create Default Markers", nil] autorelease];
+    options.tag = 1;
+    [options showFromBarButtonItem:self.navigationItem.rightBarButtonItem animated:YES];
 }
 
 
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    NSLog(@"%d", buttonIndex);
+    switch (buttonIndex) {
+        case 0:
+            [[PARController sharedARController] clearObjects];
+            break;
+        case 1:
+            [self createARPoiObjects];
+            break;
+            
+        default:
+            break;
+    }
+}
 
 #pragma mark - PAR Stuff
 
 
-
-// create a few test markers
+// create a few test poi objects
 - (void)createARPoiObjects {
     PARPoi* newPoi = nil;
-    PARPoiLabel* newPoiLabel = nil;
+    LABEL* newPoiLabel = nil;
     
-    // first: setup a new marker with title and content at the location you want
+    // first: setup a new poi label with title and description at the location you want
     // WARNING: use double-precision coordinates whenever possible (the following coordinates are from Google Maps which only provides 8-9 digit coordinates
-    newPoiLabel = [[PARPoiLabel alloc] initWithTitle:@"Rome" theDescription:@"Italy" atLocation:[[[CLLocation alloc] initWithLatitude:41.890156 longitude:12.492304] autorelease]];
-    // second: add the marker to the PARController using the addObject method
-	[[PARController sharedARController] addObject: newPoiLabel];
+    newPoiLabel = [[[LABEL alloc] initWithTitle:@"Rome" 
+                                 theDescription:@"Italy" 
+                                     atLocation:[[[CLLocation alloc] initWithLatitude:41.890156 longitude:12.492304] autorelease]
+                    ] autorelease];
+    // second: add the poi label to the PARController using the addObject method
+	[[PARController sharedARController] addObject:newPoiLabel];
     
-    // add a second marker
-    newPoiLabel = [[PARPoiLabel alloc] initWithTitle:@"Berlin" theDescription:@"Germany" atLocation:[[[CLLocation alloc] initWithLatitude:52.523402 longitude:13.41141] autorelease]];
+    // add a second poi label
+    newPoiLabel = [[[LABEL alloc] initWithTitle:@"Berlin" 
+                                 theDescription:@"Germany" 
+                                     atLocation:[[[CLLocation alloc] initWithLatitude:52.523402 longitude:13.41141] autorelease]] autorelease];
     [[PARController sharedARController] addObject:newPoiLabel];
     
-    // add a third marker, this time allocation of a new marker and adding to the PARController are wrapped up in one line
-	newPoiLabel = [[PARPoiLabel alloc] initWithTitle:@"London" theDescription:@"United Kingdom" atLocation:[[[CLLocation alloc] initWithLatitude:51.500141 longitude:-0.126257] autorelease]];
+    // add a third poi label, this time allocation of a new marker and adding to the PARController are wrapped up in one line
+	newPoiLabel = [[[LABEL alloc] initWithTitle:@"London" 
+                                 theDescription:@"United Kingdom" 
+                                     atLocation:[[[CLLocation alloc] initWithLatitude:51.500141 longitude:-0.126257] autorelease]
+                    ] autorelease];
     [[PARController sharedARController] addObject:newPoiLabel];
     
-	newPoi = [[PARPoi alloc] initWithImage:@"DefaultImage" atLocation:[[[CLLocation alloc] initWithLatitude:51.500141 longitude:-0.126257] autorelease]];
-     newPoi.offset = CGPointMake(0, -64);
-     [[PARController sharedARController] addObject:newPoi];
+    // now add a poi (a graphic only - no text)
+	newPoi = [[[PARPoi alloc] initWithImage:@"DefaultImage" 
+                                atLocation:[[[CLLocation alloc] initWithLatitude:51.500141 longitude:-0.126257] autorelease]
+              ] autorelease];
+    newPoi.offset = CGPointMake(0, 0);
+    [[PARController sharedARController] addObject:newPoi];
+    
+    // local pois
+    newPoiLabel = [[[LABEL alloc] initWithTitle:@"Dom" 
+                                theDescription:@"Regensburger Dom" 
+                                    atLocation:[[[CLLocation alloc] initWithLatitude:49.019512 longitude:12.097709] autorelease]
+                   ] autorelease];
+    [[PARController sharedARController] addObject:newPoiLabel];
     
     NSLog(@"PAR Objects Created: %d", [[PARController sharedARController] numberOfObjects]);
     _hasARPoiObjects = YES;
 }
-
 
 @end

@@ -18,7 +18,6 @@
 #import "PARSensorDelegate.h"
 
 #define OBJECT_REFRESH_RATE 60
-#define CONSOLE_REFRESH_RATE 2
 
 @class PARViewController;
 @class PARSensorManager;
@@ -44,16 +43,11 @@
     
     // updates
     NSTimer* _updateTimer;
-#if DEBUG
-    NSTimer* _consoleTimer;
-    UITextView* _console;
-#endif
     
     
     // config
     float _clipObjectFarLimit;
     float _clipObjectNearLimit;
-    BOOL _isConsoleEnabled;
 }
 
 @property (nonatomic, assign) id<PARControllerDelegate> delegate;
@@ -65,7 +59,6 @@
 @property (nonatomic, readonly, retain) NSMutableArray *arObjects;
 @property (nonatomic, assign) BOOL objectsNeedSorting;
 @property (assign) PARViewController *activeViewController;
-@property (nonatomic, retain) UITextView *console;
 
 
 
@@ -83,11 +76,6 @@
 - (void)startObjectUpdate;
 - (void)stopObjectUpdate;
 - (BOOL) isUpdatingObjects;
-#if DEBUG
-- (void)updateConsole:(NSTimer *)theTimer;
-- (void)startConsole;
-- (void)stopConsole;
-#endif
 
 
 #pragma mark - Memory and Multitasking

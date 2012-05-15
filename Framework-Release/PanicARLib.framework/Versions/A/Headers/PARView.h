@@ -80,9 +80,6 @@ extern PARView* _activeView;
 - (float) labelBaseline;
 - (void) setLabelBaseline:(float)percentage;
 
-/*! @property update labels with device vertical orientation 
- @remarks looking into the sky emulates scrolling the marker list up */
-@property (nonatomic, assign, setter = setAlignLabelsToDeviceOrientation:) BOOL alignLabelsToDeviceOrientation;
 - (PARMatrix4x4*) perspectiveCameraMatrix;
 
 

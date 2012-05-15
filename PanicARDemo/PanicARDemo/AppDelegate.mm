@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import <PanicARLib/PanicARLib.h>
 #import "MyARViewController.h"
 #import "ConfigViewController.h"
 #import "AboutViewController.h"
@@ -35,9 +34,9 @@
     UINavigationController* navigation1 = [[UINavigationController alloc] init];
     UINavigationController* navigation2 = [[UINavigationController alloc] init];
     UINavigationController* navigation3 = [[UINavigationController alloc] init];
-    navigation1.navigationBar.barStyle = UIBarStyleBlackOpaque;
-    navigation2.navigationBar.barStyle = UIBarStyleBlackOpaque;
-    navigation3.navigationBar.barStyle = UIBarStyleBlackOpaque;
+    navigation1.navigationBar.barStyle = UIBarStyleBlackTranslucent;
+    navigation2.navigationBar.barStyle = UIBarStyleBlackTranslucent;
+    navigation3.navigationBar.barStyle = UIBarStyleBlackTranslucent;
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         viewController1 = [[[MyARViewController alloc] initWithNibName:@"MyARViewController_iPhone" bundle:nil] autorelease];
@@ -49,8 +48,11 @@
         viewController3 = [[[AboutViewController alloc] initWithNibName:@"AboutViewController_iPad" bundle:nil] autorelease];
     }
     navigation1.viewControllers = [NSArray arrayWithObjects:viewController1, nil];
+    navigation1.tabBarItem = [[[UITabBarItem alloc] initWithTitle:@"AR" image:[UIImage imageNamed:@"second"] tag:0] autorelease];
     navigation2.viewControllers = [NSArray arrayWithObjects:viewController2, nil];
+    navigation2.tabBarItem = [[[UITabBarItem alloc] initWithTitle:@"Map" image:[UIImage imageNamed:@"second"] tag:0] autorelease];
     navigation3.viewControllers = [NSArray arrayWithObjects:viewController3, nil];
+    navigation3.tabBarItem = [[[UITabBarItem alloc] initWithTitle:@"About" image:[UIImage imageNamed:@"second"] tag:0] autorelease];
     
     self.tabBarController = [[[UITabBarController alloc] init] autorelease];
     self.tabBarController.viewControllers = [NSArray arrayWithObjects:navigation1, navigation2, navigation3, nil];

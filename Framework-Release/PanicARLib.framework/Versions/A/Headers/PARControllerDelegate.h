@@ -26,12 +26,11 @@
  @param object the object that was tapped */
 - (void)arDidTapObject:(id<PARObjectDelegate>)object;
 
+@optional
 - (void)arPreRenderPass;
 - (void)arPostRenderPass;
 
 - (void)arBeganToTakePicture;
 - (void)arDidTakePicture:(UIImage *)image;
-
-- (void)arConsoleCallback;
 
 @end

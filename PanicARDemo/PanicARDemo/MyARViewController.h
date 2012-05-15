@@ -6,24 +6,21 @@
 //  Copyright (c) 2011 doPanic. All rights reserved.
 //
 
-#import <PanicARLib/PanicARLib.h>
 #import <MapKit/MapKit.h>
 
 
-
-@interface MyARViewController : PARViewController <PARControllerDelegate> {
-    IBOutlet UILabel* _infoLabel;
+@interface MyARViewController : PARViewController <PARControllerDelegate, UIActionSheetDelegate> {
+    
+    IBOutletCollection(UILabel) NSArray *infoLabels;
     IBOutlet UIImageView* _signalDisplay;
     PARRadarPosition _radarThumbnailPosition;
     BOOL _hasARPoiObjects;
 }
 
 - (void)updateInfoLabel;
+- (void)changeTracking;
 
-#if DEBUG
-/*! console is only used in debug mode */
-- (IBAction)switchConsole:(id)sender;
-#endif
+- (IBAction)showOptions:(id)sender;
 
 - (void)createARPoiObjects;
 

@@ -10,7 +10,8 @@
 #import <AVFoundation/AVFoundation.h>
 #import <UIKit/UIKit.h>
 
-
+#import "PARSensorDelegate.h"
+#import "PARSensorManager.h"
 
 @class PARView;
 @class PARRadarView;
@@ -19,10 +20,11 @@
 /*!
  @class PARViewController
  */
-@interface PARViewController : UIViewController {
+@interface PARViewController : UIViewController <PARSensorDelegate> {
     
     // ar view
     PARView* _arView;
+    PARSensorManager *_sensorManager;
     
     // live camera feed
     UIView* _cameraView;

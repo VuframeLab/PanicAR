@@ -438,8 +438,9 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
+					DEBUG,
+					"DEBUG_LEVEL=DEBUG_LEVEL_VERBOSE",
+					PANICAR_FULL,
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -463,6 +464,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG_LEVEL=DEBUG_LEVEL_WARN",
+					PANICAR_FULL,
+				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -483,11 +488,6 @@
 				FRAMEWORK_SEARCH_PATHS = "../Framework-Debug/**";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PanicARDemo/PanicAR-Demo-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-					PANICAR_FULL,
-				);
 				INFOPLIST_FILE = "PanicARDemo/PanicARDemo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				PRODUCT_NAME = "PanicAR-Demo";
@@ -501,7 +501,6 @@
 				FRAMEWORK_SEARCH_PATHS = "../Framework-Release/**";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PanicARDemo/PanicAR-Demo-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = PANICAR_FULL;
 				INFOPLIST_FILE = "PanicARDemo/PanicARDemo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				PRODUCT_NAME = "PanicAR-Demo";
