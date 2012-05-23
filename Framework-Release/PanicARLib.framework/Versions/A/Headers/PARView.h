@@ -90,9 +90,6 @@ extern PARView* _activeView;
 
 - (void)setupProjectionMatrix;
 
-#pragma mark - Utilities
-- (UIImage *)renderToImageWithSize:(float)theWidth Height:(float)theHeight;
-
 #pragma mark - Class Methods
 + (void)setActiveView:(PARView *)theView;
 + (PARView *)activeView;

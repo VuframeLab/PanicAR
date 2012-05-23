@@ -61,13 +61,13 @@
 		993A8E3A144FB14B00414EB3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 993A8E39144FB14B00414EB3 /* CoreGraphics.framework */; };
 		993A8E40144FB14B00414EB3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 993A8E3E144FB14B00414EB3 /* InfoPlist.strings */; };
 		993A8E42144FB14B00414EB3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 993A8E41144FB14B00414EB3 /* main.m */; };
-		994606B21450CB7200DF25AD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 994606B11450CB7200DF25AD /* Localizable.strings */; };
 		994606B71450CD8000DF25AD /* App.strings in Resources */ = {isa = PBXBuildFile; fileRef = 994606B61450CD8000DF25AD /* App.strings */; };
 		9955EE6C1498E6070081D085 /* ConfigViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9955EE681498E6070081D085 /* ConfigViewController_iPad.xib */; };
 		9955EE6D1498E6070081D085 /* ConfigViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9955EE691498E6070081D085 /* ConfigViewController_iPhone.xib */; };
 		9955EE6E1498E6070081D085 /* ConfigViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9955EE6B1498E6070081D085 /* ConfigViewController.mm */; };
 		9955EE711498E61F0081D085 /* PanicARLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9955EE701498E61F0081D085 /* PanicARLib.framework */; };
 		9955EE731498E63D0081D085 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9955EE721498E63D0081D085 /* MapKit.framework */; };
+		99897907156CF13500479610 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 99897906156CF13500479610 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -131,7 +131,6 @@
 		993A8E41144FB14B00414EB3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		993A8E43144FB14B00414EB3 /* PanicAR-Demo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PanicAR-Demo-Prefix.pch"; sourceTree = "<group>"; };
 		993A8E44144FB14B00414EB3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		994606B11450CB7200DF25AD /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		994606B61450CD8000DF25AD /* App.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = App.strings; sourceTree = "<group>"; };
 		9955EE681498E6070081D085 /* ConfigViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfigViewController_iPad.xib; sourceTree = "<group>"; };
 		9955EE691498E6070081D085 /* ConfigViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfigViewController_iPhone.xib; sourceTree = "<group>"; };
@@ -139,6 +138,7 @@
 		9955EE6B1498E6070081D085 /* ConfigViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ConfigViewController.mm; sourceTree = "<group>"; };
 		9955EE701498E61F0081D085 /* PanicARLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PanicARLib.framework; path = "../Framework-Debug/PanicARLib.framework"; sourceTree = "<group>"; };
 		9955EE721498E63D0081D085 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		99897906156CF13500479610 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +165,7 @@
 		9909951814C311E7007390A8 /* ARAssets */ = {
 			isa = PBXGroup;
 			children = (
+				99897906156CF13500479610 /* Localizable.strings */,
 				9909951914C311E7007390A8 /* DefaultImage.png */,
 				9909951A14C311E7007390A8 /* DefaultPoiLabel.png */,
 				9909951B14C311E7007390A8 /* DefaultPoiLabel.xib */,
@@ -277,7 +278,6 @@
 			isa = PBXGroup;
 			children = (
 				994606B61450CD8000DF25AD /* App.strings */,
-				994606B11450CB7200DF25AD /* Localizable.strings */,
 				993A8E3D144FB14B00414EB3 /* PanicARDemo-Info.plist */,
 				993A8E3E144FB14B00414EB3 /* InfoPlist.strings */,
 				993A8E41144FB14B00414EB3 /* main.m */,
@@ -379,7 +379,6 @@
 				992DE107145080CD001927F0 /* signal3@2x.png in Resources */,
 				992DE108145080CD001927F0 /* signal4.png in Resources */,
 				992DE109145080CD001927F0 /* signal4@2x.png in Resources */,
-				994606B21450CB7200DF25AD /* Localizable.strings in Resources */,
 				994606B71450CD8000DF25AD /* App.strings in Resources */,
 				9955EE6C1498E6070081D085 /* ConfigViewController_iPad.xib in Resources */,
 				9955EE6D1498E6070081D085 /* ConfigViewController_iPhone.xib in Resources */,
@@ -394,6 +393,7 @@
 				9909953114C311E7007390A8 /* RadarDot@2x.png in Resources */,
 				9909953214C311E7007390A8 /* RadarScreen.png in Resources */,
 				9909953314C311E7007390A8 /* RadarScreen@2x.png in Resources */,
+				99897907156CF13500479610 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -4,6 +4,9 @@
 /* Large Unit of Distance */
 "Large Unit of Distance" = "0.0 km";
 
+/* Largest Unit of Distance */
+"Largest Unit of Distance" = "0 km";
+
 /* Error */
 "Error" = "Error";
 
