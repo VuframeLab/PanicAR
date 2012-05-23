@@ -20,6 +20,8 @@
 /*! @protocol PARObjectDelegate */
 @protocol PARObjectDelegate
 
+- (NSString *)title;
+
 - (void)addedToARController;
 - (void)removedFromARController;
 

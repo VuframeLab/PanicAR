@@ -2,9 +2,12 @@
 
 **Important: Review this document before upgrading your project to a new revisions of PanicAR**
 
-## v1.20.995
+## v1.20.995 to v1.20.1056 - minor bug fixes
 
 fix: PARPoi and subclass-objects are not removed from View when removing object from PARController
+fix: removing a PARObjectDelegate-object from PARController will cause BAD_ACCESS
+fix: localisation strings not included / not correctly formated
+fix: tap-interaction sample code in demo app not working -> replaced with showing Alert on tapping a label
 
 ## v1.20
 

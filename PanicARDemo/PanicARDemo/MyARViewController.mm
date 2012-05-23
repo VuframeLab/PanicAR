@@ -123,12 +123,9 @@ static NSTimer *infoTimer = nil;
 #pragma mark - PAR Controller Delegate Methods
 
 - (void)arDidTapObject:(id<PARObjectDelegate>)object {
-    if ([PARController sharedARController].isFrozen) {
-        [[PARSensorManager sharedSensorManager] setFrozen:YES];
-    }
-    else {
-        [[PARSensorManager sharedSensorManager] setFrozen:NO];
-    }
+    [PARController showAlert:@"Tap" 
+                 withMessage:[NSString stringWithFormat:@"Label tapped: %@", object.title]
+            andDismissButton:@"Okay"];
 }
 
 - (void)arDidReceiveErrorCode:(int)code {

@@ -34,6 +34,8 @@
     CGSize _stackingSize;
 }
 
+
+
 /*! title of the marker (retained) */
 @property (nonatomic, retain) NSString *title;
 

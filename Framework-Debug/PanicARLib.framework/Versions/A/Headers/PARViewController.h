@@ -11,17 +11,18 @@
 #import <UIKit/UIKit.h>
 
 #import "PARSensorDelegate.h"
-#import "PARSensorManager.h"
 
 @class PARView;
 @class PARRadarView;
 @class PARController;
+@class PARSensorManager;
 
 /*!
  @class PARViewController
  */
 @interface PARViewController : UIViewController <PARSensorDelegate> {
     
+@public
     // ar view
     PARView* _arView;
     PARSensorManager *_sensorManager;
@@ -53,6 +54,7 @@
 
 @property (nonatomic,retain) PARView *arView;
 @property (nonatomic,retain) PARRadarView *arRadarView;
+@property (nonatomic,readonly) PARSensorManager *sensorManager;
 #if PANICAR_3D
 @property (nonatomic,readonly) BOOL isCapturingImage;
 #endif

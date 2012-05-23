@@ -1,11 +1,11 @@
 /* Small Unit of Distance */
-"Small Unit of Distance" = "# m";
+"Small Unit of Distance" = "%.0f m";
 
 /* Large Unit of Distance */
-"Large Unit of Distance" = "0.0 km";
+"Large Unit of Distance" = "%.1f km";
 
 /* Largest Unit of Distance */
-"Largest Unit of Distance" = "0 km";
+"Largest Unit of Distance" = "%.0f km";
 
 /* Error */
 "Error" = "Error";

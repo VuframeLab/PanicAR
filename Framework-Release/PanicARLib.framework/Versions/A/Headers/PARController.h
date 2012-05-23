@@ -51,6 +51,7 @@
 }
 
 @property (nonatomic, assign) id<PARControllerDelegate> delegate;
+@property (nonatomic, assign) id<PARSensorDelegate> sensorDelegate;
 @property (nonatomic, assign, getter = isFrozen, setter = setFrozen:) BOOL isFrozen;
 @property (nonatomic, readonly, assign) PARStatus status;
 

@@ -155,7 +155,11 @@ void GetDeviceFOVs(double *hori, double *vert);
 
 +(PARSensorManager*)sharedSensorManager;
 
+#if PANICAR_FULL
+@property (nonatomic, assign, readonly) id<PARSensorDelegate> delegate;
+#else
 @property (nonatomic, assign) id<PARSensorDelegate> delegate;
+#endif
 @property (nonatomic, assign, setter = setFrozen:, getter = isFrozen) BOOL isFrozen;
 
 
