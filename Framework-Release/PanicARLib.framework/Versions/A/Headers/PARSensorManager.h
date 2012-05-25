@@ -346,6 +346,6 @@ void GetDeviceFOVs(double *hori, double *vert);
  @deprecated use @ref deviceSupportsAR and @ref PARCapabilities instead */
 + (BOOL)locationServicesAvailable:(BOOL)raiseError delayError:(BOOL)delayError  __attribute__ ((deprecated));
 
-+ (char *)deviceType;
++ (NSString *)deviceType;
 
 @end

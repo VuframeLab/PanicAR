@@ -2,6 +2,12 @@
 
 **Important: Review this document before upgrading your project to a new revisions of PanicAR**
 
+
+## v1.20.1062 - critical fix
+
+fix: BAD_ACCESS on PARController:clearObjects and PARController:removeObject
+fix: Memory Leak in PARSensorManager:deviceType
+
 ## v1.20.995 to v1.20.1056 - minor bug fixes
 
 fix: PARPoi and subclass-objects are not removed from View when removing object from PARController
