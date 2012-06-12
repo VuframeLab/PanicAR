@@ -3,7 +3,7 @@
 **Important: Review this document before upgrading your project to a new revisions of PanicAR**
 
 
-## v1.20.1062 - critical fix
+## v1.20.1062 to v1.20.1071 - critical fix
 
 fix: BAD_ACCESS on PARController:clearObjects and PARController:removeObject
 fix: Memory Leak in PARSensorManager:deviceType
