@@ -33,7 +33,6 @@
     // piped properties (to PARSensorManager)
     id<PARSensorDelegate> _sensorDelegate;
     BOOL _frozen;
-    PARStatus _status;
     
     // ar object collection
     NSMutableArray *_arObjects;
@@ -53,7 +52,6 @@
 @property (nonatomic, assign) id<PARControllerDelegate> delegate;
 @property (nonatomic, assign) id<PARSensorDelegate> sensorDelegate;
 @property (nonatomic, assign, getter = isFrozen, setter = setFrozen:) BOOL isFrozen;
-@property (nonatomic, readonly, assign) PARStatus status;
 
 @property (nonatomic, readonly, assign) BOOL isStarted;
 

@@ -2,6 +2,10 @@
 
 **Important: Review this document before upgrading your project to a new revisions of PanicAR**
 
+## v1.20.1072 to v1.20.1085 - critical fix
+
+change: PARCapabilities changed the casing on some of its members
+fix: BAD_ACCESS on PARController:clearObjects and PARController:removeObject when using PARPoi objects
 
 ## v1.20.1062 to v1.20.1071 - critical fix
 

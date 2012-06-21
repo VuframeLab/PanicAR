@@ -17,7 +17,6 @@
 #define MOTION_REFRESH_RATE 30
 #define MOTION_PROCESS_RATE 15
 #define LOWPASS_FILTER 0.95
-#define ROTATE_GYRO_INPUT 1
 #define HUMAN_EYE_HEIGHT 1.620
 
 @class PARController;
@@ -126,11 +125,10 @@ void GetDeviceFOVs(double *hori, double *vert);
     BOOL _hasGravityX, _hasGravityY, _hasGravityZ;
     UIAccelerationValue _deviceAccelX, _deviceAccelY, _deviceAccelZ;
     CMAttitude* _referenceAttitude;
-	PARMatrix4x4 _tmpAttitude;
-	PARMatrix4x4 _tmpRotation;
 	PARMatrix4x4 _userDeviceAngle;
 	PARMatrix4x4 _userDeviceHeading;
 	PARMatrix4x4 _userDeviceOrientation;
+	PARMatrix4x4 _userDeviceOrientationOffset;
 	PARVector3 _userDeviceGravity;
 	PARVector3 _signedGravity;
     float _userDeviceRoll, _userDeviceTilt;
@@ -239,6 +237,7 @@ void GetDeviceFOVs(double *hori, double *vert);
 #pragma mark Base Functionality
 
 - (void)retrieveCapabilities;
+- (void)retrieveCapabilities:(BOOL)fromOS;
 - (void)updateCapabilities;
 - (PARStatus)getStatus;
 

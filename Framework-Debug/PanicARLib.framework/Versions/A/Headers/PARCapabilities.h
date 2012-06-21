@@ -33,27 +33,27 @@ typedef struct {
     int deviceType;
     float osVersion;
     float displayContentScale;
-    BOOL hasRetinaDisplay;
-    BOOL hasOS4;
-    BOOL hasOS43;
-    BOOL hasOS5;
+    BOOL HasRetinaDisplay;
+    BOOL HasOS4;
+    BOOL HasOS43;
+    BOOL HasOS5;
     
     BOOL isSlow;
     BOOL isPod, isPad, isPhone;
     
-    BOOL hasSensors;
+    BOOL HasSensors;
     BOOL hasAccelerometer;
     BOOL hasGyroscope;
-    BOOL hasAttitudeReference;
+    BOOL HasAttitudeReference;
     
     CLAuthorizationStatus locationAuthStatus;
     BOOL hasCamera;
     BOOL hasGPS;
-    BOOL allowsGPS;
+    BOOL AllowsGPS;
     BOOL hasCompass;
-    BOOL deniesGPS;
-    BOOL restrictsGPS;
+    BOOL DeniesGPS;
+    BOOL RestrictsGPS;
     
-    BOOL useSemiAutoAttitude;
-    BOOL useAutoAttitude;
+    BOOL UseSemiAutoAttitude;
+    BOOL UseAutoAttitude;
 } PARCapabilities;
