@@ -14,7 +14,7 @@
 "Location Denied" = "Location Denied";
 
 /* OK */
-"OK" = "OK";
+"PSK_OK" = "OK";
 
 /* please check your network connection or that you are not in airplane mode */
 "please check your network connection or that you are not in airplane mode" = "please check your network connection or that you are not in airplane mode";
@@ -28,5 +28,19 @@
 /* unknown location error */
 "unknown location error" = "unknown location error";
 
-/* OK */
-"OK" = "OK";
+
+/* error: status not determined */
+"PSK_STATUS_NOTDETERMINED" = "Status not determined";
+"PSK_STATUS_NOTDETERMINED_MSG" = "Something went wrong. AR not available.";
+
+/* error: AR unavailable */
+"PSK_STATUS_UNAVAILABLE" = "AR Not Available";
+"PSK_STATUS_UNAVAILABLE_MSG" = "This device does not support Augmented Reality Functionality!";
+
+/* error: location restricted */
+"PSK_STATUS_RESTRICTED" = "Location Services Restricted";
+"PSK_STATUS_RESTRICTED_MSG" = "You are not allowed to access your Location! Are Company Restrictions enabled or does this device have Parental Controls enabled?";
+
+/* error: location denied */
+"PSK_STATUS_DENIED" = "Location Services Denied";
+"PSK_STATUS_DENIED_MSG" = "This App is not allowed to access your Location! Go to the Preferences to change the Permissions it!";
