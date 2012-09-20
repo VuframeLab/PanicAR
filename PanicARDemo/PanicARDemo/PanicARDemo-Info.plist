@@ -8,11 +8,18 @@
 	<string>PanicAR Demo</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.dopanic.panicar.demo</string>
 	<key>CFBundleIconFiles</key>
 	<array>
-		<string>Icon.png</string>
-		<string>Icon@2x.png</string>
-		<string>Icon-72.png</string>
+		<string>icon~ipad.png</string>
+		<string>icon@2x~ipad.png</string>
+		<string>icon~iphone.png</string>
+		<string>icon@2x~iphone.png</string>
+		<string>icon-Small~ipad.png</string>
+		<string>icon-Small@2x~ipad.png</string>
+		<string>icon-Small~iphone.png</string>
+		<string>icon-Small@2x~iphone.png</string>
 	</array>
 	<key>CFBundleIcons</key>
 	<dict>
@@ -20,16 +27,19 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
-				<string>Icon@2x.png</string>
-				<string>Icon.png</string>
-				<string>Icon-72.png</string>
+				<string>icon~ipad.png</string>
+				<string>icon@2x~ipad.png</string>
+				<string>icon~iphone.png</string>
+				<string>icon@2x~iphone.png</string>
+				<string>icon-Small~ipad.png</string>
+				<string>icon-Small@2x~ipad.png</string>
+				<string>icon-Small~iphone.png</string>
+				<string>icon-Small@2x~iphone.png</string>
 			</array>
 			<key>UIPrerenderedIcon</key>
-			<false/>
+			<true/>
 		</dict>
 	</dict>
-	<key>CFBundleIdentifier</key>
-	<string>com.dopanic.panicar.demo</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>

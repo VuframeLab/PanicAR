@@ -52,7 +52,7 @@ static NSTimer *infoTimer = nil;
     
     if ([PARController deviceSupportsAR:YES]) {
         [_arRadarView setRadarRange:1500];
-        [[PARSensorManager sharedSensorManager] enableUpdateHeadingFromLocationManager];
+        // remove deprecated method: [[PSKSensorManager sharedSensorManager] enableUpdateHeadingFromLocationManager];
     }
 }
 
@@ -134,7 +134,7 @@ static NSTimer *infoTimer = nil;
 }
 
 - (void)arDidUpdateLocation {
-    CLLocation* l = [_sensorManager userLocation];
+    CLLocation* l = [[_sensorManager deviceAttitude] location];
     CLLocationCoordinate2D c = [l coordinate];
     
     UILabel *_locationLabel = [infoLabels objectAtIndex:1];
@@ -152,8 +152,8 @@ static NSTimer *infoTimer = nil;
     UILabel *_headingDetailsLabel = [infoLabels objectAtIndex:4];
     _headingDetailsLabel.hidden = NO;
     
-    _headingLabel.text = [NSString stringWithFormat:@"%.2f°", [_sensorManager userHeading]];
-    _headingDetailsLabel.text = [NSString stringWithFormat:@" %.2f ±%.2f", [_sensorManager userHeadingFromMagnetometer].trueHeading, [_sensorManager userHeadingFromMagnetometer].headingAccuracy];
+    _headingLabel.text = [NSString stringWithFormat:@"%.2f°", [[_sensorManager deviceAttitude] heading]];
+    _headingDetailsLabel.text = [NSString stringWithFormat:@"±%.2f", [[_sensorManager deviceAttitude] headingAccuracy]];
 }
 
 - (void)arDidChangeOrientation:(UIInterfaceOrientation)orientation {
@@ -161,17 +161,17 @@ static NSTimer *infoTimer = nil;
 }
 
 - (void)arSignalQualityChanged {
-    switch ([PARSensorManager sharedSensorManager].userSignalQuality) {
-        case 0:
+    switch (_deviceAttitude.signalQuality) {
+        case kPSKSignalQualityBest:
             _signalDisplay.image = [UIImage imageNamed:@"signal4.png"];
             break;
-        case 1:
+        case kPSKSignalQualityOkay:
             _signalDisplay.image = [UIImage imageNamed:@"signal3.png"];
             break;
-        case 2:
+        case kPSKSignalQualityMedium:
             _signalDisplay.image = [UIImage imageNamed:@"signal2.png"];
             break;
-        case 3:
+        case kPSKSignalQualityBad:
             _signalDisplay.image = [UIImage imageNamed:@"signal1.png"];
             break;
             
@@ -180,11 +180,10 @@ static NSTimer *infoTimer = nil;
             break;
     }
     
-    
     // optionally: hide GPS meter if signal is fine
     _signalDisplay.hidden = NO;
     
-    if ([PARSensorManager sharedSensorManager].userSignalQuality < 3) {
+    if (_deviceAttitude.signalQuality < kPSKSignalQualityBad) {
         if (!_signalDisplay.hidden) {
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 3.0 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
                 _signalDisplay.hidden = YES;
@@ -208,29 +207,16 @@ static NSTimer *infoTimer = nil;
 - (void)updateInfoLabel {
     UILabel *_infoLabel = [infoLabels objectAtIndex:0];
     NSString *display = nil;
-    if (_sensorManager.userLocation == nil) {
+    if (![_deviceAttitude hasLocation]) {
         _infoLabel.textColor = [UIColor redColor];
         display = @"could not retrieve location";
     }
     else {
-        display = [NSString stringWithFormat:@"GPS signal quality: %.1d (~%.1f Meters)", _sensorManager.userSignalQuality, _sensorManager.userLocationQuality];
+        display = [NSString stringWithFormat:@"GPS signal quality: %.1d (~%.1f Meters)", [_deviceAttitude signalQuality], [_deviceAttitude locationAccuracy]];
         _infoLabel.textColor = [UIColor whiteColor];
     }
     
-    NSString *trackingDisplay = nil;
-    PARCapabilities c = _sensorManager.capabilities;
-    if (c.useAutoAttitude) {
-        trackingDisplay = @"\nTracking: Gyroscope (iOS 5): y:%+.4f, p:%+.4f, r:%+.4f";
-    }
-    else {
-        if (c.useSemiAutoAttitude) {
-            trackingDisplay = @"\nTracking: Gyroscope (iOS 4): y:%+.4f, p:%+.4f, r:%+.4f";
-        }
-        else {
-            trackingDisplay = @"\nTracking: Accelerometer: y:%+.4f, p:%+.4f, r:%+.4f";
-        }
-    }
-    _infoLabel.text = [display stringByAppendingFormat:trackingDisplay, _sensorManager.deviceYaw, _sensorManager.devicePitch, _sensorManager.deviceRoll];
+    _infoLabel.text = [display stringByAppendingFormat:@"\nTracking: Gyroscope (iOS 5): y:%+.4f, p:%+.4f, r:%+.4f", [_deviceAttitude attitudeYaw], [_deviceAttitude attitudePitch], [_deviceAttitude attitudeRoll]];
 }
 
 

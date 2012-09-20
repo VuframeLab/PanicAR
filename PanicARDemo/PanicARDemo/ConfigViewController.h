@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <PanicARLib/PanicARLib.h>
 #import <MapKit/MapKit.h>
 
 @interface ConfigViewController : UIViewController <MKMapViewDelegate> {

@@ -40,7 +40,7 @@
 	// Do any additional setup after loading the view, typically from a nib.
     
 	
-	MKCoordinateRegion region = MKCoordinateRegionMake([PARSensorManager sharedSensorManager].userLocation.coordinate, MKCoordinateSpanMake(0.02, 0.02));
+	MKCoordinateRegion region = MKCoordinateRegionMake([[[PSKSensorManager sharedSensorManager] deviceAttitude] locationCoordinate], MKCoordinateSpanMake(0.02, 0.02));
 	[_mapView setRegion:region animated:TRUE];
 	[_mapView regionThatFits:region];
     [_mapView setUserTrackingMode:MKUserTrackingModeFollowWithHeading];
