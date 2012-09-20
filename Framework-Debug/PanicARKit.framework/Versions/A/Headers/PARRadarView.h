@@ -32,7 +32,7 @@ typedef enum {
 
 extern PARRadarView* _activeRadarView;
 
-/*! @class PARRadarView */
+/*!  PARRadarView */
 @interface PARRadarView : UIView {
 	PARController* _arController;
 	PARViewController* _arViewController;
@@ -54,13 +54,13 @@ extern PARRadarView* _activeRadarView;
     BOOL _canBeVisible;
 }
 
-/*! @property the PARViewController PARRadarView instance belongs to */
+/*!  the PARViewController PARRadarView instance belongs to */
 @property (nonatomic, retain) PARViewController* arViewController;
 
-/*! @property used internally to keep track of rendered objects */
+/*!  used internally to keep track of rendered objects */
 @property (nonatomic,readonly) int renderID;
 
-/*! @property used internally to determine if view should be visible */
+/*!  used internally to determine if view should be visible */
 @property (nonatomic, assign) BOOL canBeVisible;
 
 
@@ -70,14 +70,7 @@ extern PARRadarView* _activeRadarView;
  @param image UIImage used as background for the PARRadarView instance */
 - (id)initWithImage:(UIImage *)image;
 
-/*! starts the update behavior */
-- (void)start;
-/*! stops the update behavior */
-- (void)stop;
-/*! called each frame to render the radar content */
-- (void)updateView:(NSTimer *)theTimer;
-
-/*! @property radar orientation matrix */
+/*!  radar orientation matrix */
 - (PSKMatrix4x4*) radarMatrix;
 
 
@@ -92,10 +85,10 @@ extern PARRadarView* _activeRadarView;
 /*! hide the radar */
 - (void)hideRadar;
 
-/*! @property is radar visible? */
+/*!  is radar visible? */
 - (BOOL)isRadarVisible;
 
-/*! @property current radar mode */
+/*!  current radar mode */
 - (PARRadarMode) radarMode;
 
 
@@ -119,34 +112,37 @@ extern PARRadarView* _activeRadarView;
  @param theOffset – offset from the respective borders of the screen
  @param theSize – size of the radar on the screen */
 - (void)setRadarToThumbnail:(PARRadarPosition)thePosition withAdditionalOffset:(CGRect)theOffset andSize:(float)theSize;
+/*! shows the radar in Thumbnail mode in the specific position of the PAR view
+ @param thePosition – set position directly using a @ref CGPoint
+ @param theSize – size of the radar on the screen */
 - (void)setRadarToThumbnail:(CGPoint)thePosition withSize:(float)theSize;
 
 /*! set radar range in meters, objects outside range will not be displayed on radar
  @param theRange the range the radar will display markers in */
 - (void)setRadarRange:(float)theRange;
 
-/*! @property radar range in meters, objects outside range will not be displayed on radar
+/*!  radar range in meters, objects outside range will not be displayed on radar
  @return the range
  @remarks default = 10.000 meters */
 - (float)radarRange;
 
-/*! @property range of the radar in pixel */
+/*!  range of the radar in pixel */
 - (float)radarRadius;
-/*! @property YES if radar radius is currently being animated
+/*!  YES if radar radius is currently being animated
  @remarks */
 - (BOOL)animatesRadius;
 
-/*! @property inset of radar dots 
+/*!  inset of radar dots 
  @remarks max. distance of dot to center of radar = radius - inset */
 - (float)radarInset;
-/*! @property @param theInset inset of radar dots in pixels */
+/*!  @param theInset inset of radar dots in pixels */
 - (void)setRadarInset:(float)theInset;
 
 #pragma mark - Class Methods
-/*! @property set the curretly active PARRadarView
+/*!  set the curretly active PARRadarView
  @param theView the active PARRadarView */
 + (void)setActiveView:(PARRadarView *)theView;
-/*! @property the currently active radar view */
+/*!  the currently active radar view */
 + (PARRadarView *)activeView;
 
 @end

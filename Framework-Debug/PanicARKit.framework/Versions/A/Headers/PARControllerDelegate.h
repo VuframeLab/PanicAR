@@ -25,8 +25,4 @@
  @param object the object that was tapped */
 - (void)arDidTapObject:(id<PARObjectDelegate>)object;
 
-@optional
-- (void)arPreRenderPass;
-- (void)arPostRenderPass;
-
 @end

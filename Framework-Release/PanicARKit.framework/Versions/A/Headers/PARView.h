@@ -32,7 +32,7 @@ extern PARView* _activeView;
 
 
 
-/*! @class PARView 
+/*!  PARView 
  handles interface for rendering AR objects
  provides functionality for non-3d rendering and stacking of labels
  */
@@ -58,30 +58,28 @@ extern PARView* _activeView;
     NSTimer *_renderTimer;
 }
 
-/*! @property the PARViewController PARView instance belongs to */
+/*!  the PARViewController PARView instance belongs to */
 @property (nonatomic, retain) PARViewController* arViewController;
-/*! @property stacking animation speed
+/*!  stacking animation speed
  @remarks speed of label's movement to new position when stacking is enabled*/
 @property (nonatomic, assign,setter = setStackingAnimationSpeed:) float stackingAnimationSpeed;
 
-/*! @property base line at which label's y-position is calculated
+/*!  base line at which label's y-position is calculated
  @remarks default = 0.5, i.e. middle of view */
 - (float) labelBaseline;
 
+/*!  base line at which label's y-position is calculated
+ @remarks default = 0.5, i.e. middle of view
+ @param percentage relative y-position of label baseline */
 - (void)setLabelBaseline:(float)percentage;
 
+/*! the rotated projection matrix of the camera
+ @remarks for internal use */
 - (PSKMatrix4x4*) perspectiveCameraMatrix;
 
 
-#pragma mark - Main
-- (void)start;
-- (void)stop;
-- (void)updateView:(NSTimer *)theTimer;
-
-- (void)setupProjectionMatrix;
-
 #pragma mark - Class Methods
-+ (void)setActiveView:(PARView *)theView;
+/*! returns the currently activeView */
 + (PARView *)activeView;
 
 @end

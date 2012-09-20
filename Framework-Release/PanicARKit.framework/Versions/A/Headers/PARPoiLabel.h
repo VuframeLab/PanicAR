@@ -20,7 +20,7 @@
 
 #pragma mark - Interface
 
-/*! @class PARPoiLabel
+/*!  PARPoiLabel
  @brief marker object to be rendered in the PARController's view */
 @interface PARPoiLabel : PARPoi {
     NSString* _title; // title of the labels

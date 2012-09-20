@@ -55,17 +55,23 @@
 - (PARPoiLabel *)addMarker:(PARPoiLabel *)marker  __attribute__ ((deprecated));
 /*!  adds the PARPoiLabel at the given location
  @param marker the marker to be added
+ @param _location the CLLocation
+ @ref addObject
  */
 - (PARPoiLabel *)addMarkerAtLocation:(PARPoiLabel *)marker atLocation:(CLLocation *)_location  __attribute__ ((deprecated));
 /*! adds an array of PARPoiLabel-type Objects to the controller Markers need to have locations assign, markers without will be omitted!
- @param array the array of markers to be added */
+ @param array the array of markers to be added
+ @ref addObjects */
 - (void)addMarkers:(NSArray *)array  __attribute__ ((deprecated));
 /*!  remove a PARPoiLabel object
- @param object the marker to be added */
+ @param object the marker to be added
+ @ref removeObject */
 - (void)removeMarker:(PARPoiLabel *)object  __attribute__ ((deprecated));
-/*!  remove all PARPoiLabels from the controller */
+/*!  remove all PARPoiLabels from the controller
+ @ref clearObjects */
 - (void)clearMarkers  __attribute__ ((deprecated));
-/*!  @return  the number of PARPoiLabels currently added to the Controller */
+/*!  @return  the number of PARPoiLabels currently added to the Controller
+ @ref numberOfObjects */
 - (int) numberOfMarkers  __attribute__ ((deprecated));
 #endif 
 

@@ -21,7 +21,7 @@ extern float _viewGravityY;
 extern PSKVector3 _deviceGravity;
 
 /*!
- @class PARPoi
+  PARPoi
  base class for all location-based Points of Interest
  implements MKAnnotation protocol
  */
@@ -36,15 +36,14 @@ extern PSKVector3 _deviceGravity;
     UIView* _labelView;
     NSString* _labelViewImage;
     UIView* _radarView;
-	PSKVector4 _enuVector;
+	PSKVector4 _worldPosition;
     PSKVector4 _worldToScreenSpace;
     PSKVector3 _worldToRadarSpace;
     
-    double poiX, poiY, poiZ;
     CGPoint _relativeScreenPosition;
     CGPoint _center;
     BOOL _useDefaultRadarGfx;
-    double _enuVectorE, _enuVectorN, _enuVectorU;
+    double _worldPositionE, _worldPositionN, _worldPositionU;
     
     BOOL _hidden;
     BOOL _stacked;
@@ -52,9 +51,13 @@ extern PSKVector3 _deviceGravity;
     BOOL _clippedByViewport;
     BOOL _addedToView;
     BOOL _addedToRadar;
+    
+#if DEBUG
+    BOOL _frozen;
+#endif
 }
 
-/*! create an empty PARPoi 
+/*! create an empty PARPoi
  @remarks create and assign @ref labelView before it will show up in the @ref PARView
  @remarks create and assign @ref radarView before it will show up in the @ref PARRadarView 
  @param theLocation @ref CLLocation where the Poi will show up */
@@ -68,16 +71,20 @@ extern PSKVector3 _deviceGravity;
 
 
 #pragma mark - Properties
+/*!  reference to the UIView representing the POI on screen */
 @property (nonatomic, retain) UIView *labelView;
-
+/*!  reference to the UIView representing the POI in the PARRadarView */
 @property (nonatomic, retain) UIView *radarView;
-
+/*!  offset of labelView from final position in view
+ @remarks use this to change the alingment of the label */
 @property (nonatomic, assign) CGPoint offset;
 
+/*!  show / hide label
+ @param hidden use YES to make label visible */
 - (void)setHidden:(BOOL)hidden;
-
-- (PSKVector4 *)enuVector;
-
+/*!  real world position in meters – ENU refrence system */
+- (PSKVector4 *)worldPosition;
+/*!  YES if POI is too close or too far away */
 - (BOOL)clippedByDistance;
 
 

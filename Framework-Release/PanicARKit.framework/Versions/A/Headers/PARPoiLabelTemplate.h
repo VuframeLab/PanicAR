@@ -14,7 +14,7 @@
 
 extern float _appearanceCloseRange, _appearanceFarRange;
 
-/*! @class PARPoiLabelTemplate
+/*!  PARPoiLabelTemplate
  @brief template for how a marker is styled and rendered
  
  1. use PARPoiLabelTemplate as base class for a view in Interface Builder
