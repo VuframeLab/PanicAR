@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
-#import "PARMath.h"
+#import "PSKMath.h"
 
 #define CLIP_AT_ANGLE_DEVIATION 35
 #define HEAVY_SMOOTH 10
@@ -25,7 +25,7 @@
 - (void)addedToARController;
 - (void)removedFromARController;
 
-- (BOOL)enabled;
+- (BOOL)hidden;
 
 /*! unload content when PARView is unloaded */
 - (void)unloadContent;
@@ -39,7 +39,7 @@
 - (void)renderInView:(PARView *)theView;
 - (void)renderInRadar:(PARRadarView *)theRadar;
 - (float)angleToCamera;
-- (PARVector3)virtualPosition;
+- (PSKVector3)virtualPosition;
 - (float)distanceToUser;
 
 - (CLLocation*)location;

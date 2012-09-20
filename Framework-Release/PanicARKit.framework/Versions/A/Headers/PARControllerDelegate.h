@@ -20,7 +20,6 @@
  */
 @protocol PARControllerDelegate
 
-
 /** Object Interaction Callback 
  sent to the delegate when a object is tapped
  @param object the object that was tapped */
@@ -29,8 +28,5 @@
 @optional
 - (void)arPreRenderPass;
 - (void)arPostRenderPass;
-
-- (void)arBeganToTakePicture;
-- (void)arDidTakePicture:(UIImage *)image;
 
 @end

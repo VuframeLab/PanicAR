@@ -13,25 +13,35 @@
 #import <CoreLocation/CoreLocation.h>
 #import <CoreMotion/CoreMotion.h>
 #import "PARControllerDelegate.h"
-#import "PARMath.h"
-#import "PARCapabilities.h"
-#import "PARSensorDelegate.h"
+#import "PSKMath.h"
+#import "PSKSensorDelegate.h"
 
-#define OBJECT_REFRESH_RATE 60
+
+// Statuses for PARController
+typedef enum {
+    kPARStatusNotDetermined = 0,
+    kPARStatusUnavailable,
+    kPARStatusRestricted,
+    kPARStatusDenied,
+    kPARStatusReady,
+} PARAvailability;
+
 
 @class PARViewController;
-@class PARSensorManager;
+@class PSKSensorManager;
+@class PSKDeviceAttitude;
 
 /*!
  @class PARController
  @brief singleton class that manages PAR data used by PARViewController subclasses
  */
-@interface PARController : NSObject <PARSensorDelegate> {
+@interface PARController : NSObject <PSKSensorDelegate> {
     BOOL _started;
     
-    PARSensorManager *_sensorManager;
-    // piped properties (to PARSensorManager)
-    id<PARSensorDelegate> _sensorDelegate;
+    PSKSensorManager *_sensorManager;
+    PSKDeviceAttitude *_deviceAttitude;
+    // piped properties (to PSKSensorManager)
+    id<PSKSensorDelegate> _sensorDelegate;
     BOOL _frozen;
     
     // ar object collection
@@ -42,7 +52,7 @@
     
     // updates
     NSTimer* _updateTimer;
-    
+    BOOL _shouldUpdateObjects;
     
     // config
     float _clipObjectFarLimit;
@@ -50,8 +60,8 @@
 }
 
 @property (nonatomic, assign) id<PARControllerDelegate> delegate;
-@property (nonatomic, assign) id<PARSensorDelegate> sensorDelegate;
-@property (nonatomic, assign, getter = isFrozen, setter = setFrozen:) BOOL isFrozen;
+@property (nonatomic, assign) id<PSKSensorDelegate> sensorDelegate;
+
 
 @property (nonatomic, readonly, assign) BOOL isStarted;
 
@@ -60,10 +70,11 @@
 @property (assign) PARViewController *activeViewController;
 
 
+- (PARAvailability)availability;
 
 #pragma mark - Api Key
 - (void)setApiKey:(NSString *)theKey;
-- (BOOL) hasValidApiKey;
+- (BOOL)hasValidApiKey;
 
 
 #pragma mark - Updating
@@ -74,7 +85,7 @@
 - (void)updateObjects:(NSTimer *)theTimer;
 - (void)startObjectUpdate;
 - (void)stopObjectUpdate;
-- (BOOL) isUpdatingObjects;
+- (BOOL)isUpdatingObjects;
 
 
 #pragma mark - Memory and Multitasking
@@ -86,11 +97,6 @@
 - (void)freeMemory;
 
 
-
-
-
-#pragma mark - Capabilities
-- (BOOL)isReady;
 
 #pragma mark - Class Methods
 /*! shared PARController */

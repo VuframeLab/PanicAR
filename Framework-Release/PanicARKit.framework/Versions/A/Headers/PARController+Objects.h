@@ -1,6 +1,6 @@
 //
 //  PARController+Objects.h
-//  PanicAR Framework (PanicARLib.framework)
+//  PanicARKit
 //
 //  Created by Andreas Zeitler on 07.08.11.
 //  Copyright 2011 doPanic. All rights reserved.
@@ -44,25 +44,24 @@
 
 
 
-#pragma mark - Sorting
-- (void)updateAfterLocationChange;
-- (void)sortMarkersByDistance;
-
 
 
 
 #ifdef PANICAR_LEGACY
 #pragma mark - Deprecated  Methods
 
-/*! adds an PARPoiLabel to the controller Marker needs to have location! */
+/*! adds an PARPoiLabel to the controller Marker needs to have location!
+ @param marker the marker to be added */
 - (PARPoiLabel *)addMarker:(PARPoiLabel *)marker  __attribute__ ((deprecated));
 /*!  adds the PARPoiLabel at the given location
- @param atLocation: set this location to the marker and add it to the controller
+ @param marker the marker to be added
  */
 - (PARPoiLabel *)addMarkerAtLocation:(PARPoiLabel *)marker atLocation:(CLLocation *)_location  __attribute__ ((deprecated));
-/*! adds an array of PARPoiLabel-type Objects to the controller Markers need to have locations assign, markers without will be omitted! */
+/*! adds an array of PARPoiLabel-type Objects to the controller Markers need to have locations assign, markers without will be omitted!
+ @param array the array of markers to be added */
 - (void)addMarkers:(NSArray *)array  __attribute__ ((deprecated));
-/*!  remove a PARPoiLabel object */
+/*!  remove a PARPoiLabel object
+ @param object the marker to be added */
 - (void)removeMarker:(PARPoiLabel *)object  __attribute__ ((deprecated));
 /*!  remove all PARPoiLabels from the controller */
 - (void)clearMarkers  __attribute__ ((deprecated));

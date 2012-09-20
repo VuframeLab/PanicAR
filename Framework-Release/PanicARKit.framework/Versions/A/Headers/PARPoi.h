@@ -7,7 +7,7 @@
 //
 
 #import <MapKit/MapKit.h>
-#import "PARMath.h"
+#import "PSKMath.h"
 #import "PARObjectDelegate.h"
 
 extern BOOL _loadsDefaultRadarGfx;
@@ -18,6 +18,7 @@ extern float _clipObjectNearLimit;
 extern BOOL _viewIsLandscape;
 extern float _viewGravityX;
 extern float _viewGravityY;
+extern PSKVector3 _deviceGravity;
 
 /*!
  @class PARPoi
@@ -29,23 +30,29 @@ extern float _viewGravityY;
     double _distanceToCamera;
     double _distanceToUser;
     float _angleToUser;
+    PSKMatrix4x4 _toUserRotation;
+    
     float _angleToCamera;
     UIView* _labelView;
     NSString* _labelViewImage;
     UIView* _radarView;
-	PARVector4 _enuVector;
+	PSKVector4 _enuVector;
+    PSKVector4 _worldToScreenSpace;
+    PSKVector3 _worldToRadarSpace;
+    
     double poiX, poiY, poiZ;
+    CGPoint _relativeScreenPosition;
     CGPoint _center;
     BOOL _useDefaultRadarGfx;
-    double e,n,u;
-    BOOL _hidden, _stacked;
-    BOOL _enabled;
+    double _enuVectorE, _enuVectorN, _enuVectorU;
+    
+    BOOL _hidden;
+    BOOL _stacked;
+    BOOL _clippedByDistance;
+    BOOL _clippedByViewport;
+    BOOL _addedToView;
+    BOOL _addedToRadar;
 }
-
-@property (nonatomic, retain) UIView *labelView;
-@property (nonatomic, retain) UIView *radarView;
-@property (nonatomic, assign) CGPoint offset;
-@property (nonatomic, assign) BOOL enabled;
 
 /*! create an empty PARPoi 
  @remarks create and assign @ref labelView before it will show up in the @ref PARView
@@ -59,8 +66,22 @@ extern float _viewGravityY;
  @param theLocation @ref CLLocation where the Poi will show up */
 - (id)initWithImage:(NSString *)imageName atLocation:(CLLocation *)theLocation;
 
-- (PARVector4 *)enuVector;
 
+#pragma mark - Properties
+@property (nonatomic, retain) UIView *labelView;
+
+@property (nonatomic, retain) UIView *radarView;
+
+@property (nonatomic, assign) CGPoint offset;
+
+- (void)setHidden:(BOOL)hidden;
+
+- (PSKVector4 *)enuVector;
+
+- (BOOL)clippedByDistance;
+
+
+#pragma mark - Setting Methods
 /*! @return YES if labels should be dynamically stacked so not to overlap each other */
 - (BOOL)stacksInView;
 /*! @return YES if the label should call @ref updateAppearance to dynamically change it's apperance, e.g. based on the distance to the user */

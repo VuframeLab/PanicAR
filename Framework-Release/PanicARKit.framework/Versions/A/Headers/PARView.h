@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "PARObjectDelegate.h"
-#import "PARMath.h"
+#import "PSKMath.h"
 
 
 #define RENDER_FPS 15
@@ -19,23 +19,14 @@
 #define DEFAULT_LABEL_BASELINE 0.5
 #define DEFAULT_LABEL_ALIGN_TO_DEVICE YES
 
-#define MAX_NUMBER_OF_STACKINGSECTORS 80 
+#define MAX_NUMBER_OF_STACKINGSECTORS 80
 #define HALF_NUMBER_OF_STACKINGSECTORS (MAX_NUMBER_OF_STACKINGSECTORS/2)
 
 @class PARController;
-@class PARSensorManager;
+@class PSKSensorManager;
+@class PSKDeviceAttitude;
 @class PARPoi;
 @class PARViewController;
-
-#ifdef DEBUG
-    #ifndef PANIC_FRAMEWORK
-        #undef VISUALIZE_STACKING // use define to activate
-    #else
-        #undef VISUALIZE_STACKING
-    #endif
-#else
-    #undef VISUALIZE_STACKING
-#endif
 
 extern PARView* _activeView;
 
@@ -47,20 +38,18 @@ extern PARView* _activeView;
  */
 @interface PARView : UIView {
 	PARController* _arController;
-	PARSensorManager* _arSensorManager;
+	PSKSensorManager* _arSensorManager;
+    PSKDeviceAttitude *_deviceAttitude;
 	PARViewController* _arViewController;
 	id<PARObjectDelegate> _currentObject;
     
-    double _fov, _verticalFov;
-	PARMatrix4x4 _perspectiveMatrix;
-	PARMatrix4x4 _perspectiveCameraMatrix;
+    float _fov, _verticalFov;
+	PSKMatrix4x4 _perspectiveMatrix;
+	PSKMatrix4x4 _perspectiveCameraMatrix;
     
     // object sorting
     float _heightInStackingSector[MAX_NUMBER_OF_STACKINGSECTORS];
     int _numberOfStackingSectors;
-#ifdef VISUALIZE_STACKING
-    UIView* _heightBars[MAX_NUMBER_OF_STACKINGSECTORS];
-#endif
     float _widthOfStackingSector;
     float _firstSectorX, _lastSectorX;
     float _stackingAnimationSpeed;
@@ -69,7 +58,7 @@ extern PARView* _activeView;
     NSTimer *_renderTimer;
 }
 
-
+/*! @property the PARViewController PARView instance belongs to */
 @property (nonatomic, retain) PARViewController* arViewController;
 /*! @property stacking animation speed
  @remarks speed of label's movement to new position when stacking is enabled*/
@@ -78,9 +67,10 @@ extern PARView* _activeView;
 /*! @property base line at which label's y-position is calculated
  @remarks default = 0.5, i.e. middle of view */
 - (float) labelBaseline;
-- (void) setLabelBaseline:(float)percentage;
 
-- (PARMatrix4x4*) perspectiveCameraMatrix;
+- (void)setLabelBaseline:(float)percentage;
+
+- (PSKMatrix4x4*) perspectiveCameraMatrix;
 
 
 #pragma mark - Main

@@ -2,12 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CFBuildBaseVersion</key>
-	<string>1.20</string>
 	<key>CFBuildDate</key>
-	<string>2012-06-20 20:48:23</string>
-	<key>CFBuildNumber</key>
-	<string>1118</string>
+	<string>2012-09-12 10:41:46</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
@@ -18,9 +14,11 @@
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>
 	<string>FMWK</string>
+	<key>CFBundleShortVersionString</key>
+	<string>2.00</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1.20.1118</string>
+	<string>2170</string>
 </dict>
 </plist>

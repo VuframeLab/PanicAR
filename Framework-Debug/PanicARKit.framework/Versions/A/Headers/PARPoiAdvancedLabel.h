@@ -25,6 +25,12 @@ extern CGPoint _stackingOrigin;
  @remarks in percent of the ARViews size
  @remarks default = (0.5,1), i.e. x=middle,y=bottom of view */
 + (CGPoint)stackingOrigin;
+
+/*! @property stacking origin from which new labels are faded in
+ @param x relative x-axis position in view
+ @param y relative y-axis position in view
+ @remarks in percent of the ARViews size
+ @remarks default = (0.5,1), i.e. x=middle,y=bottom of view */
 + (void)setStackingOrigin:(float)x andY:(float)y;
 
 

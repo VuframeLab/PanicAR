@@ -10,38 +10,33 @@
 #import <AVFoundation/AVFoundation.h>
 #import <UIKit/UIKit.h>
 
-#import "PARSensorDelegate.h"
+#import "PSKSensorDelegate.h"
 
 @class PARView;
 @class PARRadarView;
 @class PARController;
-@class PARSensorManager;
+@class PSKSensorManager;
 
 /*!
  @class PARViewController
  */
-@interface PARViewController : UIViewController <PARSensorDelegate> {
+@interface PARViewController : UIViewController <PSKSensorDelegate> {
     
 @public
     // ar view
     PARView* _arView;
-    PARSensorManager *_sensorManager;
+    PSKSensorManager *_sensorManager;
+    PSKDeviceAttitude *_deviceAttitude;
     
     // live camera feed
     UIView* _cameraView;
     AVCaptureSession* _session;
     AVCaptureVideoPreviewLayer* _cameraPreview;
     BOOL _cameraPreviewVisible;
-#if PANICAR_3D
-    // camera image capture
-    AVCaptureStillImageOutput* _stillImageOutput;
-    BOOL _isCapturingImage;
-#endif
+    BOOL _notificationVisible;
     
     // radar
     PARRadarView* _arRadarView;
-    
-    UILabel* _watermark;
     
     // touch interaction
     BOOL _touched;
@@ -50,14 +45,15 @@
     CGPoint _initialTouchPosition;
     CGPoint _overallTouchDistance;
     CGPoint _lastTouchDistance;
+    
+    // orientation
+    float _orientationOffsetAngle;
 }
 
 @property (nonatomic,retain) PARView *arView;
 @property (nonatomic,retain) PARRadarView *arRadarView;
-@property (nonatomic,readonly) PARSensorManager *sensorManager;
-#if PANICAR_3D
-@property (nonatomic,readonly) BOOL isCapturingImage;
-#endif
+@property (nonatomic,readonly) PSKSensorManager *sensorManager;
+- (BOOL)notificationVisible;
 
 
 #pragma mark - Subviews
@@ -78,16 +74,26 @@
 /*! @return YES if PARView should rotate freely with the device
  @remarks don't return YES if your ViewController already supports Landscape orientations */
 - (BOOL)rotatesARView;
+/*! @return size for the notification overlay view, default: ipad=256, iphone=128 */
+- (float)sizeOfNotification;
+
+/*! called when deviceOrientation switches to or from FaceUp
+ default behavior: show radar in full screen mode, go back to thumbnail when no longer in face up
+ override to deactivate default behavior */
+- (void)switchFaceUp:(BOOL)inFaceUp;
+/*! called when deviceOrientation switches to or from FaceDown 
+ default behavior: */
+- (void)switchFaceDown:(BOOL)inFaceDown;
+
+- (void)setNotification:(NSString *)notification;
+
+- (float)orientationOffsetAngle;
 
 #pragma mark - Camera
 
 - (void)startCameraPreview;
 - (void)updateCameraPreview;
 - (void)stopCameraPreview;
-
-#if PANICAR_3D
-- (void)takePicture;
-#endif
 
 
 #pragma mark - Touch
@@ -112,6 +118,7 @@
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event;
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event;
-
-
 @end
+
+#pragma mark - C Helper
+float OrientationOffsetAngleFromUIInterfaceOrientation(UIInterfaceOrientation orientation);

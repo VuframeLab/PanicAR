@@ -7,9 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-#define RADAR_DEFAULT_RANGE 10000.0f //10.000 meters
-#define RENDER_RADAR_FPS 10
+#import "PSKMath.h"
 
 
 typedef enum {
@@ -30,6 +28,7 @@ typedef enum {
 @class PARPoi;
 @class PARViewController;
 @class PARRadarView;
+@class PSKDeviceAttitude;
 
 extern PARRadarView* _activeRadarView;
 
@@ -37,47 +36,66 @@ extern PARRadarView* _activeRadarView;
 @interface PARRadarView : UIView {
 	PARController* _arController;
 	PARViewController* _arViewController;
+    PSKDeviceAttitude *_deviceAttitude;
     UIImageView* _background;
+	PSKMatrix4x4 _radarMatrix;
     
     // radar
     PARRadarMode _radarMode;
     CGRect _radarRect;
     float _radarRange;
     float _radarRadius;
+    BOOL _animateRadius;
     float _radarInset;
     int _renderID;
     BOOL _rendering;
     NSTimer* _renderTimer;
+    
+    BOOL _canBeVisible;
 }
 
+/*! @property the PARViewController PARRadarView instance belongs to */
 @property (nonatomic, retain) PARViewController* arViewController;
-@property (nonatomic, readonly) int renderID;
+
+/*! @property used internally to keep track of rendered objects */
+@property (nonatomic,readonly) int renderID;
+
+/*! @property used internally to determine if view should be visible */
+@property (nonatomic, assign) BOOL canBeVisible;
 
 
 #pragma mark - Main
+/*! default initialization
+ creates an PARRadarView instance using the image as background image
+ @param image UIImage used as background for the PARRadarView instance */
 - (id)initWithImage:(UIImage *)image;
 
+/*! starts the update behavior */
 - (void)start;
+/*! stops the update behavior */
 - (void)stop;
+/*! called each frame to render the radar content */
 - (void)updateView:(NSTimer *)theTimer;
 
-
-#pragma mark - Radar Management
+/*! @property radar orientation matrix */
+- (PSKMatrix4x4*) radarMatrix;
 
 
 #pragma mark - Radar
 
 /*!  shows the radar in the last RadarMode set or in thumbnail if none was set before */
 - (void)showRadar;
+/*! show the PARRadarView in a specific mode
+ @param theMode PARRadarMode in which the radar will be shown */
 - (void)showRadarInMode:(PARRadarMode)theMode;
 
 /*! hide the radar */
 - (void)hideRadar;
 
-/*! is radar visible? */
+/*! @property is radar visible? */
 - (BOOL)isRadarVisible;
 
-/*! current radar mode */
+/*! @property current radar mode */
 - (PARRadarMode) radarMode;
 
 
@@ -96,6 +114,10 @@ extern PARRadarView* _activeRadarView;
  @param thePosition – @ref PARRadarPosition
  @param theOffset – offset from the respective borders of the screen */
 - (void)setRadarToThumbnail:(PARRadarPosition)thePosition withAdditionalOffset:(CGRect)theOffset;
+/*! shows the radar in Thumbnail mode in the specific position of the PAR view
+ @param thePosition – @ref PARRadarPosition
+ @param theOffset – offset from the respective borders of the screen
+ @param theSize – size of the radar on the screen */
 - (void)setRadarToThumbnail:(PARRadarPosition)thePosition withAdditionalOffset:(CGRect)theOffset andSize:(float)theSize;
 - (void)setRadarToThumbnail:(CGPoint)thePosition withSize:(float)theSize;
 
@@ -103,22 +125,28 @@ extern PARRadarView* _activeRadarView;
  @param theRange the range the radar will display markers in */
 - (void)setRadarRange:(float)theRange;
 
-/*! radar range in meters, objects outside range will not be displayed on radar
+/*! @property radar range in meters, objects outside range will not be displayed on radar
  @return the range
  @remarks default = 10.000 meters */
 - (float)radarRange;
 
-/*! range of the radar in pixel */
+/*! @property range of the radar in pixel */
 - (float)radarRadius;
+/*! @property YES if radar radius is currently being animated
+ @remarks */
+- (BOOL)animatesRadius;
 
-/*! inset of radar dots 
+/*! @property inset of radar dots 
  @remarks max. distance of dot to center of radar = radius - inset */
 - (float)radarInset;
-/*! @param theInset inset of radar dots in pixels */
+/*! @property @param theInset inset of radar dots in pixels */
 - (void)setRadarInset:(float)theInset;
 
 #pragma mark - Class Methods
+/*! @property set the curretly active PARRadarView
+ @param theView the active PARRadarView */
 + (void)setActiveView:(PARRadarView *)theView;
+/*! @property the currently active radar view */
 + (PARRadarView *)activeView;
 
 @end

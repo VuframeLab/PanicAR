@@ -35,14 +35,23 @@ extern float _appearanceCloseRange, _appearanceFarRange;
     CGSize _originalSize;
 }
 
+/*! reference to the PARPoiLabel instance this template belongs to */
+@property (nonatomic,assign) PARPoiLabel *poiLabel;
+
+/*! UILabel displaying the title of the POI */
 @property (nonatomic,assign) IBOutlet UILabel *title;
+/*! UILabel displaying the description (i.e. additional text content) of the POI */
 @property (nonatomic,assign) IBOutlet UILabel *content;
+/*! UILabel displaying a string formated with the distance of the POI of the POI */
 @property (nonatomic,assign) IBOutlet UILabel *distance;
+/*! UIImageView displaying the image of the POI, if no image is set in POI or no UIImageView is assigned no image will be displayed */
 @property (nonatomic,assign) IBOutlet UIImageView *image;
 
-@property (nonatomic,assign) PARPoiLabel *poiLabel;
+/*! the original size of the label template
+ used internally for updating its appearance */
 @property (nonatomic,assign) CGSize originalSize;
 
+/*! applys appearance effects to the label based on the current distance to the user and the settings in appearanceCloseRange and appearanceFarRange */
 - (void)updateAppearance;
 
 
@@ -56,7 +65,9 @@ extern float _appearanceCloseRange, _appearanceFarRange;
  @remarks defaults to close = 500 meters and far = 100 kilometers
  @remarks the defaul poi label template fades out over distance and gets smaller; implement your own effects in a sub-class */
 + (void)setAppearanceRange:(float)closeRange andFarRange:(float)farRange;
+/*! distance at which appearance effects start */
 + (float)appearanceCloseRange;
+/*! distance at which appearance effects reach maximum */
 + (float)appearanceFarRange;
 
 @end
