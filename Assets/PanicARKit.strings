@@ -1,33 +1,14 @@
 /* Small Unit of Distance */
-"Small Unit of Distance" = "%.0f m";
+"PSK_DISTANCE_SMALL" = "%.0f m";
 
 /* Large Unit of Distance */
-"Large Unit of Distance" = "%.1f km";
+"PSK_DISTANCE_LARGE" = "%.1f km";
 
 /* Largest Unit of Distance */
-"Largest Unit of Distance" = "%.0f km";
-
-/* Error */
-"Error" = "Error";
-
-/* Location Denied */
-"Location Denied" = "Location Denied";
+"PSK_DISTANCE_LARGEST" = "%.0f km";
 
 /* OK */
 "PSK_OK" = "OK";
-
-/* please check your network connection or that you are not in airplane mode */
-"please check your network connection or that you are not in airplane mode" = "please check your network connection or that you are not in airplane mode";
-
-/* user has denied to use current Location */
-"user has denied to use current Location" = "user has denied to use current Location";
-
-/* current location could not be determined */
-"current location could not be determined" = "current location could not be determined";
-
-/* unknown location error */
-"unknown location error" = "unknown location error";
-
 
 /* error: status not determined */
 "PSK_STATUS_NOTDETERMINED" = "Status not determined";
@@ -44,3 +25,6 @@
 /* error: location denied */
 "PSK_STATUS_DENIED" = "Location Services Denied";
 "PSK_STATUS_DENIED_MSG" = "This App is not allowed to access your Location! Go to the Preferences to change the Permissions it!";
+
+/* error: in face down orientation */
+"PSK_STATUS_FACEDOWN" = "Wrong Orientation!";

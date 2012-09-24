@@ -43,8 +43,6 @@
 		9926E7FA144FB6AE0066D383 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9926E7F5144FB6AE0066D383 /* AVFoundation.framework */; };
 		9926E7FB144FB6AE0066D383 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9926E7F6144FB6AE0066D383 /* CoreLocation.framework */; };
 		9926E7FC144FB6AE0066D383 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9926E7F7144FB6AE0066D383 /* CoreMotion.framework */; };
-		9926E7FD144FB6AE0066D383 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9926E7F8144FB6AE0066D383 /* OpenGLES.framework */; };
-		9926E7FE144FB6AE0066D383 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9926E7F9144FB6AE0066D383 /* QuartzCore.framework */; };
 		992DE100145080CD001927F0 /* signal0.png in Resources */ = {isa = PBXBuildFile; fileRef = 992DE0F6145080CD001927F0 /* signal0.png */; };
 		992DE101145080CD001927F0 /* signal0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 992DE0F7145080CD001927F0 /* signal0@2x.png */; };
 		992DE102145080CD001927F0 /* signal1.png in Resources */ = {isa = PBXBuildFile; fileRef = 992DE0F8145080CD001927F0 /* signal1.png */; };
@@ -66,6 +64,7 @@
 		9955EE731498E63D0081D085 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9955EE721498E63D0081D085 /* MapKit.framework */; };
 		99897907156CF13500479610 /* PanicARKit.strings in Resources */ = {isa = PBXBuildFile; fileRef = 99897906156CF13500479610 /* PanicARKit.strings */; };
 		99901B38161032AF000A4A17 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99901B37161032AF000A4A17 /* Storyboard.storyboard */; };
+		99901B9F16103D0C000A4A17 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9926E7F9144FB6AE0066D383 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -107,7 +106,6 @@
 		9926E7F5144FB6AE0066D383 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		9926E7F6144FB6AE0066D383 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		9926E7F7144FB6AE0066D383 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
-		9926E7F8144FB6AE0066D383 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		9926E7F9144FB6AE0066D383 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		992DE0F6145080CD001927F0 /* signal0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = signal0.png; sourceTree = "<group>"; };
 		992DE0F7145080CD001927F0 /* signal0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signal0@2x.png"; sourceTree = "<group>"; };
@@ -147,12 +145,11 @@
 				9926E7FA144FB6AE0066D383 /* AVFoundation.framework in Frameworks */,
 				9926E7FB144FB6AE0066D383 /* CoreLocation.framework in Frameworks */,
 				9926E7FC144FB6AE0066D383 /* CoreMotion.framework in Frameworks */,
-				9926E7FD144FB6AE0066D383 /* OpenGLES.framework in Frameworks */,
-				9926E7FE144FB6AE0066D383 /* QuartzCore.framework in Frameworks */,
 				993A8E3A144FB14B00414EB3 /* CoreGraphics.framework in Frameworks */,
 				993A8E36144FB14B00414EB3 /* UIKit.framework in Frameworks */,
 				993A8E38144FB14B00414EB3 /* Foundation.framework in Frameworks */,
 				9955EE711498E61F0081D085 /* PanicARKit.framework in Frameworks */,
+				99901B9F16103D0C000A4A17 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,7 +256,6 @@
 				9926E7F5144FB6AE0066D383 /* AVFoundation.framework */,
 				9926E7F6144FB6AE0066D383 /* CoreLocation.framework */,
 				9926E7F7144FB6AE0066D383 /* CoreMotion.framework */,
-				9926E7F8144FB6AE0066D383 /* OpenGLES.framework */,
 				9926E7F9144FB6AE0066D383 /* QuartzCore.framework */,
 				993A8E35144FB14B00414EB3 /* UIKit.framework */,
 				993A8E37144FB14B00414EB3 /* Foundation.framework */,
