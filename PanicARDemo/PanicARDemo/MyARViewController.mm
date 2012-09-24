@@ -40,20 +40,14 @@ static NSTimer *infoTimer = nil;
 - (void)loadView
 {
     // IMPORTANT: set Api Key before calling super:loadView!
-    [[PARController sharedARController] setApiKey:@"ef71d116b33ba7dce3305448"];
+    [[PARController sharedARController] setApiKey:@""];
     [[PARController sharedARController] setDelegate:self];
     
     [super loadView];
     
-    // simulate ipad 1
-    //[PanicARHelper simulateiPad1WithOS:4.00f];
-    //[PanicARHelper simulateiPad2WithOS:4.20f];
-    //[PanicARHelper simulateAccelerometer];
-    
-    if ([PARController deviceSupportsAR:YES]) {
-        [_arRadarView setRadarRange:1500];
-        // remove deprecated method: [[PSKSensorManager sharedSensorManager] enableUpdateHeadingFromLocationManager];
-    }
+    [PARController deviceSupportsAR:YES]; // check if device supports AR if not show standard error alerts
+    [_arRadarView setRadarRange:1500];
+    // remove deprecated method: [[PSKSensorManager sharedSensorManager] enableUpdateHeadingFromLocationManager];
 }
 
 
@@ -94,15 +88,6 @@ static NSTimer *infoTimer = nil;
     [super viewWillDisappear:animated];
     [infoTimer invalidate];
     infoTimer = nil;
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait)
-            || (!self.rotatesARView && (interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown
-                                        || interfaceOrientation == UIInterfaceOrientationLandscapeLeft
-                                        || interfaceOrientation == UIInterfaceOrientationLandscapeRight));
 }
 
 
