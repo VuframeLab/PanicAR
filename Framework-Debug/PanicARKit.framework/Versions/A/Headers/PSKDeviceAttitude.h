@@ -10,9 +10,6 @@
 #import <CoreLocation/CoreLocation.h>
 #import "PSKMath.h"
 
-#define PSK_PRECISION float
-#define PSK_MATRIX_PRECISION float
-
 // Statuses for the GPS
 typedef enum {
     kPSKSignalQualityBest = 0,

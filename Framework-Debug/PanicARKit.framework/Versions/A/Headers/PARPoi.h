@@ -10,15 +10,22 @@
 #import "PSKMath.h"
 #import "PARObjectDelegate.h"
 
+@class PSKSensorManager;
+@class PSKDeviceAttitude;
+
 extern BOOL _loadsDefaultRadarGfx;
 extern float _stackingAnimationSpeed;
 extern float _labelBaseline;
 extern float _clipObjectFarLimit;
 extern float _clipObjectNearLimit;
-extern BOOL _viewIsLandscape;
-extern float _viewGravityX;
-extern float _viewGravityY;
 extern PSKVector3 _deviceGravity;
+extern CGSize _viewport;
+extern float _viewAngle;
+extern float _viewSin, _viewCos;
+extern PSKSensorManager *_sensorManager;
+extern PSKDeviceAttitude *_deviceAttitude;
+extern CLLocation* _userLocation;
+extern CGRect _relativeViewportBounds;
 
 /*!
   PARPoi
@@ -39,6 +46,7 @@ extern PSKVector3 _deviceGravity;
 	PSKVector4 _worldPosition;
     PSKVector4 _worldToScreenSpace;
     PSKVector3 _worldToRadarSpace;
+    CGPoint _radarSpace;
     
     CGPoint _relativeScreenPosition;
     CGPoint _center;
@@ -51,10 +59,6 @@ extern PSKVector3 _deviceGravity;
     BOOL _clippedByViewport;
     BOOL _addedToView;
     BOOL _addedToRadar;
-    
-#if DEBUG
-    BOOL _frozen;
-#endif
 }
 
 /*! create an empty PARPoi

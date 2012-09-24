@@ -43,6 +43,7 @@ extern PARView* _activeView;
 	PARViewController* _arViewController;
 	id<PARObjectDelegate> _currentObject;
     
+    CGSize _viewport;
     float _fov, _verticalFov;
 	PSKMatrix4x4 _perspectiveMatrix;
 	PSKMatrix4x4 _perspectiveCameraMatrix;
@@ -56,6 +57,7 @@ extern PARView* _activeView;
     float _labelBaseline;
     BOOL _alignLabelsToDeviceOrientation;
     NSTimer *_renderTimer;
+    float _viewRotationOffset;
 }
 
 /*!  the PARViewController PARView instance belongs to */
@@ -76,6 +78,9 @@ extern PARView* _activeView;
 /*! the rotated projection matrix of the camera
  @remarks for internal use */
 - (PSKMatrix4x4*) perspectiveCameraMatrix;
+
+/*! the size of the viewport */
+- (CGSize)viewport;
 
 
 #pragma mark - Class Methods

@@ -37,6 +37,7 @@ typedef enum {
  */
 @interface PARController : NSObject <PSKSensorDelegate> {
     BOOL _started;
+    BOOL _objectsNeedSorting;
     
     PSKSensorManager *_sensorManager;
     PSKDeviceAttitude *_deviceAttitude;
@@ -46,17 +47,6 @@ typedef enum {
     
     // ar object collection
     NSMutableArray *_arObjects;
-    BOOL _objectsNeedSorting;
-    
-    PARViewController* _activeViewController;
-    
-    // updates
-    NSTimer* _updateTimer;
-    BOOL _shouldUpdateObjects;
-    
-    // config
-    float _clipObjectFarLimit;
-    float _clipObjectNearLimit;
 }
 
 /*! PARControllerDelegate delegate object receiving updates from the PARController */
