@@ -79,8 +79,8 @@ static NSTimer *infoTimer = nil;
     
     // setup radar
     CGRect rect = CGRectMake(0, 44, 0, 32);
-    [_arRadarView setRadarToThumbnail:PARRadarPositionBottomRight withAdditionalOffset:rect];
     _radarThumbnailPosition = PARRadarPositionBottomRight;
+    [_arRadarView setRadarToThumbnail:_radarThumbnailPosition withAdditionalOffset:rect];
     [_arRadarView showRadar];
 }
 
@@ -103,9 +103,18 @@ static NSTimer *infoTimer = nil;
     return YES;
 }
 
+- (void)switchFaceUp:(BOOL)inFaceUp {
+    if (inFaceUp) {
+        [_arRadarView setRadarToFullscreen];
+    }
+    else {
+        [_arRadarView setRadarToThumbnail:_radarThumbnailPosition];
+    }
+}
 
 
-#pragma mark - PAR Controller Delegate Methods
+
+#pragma mark - PARControllerDelegate
 
 - (void)arDidTapObject:(id<PARObjectDelegate>)object {
     [PARController showAlert:@"Tap" 
@@ -113,12 +122,13 @@ static NSTimer *infoTimer = nil;
             andDismissButton:@"Okay"];
 }
 
-- (void)arDidReceiveErrorCode:(int)code {
+#pragma mark - PSKSensorDelegate
+- (void)didReceiveErrorCode:(int)code {
     [self updateInfoLabel];
     
 }
 
-- (void)arDidUpdateLocation {
+- (void)didUpdateLocation {
     CLLocation* l = [[_sensorManager deviceAttitude] location];
     CLLocationCoordinate2D c = [l coordinate];
     
@@ -131,7 +141,7 @@ static NSTimer *infoTimer = nil;
     _locationDetailsLabel.text = [NSString stringWithFormat:@"±%.2fm ±%.2fm", l.horizontalAccuracy, l.verticalAccuracy];
 }
 
-- (void)arDidUpdateHeading {
+- (void)didUpdateHeading {
     UILabel *_headingLabel = [infoLabels objectAtIndex:3];
     _headingLabel.hidden = NO;
     UILabel *_headingDetailsLabel = [infoLabels objectAtIndex:4];
@@ -141,12 +151,12 @@ static NSTimer *infoTimer = nil;
     _headingDetailsLabel.text = [NSString stringWithFormat:@"±%.2f", [[_sensorManager deviceAttitude] headingAccuracy]];
 }
 
-- (void)arDidChangeOrientation:(UIInterfaceOrientation)orientation {
-    
+- (void)didChangeDeviceOrientation:(UIDeviceOrientation)orientation {
+    [super didChangeDeviceOrientation:orientation];
 }
 
-- (void)arSignalQualityChanged {
-    switch (_deviceAttitude.signalQuality) {
+- (void)didChangeSignalQuality:(PSKSignalQuality)newSignalQuality {
+    switch (newSignalQuality) {
         case kPSKSignalQualityBest:
             _signalDisplay.image = [UIImage imageNamed:@"signal4.png"];
             break;
@@ -168,21 +178,13 @@ static NSTimer *infoTimer = nil;
     // optionally: hide GPS meter if signal is fine
     _signalDisplay.hidden = NO;
     
-    if (_deviceAttitude.signalQuality < kPSKSignalQualityBad) {
+    if (newSignalQuality < kPSKSignalQualityBad) {
         if (!_signalDisplay.hidden) {
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 3.0 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
                 _signalDisplay.hidden = YES;
             });
         }
     }
-}
-
-- (void)arBeganToTakePicture {
-    
-}
-
-- (void)arDidTakePicture:(UIImage *)image {
-    
 }
 
 

@@ -42,7 +42,6 @@
 						<int key="NSvFlags">271</int>
 						<string key="NSFrame">{{11, 428}, {309, 32}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="157661560"/>
 						<object class="NSColor" key="IBUIBackgroundColor" id="379328546">
 							<int key="NSColorSpace">3</int>
@@ -83,7 +82,6 @@
 						<int key="NSvFlags">-2147483359</int>
 						<string key="NSFrame">{{116, 46}, {200, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="463968477"/>
 						<string key="NSReuseIdentifierKey">_NS:345</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -116,7 +114,6 @@
 						<int key="NSvFlags">-2147483359</int>
 						<string key="NSFrame">{{-3, 63}, {319, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="579420496"/>
 						<string key="NSReuseIdentifierKey">_NS:345</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -141,7 +138,6 @@
 						<int key="NSvFlags">-2147483359</int>
 						<string key="NSFrame">{{-3, 87}, {319, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="37872926"/>
 						<string key="NSReuseIdentifierKey">_NS:345</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -167,7 +163,6 @@
 						<int key="NSvFlags">-2147483359</int>
 						<string key="NSFrame">{{-2, 104}, {318, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="584844194"/>
 						<string key="NSReuseIdentifierKey">_NS:345</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -192,7 +187,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{6, 49}, {64, 16}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="33230904"/>
 						<string key="NSReuseIdentifierKey">_NS:569</string>
 						<reference key="IBUIBackgroundColor" ref="379328546"/>
@@ -206,42 +200,38 @@
 					<object class="IBUIButton" id="157661560">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">-2147483383</int>
-						<string key="NSFrame">{{288, 428}, {32, 32}}</string>
+						<string key="NSFrame">{{278, 428}, {42, 32}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
-						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:241</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
-						<bool key="IBUIShowsTouchWhenHighlighted">YES</bool>
+						<int key="IBUIButtonType">1</int>
+						<string key="IBUINormalTitle">Radar</string>
 						<reference key="IBUIHighlightedTitleColor" ref="822376007"/>
 						<object class="NSColor" key="IBUINormalTitleColor">
 							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
+							<bytes key="NSRGB">MC4xOTYwNzg0MzE0IDAuMzA5ODAzOTIxNiAwLjUyMTU2ODYyNzUAA</bytes>
 						</object>
 						<object class="NSColor" key="IBUINormalTitleShadowColor">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MC41AA</bytes>
 						</object>
-						<object class="NSCustomResource" key="IBUINormalImage">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">73-radar.png</string>
-						</object>
 						<object class="IBUIFontDescription" key="IBUIFontDescription">
 							<int key="type">2</int>
-							<double key="pointSize">15</double>
+							<double key="pointSize">13</double>
 						</object>
 						<object class="NSFont" key="IBUIFont">
 							<string key="NSName">Helvetica-Bold</string>
-							<double key="NSSize">15</double>
+							<double key="NSSize">13</double>
 							<int key="NSfFlags">16</int>
 						</object>
 					</object>
 				</array>
 				<string key="NSFrame">{{0, 20}, {320, 460}}</string>
 				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="238541857"/>
 				<reference key="IBUIBackgroundColor" ref="680932511"/>
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics">
@@ -362,12 +352,12 @@
 						<reference key="object" ref="191373211"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="584844194"/>
-							<reference ref="157661560"/>
 							<reference ref="579420496"/>
 							<reference ref="33230904"/>
 							<reference ref="238541857"/>
 							<reference ref="463968477"/>
 							<reference ref="37872926"/>
+							<reference ref="157661560"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -444,56 +434,7 @@
 			<nil key="sourceID"/>
 			<int key="maxID">25</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes">
-			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
-				<object class="IBPartialClassDescription">
-					<string key="className">MyARViewController</string>
-					<string key="superclassName">PARViewController</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">showOptions:</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">showOptions:</string>
-						<object class="IBActionInfo" key="NS.object.0">
-							<string key="name">showOptions:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</object>
-					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">_signalDisplay</string>
-						<string key="NS.object.0">UIImageView</string>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">_signalDisplay</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
-							<string key="name">_signalDisplay</string>
-							<string key="candidateClassName">UIImageView</string>
-						</object>
-					</object>
-					<object class="NSMutableDictionary" key="toManyOutletInfosByName">
-						<string key="NS.key.0">infoLabels</string>
-						<object class="IBToManyOutletInfo" key="NS.object.0">
-							<string key="name">infoLabels</string>
-							<string key="candidateClassName">UILabel</string>
-							<string key="collectionClassName">NSArray</string>
-						</object>
-					</object>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/MyARViewController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">PARViewController</string>
-					<string key="superclassName">UIViewController</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/PARViewController.h</string>
-					</object>
-				</object>
-			</array>
-		</object>
+		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
@@ -502,10 +443,10 @@
 		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
-		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="73-radar.png">{27, 27}</string>
-			<string key="signal0.png">{128, 32}</string>
-		</dictionary>
+		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="NS.key.0">signal0.png</string>
+			<string key="NS.object.0">{128, 32}</string>
+		</object>
 		<string key="IBCocoaTouchPluginVersion">1926</string>
 	</data>
 </archive>
