@@ -145,6 +145,7 @@
 		9955EE701498E61F0081D085 /* PanicARKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PanicARKit.framework; path = "../Framework-Debug/PanicARKit.framework"; sourceTree = "<group>"; };
 		9955EE721498E63D0081D085 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		99897906156CF13500479610 /* PanicARKit.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = PanicARKit.strings; sourceTree = "<group>"; };
+		99901AD816102933000A4A17 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -279,6 +280,7 @@
 				993A8E35144FB14B00414EB3 /* UIKit.framework */,
 				993A8E37144FB14B00414EB3 /* Foundation.framework */,
 				993A8E39144FB14B00414EB3 /* CoreGraphics.framework */,
+				99901AD816102933000A4A17 /* SenTestingKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -332,7 +334,7 @@
 		993A8E28144FB14800414EB3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = doPanic;
 			};
 			buildConfigurationList = 993A8E2B144FB14800414EB3 /* Build configuration list for PBXProject "PanicAR-Demo" */;

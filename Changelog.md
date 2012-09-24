@@ -2,28 +2,82 @@
 
 **Important: Review this document before upgrading your project to a new revisions of PanicAR**
 
-## v1.20.1072 to v1.20.1085 - critical fix
+---
+
+### v2.00 build 2203 (to 2217)
+
+- fix: removing a POI leaves the dot on the radar behind
+- add: PanicARKitTests.mm for use with GHUnit (SenTestingKit and integrated Xcode Tests don't work!)
+
+## v2.00
+
+- Framework is now called PanicARKit
+- iOS 6 support and pre-iOS 5 deprecation
+- **armv7s compatible**
+- supported devices now are: iPhone 4, iPhone 4s, iPhone 5, iPad 2, iPad 3 (new iPad)
+- supported iOS versions now are: 5.0 and later
+- supports all orientations and dynamic changes with and without orientation lock
+- accuracy and stability fixes
+- UI improvements: radar view improvements, new notificationView (e.g. "Location Services Denied")
+- handling for changes in authorization status for location services
+- **Important** see 1.2x and 2.x Upgrade Guide to migrate projects using older versions of PanicAR
+
+_This version of PanicAR brings major updates and heavy refactoring in the API and objects. You need to change the code in your app in order for it to use PanicAR 2.0._
+
+**Most Important Changes**
+
+- Demo Project now compatible with Retina iPad and 4 inch iPhone
+- PanicARLib.framework > PanicARKit.framework – make sure you update your import directive to **_#import &lt;PanicARKit/PanicARKit.h&gt;_**
+- Sensor-handling code moved to PanicSensorKit (included in PanicARKit.framework)
+- Localizable.strings is now PanicARKit.strings and contains all default localization strings
+- PanicSensorKit (PSK-prefixed classes) which handles all sensor access and device compatbility
+	- PSKSensorManager (formerly _PARSensorManager_):
+		- removed _enableUpdateHeadingFromLocationManager_
+	- PSKSensorDelegate: dropped _ar_ prefix from all delegate methods
+- PARCapabilities has been dropped in favor of the PSKDeviceProperties class
+- PARManager
+	- removed public API _updateAfterLocationChange__ and _sortMarkersByDistance_
+	- deprecated _isFrozen_ and _setFrozen_ use PARViewController _isPaused_ and _setPaused_ for same functionality 
+- PARControllerDelegate: removed _arPreRenderPass_ and _arPostRenderPass_ because they are not used
+- PARViewController
+	- now uses supportedInterfaceOrientations instead of shouldAutorotateToInterfaceOrientation
+	- supportedInterfaceOrientations will return UIInterfaceOrientationMaskAllButUpsideDown if _rotatesARView_ is NO, otherwise it returns UIInterfaceOrientationMaskPortrait
+	- override supportedInterfaceOrientations in your PARViewController subclass to change this behavior
+- Additions: PARAvailability enum, PSKStatus enum
+- refactored a lot of unneccesarily exposed members into private categories. Let me know if you are experiences issues with that at azeitler@dopanic.com.
+
+---
+
+### v1.20.1072 to v1.20.1085 - critical fix
 
 change: PARCapabilities changed the casing on some of its members
 fix: BAD_ACCESS on PARController:clearObjects and PARController:removeObject when using PARPoi objects
 
-## v1.20.1062 to v1.20.1071 - critical fix
+### v1.20.1062 to v1.20.1071 - critical fix
 
 fix: BAD_ACCESS on PARController:clearObjects and PARController:removeObject
 fix: Memory Leak in PARSensorManager:deviceType
 
-## v1.20.995 to v1.20.1056 - minor bug fixes
+### v1.20.995 to v1.20.1056 - minor bug fixes
 
 fix: PARPoi and subclass-objects are not removed from View when removing object from PARController
 fix: removing a PARObjectDelegate-object from PARController will cause BAD_ACCESS
 fix: localisation strings not included / not correctly formated
 fix: tap-interaction sample code in demo app not working -> replaced with showing Alert on tapping a label
 
+---
+
 ## v1.20
 
-**Major Update:** UIKit, AVFoundation, iOS 5, Gyroscope-Tracking, Point of Interests
+**Major Update:** 
 
-This version of PanicAR brings major updates and heavy refactoring in the API and objects. You need to change the code in your app in order for it to use PanicAR 1.2.
+- UIKit-only rendering
+- AVFoundation camera preview
+- iOS 5 support
+- Gyroscope tracking
+- Point of Interest
+
+_This version of PanicAR brings major updates and heavy refactoring in the API and objects. You need to change the code in your app in order for it to use PanicAR 1.2._
 
 **Most Important Changes**
 
@@ -32,7 +86,6 @@ This version of PanicAR brings major updates and heavy refactoring in the API an
 	- -> rename all your references using Xcode refactoring
 - the overall architecture changed
 	- the AR framework now adheres to the ViewController-View pattern known from the iOS SDK
-	- there is a detailed migration guide available here: [Migration Guide on gitHub.com](https://github.com/doPanic/PanicAR/wiki/Migration-Guide-1.0x----1.2)
 	
 - ARController
 	- the ARController class has been split into two seperate classes: the PARController, PARSensorManager and the PARViewController
@@ -94,7 +147,9 @@ We are offering an advanced edition of PanicAR which includes OpenGL-driven rend
 - take picture of camera and PAR content rendered in (in any resolution you want)
 - access the render pipeline for advanced rendering effects (like 110 Stories, www.110stories.com)
 
-## v1.10 
+---
+
+### v1.10 
 
 **iPad 2 Support**
 
@@ -103,8 +158,9 @@ We are offering an advanced edition of PanicAR which includes OpenGL-driven rend
 - add: support for different device orientations
 - add: now using CoreMotion for better motion tracking
 
+---
 
-## v1.05
+### v1.05
 
 **iOS 5 Hotfix**
 
@@ -112,7 +168,7 @@ We are offering an advanced edition of PanicAR which includes OpenGL-driven rend
 - add: build target for highly optimized Release-Framework-Build (only for licensees, missing in public repository)
 
 
-## v1.04
+### v1.04
 
 - fix: loading view setFrozen:NO on iOS 5 devices
 - fix: enableLoadingView not supported in iOS 5
@@ -121,12 +177,12 @@ We are offering an advanced edition of PanicAR which includes OpenGL-driven rend
 - add: pre-requisites for marker archetypes
 - add: PARObjectDelegate Protocol to identify PAR objects
 
-## 1.03b
+### 1.03b
 
 - fix: validateAPIKey: unrecognized selector sent to class
 - fix: authorizationStatus is asked in 4.2 and later
 
-## 1.02b
+### 1.02b
 
 - fix: exception thrown in simulator and crashes on pre-iOS-4.0 devices (cf. Issues)
 - add: fundamental performance and memory-footprint improvements
@@ -135,15 +191,15 @@ We are offering an advanced edition of PanicAR which includes OpenGL-driven rend
 - add: PARController:addObject, PARController:removeObject, PARController:addObjects, PARController:numberOfObjects, PARController:clearObjects
 - deprecated: PARController:addMarker, PARController:addMarkerAtLocation, PARController:removeMarker, PARController:addMarkers, PARController:numberOfMarkers, PARController:clearMarkers
 
-## v1.01
+### v1.01
 
-### v1.01.08b
+#### v1.01.08b
 
 - add: extensive handling of location manager errors (authorization, turned off/on)
 - add: callback to delegate for update of info label content
 
 
-### v1.01.07b
+#### v1.01.07b
 
 - fix: setViewport bounds of main view
 - fix: localization of distance units
@@ -152,40 +208,40 @@ We are offering an advanced edition of PanicAR which includes OpenGL-driven rend
 - change: API for use with 3D objects in PAR View
 
 
-### v1.01.06b
+#### v1.01.06b
 
 - fix: use lowercase representation of BundleID for validation of api key
 
 
-### v1.01.05b
+#### v1.01.05b
 
 - add: loading and resuming screen (enableLoadingView)
 - fix: viewport frame (setViewport called more than once)
 - add: enableMovieCapture
 
 
-### v1.01.04b
+#### v1.01.04b
 
 - fix: radar button visibility not correctly set (in showController)
 
 
-### v1.01.03b
+#### v1.01.03b
 
 - fix: radar positioning
 
 
-### v1.01.02b
+#### v1.01.02b
 
 - change: use NSAssert instead of C assert
 - fix: viewport resizing
 - add: update branding with viewport resizing
 
-### v1.01.01b
+#### v1.01.01b
 
 - add: Demo Version of Framework with Branding on Background and rendered Markers
 - change: DefaultLabel to DefaultMarker (terminology globally changed from "Label" to "Marker")
 - fix: window layout in non-modal mode
 
-## v1.00
+### v1.00
 
 - Initial release of easy-to-use PAR Framework for iPhone 3Gs / iPhone 4
