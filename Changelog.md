@@ -4,10 +4,16 @@
 
 ---
 
+### v2.00 build 2231 **hotfix**
+
+- fix: enable **ARC** on PanicARKit.framework (fixes _dyld: lazy symbol binding failed: Symbol not found: _objc_setProperty_nonatomic_ error on startup)
+- fix: crash on MapView
+
 ### v2.00 build 2203 (to 2217)
 
 - fix: removing a POI leaves the dot on the radar behind
 - add: PanicARKitTests.mm for use with GHUnit (SenTestingKit and integrated Xcode Tests don't work!)
+- add: Storyboard IBOutletCollection order workaround
 
 ## v2.00
 
@@ -20,7 +26,6 @@
 - accuracy and stability fixes
 - UI improvements: radar view improvements, new notificationView (e.g. "Location Services Denied")
 - handling for changes in authorization status for location services
-- **Important** see 1.2x and 2.x Upgrade Guide to migrate projects using older versions of PanicAR
 
 _This version of PanicAR brings major updates and heavy refactoring in the API and objects. You need to change the code in your app in order for it to use PanicAR 2.0._
 

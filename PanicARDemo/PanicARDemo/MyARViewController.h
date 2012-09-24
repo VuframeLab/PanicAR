@@ -11,11 +11,12 @@
 
 @interface MyARViewController : PARViewController <PARControllerDelegate, UIActionSheetDelegate> {
     
-    IBOutletCollection(UILabel) NSArray *infoLabels;
     IBOutlet UIImageView* _signalDisplay;
     PARRadarPosition _radarThumbnailPosition;
     BOOL _hasARPoiObjects;
 }
+
+@property (strong) IBOutletCollection(UILabel) NSArray *infoLabels;
 
 - (void)updateInfoLabel;
 - (void)changeTracking;

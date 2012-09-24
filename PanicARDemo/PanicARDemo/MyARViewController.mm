@@ -18,6 +18,11 @@ static NSTimer *infoTimer = nil;
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        
+        // set view controller properties and create Options button
+        self.title = NSLocalizedString(@"AR", @"AR");
+        self.navigationItem.title = self.title;
+        self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Options" style:UIBarButtonItemStyleBordered target:self action:@selector(showOptions:)] autorelease];
     }
     return self;
 }
@@ -54,10 +59,13 @@ static NSTimer *infoTimer = nil;
 {
     [super viewDidLoad];
     
-    // set view controller properties and create Options button
-    self.title = NSLocalizedString(@"AR", @"AR");
-    self.navigationItem.title = self.title;
-    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Options" style:UIBarButtonItemStyleBordered target:self action:@selector(showOptions:)] autorelease];
+    // ensure infoLabels are sorted correctly (storyboard workaround)
+    self.infoLabels = [self.infoLabels sortedArrayUsingComparator:^NSComparisonResult(UIView *label1, UIView *label2) {
+        if ([label1 tag] < [label2 tag]) return NSOrderedAscending;
+        else if ([label1 tag] > [label2 tag]) return NSOrderedDescending;
+        else return NSOrderedSame;
+    }];
+    
     
     // setup AR manager properties
     [[_sensorManager locationManager] setDesiredAccuracy:kCLLocationAccuracyBestForNavigation];
@@ -134,9 +142,9 @@ static NSTimer *infoTimer = nil;
     CLLocation* l = [[_sensorManager deviceAttitude] location];
     CLLocationCoordinate2D c = [l coordinate];
     
-    UILabel *_locationLabel = [infoLabels objectAtIndex:1];
+    UILabel *_locationLabel = [_infoLabels objectAtIndex:1];
     _locationLabel.hidden = NO;
-    UILabel *_locationDetailsLabel = [infoLabels objectAtIndex:2];
+    UILabel *_locationDetailsLabel = [_infoLabels objectAtIndex:2];
     _locationDetailsLabel.hidden = NO;
     
     _locationLabel.text = [NSString stringWithFormat:@"%.4f° %.4f° %.2fm", c.latitude, c.longitude, l.altitude];
@@ -144,9 +152,9 @@ static NSTimer *infoTimer = nil;
 }
 
 - (void)didUpdateHeading {
-    UILabel *_headingLabel = [infoLabels objectAtIndex:3];
+    UILabel *_headingLabel = [_infoLabels objectAtIndex:3];
     _headingLabel.hidden = NO;
-    UILabel *_headingDetailsLabel = [infoLabels objectAtIndex:4];
+    UILabel *_headingDetailsLabel = [_infoLabels objectAtIndex:4];
     _headingDetailsLabel.hidden = NO;
     
     _headingLabel.text = [NSString stringWithFormat:@"%.2f°", [[_sensorManager deviceAttitude] heading]];
@@ -194,7 +202,7 @@ static NSTimer *infoTimer = nil;
 #pragma mark - Instance Methods
 
 - (void)updateInfoLabel {
-    UILabel *_infoLabel = [infoLabels objectAtIndex:0];
+    UILabel *_infoLabel = [_infoLabels objectAtIndex:0];
     NSString *display = nil;
     if (![_deviceAttitude hasLocation]) {
         _infoLabel.textColor = [UIColor redColor];
