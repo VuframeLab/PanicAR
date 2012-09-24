@@ -55,7 +55,7 @@ extern PARRadarView* _activeRadarView;
 }
 
 /*!  the PARViewController PARRadarView instance belongs to */
-@property (nonatomic, retain) PARViewController* arViewController;
+@property (nonatomic, strong) PARViewController* arViewController;
 
 /*!  used internally to keep track of rendered objects */
 @property (nonatomic,readonly) int renderID;

@@ -40,7 +40,7 @@ typedef enum {
  singleton class to handle all sensor input and act as an abstraction layer between doPanic Frameworks and OS sensor output
  */
 @interface PSKSensorManager : NSObject <CLLocationManagerDelegate> {
-    id<PSKSensorDelegate> _delegate; // receives all events
+    id<PSKSensorDelegate> __weak _delegate; // receives all events
     CMMotionManager* _motionManager; // CoreMotion interface
     CLLocationManager* _locationManager; // CoreLocation interface
     PSKDeviceProperties *_deviceProperties; // device properties abstraction layer
@@ -62,7 +62,7 @@ typedef enum {
 /*! shared sensor manager instance */
 +(PSKSensorManager*)sharedSensorManager;
 /*! PSKSensorDelegate delegate object receiving updates from the PSKSensorManager */
-@property (nonatomic, assign) id<PSKSensorDelegate> delegate;
+@property (nonatomic, weak) id<PSKSensorDelegate> delegate;
 /*! PSKDeviceProperties reflecting the properties of the currently active device */
 - (PSKDeviceProperties *)deviceProperties;
 /*! CLLocationManager instance */
