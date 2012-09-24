@@ -14,8 +14,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = NSLocalizedString(@"About", @"About");
-        self.navigationItem.title = self.title;
         
     }
     return self;
@@ -33,6 +31,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    self.title = NSLocalizedString(@"About", @"About");
+    self.navigationItem.title = self.title;
 }
 
 - (void)viewDidUnload

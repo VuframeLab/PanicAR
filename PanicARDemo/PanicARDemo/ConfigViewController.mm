@@ -16,10 +16,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = NSLocalizedString(@"Config", @"Config");
-        self.navigationItem.title = self.title;
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(doCompassTracking:)];
-        self.navigationItem.leftBarButtonItem.enabled = NO;
         
     }
     return self;
@@ -38,6 +34,10 @@
     [super viewDidLoad];
     
 	// Do any additional setup after loading the view, typically from a nib.
+    self.title = NSLocalizedString(@"Config", @"Config");
+    self.navigationItem.title = self.title;
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(doCompassTracking:)];
+    self.navigationItem.leftBarButtonItem.enabled = NO;
     
 	
 	MKCoordinateRegion region = MKCoordinateRegionMake([[[PSKSensorManager sharedSensorManager] deviceAttitude] locationCoordinate], MKCoordinateSpanMake(0.02, 0.02));

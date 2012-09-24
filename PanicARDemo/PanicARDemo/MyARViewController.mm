@@ -18,9 +18,6 @@ static NSTimer *infoTimer = nil;
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = NSLocalizedString(@"AR", @"AR");
-        self.navigationItem.title = self.title;
-        self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Options" style:UIBarButtonItemStyleBordered target:self action:@selector(showOptions:)] autorelease];
     }
     return self;
 }
@@ -56,6 +53,11 @@ static NSTimer *infoTimer = nil;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // set view controller properties and create Options button
+    self.title = NSLocalizedString(@"AR", @"AR");
+    self.navigationItem.title = self.title;
+    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Options" style:UIBarButtonItemStyleBordered target:self action:@selector(showOptions:)] autorelease];
     
     // setup AR manager properties
     [[_sensorManager locationManager] setDesiredAccuracy:kCLLocationAccuracyBestForNavigation];

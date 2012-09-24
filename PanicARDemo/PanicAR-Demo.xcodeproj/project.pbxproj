@@ -37,11 +37,7 @@
 		9926E7C2144FB43C0066D383 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9926E7BE144FB43C0066D383 /* first@2x.png */; };
 		9926E7C3144FB43C0066D383 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 9926E7BF144FB43C0066D383 /* second.png */; };
 		9926E7C4144FB43C0066D383 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9926E7C0144FB43C0066D383 /* second@2x.png */; };
-		9926E7D0144FB4C80066D383 /* AboutViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9926E7C8144FB4C80066D383 /* AboutViewController_iPad.xib */; };
-		9926E7D1144FB4C80066D383 /* AboutViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9926E7C9144FB4C80066D383 /* AboutViewController_iPhone.xib */; };
 		9926E7D2144FB4C80066D383 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9926E7CB144FB4C80066D383 /* AboutViewController.m */; };
-		9926E7D3144FB4C80066D383 /* MyARViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9926E7CC144FB4C80066D383 /* MyARViewController_iPad.xib */; };
-		9926E7D4144FB4C80066D383 /* MyARViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9926E7CD144FB4C80066D383 /* MyARViewController_iPhone.xib */; };
 		9926E7D5144FB4C80066D383 /* MyARViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9926E7CF144FB4C80066D383 /* MyARViewController.mm */; };
 		9926E7D7144FB5480066D383 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9926E7D6144FB5480066D383 /* AppDelegate.mm */; };
 		9926E7FA144FB6AE0066D383 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9926E7F5144FB6AE0066D383 /* AVFoundation.framework */; };
@@ -65,12 +61,11 @@
 		993A8E40144FB14B00414EB3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 993A8E3E144FB14B00414EB3 /* InfoPlist.strings */; };
 		993A8E42144FB14B00414EB3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 993A8E41144FB14B00414EB3 /* main.m */; };
 		994606B71450CD8000DF25AD /* App.strings in Resources */ = {isa = PBXBuildFile; fileRef = 994606B61450CD8000DF25AD /* App.strings */; };
-		9955EE6C1498E6070081D085 /* ConfigViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9955EE681498E6070081D085 /* ConfigViewController_iPad.xib */; };
-		9955EE6D1498E6070081D085 /* ConfigViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9955EE691498E6070081D085 /* ConfigViewController_iPhone.xib */; };
 		9955EE6E1498E6070081D085 /* ConfigViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9955EE6B1498E6070081D085 /* ConfigViewController.mm */; };
 		9955EE711498E61F0081D085 /* PanicARKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9955EE701498E61F0081D085 /* PanicARKit.framework */; };
 		9955EE731498E63D0081D085 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9955EE721498E63D0081D085 /* MapKit.framework */; };
 		99897907156CF13500479610 /* PanicARKit.strings in Resources */ = {isa = PBXBuildFile; fileRef = 99897906156CF13500479610 /* PanicARKit.strings */; };
+		99901B38161032AF000A4A17 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99901B37161032AF000A4A17 /* Storyboard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,12 +99,8 @@
 		9926E7BE144FB43C0066D383 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
 		9926E7BF144FB43C0066D383 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		9926E7C0144FB43C0066D383 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
-		9926E7C8144FB4C80066D383 /* AboutViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController_iPad.xib; sourceTree = "<group>"; };
-		9926E7C9144FB4C80066D383 /* AboutViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController_iPhone.xib; sourceTree = "<group>"; };
 		9926E7CA144FB4C80066D383 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		9926E7CB144FB4C80066D383 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
-		9926E7CC144FB4C80066D383 /* MyARViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyARViewController_iPad.xib; sourceTree = "<group>"; };
-		9926E7CD144FB4C80066D383 /* MyARViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyARViewController_iPhone.xib; sourceTree = "<group>"; };
 		9926E7CE144FB4C80066D383 /* MyARViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyARViewController.h; sourceTree = "<group>"; };
 		9926E7CF144FB4C80066D383 /* MyARViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MyARViewController.mm; sourceTree = "<group>"; };
 		9926E7D6144FB5480066D383 /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
@@ -138,14 +129,13 @@
 		993A8E43144FB14B00414EB3 /* PanicAR-Demo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PanicAR-Demo-Prefix.pch"; sourceTree = "<group>"; };
 		993A8E44144FB14B00414EB3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		994606B61450CD8000DF25AD /* App.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = App.strings; sourceTree = "<group>"; };
-		9955EE681498E6070081D085 /* ConfigViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfigViewController_iPad.xib; sourceTree = "<group>"; };
-		9955EE691498E6070081D085 /* ConfigViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfigViewController_iPhone.xib; sourceTree = "<group>"; };
 		9955EE6A1498E6070081D085 /* ConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigViewController.h; sourceTree = "<group>"; };
 		9955EE6B1498E6070081D085 /* ConfigViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ConfigViewController.mm; sourceTree = "<group>"; };
 		9955EE701498E61F0081D085 /* PanicARKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PanicARKit.framework; path = "../Framework-Debug/PanicARKit.framework"; sourceTree = "<group>"; };
 		9955EE721498E63D0081D085 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		99897906156CF13500479610 /* PanicARKit.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = PanicARKit.strings; sourceTree = "<group>"; };
 		99901AD816102933000A4A17 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		99901B37161032AF000A4A17 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,16 +219,10 @@
 		9926E7C7144FB48A0066D383 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				9926E7C8144FB4C80066D383 /* AboutViewController_iPad.xib */,
-				9926E7C9144FB4C80066D383 /* AboutViewController_iPhone.xib */,
 				9926E7CA144FB4C80066D383 /* AboutViewController.h */,
 				9926E7CB144FB4C80066D383 /* AboutViewController.m */,
-				9926E7CC144FB4C80066D383 /* MyARViewController_iPad.xib */,
-				9926E7CD144FB4C80066D383 /* MyARViewController_iPhone.xib */,
 				9926E7CE144FB4C80066D383 /* MyARViewController.h */,
 				9926E7CF144FB4C80066D383 /* MyARViewController.mm */,
-				9955EE681498E6070081D085 /* ConfigViewController_iPad.xib */,
-				9955EE691498E6070081D085 /* ConfigViewController_iPhone.xib */,
 				9955EE6A1498E6070081D085 /* ConfigViewController.h */,
 				9955EE6B1498E6070081D085 /* ConfigViewController.mm */,
 			);
@@ -293,6 +277,7 @@
 				993A8E3E144FB14B00414EB3 /* InfoPlist.strings */,
 				993A8E41144FB14B00414EB3 /* main.m */,
 				993A8E43144FB14B00414EB3 /* PanicAR-Demo-Prefix.pch */,
+				99901B37161032AF000A4A17 /* Storyboard.storyboard */,
 			);
 			name = "Supporting Files";
 			path = PanicARDemo;
@@ -364,10 +349,6 @@
 				9926E7C2144FB43C0066D383 /* first@2x.png in Resources */,
 				9926E7C3144FB43C0066D383 /* second.png in Resources */,
 				9926E7C4144FB43C0066D383 /* second@2x.png in Resources */,
-				9926E7D0144FB4C80066D383 /* AboutViewController_iPad.xib in Resources */,
-				9926E7D1144FB4C80066D383 /* AboutViewController_iPhone.xib in Resources */,
-				9926E7D3144FB4C80066D383 /* MyARViewController_iPad.xib in Resources */,
-				9926E7D4144FB4C80066D383 /* MyARViewController_iPhone.xib in Resources */,
 				992DE100145080CD001927F0 /* signal0.png in Resources */,
 				992DE101145080CD001927F0 /* signal0@2x.png in Resources */,
 				992DE102145080CD001927F0 /* signal1.png in Resources */,
@@ -379,8 +360,6 @@
 				992DE108145080CD001927F0 /* signal4.png in Resources */,
 				992DE109145080CD001927F0 /* signal4@2x.png in Resources */,
 				994606B71450CD8000DF25AD /* App.strings in Resources */,
-				9955EE6C1498E6070081D085 /* ConfigViewController_iPad.xib in Resources */,
-				9955EE6D1498E6070081D085 /* ConfigViewController_iPhone.xib in Resources */,
 				9909952914C311E7007390A8 /* DefaultImage.png in Resources */,
 				9909952A14C311E7007390A8 /* DefaultPoiLabel.png in Resources */,
 				9909952B14C311E7007390A8 /* DefaultPoiLabel.xib in Resources */,
@@ -408,6 +387,7 @@
 				9924CD8C160B2B0000205D2E /* Icon@2x~iphone.png in Resources */,
 				9924CD8D160B2B0000205D2E /* Icon~ipad.png in Resources */,
 				9924CD8E160B2B0000205D2E /* Icon~iphone.png in Resources */,
+				99901B38161032AF000A4A17 /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,7 +483,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PanicARDemo/PanicAR-Demo-Prefix.pch";
 				INFOPLIST_FILE = "PanicARDemo/PanicARDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "PanicAR-Demo";
 				WRAPPER_EXTENSION = app;
 			};
@@ -516,7 +496,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PanicARDemo/PanicAR-Demo-Prefix.pch";
 				INFOPLIST_FILE = "PanicARDemo/PanicARDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "PanicAR-Demo";
 				WRAPPER_EXTENSION = app;
 			};
