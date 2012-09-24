@@ -1,6 +1,6 @@
 //
 //  PARPoi.h
-//  PanicARLib
+//  PanicARKit
 //
 //  Created by Andreas Zeitler on 13.12.11.
 //  Copyright (c) 2011 doPanic. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  PARController+Config.h
-//  PanicARLib
+//  PanicARKit
 //
 //  Created by Andreas Zeitler on 18.10.11.
 //  Copyright (c) 2011 doPanic. All rights reserved.

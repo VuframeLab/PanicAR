@@ -56,8 +56,12 @@ extern float _appearanceCloseRange, _appearanceFarRange;
 
 
 /*! @brief load a Marker Templated from a XIB file
+ @param xibFilename name of the marker template xib file
+ @ref loadPoiLabelTemplate */
++ (PARPoiLabelTemplate *)loadMarkerTemplate:(NSString *)xibFilename  __attribute__ ((deprecated));
+/*! @brief load a Marker Templated from a XIB file
  @param xibFilename name of the marker template xib file */
-+ (PARPoiLabelTemplate *)loadMarkerTemplate:(NSString *)xibFilename;
++ (PARPoiLabelTemplate *)loadPoiLabelTemplate:(NSString *)xibFilename;
 
 /*! @brief ranges for calculating appearance effects
  @param closeRange if poi label is closer than closeRange no effects will be applied 
