@@ -76,9 +76,9 @@ extern CGRect _relativeViewportBounds;
 
 #pragma mark - Properties
 /*!  reference to the UIView representing the POI on screen */
-@property (nonatomic, retain) UIView *labelView;
+@property (nonatomic, strong) UIView *labelView;
 /*!  reference to the UIView representing the POI in the PARRadarView */
-@property (nonatomic, retain) UIView *radarView;
+@property (nonatomic, strong) UIView *radarView;
 /*!  offset of labelView from final position in view
  @remarks use this to change the alingment of the label */
 @property (nonatomic, assign) CGPoint offset;

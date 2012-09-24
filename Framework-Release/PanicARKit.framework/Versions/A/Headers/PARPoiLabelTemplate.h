@@ -26,26 +26,26 @@ extern float _appearanceCloseRange, _appearanceFarRange;
  @remarks more info at https://github.com/doPanic/PanicAR/wiki */
 @interface PARPoiLabelTemplate : UIView {
 	
-    UILabel* _title;
-    UILabel* _content;
-    UILabel* _distance;
-    UIImageView* _image;
-    PARPoiLabel* _poiLabel;
+    UILabel* __weak _title;
+    UILabel* __weak _content;
+    UILabel* __weak _distance;
+    UIImageView* __weak _image;
+    PARPoiLabel* __weak _poiLabel;
     PARController* _controller;
     CGSize _originalSize;
 }
 
 /*! reference to the PARPoiLabel instance this template belongs to */
-@property (nonatomic,assign) PARPoiLabel *poiLabel;
+@property (nonatomic,weak) PARPoiLabel *poiLabel;
 
 /*! UILabel displaying the title of the POI */
-@property (nonatomic,assign) IBOutlet UILabel *title;
+@property (nonatomic,weak) IBOutlet UILabel *title;
 /*! UILabel displaying the description (i.e. additional text content) of the POI */
-@property (nonatomic,assign) IBOutlet UILabel *content;
+@property (nonatomic,weak) IBOutlet UILabel *content;
 /*! UILabel displaying a string formated with the distance of the POI of the POI */
-@property (nonatomic,assign) IBOutlet UILabel *distance;
+@property (nonatomic,weak) IBOutlet UILabel *distance;
 /*! UIImageView displaying the image of the POI, if no image is set in POI or no UIImageView is assigned no image will be displayed */
-@property (nonatomic,assign) IBOutlet UIImageView *image;
+@property (nonatomic,weak) IBOutlet UIImageView *image;
 
 /*! the original size of the label template
  used internally for updating its appearance */

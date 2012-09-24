@@ -25,7 +25,7 @@ extern PARViewController* _activeViewController;
  */
 @interface PARViewController : UIViewController <PSKSensorDelegate> {
     // references
-    PSKSensorManager *_sensorManager;
+    PSKSensorManager *__weak _sensorManager;
     PSKDeviceAttitude *_deviceAttitude;
     
     // ar view
@@ -47,12 +47,12 @@ extern PARViewController* _activeViewController;
 }
 
 /*! the arView of this PARViewController */
-@property (nonatomic,retain) PARView *arView;
+@property (nonatomic,strong) PARView *arView;
 /*! the arRadarView of this PARViewController */
-@property (nonatomic,retain) PARRadarView *arRadarView;
+@property (nonatomic,strong) PARRadarView *arRadarView;
 /*! reference to the PSKSensorManager:sharedSensorManager 
  @remarks for convenience */
-@property (nonatomic,readonly) PSKSensorManager *sensorManager;
+@property (weak, nonatomic,readonly) PSKSensorManager *sensorManager;
 
 /*! @return YES if notificationView is visible */
 - (BOOL)notificationVisible;

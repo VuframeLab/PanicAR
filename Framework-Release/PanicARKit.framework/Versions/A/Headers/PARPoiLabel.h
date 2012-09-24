@@ -37,15 +37,15 @@
 
 
 /*! title of the marker (retained) */
-@property (nonatomic, retain) NSString *title;
+@property (nonatomic, strong) NSString *title;
 
 /*! content (description) of the marker (retained) */
-@property (nonatomic, retain) NSString *description;
+@property (nonatomic, strong) NSString *description;
 
 /*! image of the marker (retained)
  depending on the size of the template this can be a icon or thumbnail
  but also a full-sized image */
-@property (nonatomic, retain) UIImage *image;
+@property (nonatomic, strong) UIImage *image;
 
 /** @brief create PARPoiLabel with Title
  @param theTitle title of the label (may not be nil) 

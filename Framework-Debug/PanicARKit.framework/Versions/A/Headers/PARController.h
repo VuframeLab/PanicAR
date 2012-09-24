@@ -42,7 +42,8 @@ typedef enum {
     PSKSensorManager *_sensorManager;
     PSKDeviceAttitude *_deviceAttitude;
     // piped properties (to PSKSensorManager)
-    id<PSKSensorDelegate> _sensorDelegate;
+    id<PARControllerDelegate> __weak _delegate;
+    id<PSKSensorDelegate> __weak _sensorDelegate;
     BOOL _frozen;
     
     // ar object collection
@@ -50,16 +51,16 @@ typedef enum {
 }
 
 /*! PARControllerDelegate delegate object receiving updates from the PARController */
-@property (nonatomic, assign) id<PARControllerDelegate> delegate;
+@property (nonatomic, weak) id<PARControllerDelegate> delegate;
 /*! PSKSensorDelegate delegate object receiving updates from the PSKSensorManager */
-@property (nonatomic, assign) id<PSKSensorDelegate> sensorDelegate;
+@property (nonatomic, weak) id<PSKSensorDelegate> sensorDelegate;
 
 
 /*! @return YES if PARController is running updates */
 @property (nonatomic, readonly, assign) BOOL isStarted;
 
 /*! @return NSArray containing all PARObjectDelegate-objects in the PARController */
-@property (nonatomic, readonly, retain) NSMutableArray *arObjects;
+@property (nonatomic, readonly, strong) NSMutableArray *arObjects;
 /*! internal use only */
 @property (nonatomic, assign) BOOL objectsNeedSorting;
 

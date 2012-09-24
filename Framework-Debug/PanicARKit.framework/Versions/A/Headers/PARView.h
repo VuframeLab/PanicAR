@@ -61,7 +61,7 @@ extern PARView* _activeView;
 }
 
 /*!  the PARViewController PARView instance belongs to */
-@property (nonatomic, retain) PARViewController* arViewController;
+@property (nonatomic, strong) PARViewController* arViewController;
 /*!  stacking animation speed
  @remarks speed of label's movement to new position when stacking is enabled*/
 @property (nonatomic, assign,setter = setStackingAnimationSpeed:) float stackingAnimationSpeed;
