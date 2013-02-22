@@ -1,0 +1,13 @@
+//
+// Prefix header for all source files of the 'PanicARKit' target in the 'PanicARKit' project
+//
+
+#ifdef __OBJC__
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
+#import "PanicXcodeKit.h"
+#import "PanicSensorKit.h"
+#import "PanicARKit.h"
+
+#endif

@@ -12,12 +12,13 @@
 
 // Statuses for the GPS
 typedef enum {
-    kPSKSignalQualityBest = 0,
-    kPSKSignalQualityOkay,
-    kPSKSignalQualityMedium,
-    kPSKSignalQualityBad,
-    kPSKSignalQualityNotUsable,
+    PSKSignalQualityBest = 0,
+    PSKSignalQualityOkay,
+    PSKSignalQualityMedium,
+    PSKSignalQualityBad,
+    PSKSignalQualityNotUsable,
 } PSKSignalQuality;
+NSString* NSStringFromPSKSignalQuality(PSKSignalQuality signalQuality);
 
 /*!  stores all sensor information retrieved from the OS */
 @interface PSKDeviceAttitude : NSObject {
@@ -67,6 +68,9 @@ typedef enum {
     float _deviceOffsetToPortraitAngle;
     PSKMatrix4x4 _deviceOffsetToPortraitMatrix;
 }
+
+/*! shared device attitude instance */
++ (PSKDeviceAttitude *)sharedDeviceAttitude;
 
 // location
 /*!  hasLocation is a location available */

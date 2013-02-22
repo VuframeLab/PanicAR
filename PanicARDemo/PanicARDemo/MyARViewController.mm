@@ -167,16 +167,16 @@ static NSTimer *infoTimer = nil;
 
 - (void)didChangeSignalQuality:(PSKSignalQuality)newSignalQuality {
     switch (newSignalQuality) {
-        case kPSKSignalQualityBest:
+        case PSKSignalQualityBest:
             _signalDisplay.image = [UIImage imageNamed:@"signal4.png"];
             break;
-        case kPSKSignalQualityOkay:
+        case PSKSignalQualityOkay:
             _signalDisplay.image = [UIImage imageNamed:@"signal3.png"];
             break;
-        case kPSKSignalQualityMedium:
+        case PSKSignalQualityMedium:
             _signalDisplay.image = [UIImage imageNamed:@"signal2.png"];
             break;
-        case kPSKSignalQualityBad:
+        case PSKSignalQualityBad:
             _signalDisplay.image = [UIImage imageNamed:@"signal1.png"];
             break;
             
@@ -188,7 +188,7 @@ static NSTimer *infoTimer = nil;
     // optionally: hide GPS meter if signal is fine
     _signalDisplay.hidden = NO;
     
-    if (newSignalQuality < kPSKSignalQualityBad) {
+    if (newSignalQuality < PSKSignalQualityBad) {
         if (!_signalDisplay.hidden) {
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 3.0 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
                 _signalDisplay.hidden = YES;

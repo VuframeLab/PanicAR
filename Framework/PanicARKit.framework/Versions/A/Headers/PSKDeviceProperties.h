@@ -11,20 +11,22 @@
 // Device Type definitions
 static const int kDeviceUnknown = -1;
 static const int kDeviceSimulator = 0;
-static const int kDeviceiPhone = 10;
-static const int kDeviceiPhone3G = 11;
-static const int kDeviceiPhone3Gs = 12;
-static const int kDeviceiPhone4 = 13;
-static const int kDeviceiPhone4s = 104;
-static const int kDeviceiPhone5 = 105;
-static const int kDeviceiPad = 15;
-static const int kDeviceiPad2 = 106;
-static const int kDeviceiPad3 = 107;
-static const int kDeviceiPod = 18;
-static const int kDeviceiPod4 = 19;
-static const int kDeviceiPod5 = 20;
-static const int kDeviceFastGeneration = 100;
-static const int kDeviceUnkownNewDevice = 120;
+static const int kDeviceiPhone = 100;
+static const int kDeviceiPhone3G = 110;
+static const int kDeviceiPhone3Gs = 120;
+static const int kDeviceiPhone4 = 130;
+static const int kDeviceiPhone4s = 1040;
+static const int kDeviceiPhone5 = 1050;
+static const int kDeviceiPad = 150;
+static const int kDeviceiPad2 = 1060;
+static const int kDeviceiPadMini1 = 1061;
+static const int kDeviceiPad3 = 1070;
+static const int kDeviceiPad4 = 1080;
+static const int kDeviceiPod = 180;
+static const int kDeviceiPod4 = 190;
+static const int kDeviceiPod5 = 200;
+static const int kDeviceFastGeneration = 1000;
+static const int kDeviceUnkownNewDevice = 1200;
 
 #define PSK_MINIMUM_OS_FOR_ADVANCED_SENSORS 5.0
 
@@ -59,6 +61,9 @@ typedef enum {
     BOOL _hasAccelerometer;
     BOOL _hasGyroscope;
 }
+
+/*! shared device properties instance */
++ (PSKDeviceProperties*)sharedDeviceProperties;
 
 /*! initializes an EMPTY PSKDeviceProperties object
  @warning this is not usable */

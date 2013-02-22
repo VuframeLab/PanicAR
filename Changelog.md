@@ -4,6 +4,12 @@
 
 ---
 
+### v2.10 build 
+
+- removes DEBUG and RELEASE variants of framework, only one PanicARKit.framework – always use that one
+- supported devices now are: iPhone 4, iPhone 4s, iPhone 5, iPad 2, iPad 3 (new iPad), iPad 4, iPad Mini
+- supported iOS versions now are: 5.x, 6.x
+
 ### v2.00 build 2231 **hotfix**
 
 - fix: enable **ARC** on PanicARKit.framework (fixes _dyld: lazy symbol binding failed: Symbol not found: _objc_setProperty_nonatomic_ error on startup)
