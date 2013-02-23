@@ -12,8 +12,9 @@ Pod::Spec.new do |s|
     :git => "git@bitbucket.org:dopanic/panicar-public.git",
     :tag => "#{s.version.to_s}"
   }
-  s.platform     = :ios, '5.0'
-  s.frameworks     =  'AVFoundation', 'CoreLocation', 'CoreMotion', 'CoreGraphics', 'UIKit', 'Foundation', 'QuartzCore', 'MapKit'
-  s.xcconfig       =  { 'FRAMEWORK_SEARCH_PATHS' => '"$(PODS_ROOT)/PanicARKit/Framework"' }
-  s.preserve_paths =  'Framework/PanicARKit.framework'
+  s.platform        = :ios, '5.0'
+  s.frameworks      =  'AVFoundation', 'CoreLocation', 'CoreMotion', 'CoreGraphics', 'UIKit', 'Foundation', 'QuartzCore', 'MapKit', 'PanicARKit'
+  s.xcconfig        = { 'FRAMEWORK_SEARCH_PATHS' => '"$(PODS_ROOT)/PanicARKit/Framework"' }
+  s.preserve_paths  = 'Framework/PanicARKit.framework', 'Framework/PanicARKitResources.bundle'
+  s.resources       = 'Framework/PanicARKitResources.bundle'
 end
