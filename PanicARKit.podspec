@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   }
   s.author       = { "Andreas Zeitler" => "azeitler@dopanic.com" }
   s.source       = { 
-    :git => "https://github.com/doPanic/PanicAR.git",
+    :git => "git@bitbucket.org:dopanic/panicar-public.git",
     :tag => "#{s.version.to_s}"
   }
   s.platform     = :ios, '5.0'
