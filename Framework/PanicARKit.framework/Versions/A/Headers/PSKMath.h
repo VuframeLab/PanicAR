@@ -176,13 +176,13 @@ PSKVector3 PSKQuaternionMultiplyVector3 (PSKQuaternion q, PSKVector3 vec);
  
  @return End-point from the source given the desired range and bearing. 
  */
-CLLocationCoordinate2D calculatePositionInDistance(CLLocationCoordinate2D source, double range, double bearing);
+CLLocationCoordinate2D PSKCalculatePositionInDistance(CLLocationCoordinate2D source, double range, double bearing);
 
 /*! Converts latitude, longitude to ECEF coordinate system */
-void convertLatLonToEcef(double lat, double lon, double alt, double *x, double *y, double *z);
+void PSKConvertLatLonToEcef(double lat, double lon, double alt, double *x, double *y, double *z);
 
 /*! Coverts ECEF to ENU coordinates centered at given lat, lon */
-void ecefToEnu(double lat, double lon, double x, double y, double z, double xr, double yr, double zr, double *e, double *n, double *u);
+void PSKEcefToEnu(double lat, double lon, double x, double y, double z, double xr, double yr, double zr, double *e, double *n, double *u);
 
 
 #endif

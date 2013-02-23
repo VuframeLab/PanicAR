@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "PanicARKit"
-  s.version      = "2.0.2333"
+  s.version      = "2.0.2474"
   s.summary      = "basic classes to setup an app, includes useful categories and custom controls. includes tracking, resources and sharing utilities."
   s.homepage     = "http://github.com/doPanic/Developer"
   s.license      = {

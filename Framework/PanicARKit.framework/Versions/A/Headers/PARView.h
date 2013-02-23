@@ -11,16 +11,16 @@
 #import "PSKMath.h"
 
 
-#define RENDER_FPS 15
-#define RENDER_PLANE_NEAR 0.25
-#define RENDER_PLANE_FAR 100000
-#define DEFAULT_STACKING_ANIMATION_SPEED_IPAD 0.25
+#define RENDER_FPS								15
+#define RENDER_PLANE_NEAR						0.25
+#define RENDER_PLANE_FAR						100000
+#define DEFAULT_STACKING_ANIMATION_SPEED_IPAD	0.25
 #define DEFAULT_STACKING_ANIMATION_SPEED_IPHONE 0.5
-#define DEFAULT_LABEL_BASELINE 0.5
-#define DEFAULT_LABEL_ALIGN_TO_DEVICE YES
+#define DEFAULT_LABEL_BASELINE					0.5
+#define DEFAULT_LABEL_ALIGN_TO_DEVICE			YES
 
-#define MAX_NUMBER_OF_STACKINGSECTORS 80
-#define HALF_NUMBER_OF_STACKINGSECTORS (MAX_NUMBER_OF_STACKINGSECTORS/2)
+#define MAX_NUMBER_OF_STACKINGSECTORS			80
+#define HALF_NUMBER_OF_STACKINGSECTORS			(MAX_NUMBER_OF_STACKINGSECTORS / 2)
 
 @class PARController;
 @class PSKSensorManager;
@@ -28,56 +28,56 @@
 @class PARPoi;
 @class PARViewController;
 
-extern PARView* _activeView;
+extern PARView *_activeView;
 
 
 
-/*!  PARView 
- handles interface for rendering AR objects
- provides functionality for non-3d rendering and stacking of labels
+/*!  PARView
+ * handles interface for rendering AR objects
+ * provides functionality for non-3d rendering and stacking of labels
  */
 @interface PARView : UIView {
-	PARController* _arController;
-	PSKSensorManager* _arSensorManager;
-    PSKDeviceAttitude *_deviceAttitude;
-	PARViewController* _arViewController;
+	PARController *_arController;
+	PSKSensorManager *_arSensorManager;
+	PSKDeviceAttitude *_deviceAttitude;
+	PARViewController *_arViewController;
 	id<PARObjectDelegate> _currentObject;
-    
-    CGSize _viewport;
-    float _fov, _verticalFov;
+
+	CGSize _viewport;
+	float _fov, _verticalFov;
 	PSKMatrix4x4 _perspectiveMatrix;
 	PSKMatrix4x4 _perspectiveCameraMatrix;
-    
-    // object sorting
-    float _heightInStackingSector[MAX_NUMBER_OF_STACKINGSECTORS];
-    int _numberOfStackingSectors;
-    float _widthOfStackingSector;
-    float _firstSectorX, _lastSectorX;
-    float _stackingAnimationSpeed;
-    float _labelBaseline;
-    BOOL _alignLabelsToDeviceOrientation;
-    NSTimer *_renderTimer;
-    float _viewRotationOffset;
+
+	// object sorting
+	float _heightInStackingSector[MAX_NUMBER_OF_STACKINGSECTORS];
+	int _numberOfStackingSectors;
+	float _widthOfStackingSector;
+	float _firstSectorX, _lastSectorX;
+	float _stackingAnimationSpeed;
+	float _labelBaseline;
+	BOOL _alignLabelsToDeviceOrientation;
+	NSTimer *_renderTimer;
+	float _viewRotationOffset;
 }
 
 /*!  the PARViewController PARView instance belongs to */
-@property (nonatomic, strong) PARViewController* arViewController;
+@property (nonatomic, strong) PARViewController *arViewController;
 /*!  stacking animation speed
- @remarks speed of label's movement to new position when stacking is enabled*/
-@property (nonatomic, assign,setter = setStackingAnimationSpeed:) float stackingAnimationSpeed;
+ * @remarks speed of label's movement to new position when stacking is enabled*/
+@property (nonatomic, assign, setter = setStackingAnimationSpeed :) float stackingAnimationSpeed;
 
 /*!  base line at which label's y-position is calculated
- @remarks default = 0.5, i.e. middle of view */
-- (float) labelBaseline;
+ * @remarks default = 0.5, i.e. middle of view */
+- (float)labelBaseline;
 
 /*!  base line at which label's y-position is calculated
- @remarks default = 0.5, i.e. middle of view
- @param percentage relative y-position of label baseline */
+ * @remarks default = 0.5, i.e. middle of view
+ * @param percentage relative y-position of label baseline */
 - (void)setLabelBaseline:(float)percentage;
 
 /*! the rotated projection matrix of the camera
- @remarks for internal use */
-- (PSKMatrix4x4*) perspectiveCameraMatrix;
+ * @remarks for internal use */
+- (PSKMatrix4x4 *)perspectiveCameraMatrix;
 
 /*! the size of the viewport */
 - (CGSize)viewport;

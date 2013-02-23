@@ -18,12 +18,13 @@
 
 
 // Statuses for PARController
-typedef enum {
-    kPARStatusNotDetermined = 0,
-    kPARStatusUnavailable,
-    kPARStatusRestricted,
-    kPARStatusDenied,
-    kPARStatusReady,
+typedef enum
+{
+	kPARStatusNotDetermined = 0,
+	kPARStatusUnavailable,
+	kPARStatusRestricted,
+	kPARStatusDenied,
+	kPARStatusReady,
 } PARAvailability;
 
 
@@ -32,22 +33,22 @@ typedef enum {
 @class PSKDeviceAttitude;
 
 /*!
-  PARController
- @brief singleton class that manages PAR data used by PARViewController subclasses
+ * PARController
+ * @brief singleton class that manages PAR data used by PARViewController subclasses
  */
 @interface PARController : NSObject <PSKSensorDelegate> {
-    BOOL _started;
-    BOOL _objectsNeedSorting;
-    
-    PSKSensorManager *_sensorManager;
-    PSKDeviceAttitude *_deviceAttitude;
-    // piped properties (to PSKSensorManager)
-    id<PARControllerDelegate> __weak _delegate;
-    id<PSKSensorDelegate> __weak _sensorDelegate;
-    BOOL _frozen;
-    
-    // ar object collection
-    NSMutableArray *_arObjects;
+	BOOL _started;
+	BOOL _objectsNeedSorting;
+
+	PSKSensorManager *_sensorManager;
+	PSKDeviceAttitude *_deviceAttitude;
+	// piped properties (to PSKSensorManager)
+	id<PARControllerDelegate> __weak _delegate;
+	id<PSKSensorDelegate> __weak _sensorDelegate;
+	BOOL _frozen;
+
+	// ar object collection
+	NSMutableArray *_arObjects;
 }
 
 /*! PARControllerDelegate delegate object receiving updates from the PARController */
@@ -80,7 +81,7 @@ typedef enum {
 /*! will be called in PARViewController:viewWillDisappear */
 - (void)stop;
 /*! @return YES if object update is running
- @remarks internal use only */
+ * @remarks internal use only */
 - (BOOL)isUpdatingObjects;
 
 #pragma mark - Memory and Multitasking
@@ -96,23 +97,24 @@ typedef enum {
 #pragma mark - Class Methods
 /*! shared PARController */
 + (PARController *)sharedARController;
-
+/*! @abstract the NSBundle holding all framework resources */
++ (NSBundle *)frameworkBundle;
 
 /*! checks if the device supports Augmented Reality functionality
- @return YES if AR functionality is supported by the device's sensors */
+ * @return YES if AR functionality is supported by the device's sensors */
 + (BOOL)deviceSupportsAR;
 
 /*! checks if the device supports Augmented Reality functionality
- @return YES if AR functionality is supported by the device's sensors
- @param showErrors YES will rais UIAlertView's with default messages defined in PanicARKit.strings */
+ * @return YES if AR functionality is supported by the device's sensors
+ * @param showErrors YES will rais UIAlertView's with default messages defined in PanicARKit.strings */
 + (BOOL)deviceSupportsAR:(BOOL)showErrors;
 
-/*! shortcut method to show an UIAlertView with the passed parameters 
- @param title title of the alert
- @param message mesage of the alert
- @param dismissButtonTitle button title of the alert */
+/*! shortcut method to show an UIAlertView with the passed parameters
+ * @param title title of the alert
+ * @param message mesage of the alert
+ * @param dismissButtonTitle button title of the alert */
 + (void)showAlert:(NSString *)title withMessage:(NSString *)message andDismissButton:(NSString *)dismissButtonTitle;
 
 @end
 
-#endif
+#endif // ifndef PanicARLib_ARController_h

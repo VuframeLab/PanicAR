@@ -27,10 +27,9 @@
 - (void)didChangeSensorUpdateMode:(PSKSensorManagerUpdateMode)newUpdateMode fromMode:(PSKSensorManagerUpdateMode)oldUpdateMode;
 
 /*! called when a location update was made */
-- (void)didUpdateLocation:(CLLocation *)newLocation;
+- (void)didUpdateLocation:(CLLocation *)orignewLocationinalLocation;
 /*! called when a heading update was made */
 - (void)didUpdateHeading:(CLHeading *)newHeading;
-
 /*! called when the signal quality changed 
  @param newSignalQuality new signal quality*/
 - (void)didChangeSignalQuality:(PSKSignalQuality)newSignalQuality;
@@ -40,11 +39,5 @@
 /*! called when authorization status changed (location services enabled/disabled, etc.)
  @param status the new authorization status */
 - (void)didChangeAuthorizationStatus:(CLAuthorizationStatus)status;
-
-@optional
-/*! called when a location update was made @deprecated use @ref didUpdateLocation:newLocation instead */
-- (void)didUpdateLocation __attribute__((deprecated));
-/*! called when a heading update was made @deprecated use @ref didUpdateLocation:newLocation instead */
-- (void)didUpdateHeading __attribute__((deprecated));
 
 @end

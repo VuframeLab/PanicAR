@@ -11,8 +11,8 @@
 #import "PSKMath.h"
 
 #define CLIP_AT_ANGLE_DEVIATION 35
-#define HEAVY_SMOOTH 10
-#define LIGHT_SMOOTH 5
+#define HEAVY_SMOOTH			10
+#define LIGHT_SMOOTH			5
 
 @class PARView;
 @class PARRadarView;
@@ -42,10 +42,10 @@
 
 #pragma mark - Rendering
 /*! handles the rendering in the PARView
- @param theView PARView the object will be rendered in */
+ * @param theView PARView the object will be rendered in */
 - (void)renderInView:(PARView *)theView;
 /*! handles the rendering in the PARRadarView
- @param theRadar PARRadarView the object will be rendered in */
+ * @param theRadar PARRadarView the object will be rendered in */
 - (void)renderInRadar:(PARRadarView *)theRadar;
 
 #pragma mark - Properties
@@ -56,24 +56,24 @@
 - (BOOL)hidden;
 
 /*! angle to camera
- @remarks used internally */
+ * @remarks used internally */
 - (float)angleToCamera;
 
 /*! coordinates in virtual space around camera
- @remarks used internally */
+ * @remarks used internally */
 - (PSKVector3)virtualPosition;
 
 /*! distance to user
- @remarks used internally */
+ * @remarks used internally */
 - (float)distanceToUser;
 
 /*! location of this object
- @return CLLocation */
-- (CLLocation*)location;
+ * @return CLLocation */
+- (CLLocation *)location;
 
 /*! set location of this object
- @remarks be careful updating the location of existing labels 
- @param theLocation CLLocation location */
+ * @remarks be careful updating the location of existing labels
+ * @param theLocation CLLocation location */
 - (void)setLocation:(CLLocation *)theLocation;
 
 /*! latitude of this object */
