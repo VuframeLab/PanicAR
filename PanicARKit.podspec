@@ -14,7 +14,8 @@ Pod::Spec.new do |s|
   }
   s.platform        = :ios, '5.0'
   s.frameworks      =  'AVFoundation', 'CoreLocation', 'CoreMotion', 'CoreGraphics', 'UIKit', 'Foundation', 'QuartzCore', 'MapKit', 'PanicARKit'
-  s.xcconfig        = { 'FRAMEWORK_SEARCH_PATHS' => '"$(PODS_ROOT)/PanicARKit/Framework"' }
+  s.xcconfig        = { 'FRAMEWORK_SEARCH_PATHS' => '"$(PODS_ROOT)/PanicARKit/Framework"', 
+                        'LIBRARY_SEARCH_PATHS' => '"$(PODS_ROOT)/build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/"' }
   s.preserve_paths  = 'Framework/PanicARKit.framework', 'Framework/PanicARKitResources.bundle'
   s.resources       = 'Framework/PanicARKitResources.bundle'
 end
