@@ -1,6 +1,6 @@
 # PanicAR Framework
 
-by doPanic - for sales and support contact azeitler@dopanic.com
+by doPanic GmbH - for sales and support contact info@dopanic.com
 
 ## Information
 

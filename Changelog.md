@@ -4,13 +4,33 @@
 
 ---
 
-### 2.0 build 2564 
+### 2.1 (build 2564)
+
+**Updates**
 
 - removes DEBUG and RELEASE variants of framework, only one PanicARKit.framework – always use that one
 - supported devices now are: iPhone 4, iPhone 4s, iPhone 5, iPad 2, iPad 3 (new iPad), iPad 4, iPad Mini
 - supported iOS versions now are: 5.x, 6.x
 - adds a PanicARKitResources.bundle which contains all the default resources which will be loaded if the app's main bundle does not contain it, e.g. DefaultPoiLabel.xib
-- we now support cocoapods, the repository contains a podspec (PanicAR.podspec) and we will submit one to the central cocoapods spec repository shortly
+- adds support for CocoaPods, the repository contains a podspec (PanicAR.podspec) which we will submit to the central cocoapods podspec repository shortly
+- adds *PARPoiFactor* (formerly *PARSimulator*) to the framework; this makes it easy to create POIs for test purposes
+- the Demo app has been overhauled and improved:
+	- integrates PARPoiFactory
+	- drops the sloppy #define LABEL <type of poi class you want> in favor of some [PARPoiLabel class] runtime selection
+	- removes redundant code
+- PARObjectDelegate: changed renderInView:(PARView *)theView to renderInView:(UIView *)theView, add cast to (PARView *) to any of your code that previously was dependant on an PARView object being passed
+
+**Fixes**
+
+- fixes an issue where POI objects are clipped to early at the upper screen border when a labelBaseline is set to something other than the default
+
+**Deprecations**
+
+*Don't use these methods any more, they will be removed in future revisions.*
+
+- PARViewController: touchDragX, touchMovedX, touchDragY, touchMovedY, resetTouchDrag, tapped
+- PARView: activeView, setActiveView
+- PARRadarView: activeView, setActiveView
 
 ### v2.00 build 2231 **hotfix**
 
