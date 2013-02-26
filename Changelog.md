@@ -23,6 +23,7 @@
 **Fixes**
 
 - fixes an issue where POI objects are clipped to early at the upper screen border when a labelBaseline is set to something other than the default
+- fixes an issue where PSKDeviceAttitude did not return nil for location when the location is invalid
 
 **Deprecations**
 
