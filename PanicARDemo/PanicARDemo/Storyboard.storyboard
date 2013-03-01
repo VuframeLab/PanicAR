@@ -9,7 +9,7 @@
             <objects>
                 <navigationController definesPresentationContext="YES" id="MDS-Q8-a84" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="About" image="second.png" id="Wov-ky-kPZ"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" id="hit-sj-e90">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="hit-sj-e90">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -25,11 +25,11 @@
             <objects>
                 <viewController id="sTo-Wx-zA8" customClass="AboutViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DlC-hh-vzr">
-                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="6KC-b9-WsA">
-                                <rect key="frame" x="12" y="61" width="294" height="406"/>
+                                <rect key="frame" x="13" y="20" width="294" height="406"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="PanicAR Framework" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="QJw-nz-weo">
@@ -110,7 +110,7 @@ For more information please visit:</string>
             <objects>
                 <navigationController definesPresentationContext="YES" id="KHu-Vn-33g" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Map" image="second.png" id="hW1-0K-Taj"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" id="nHW-Mw-9lp">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="nHW-Mw-9lp">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -126,11 +126,11 @@ For more information please visit:</string>
             <objects>
                 <viewController id="gbw-B5-s7K" customClass="ConfigViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NFz-xD-TZk">
-                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="cX1-xF-pIl">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="499"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
                         </subviews>
@@ -153,11 +153,11 @@ For more information please visit:</string>
             <objects>
                 <viewController title="AR View" id="MHD-vr-LMW" customClass="MyARViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="X8E-7x-dA4">
-                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Augmented Reality starting up..." lineBreakMode="wordWrap" numberOfLines="2" minimumFontSize="8" id="4bv-8I-PNQ" userLabel="debugLabel">
-                                <rect key="frame" x="11" y="467" width="309" height="32"/>
+                                <rect key="frame" x="11" y="423" width="309" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
@@ -166,7 +166,7 @@ For more information please visit:</string>
                                 <color key="shadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </label>
                             <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" text="location unknown" textAlignment="right" lineBreakMode="clip" minimumFontSize="10" adjustsFontSizeToFit="NO" id="IB4-Ic-jUZ" userLabel="location">
-                                <rect key="frame" x="116" y="46" width="200" height="21"/>
+                                <rect key="frame" x="113" y="1" width="200" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -174,7 +174,7 @@ For more information please visit:</string>
                                 <color key="shadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </label>
                             <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" text="location details unknown" textAlignment="right" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="C3O-YH-DFB" userLabel="location-details">
-                                <rect key="frame" x="-3" y="63" width="319" height="21"/>
+                                <rect key="frame" x="-6" y="18" width="319" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -182,7 +182,7 @@ For more information please visit:</string>
                                 <color key="shadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </label>
                             <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="left" text="heading" textAlignment="right" lineBreakMode="clip" minimumFontSize="10" adjustsFontSizeToFit="NO" id="Un7-CX-Su6" userLabel="heading">
-                                <rect key="frame" x="-3" y="87" width="319" height="21"/>
+                                <rect key="frame" x="-6" y="42" width="319" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -190,7 +190,7 @@ For more information please visit:</string>
                                 <color key="shadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </label>
                             <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="left" text="heading details unknown" textAlignment="right" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="taf-Hz-G70" userLabel="heading-details">
-                                <rect key="frame" x="-2" y="104" width="318" height="21"/>
+                                <rect key="frame" x="-5" y="59" width="318" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -198,12 +198,12 @@ For more information please visit:</string>
                                 <color key="shadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="signal0.png" id="9jl-ZV-GdK">
-                                <rect key="frame" x="6" y="49" width="64" height="16"/>
+                                <rect key="frame" x="3" y="4" width="64" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="oRW-Hn-gLl">
-                                <rect key="frame" x="278" y="467" width="42" height="32"/>
+                                <rect key="frame" x="278" y="423" width="42" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                 <state key="normal" title="Radar">
@@ -241,7 +241,7 @@ For more information please visit:</string>
         <scene sceneID="WBv-Ac-9FQ">
             <objects>
                 <tabBarController definesPresentationContext="YES" id="tQa-ta-HUT" sceneMemberID="viewController">
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackTranslucent" prompted="NO"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="5Bt-Hu-icK">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
@@ -263,7 +263,7 @@ For more information please visit:</string>
             <objects>
                 <navigationController definesPresentationContext="YES" id="ssn-mw-ZeY" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="AR" image="first.png" id="7JO-yJ-EbG"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" id="RVd-Gk-gsI">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="RVd-Gk-gsI">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
