@@ -16,8 +16,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = NSLocalizedString(@"Config", @"Config");
-        self.navigationItem.title = self.title;
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(doCompassTracking:)];
         self.navigationItem.leftBarButtonItem.enabled = NO;
     }

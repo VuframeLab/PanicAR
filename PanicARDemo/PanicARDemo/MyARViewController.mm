@@ -21,8 +21,6 @@ bool _areOptionsVisible = false;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // set view controller properties and create Options button
-        self.title = NSLocalizedString(@"AR", @"AR");
-        self.navigationItem.title = self.title;
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Options" style:UIBarButtonItemStyleBordered target:self action:@selector(showOptions:)];
     }
     return self;
@@ -57,7 +55,6 @@ bool _areOptionsVisible = false;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     // ensure infoLabels are sorted correctly (storyboard workaround)
     self.infoLabels = [self.infoLabels sortedArrayUsingComparator:^NSComparisonResult(UIView *label1, UIView *label2) {
         if ([label1 tag] < [label2 tag]) return NSOrderedAscending;

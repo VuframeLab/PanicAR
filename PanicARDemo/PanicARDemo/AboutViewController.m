@@ -14,8 +14,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = NSLocalizedString(@"About", @"About");
-        self.navigationItem.title = self.title;
     }
     return self;
 }

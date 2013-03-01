@@ -20,7 +20,7 @@
             </objects>
             <point key="canvasLocation" x="-103" y="1024"/>
         </scene>
-        <!--About View Controller-->
+        <!--About View Controller - About-->
         <scene sceneID="NLT-F5-1rm">
             <objects>
                 <viewController id="sTo-Wx-zA8" customClass="AboutViewController" sceneMemberID="viewController">
@@ -91,15 +91,15 @@ For more information please visit:</string>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="backgroundColor" red="0.18823529780000001" green="0.18823529780000001" blue="0.18823529780000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
                                 <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
                                 <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Fcy-dH-sEp"/>
+                    <navigationItem key="navigationItem" title="About" id="Fcy-dH-sEp"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WsN-2w-gMZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -121,7 +121,7 @@ For more information please visit:</string>
             </objects>
             <point key="canvasLocation" x="-55" y="272"/>
         </scene>
-        <!--Config View Controller-->
+        <!--Config View Controller - Map-->
         <scene sceneID="8U9-hu-3BI">
             <objects>
                 <viewController id="gbw-B5-s7K" customClass="ConfigViewController" sceneMemberID="viewController">
@@ -139,7 +139,7 @@ For more information please visit:</string>
                         <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackTranslucent" prompted="NO"/>
                         <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     </view>
-                    <navigationItem key="navigationItem" id="gSc-HC-WAG"/>
+                    <navigationItem key="navigationItem" title="Map" id="gSc-HC-WAG"/>
                     <connections>
                         <outlet property="mapView" destination="cX1-xF-pIl" id="pIh-cY-UiA"/>
                     </connections>
@@ -223,7 +223,7 @@ For more information please visit:</string>
                         <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackTranslucent" prompted="NO"/>
                         <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     </view>
-                    <navigationItem key="navigationItem" id="yWi-D6-UeG"/>
+                    <navigationItem key="navigationItem" title="AR" id="yWi-D6-UeG"/>
                     <connections>
                         <outlet property="_signalDisplay" destination="9jl-ZV-GdK" id="E2c-oA-JGj"/>
                         <outletCollection property="infoLabels" destination="4bv-8I-PNQ" id="k8H-PA-vSg"/>

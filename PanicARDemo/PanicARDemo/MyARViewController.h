@@ -19,10 +19,7 @@
 @property (strong) IBOutletCollection(UILabel) NSArray *infoLabels;
 
 - (void)updateInfoLabel;
-- (void)changeTracking;
-
 - (IBAction)showOptions:(id)sender;
-
 - (void)createARPoiObjects;
 
 @end

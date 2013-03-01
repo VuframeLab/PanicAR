@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		9924CD80160B2B0000205D2E /* Default-568h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 9924CD71160B2B0000205D2E /* Default-568h@2x~iphone.png */; };
-		9924CD81160B2B0000205D2E /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 9924CD72160B2B0000205D2E /* Default-Landscape@2x~ipad.png */; };
-		9924CD82160B2B0000205D2E /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 9924CD73160B2B0000205D2E /* Default-Landscape~ipad.png */; };
 		9924CD83160B2B0000205D2E /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 9924CD74160B2B0000205D2E /* Default-Portrait@2x~ipad.png */; };
 		9924CD84160B2B0000205D2E /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 9924CD75160B2B0000205D2E /* Default-Portrait~ipad.png */; };
 		9924CD85160B2B0000205D2E /* Default@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 9924CD76160B2B0000205D2E /* Default@2x~iphone.png */; };
@@ -58,8 +56,6 @@
 
 /* Begin PBXFileReference section */
 		9924CD71160B2B0000205D2E /* Default-568h@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x~iphone.png"; path = "Images/Default-568h@2x~iphone.png"; sourceTree = SOURCE_ROOT; };
-		9924CD72160B2B0000205D2E /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape@2x~ipad.png"; path = "Images/Default-Landscape@2x~ipad.png"; sourceTree = SOURCE_ROOT; };
-		9924CD73160B2B0000205D2E /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "Images/Default-Landscape~ipad.png"; sourceTree = SOURCE_ROOT; };
 		9924CD74160B2B0000205D2E /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait@2x~ipad.png"; path = "Images/Default-Portrait@2x~ipad.png"; sourceTree = SOURCE_ROOT; };
 		9924CD75160B2B0000205D2E /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait~ipad.png"; path = "Images/Default-Portrait~ipad.png"; sourceTree = SOURCE_ROOT; };
 		9924CD76160B2B0000205D2E /* Default@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x~iphone.png"; path = "Images/Default@2x~iphone.png"; sourceTree = SOURCE_ROOT; };
@@ -138,8 +134,6 @@
 			isa = PBXGroup;
 			children = (
 				9924CD71160B2B0000205D2E /* Default-568h@2x~iphone.png */,
-				9924CD72160B2B0000205D2E /* Default-Landscape@2x~ipad.png */,
-				9924CD73160B2B0000205D2E /* Default-Landscape~ipad.png */,
 				9924CD74160B2B0000205D2E /* Default-Portrait@2x~ipad.png */,
 				9924CD75160B2B0000205D2E /* Default-Portrait~ipad.png */,
 				9924CD76160B2B0000205D2E /* Default@2x~iphone.png */,
@@ -273,7 +267,7 @@
 		993A8E28144FB14800414EB3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = doPanic;
 			};
 			buildConfigurationList = 993A8E2B144FB14800414EB3 /* Build configuration list for PBXProject "PanicAR-Demo" */;
@@ -315,8 +309,6 @@
 				992DE109145080CD001927F0 /* signal4@2x.png in Resources */,
 				994606B71450CD8000DF25AD /* App.strings in Resources */,
 				9924CD80160B2B0000205D2E /* Default-568h@2x~iphone.png in Resources */,
-				9924CD81160B2B0000205D2E /* Default-Landscape@2x~ipad.png in Resources */,
-				9924CD82160B2B0000205D2E /* Default-Landscape~ipad.png in Resources */,
 				9924CD83160B2B0000205D2E /* Default-Portrait@2x~ipad.png in Resources */,
 				9924CD84160B2B0000205D2E /* Default-Portrait~ipad.png in Resources */,
 				9924CD85160B2B0000205D2E /* Default@2x~iphone.png in Resources */,
@@ -368,6 +360,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
@@ -384,6 +380,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = "-ObjC";
@@ -398,6 +395,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
@@ -410,6 +411,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
