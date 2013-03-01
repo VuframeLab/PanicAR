@@ -22,9 +22,6 @@ extern PSKVector3 _deviceGravity;
 extern CGSize _viewport;
 extern float _viewAngle;
 extern float _viewSin, _viewCos;
-extern PSKSensorManager *_sensorManager;
-extern PSKDeviceAttitude *_deviceAttitude;
-extern CLLocation *_userLocation;
 extern CGRect _relativeViewportBounds;
 
 /*!

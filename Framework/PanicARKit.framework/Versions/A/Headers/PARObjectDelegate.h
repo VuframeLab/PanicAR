@@ -3,7 +3,7 @@
 //  ArchiApp
 //
 //  Created by Andreas Zeitler on 05.06.11.
-//  Copyright 2011 doPanic. All rights reserved.
+//  copyright 2013 doPanic. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -43,7 +43,7 @@
 #pragma mark - Rendering
 /*! handles the rendering in the PARView
  * @param theView PARView the object will be rendered in */
-- (void)renderInView:(PARView *)theView;
+- (void)renderInView:(UIView *)theView;
 /*! handles the rendering in the PARRadarView
  * @param theRadar PARRadarView the object will be rendered in */
 - (void)renderInRadar:(PARRadarView *)theRadar;

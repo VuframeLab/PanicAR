@@ -3,7 +3,7 @@
 //  PanicARKit
 //
 //  Created by Andreas Zeitler on 14.10.11.
-//  Copyright 2011 doPanic. All rights reserved.
+//  copyright 2013 doPanic. All rights reserved.
 //
 
 #ifndef PanicARLib_ARController_h
@@ -37,28 +37,17 @@ typedef enum
  * @brief singleton class that manages PAR data used by PARViewController subclasses
  */
 @interface PARController : NSObject <PSKSensorDelegate> {
-	BOOL _started;
 	BOOL _objectsNeedSorting;
-
-	PSKSensorManager *_sensorManager;
-	PSKDeviceAttitude *_deviceAttitude;
-	// piped properties (to PSKSensorManager)
-	id<PARControllerDelegate> __weak _delegate;
-	id<PSKSensorDelegate> __weak _sensorDelegate;
-	BOOL _frozen;
-
-	// ar object collection
-	NSMutableArray *_arObjects;
 }
 
 /*! PARControllerDelegate delegate object receiving updates from the PARController */
-@property (nonatomic, weak) id<PARControllerDelegate> delegate;
+@property (nonatomic, assign) id<PARControllerDelegate> delegate;
 /*! PSKSensorDelegate delegate object receiving updates from the PSKSensorManager */
-@property (nonatomic, weak) id<PSKSensorDelegate> sensorDelegate;
+@property (nonatomic, assign) id<PSKSensorDelegate> sensorDelegate;
 
 
 /*! @return YES if PARController is running updates */
-@property (nonatomic, readonly, assign) BOOL isStarted;
+@property (nonatomic, readonly, assign, getter = isStarted) BOOL started;
 
 /*! @return NSArray containing all PARObjectDelegate-objects in the PARController */
 @property (nonatomic, readonly, strong) NSMutableArray *arObjects;
@@ -85,9 +74,14 @@ typedef enum
 - (BOOL)isUpdatingObjects;
 
 #pragma mark - Memory and Multitasking
-/*! suspend PARController */
+/*! suspend PARController
+ * @remarks Call this from applicationDidEnterBackground in the delegate
+ */
 - (void)suspendToBackground;
-/*! resume PARController */
+
+/*! resume PARController
+ * @remarks Call this from applicationWillEnterForeground in the delegate
+ */
 - (void)resumeFromBackground;
 /*! free as much memory as possible (mainly by releasing OGL memory occupied by PARPoiLabel textures) */
 - (void)freeMemory;
@@ -101,12 +95,16 @@ typedef enum
 + (NSBundle *)frameworkBundle;
 
 /*! checks if the device supports Augmented Reality functionality
- * @return YES if AR functionality is supported by the device's sensors */
+ * @return YES if AR functionality is supported by the device's sensors
+ * @remarks Call this OR (BOOL)deviceSupportsAR:(BOOL)showErrors in applicationWillEnterForeground in the delegate 
+ * to react to changes in the settings app */
 + (BOOL)deviceSupportsAR;
 
 /*! checks if the device supports Augmented Reality functionality
  * @return YES if AR functionality is supported by the device's sensors
- * @param showErrors YES will rais UIAlertView's with default messages defined in PanicARKit.strings */
+ * @param showErrors YES will rais UIAlertView's with default messages defined in PanicARKit.strings
+ * @remarks Call this OR (BOOL)deviceSupportsAR in applicationWillEnterForeground in the delegate
+ * to react to changes in the settings app */
 + (BOOL)deviceSupportsAR:(BOOL)showErrors;
 
 /*! shortcut method to show an UIAlertView with the passed parameters

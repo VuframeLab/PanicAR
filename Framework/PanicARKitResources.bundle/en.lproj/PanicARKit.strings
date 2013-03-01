@@ -12,7 +12,7 @@
 
 /* error: status not determined */
 "PSK_STATUS_NOTDETERMINED" = "Status not determined";
-"PSK_STATUS_NOTDETERMINED_MSG" = "Something went wrong. AR not available.";
+"PSK_STATUS_NOTDETERMINED_MSG" = "Something went wrong. AR is Not available.";
 
 /* error: AR unavailable */
 "PSK_STATUS_UNAVAILABLE" = "AR Not Available";
@@ -24,7 +24,7 @@
 
 /* error: location denied */
 "PSK_STATUS_DENIED" = "Location Services Denied";
-"PSK_STATUS_DENIED_MSG" = "This App is not allowed to access your Location! Go to the Preferences to change the Permissions it!";
+"PSK_STATUS_DENIED_MSG" = "This App is not allowed to access your Location! Go to the Preferences to change the Permissions for it!";
 
 /* error: in face down orientation */
 "PSK_STATUS_FACEDOWN" = "Wrong Orientation!";

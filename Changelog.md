@@ -4,7 +4,7 @@
 
 ---
 
-### 2.1 (build 2564)
+### 2.1 (build 2573)
 
 **Updates**
 
@@ -22,6 +22,9 @@
 
 **Fixes**
 
+- fixes an issue where the radar will be distorted during orientation changes
+- fixes an issue where the radar won't appear again once the device was in UIDeviceOrientationFaceDown orientation
+- fixes an issue where PARController will not start the sensor update when no arObjects are added
 - fixes an issue where POI objects are clipped to early at the upper screen border when a labelBaseline is set to something other than the default
 
 **Deprecations**

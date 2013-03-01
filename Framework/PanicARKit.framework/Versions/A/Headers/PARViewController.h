@@ -3,7 +3,7 @@
 //  PanicARKit
 //
 //  Created by Andreas Zeitler on 14.10.11.
-//  Copyright 2011 doPanic. All rights reserved.
+//  copyright 2013 doPanic. All rights reserved.
 //
 
 
@@ -11,6 +11,7 @@
 #import <UIKit/UIKit.h>
 
 #import "PSKSensorDelegate.h"
+#import "PARViewControllerDelegate.h"
 
 @class PARView;
 @class PARRadarView;
@@ -18,96 +19,48 @@
 @class PSKSensorManager;
 @class PARViewController;
 
-extern PARViewController *_activeViewController;
+extern id<PARViewControllerDelegate> _activeViewController;
 
 /*!
  * PARViewController
  */
-@interface PARViewController : UIViewController <PSKSensorDelegate> {
-	// references
-	PSKSensorManager *__weak _sensorManager;
-	PSKDeviceAttitude *_deviceAttitude;
-
-	// ar view
-	PARView *_arView;
-	PARRadarView *_arRadarView;
-
-	// live camera feed
-	UIView *_cameraView;
-	AVCaptureSession *_session;
-	AVCaptureVideoPreviewLayer *_cameraPreview;
-	BOOL _cameraPreviewVisible;
-
-	// other
-	BOOL _notificationVisible;
-
-	// touch interaction
-	BOOL _touched;
-	BOOL _touchMoved;
-}
+@interface PARViewController : UIViewController <PSKSensorDelegate, PARViewControllerDelegate>
 
 /*! the arView of this PARViewController */
-@property (nonatomic, strong) PARView *arView;
+@property (nonatomic, strong, readonly) PARView *arView;
 /*! the arRadarView of this PARViewController */
-@property (nonatomic, strong) PARRadarView *arRadarView;
+@property (nonatomic, strong, readonly) PARRadarView *arRadarView;
+
+/*! the camera view of this PARViewController (if camera is used) */
+@property (nonatomic, strong, readonly) UIView *cameraView;
+@property (nonatomic, strong, readonly) AVCaptureSession *cameraAvCaptureSession;
+@property (nonatomic, strong, readonly) AVCaptureVideoPreviewLayer *cameraAvCaptureVideoPreviewLayer;
+@property (nonatomic, assign, readonly) BOOL cameraPreviewVisible;
+
+@property (nonatomic, assign, readonly) BOOL touched;
+@property (nonatomic, assign, readonly) BOOL touchMoved;
+
 /*! reference to the PSKSensorManager:sharedSensorManager
  * @remarks for convenience */
-@property (weak, nonatomic, readonly) PSKSensorManager *sensorManager;
+- (PSKSensorManager *)sensorManager;
+/*! reference to the PSKSensorManager:sharedSensorManager:deviceAttitude
+ * @remarks for convenience */
+- (PSKDeviceAttitude *)deviceAttitude;
 
-/*! @return YES if notificationView is visible */
-- (BOOL)notificationVisible;
-
-
-
-/*! @return YES if camera feed should be displayed */
-- (BOOL)usesCameraPreview;
-/*! @return YES if camera feed should fade in and out */
-- (BOOL)fadesInCameraPreview;
-/*! @return YES if PAR functionality should start automatically */
-- (BOOL)startsARAutomatically;
-/*! @return YES if PARView should rotate freely with the device
- * @remarks don't return YES if your ViewController already supports Landscape orientations */
-- (BOOL)rotatesARView;
-/*! @return size for the notification overlay view, default: ipad=256, iphone=128 */
-- (float)sizeOfNotification;
-
-/*! called when deviceOrientation switches to or from FaceUp
- * default behavior: show radar in full screen mode, go back to thumbnail when no longer in face up
- * override to deactivate default behavior
- * @param inFaceUp YES if orientation just switched to UIDeviceOrientationFaceUp */
-- (void)switchFaceUp:(BOOL)inFaceUp;
-/*! called when deviceOrientation switches to or from FaceDown
- * default behavior: show notification and hide PARView and PARRadarView
- * @param inFaceDown YES if orientation just switched to UIDeviceOrientationFaceDown */
-- (void)switchFaceDown:(BOOL)inFaceDown;
 
 /*! show a string in the notification overlay window of the PARViewController
  * @param notification NSString used for the notification
  * @remarks while notifications are visible the PARView and PARRadarView are hidden */
 - (void)setNotification:(NSString *)notification;
 
-/*!  for internal use only */
-- (float)orientationOffsetAngle;
+/*! @return YES if notificationView is visible */
+@property (nonatomic, assign, readonly) BOOL notificationVisible;
+
+/*! @abstract the current offset of the view from portrait orientation, in degres
+ @remarks for internal use only */
+@property (nonatomic, assign, readonly) float orientationOffsetAngle;
 
 
-
-#pragma mark - Touch
-
-/*! X-distance moved since last touch position */
-- (float)touchDragX;
-/*! X-distance moved since initial touch position */
-- (float)touchMovedX;
-/*! Y-distance moved since last touch position */
-- (float)touchDragY;
-/*! Y-distance moved since initial touch position */
-- (float)touchMovedY;
-
-/*! reset last touch position to 0,0 */
-- (void)resetTouchDrag;
-
-/*! has the ar view been tapped
- * @remarks reset to NO after processing */
-- (BOOL)tapped;
 
 
 /*!  pause all updates in the PARViewController's views */
@@ -123,7 +76,37 @@ extern PARViewController *_activeViewController;
 + (void)setActiveViewController:(PARViewController *)theViewController;
 /*!  the currently active PARViewController */
 + (PARViewController *)activeViewController;
+
+
+
+
+
+#pragma mark - DEPRECATIONS
+
+/*! X-distance moved since last touch position
+ @deprecated don't use this any more, it will be removed from future revisions */
+- (float)touchDragX  __attribute__ ((deprecated));
+/*! X-distance moved since initial touch position
+ @deprecated don't use this any more, it will be removed from future revisions */
+- (float)touchMovedX  __attribute__ ((deprecated));
+/*! Y-distance moved since last touch position
+ @deprecated don't use this any more, it will be removed from future revisions */
+- (float)touchDragY  __attribute__ ((deprecated));
+/*! Y-distance moved since initial touch position
+ @deprecated don't use this any more, it will be removed from future revisions */
+- (float)touchMovedY  __attribute__ ((deprecated));
+
+/*! reset last touch position to 0,0
+ @deprecated don't use this any more, it will be removed from future revisions */
+- (void)resetTouchDrag  __attribute__ ((deprecated));
+
+/*! has the ar view been tapped
+ * @remarks reset to NO after processing
+ @deprecated don't use this any more, it will be removed from future revisions */
+- (BOOL)tapped  __attribute__ ((deprecated));
+
 @end
 
 #pragma mark - C Helper
-float OrientationOffsetAngleFromUIInterfaceOrientation(UIInterfaceOrientation orientation);
+float PAROrientationOffsetAngleFromUIInterfaceOrientation(UIInterfaceOrientation orientation);
+BOOL PARDisablesViewForUIDeviceOrientation(UIDeviceOrientation orientation);

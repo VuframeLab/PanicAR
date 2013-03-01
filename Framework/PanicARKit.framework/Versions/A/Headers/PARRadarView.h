@@ -36,9 +36,6 @@ extern PARRadarView *_activeRadarView;
 
 /*!  PARRadarView */
 @interface PARRadarView : UIView {
-	PARController *_arController;
-	PARViewController *_arViewController;
-	PSKDeviceAttitude *_deviceAttitude;
 	UIImageView *_background;
 	PSKMatrix4x4 _radarMatrix;
 
@@ -141,10 +138,8 @@ extern PARRadarView *_activeRadarView;
 - (void)setRadarInset:(float)theInset;
 
 #pragma mark - Class Methods
-/*!  set the curretly active PARRadarView
- *  @param theView the active PARRadarView */
-+ (void)setActiveView:(PARRadarView *)theView;
-/*!  the currently active radar view */
-+ (PARRadarView *)activeView;
+/*!  the currently active radar view
+ @deprecated don't use this any more, it will be removed from future revisions */
++ (PARRadarView *)activeView  __attribute__ ((deprecated));
 
 @end

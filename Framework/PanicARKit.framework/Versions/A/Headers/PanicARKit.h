@@ -1,11 +1,10 @@
-/*
- *  PanicARKit.h
- *  PanicARKit
- *
- *  Created by Andreas Zeitler on 23.11.10.
- *  Copyright 2010 doPanic. All rights reserved.
- *
- */
+//
+//  PanicARKit.h
+//  PanicARKit
+//
+//  Created by Andreas Zeitler on 23.11.10.
+//  copyright 2013 doPanic. All rights reserved.
+//
 
 #import "PARController+Config.h"
 #import "PARController+Objects.h"
@@ -19,6 +18,7 @@
 #import "PARRadarView.h"
 #import "PARView.h"
 #import "PARViewController.h"
+#import "PARPoiFactory.h" 
 #import "PanicSensorKit.h"
 #import "PSKDeviceAttitude.h"
 #import "PSKDeviceProperties.h"

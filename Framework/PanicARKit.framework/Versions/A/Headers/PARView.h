@@ -37,10 +37,6 @@ extern PARView *_activeView;
  * provides functionality for non-3d rendering and stacking of labels
  */
 @interface PARView : UIView {
-	PARController *_arController;
-	PSKSensorManager *_arSensorManager;
-	PSKDeviceAttitude *_deviceAttitude;
-	PARViewController *_arViewController;
 	id<PARObjectDelegate> _currentObject;
 
 	CGSize _viewport;
@@ -84,7 +80,9 @@ extern PARView *_activeView;
 
 
 #pragma mark - Class Methods
-/*! returns the currently activeView */
-+ (PARView *)activeView;
+/*! returns the currently activeView
+ @deprecated don't use this any more, it will be removed from future revisions
+ */
++ (PARView *)activeView  __attribute__ ((deprecated));;
 
 @end

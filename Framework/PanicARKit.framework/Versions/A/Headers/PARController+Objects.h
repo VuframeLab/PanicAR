@@ -3,7 +3,7 @@
 //  PanicARKit
 //
 //  Created by Andreas Zeitler on 07.08.11.
-//  Copyright 2011 doPanic. All rights reserved.
+//  copyright 2013 doPanic. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
