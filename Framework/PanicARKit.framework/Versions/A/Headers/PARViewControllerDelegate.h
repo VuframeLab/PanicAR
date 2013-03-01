@@ -17,6 +17,8 @@
 - (BOOL)fadesInCameraPreview;
 /*! @return YES if PAR functionality should start automatically */
 - (BOOL)startsARAutomatically;
+/*! @return YES for all orientations the AR view should be visible in */
+- (BOOL)showARViewInOrientation:(UIDeviceOrientation)orientation;
 /*! @return YES if PARView should rotate freely with the device
  * @remarks don't return YES if your ViewController already supports Landscape orientations */
 - (BOOL)rotatesARView;
