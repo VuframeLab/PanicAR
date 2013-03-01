@@ -1,10 +1,25 @@
 # PanicAR Framework
 
-[[Screenshots/product.png]]
+![PanicAR Image](https://raw.github.com/doPanic/PanicAR/beta/Screenshots/product.png)
 
 by doPanic GmbH - for sales and support contact info@dopanic.com
 
-## Information
+## Why PanicAR?
+
+* It’s fast, simple and affordable
+* No monthly or annual fees
+* It’s completely customizable
+* It’s small (only ~3 mb)
+* It's platform agnostic - powered by Cocoa and Cocoa only
+* It’s ridiculously easy to integrate
+
+## Why PanicAR – really?
+
+* does the same things all the other frameworks do: even some more (i.e. "altitude")
+* maintained for you by us: new devices and new OS releases will be supported
+* pay on a per-app basis: a white-label license is really cheap (see here: www.dopanic.com/ar)
+
+## Read More
 
 Check API Reference
 http://docs.dopanic.com/panicar
