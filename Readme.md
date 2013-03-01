@@ -1,5 +1,7 @@
 # PanicAR Framework
 
+[[Screenshots/product.png]]
+
 by doPanic GmbH - for sales and support contact info@dopanic.com
 
 ## Information
