@@ -36,7 +36,6 @@ extern PARRadarView *_activeRadarView;
 
 /*!  PARRadarView */
 @interface PARRadarView : UIView {
-	UIImageView *_background;
 	PSKMatrix4x4 _radarMatrix;
 
 	// radar
@@ -52,6 +51,12 @@ extern PARRadarView *_activeRadarView;
 
 	BOOL _canBeVisible;
 }
+
+/*!  the container view which is rotated */
+@property (nonatomic, strong, readonly) UIView *containerView;
+
+/*!  the background image container */
+@property (nonatomic, strong, readonly) UIImageView *backgroundImageView;
 
 /*!  the PARViewController PARRadarView instance belongs to */
 @property (nonatomic, strong) PARViewController *arViewController;
