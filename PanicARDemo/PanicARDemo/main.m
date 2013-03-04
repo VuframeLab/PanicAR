@@ -2,17 +2,17 @@
 //  main.m
 //  PanicARDemo
 //
-//  Created by Andreas Zeitler on 20.10.11.
-//  Copyright (c) 2011 doPanic. All rights reserved.
+//  Created by Andreas Zeitler on 22.02.13.
+//  Copyright (c) 2013 doPanic GmbH. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-#import "AppDelegate.h"
+#import "PARDAppDelegate.h"
 
 int main(int argc, char *argv[])
 {
     @autoreleasepool {
-        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass([PARDAppDelegate class]));
     }
 }

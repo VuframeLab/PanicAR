@@ -1,9 +1,16 @@
+# xcode noise
 build
 *.pbxuser
 *.mode1v3
-*.perspectivev3
-*.pbxuser
-.DS_Store
+*~
 
-PanicARDemo/PanicAR-Demo.xcodeproj/project.xcworkspace/
-PanicARDemo/PanicAR-Demo.xcodeproj/xcuserdata/*
+# old skool
+.svn
+
+# osx noise
+.DS_Store
+profile
+xcuserdata
+
+Pods
+*.perspectivev3

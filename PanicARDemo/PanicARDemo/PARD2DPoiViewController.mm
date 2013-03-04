@@ -1,5 +1,5 @@
 //
-//  MyARViewController.mm
+//  PARD2DPoiViewController.m
 //  PanicARDemo
 //  A basic example of UIKit-driven rendering of Points of Interest
 //  POIs are automatically layouted and stacked
@@ -8,19 +8,21 @@
 //  Copyright (c) 2011 doPanic. All rights reserved.
 //
 
-#import "MyARViewController.h"
+#import "PARD2DPoiViewController.h"
 
 // Timer to regularly update GPS information
 static NSTimer *infoTimer = nil;
 bool _areOptionsVisible = false;
 
-@implementation MyARViewController
+@implementation PARD2DPoiViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // set view controller properties and create Options button
+        self.title = NSLocalizedString(@"AR", @"AR");
+        self.navigationItem.title = self.title;
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Options" style:UIBarButtonItemStyleBordered target:self action:@selector(showOptions:)];
     }
     return self;
@@ -44,7 +46,7 @@ bool _areOptionsVisible = false;
     [[PARController sharedARController] setDelegate:self];
     
     [super loadView];
-    
+
     [self.arRadarView setRadarRange:1500];
     // remove deprecated method: [[PSKSensorManager sharedSensorManager] enableUpdateHeadingFromLocationManager];
 }
@@ -55,6 +57,8 @@ bool _areOptionsVisible = false;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
+
     // ensure infoLabels are sorted correctly (storyboard workaround)
     self.infoLabels = [self.infoLabels sortedArrayUsingComparator:^NSComparisonResult(UIView *label1, UIView *label2) {
         if ([label1 tag] < [label2 tag]) return NSOrderedAscending;
@@ -82,7 +86,7 @@ bool _areOptionsVisible = false;
     // check, if device supports AR everytime the view appears
     // if the device currently does not support AR, show standard error alerts
     [PARController deviceSupportsAR:YES];
-    
+
     [super viewDidAppear:animated];
     infoTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(updateInfoLabel) userInfo:nil repeats:YES];
     
@@ -95,6 +99,7 @@ bool _areOptionsVisible = false;
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
     [infoTimer invalidate];
     infoTimer = nil;
 }
@@ -127,7 +132,7 @@ bool _areOptionsVisible = false;
 #pragma mark - PARControllerDelegate
 
 - (void)arDidTapObject:(id<PARObjectDelegate>)object {
-    [PARController showAlert:@"Tap"
+    [PARController showAlert:@"Tap" 
                  withMessage:[NSString stringWithFormat:@"Label tapped: %@", object.title]
             andDismissButton:@"Okay"];
 }
@@ -253,11 +258,11 @@ bool _areOptionsVisible = false;
     if (!_areOptionsVisible) {
         _areOptionsVisible = true;
         UIActionSheet* options = [[UIActionSheet alloc] initWithTitle:@"Options"
-                                                             delegate:self
-                                                    cancelButtonTitle:@"Cancel"
-                                               destructiveButtonTitle:@"Remove all POIs"
-                                                    otherButtonTitles:@"Re-create sample POIs", @"Create Random POIs", nil];
-        options.tag = 1;
+                                                          delegate:self 
+                                                 cancelButtonTitle:@"Cancel" 
+                                            destructiveButtonTitle:@"Remove all POIs" 
+                                                 otherButtonTitles:@"Re-create sample POIs", @"Create Random POIs", nil];
+    options.tag = 1;
         [options showFromBarButtonItem:self.navigationItem.rightBarButtonItem animated:YES];
     }
 }
@@ -283,7 +288,7 @@ bool _areOptionsVisible = false;
         default:
             break;
     }
-    _areOptionsVisible = false;
+        _areOptionsVisible = false;
 }
 
 #pragma mark - PAR Stuff
@@ -301,45 +306,45 @@ bool _areOptionsVisible = false;
     // first: setup a new poi label with title and description at the location you want
     // WARNING: use double-precision coordinates whenever possible (the following coordinates are from Google Maps which only provides 8-9 digit coordinates
     newPoiLabel = [[poiLabelClass alloc] initWithTitle:@"Rome"
-                                        theDescription:@"Italy"
-                                            atLocation:[[CLLocation alloc] initWithLatitude:41.890156 longitude:12.492304]
-                   ];
+                                 theDescription:@"Italy" 
+                                     atLocation:[[CLLocation alloc] initWithLatitude:41.890156 longitude:12.492304]
+                    ];
     // second: add the poi label to the PARController using the addObject method
 	[[PARController sharedARController] addObject:newPoiLabel];
-    
+
     // add a second poi label and add it to he PARController
-    newPoiLabel = [[poiLabelClass alloc] initWithTitle:@"Berlin"
-                                        theDescription:@"Germany"
-                                            atLocation:[[CLLocation alloc] initWithLatitude:52.523402 longitude:13.41141]];
+    newPoiLabel = [[poiLabelClass alloc] initWithTitle:@"Berlin" 
+                                 theDescription:@"Germany"
+                                     atLocation:[[CLLocation alloc] initWithLatitude:52.523402 longitude:13.41141]];
     [[PARController sharedARController] addObject:newPoiLabel];
     
     // add a third poi label, this time allocation of a new marker and adding to the PARController are wrapped up in one line
-    
+
     [[PARController sharedARController] addObject:[[poiLabelClass alloc] initWithTitle:@"London"
-                                                                        theDescription:@"United Kingdom"
-                                                                            atLocation:[[CLLocation alloc] initWithLatitude:51.500141 longitude:-0.126257]
+                                                    theDescription:@"United Kingdom"
+                                                    atLocation:[[CLLocation alloc] initWithLatitude:51.500141 longitude:-0.126257]
                                                    ]];
-    
-    
+
+
     // now add a poi (a graphic only - no text)
     PARPoi* newPoi = nil;
 	newPoi = [[PARPoi alloc] initWithImage:@"DefaultImage" //TODO: check
                                 atLocation:[[CLLocation alloc] initWithLatitude:51.500141 longitude:-0.126257]
               ];
-    
+
     //TODO: What does this do? Seems to be intended to place the POI below the London Label, not on top of it
     newPoi.offset = CGPointMake(0, 0);
     //[[PARController sharedARController] addObject:newPoi];
     
     // Add another POI, near our Headquarter
     newPoiLabel = [[poiLabelClass alloc] initWithTitle:@"Dom"
-                                        theDescription:@"Regensburger Dom"
-                                            atLocation:[[CLLocation alloc] initWithLatitude:49.019512 longitude:12.097709]
+                                theDescription:@"Regensburger Dom" 
+                                    atLocation:[[CLLocation alloc] initWithLatitude:49.019512 longitude:12.097709]
                    ];
     [[PARController sharedARController] addObject:newPoiLabel];
     
     NSLog(@"Number of PAR Objects in SharedController: %d", [[PARController sharedARController] numberOfObjects]);
-    
+
     //TODO: What does this do?
     _hasARPoiObjects = YES;
 }

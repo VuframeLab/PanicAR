@@ -1,19 +1,21 @@
 //
-//  AboutViewController.m
-//  PanicAR-App
+//  PARDAboutViewController.m
+//  PanicARDemo
 //
-//  Created by Andreas Zeitler on 15.10.11.
+//  Created by Andreas Zeitler on 22.02.2013
 //  Copyright (c) 2011 doPanic. All rights reserved.
 //
 
-#import "AboutViewController.h"
+#import "PARDAboutViewController.h"
 
-@implementation AboutViewController
+@implementation PARDAboutViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        self.title = NSLocalizedString(@"About", @"About");
+        self.navigationItem.title = self.title;
     }
     return self;
 }

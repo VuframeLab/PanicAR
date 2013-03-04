@@ -1,21 +1,21 @@
 //
-//  ConfigViewController.m
-//  PanicAR-App
+//  PARDMapViewController.mm
+//  PanicARDemo
 //
-//  Created by Andreas Zeitler on 15.10.11.
+//  Created by Andreas Zeitler on 22.02.2013
 //  Copyright (c) 2011 doPanic. All rights reserved.
 //
 
-#import "ConfigViewController.h"
+#import "PARDMapViewController.h"
 
-@implementation ConfigViewController
-
-@synthesize mapView = _mapView;
+@implementation PARDMapViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        self.title = NSLocalizedString(@"Config", @"Config");
+        self.navigationItem.title = self.title;
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(doCompassTracking:)];
         self.navigationItem.leftBarButtonItem.enabled = NO;
     }
@@ -65,6 +65,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -75,6 +76,7 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
 	[super viewWillDisappear:animated];
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -91,11 +93,6 @@
     } else {
         return YES;
     }*/
-}
-
-- (void)dealloc {
-    [_mapView release];
-    [super dealloc];
 }
 
 
