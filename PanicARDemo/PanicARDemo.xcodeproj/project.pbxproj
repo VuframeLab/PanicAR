@@ -27,6 +27,7 @@
 		9987619C16E4FF2700EAE6CD /* Icon@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 9987618D16E4FF2700EAE6CD /* Icon@2x~iphone.png */; };
 		9987619D16E4FF2700EAE6CD /* Icon~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 9987618E16E4FF2700EAE6CD /* Icon~ipad.png */; };
 		9987619E16E4FF2700EAE6CD /* Icon~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 9987618F16E4FF2700EAE6CD /* Icon~iphone.png */; };
+		998761B616E50C6700EAE6CD /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 998761B516E50C6700EAE6CD /* MapKit.framework */; };
 		99E57DE116D7E4720093E85F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E57DE016D7E4720093E85F /* UIKit.framework */; };
 		99E57DE316D7E4720093E85F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E57DE216D7E4720093E85F /* Foundation.framework */; };
 		99E57DE516D7E4720093E85F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E57DE416D7E4720093E85F /* CoreGraphics.framework */; };
@@ -91,6 +92,7 @@
 		9987618D16E4FF2700EAE6CD /* Icon@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x~iphone.png"; path = "Images/Icon@2x~iphone.png"; sourceTree = "<group>"; };
 		9987618E16E4FF2700EAE6CD /* Icon~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon~ipad.png"; path = "Images/Icon~ipad.png"; sourceTree = "<group>"; };
 		9987618F16E4FF2700EAE6CD /* Icon~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon~iphone.png"; path = "Images/Icon~iphone.png"; sourceTree = "<group>"; };
+		998761B516E50C6700EAE6CD /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		9989398716D98D4600B39DF6 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		9989398816D98D4600B39DF6 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		99E57DDD16D7E4720093E85F /* PanicARDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PanicARDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,6 +152,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				998761B616E50C6700EAE6CD /* MapKit.framework in Frameworks */,
 				9987617C16E4EEAA00EAE6CD /* CoreMotion.framework in Frameworks */,
 				9987617A16E4EEA500EAE6CD /* CoreLocation.framework in Frameworks */,
 				9987617816E4EE9E00EAE6CD /* AVFoundation.framework in Frameworks */,
@@ -185,6 +188,7 @@
 			children = (
 				9987617D16E4FDCA00EAE6CD /* PanicARKitResources.bundle */,
 				9987617E16E4FDCA00EAE6CD /* PanicARKit.framework */,
+				998761B516E50C6700EAE6CD /* MapKit.framework */,
 				9987617B16E4EEAA00EAE6CD /* CoreMotion.framework */,
 				9987617916E4EEA500EAE6CD /* CoreLocation.framework */,
 				9987617716E4EE9E00EAE6CD /* AVFoundation.framework */,
