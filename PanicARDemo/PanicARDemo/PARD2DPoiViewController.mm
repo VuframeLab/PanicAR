@@ -12,18 +12,23 @@
 
 // Timer to regularly update GPS information
 static NSTimer *infoTimer = nil;
-bool _areOptionsVisible = false;
 
-@implementation PARD2DPoiViewController
+
+@implementation PARD2DPoiViewController {
+    BOOL _areOptionsVisible;
+    UIBarButtonItem * _disabledButton;
+    __weak UIActionSheet * _optionSheet;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // set view controller properties and create Options button
-        self.title = NSLocalizedString(@"AR", @"AR");
-        self.navigationItem.title = self.title;
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Options" style:UIBarButtonItemStyleBordered target:self action:@selector(showOptions:)];
+        _areOptionsVisible = NO;
+        _disabledButton = nil;
+        _optionSheet = nil;
     }
     return self;
 }
@@ -100,6 +105,12 @@ bool _areOptionsVisible = false;
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+
+    //Dismiss action sheet if still active
+    if (_optionSheet != nil) {
+        [_optionSheet dismissWithClickedButtonIndex:-1 animated:NO];
+        _optionSheet = nil;
+    }
     [infoTimer invalidate];
     infoTimer = nil;
 }
@@ -256,14 +267,20 @@ bool _areOptionsVisible = false;
 
 - (IBAction)showOptions:(id)sender {
     if (!_areOptionsVisible) {
-        _areOptionsVisible = true;
+        //disable Options Button
+        [sender setEnabled:NO];
+        _disabledButton = sender;
+        
+        _areOptionsVisible = YES;
         UIActionSheet* options = [[UIActionSheet alloc] initWithTitle:@"Options"
                                                           delegate:self 
                                                  cancelButtonTitle:@"Cancel" 
                                             destructiveButtonTitle:@"Remove all POIs" 
                                                  otherButtonTitles:@"Re-create sample POIs", @"Create Random POIs", nil];
-    options.tag = 1;
+        options.tag = 1;
+        _optionSheet = options;
         [options showFromBarButtonItem:self.navigationItem.rightBarButtonItem animated:YES];
+
     }
 }
 
@@ -288,7 +305,13 @@ bool _areOptionsVisible = false;
         default:
             break;
     }
-        _areOptionsVisible = false;
+
+    if (_disabledButton != nil) {
+        [_disabledButton setEnabled:YES];
+        _disabledButton = nil;
+    }
+        _optionSheet = nil;
+        _areOptionsVisible = NO;
 }
 
 #pragma mark - PAR Stuff

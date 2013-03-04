@@ -12,12 +12,15 @@
 #import "PARD2DPoiWithAltitudeViewController.h"
 #import "PARD2DPoiLabelWithAltitude.h"
 
-@implementation PARD2DPoiWithAltitudeViewController
+@implementation PARD2DPoiWithAltitudeViewController {
+    BOOL _createdInitialObjects;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        _createdInitialObjects = NO;
     }
     return self;
 }
@@ -25,8 +28,9 @@
 - (void)didUpdateLocation:(CLLocation *)newLocation {
     [super didUpdateLocation:newLocation];
     if (newLocation) {
-        if (!_hasARPoiObjects) {
+        if (!_hasARPoiObjects && ! _createdInitialObjects) {
             [self createARPoiObjects];
+            _createdInitialObjects = YES;
         }
     }
 }
