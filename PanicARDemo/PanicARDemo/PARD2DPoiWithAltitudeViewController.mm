@@ -31,6 +31,7 @@
         if (!_hasARPoiObjects && ! _createdInitialObjects) {
             [self createARPoiObjects];
             _createdInitialObjects = YES;
+            _hasARPoiObjects =YES;
         }
     }
 }
