@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		938CB69E16F0E1DB00727868 /* DefaultImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 938CB69D16F0E1DB00727868 /* DefaultImage.png */; };
 		9924CD80160B2B0000205D2E /* Default-568h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 9924CD71160B2B0000205D2E /* Default-568h@2x~iphone.png */; };
 		9924CD83160B2B0000205D2E /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 9924CD74160B2B0000205D2E /* Default-Portrait@2x~ipad.png */; };
 		9924CD84160B2B0000205D2E /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 9924CD75160B2B0000205D2E /* Default-Portrait~ipad.png */; };
@@ -57,6 +58,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		938CB69D16F0E1DB00727868 /* DefaultImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DefaultImage.png; sourceTree = "<group>"; };
 		9924CD71160B2B0000205D2E /* Default-568h@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x~iphone.png"; path = "Images/Default-568h@2x~iphone.png"; sourceTree = SOURCE_ROOT; };
 		9924CD74160B2B0000205D2E /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait@2x~ipad.png"; path = "Images/Default-Portrait@2x~ipad.png"; sourceTree = SOURCE_ROOT; };
 		9924CD75160B2B0000205D2E /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait~ipad.png"; path = "Images/Default-Portrait~ipad.png"; sourceTree = SOURCE_ROOT; };
@@ -137,6 +139,7 @@
 		9926E7C5144FB4420066D383 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				938CB69D16F0E1DB00727868 /* DefaultImage.png */,
 				9924CD71160B2B0000205D2E /* Default-568h@2x~iphone.png */,
 				9924CD74160B2B0000205D2E /* Default-Portrait@2x~ipad.png */,
 				9924CD75160B2B0000205D2E /* Default-Portrait~ipad.png */,
@@ -331,6 +334,7 @@
 				9987614916E0F02A00EAE6CD /* PanicARKitResources.bundle in Resources */,
 				9987615116E1220200EAE6CD /* Default-Landscape@2x~ipad.png in Resources */,
 				9987615216E1220200EAE6CD /* Default-Landscape~ipad.png in Resources */,
+				938CB69E16F0E1DB00727868 /* DefaultImage.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -319,17 +319,15 @@ bool _areOptionsVisible = false;
                                                                         theDescription:@"United Kingdom"
                                                                             atLocation:[[CLLocation alloc] initWithLatitude:51.500141 longitude:-0.126257]
                                                    ]];
-    
+
     
     // now add a poi (a graphic only - no text)
     PARPoi* newPoi = nil;
-	newPoi = [[PARPoi alloc] initWithImage:@"DefaultImage" //TODO: check
+	newPoi = [[PARPoi alloc] initWithImage:@"DefaultImage"
                                 atLocation:[[CLLocation alloc] initWithLatitude:51.500141 longitude:-0.126257]
               ];
-    
-    //TODO: What does this do? Seems to be intended to place the POI below the London Label, not on top of it
-    newPoi.offset = CGPointMake(0, 0);
-    //[[PARController sharedARController] addObject:newPoi];
+
+    [[PARController sharedARController] addObject:newPoi];
     
     // Add another POI, near our Headquarter
     newPoiLabel = [[poiLabelClass alloc] initWithTitle:@"Dom"
@@ -339,11 +337,8 @@ bool _areOptionsVisible = false;
     [[PARController sharedARController] addObject:newPoiLabel];
     
     NSLog(@"Number of PAR Objects in SharedController: %d", [[PARController sharedARController] numberOfObjects]);
-    
-    //TODO: What does this do?
+
     _hasARPoiObjects = YES;
 }
-
-//TODO: create POIs based on continents
 
 @end
