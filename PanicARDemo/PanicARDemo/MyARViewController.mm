@@ -319,26 +319,27 @@ bool _areOptionsVisible = false;
                                                                         theDescription:@"United Kingdom"
                                                                             atLocation:[[CLLocation alloc] initWithLatitude:51.500141 longitude:-0.126257]
                                                    ]];
-
+    
     
     // now add a poi (a graphic only - no text)
     PARPoi* newPoi = nil;
 	newPoi = [[PARPoi alloc] initWithImage:@"DefaultImage"
                                 atLocation:[[CLLocation alloc] initWithLatitude:51.500141 longitude:-0.126257]
               ];
-
+    newPoi.offset = CGPointMake(0, 0); // use this to move the poi relative to his final position on screen
     [[PARController sharedARController] addObject:newPoi];
     
-    // Add another POI, near our Headquarter
+    // Add another POI, near our Headquarters – display an image on it using a custom PoiLabelTemplate
     newPoiLabel = [[poiLabelClass alloc] initWithTitle:@"Dom"
                                         theDescription:@"Regensburger Dom"
+                                              theImage:[UIImage imageNamed:@"Icon@2x~ipad"]
+                                       fromTemplateXib:@"PoiLabelWithImage"
                                             atLocation:[[CLLocation alloc] initWithLatitude:49.019512 longitude:12.097709]
                    ];
     [[PARController sharedARController] addObject:newPoiLabel];
     
     NSLog(@"Number of PAR Objects in SharedController: %d", [[PARController sharedARController] numberOfObjects]);
-
-    _hasARPoiObjects = YES;
-}
+    
+    _hasARPoiObjects = YES;}
 
 @end
