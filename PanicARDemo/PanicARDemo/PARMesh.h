@@ -27,7 +27,7 @@ typedef vertexDataTextured* vertexDataTexturedPtr;
 @property (strong, nonatomic) GLKTextureInfo *texture;
 @property (strong, nonatomic, readonly) GLKBaseEffect *effect;
 
-- (id)initWithEffect:(GLKBaseEffect *)effect andTextureAtPath:(NSString *)texturePath;
+- (id)initWithEffect:(GLKBaseEffect *)effect andMeshData:(vertexDataTextured[])meshData andMeshLength:(int)meshLength andTextureAtPath:(NSString *)texturePath;
 - (void)draw;
 - (void)teardown;
 

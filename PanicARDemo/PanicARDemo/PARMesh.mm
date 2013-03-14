@@ -7,30 +7,33 @@
 //
 
 #import "PARMesh.h"
-#import "PARSphereMesh.h"
 
 @interface PARMesh ()
 @property (strong, nonatomic, readwrite) GLKBaseEffect *effect;
 @end
 
-@implementation PARMesh
+@implementation PARMesh {
+    int _lengthOfMesh;
+}
 
-- (id)initWithEffect:(GLKBaseEffect *)effect andTextureAtPath:(NSString *)texturePath {
+- (id)initWithEffect:(GLKBaseEffect *)effect andMeshData:(vertexDataTextured[])meshData andMeshLength:(int)meshLength andTextureAtPath:(NSString *)texturePath {
     if (self = [super init]) {
         self.effect = effect;
-        [self loadMesh];
+        [self loadMesh:meshData andMeshLength:meshLength];
         [self loadTexture:texturePath];
     }
     return self;
 }
 
-- (void)loadMesh {
+- (void)loadMesh:(vertexDataTextured[])meshVertexData andMeshLength:(int)meshLength {
     glGenVertexArraysOES(1, &vertexArray);
     glBindVertexArrayOES(vertexArray);
     
     glGenBuffers(1, &vertexBuffer);
     glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(MeshVertexData), MeshVertexData, GL_STATIC_DRAW);
+    _lengthOfMesh = meshLength;
+    NSLog(@"%d", _lengthOfMesh);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertexDataTextured)*_lengthOfMesh, meshVertexData, GL_STATIC_DRAW);
     
     glEnableVertexAttribArray(GLKVertexAttribPosition);
     glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, sizeof(vertexDataTextured), 0);
@@ -63,7 +66,7 @@
 - (void)draw {
     glBindVertexArrayOES(vertexArray);
     [_effect prepareToDraw];
-    glDrawArrays(GL_TRIANGLES, 0, sizeof(MeshVertexData) / sizeof(vertexDataTextured));
+    glDrawArrays(GL_TRIANGLES, 0, _lengthOfMesh); // sizeof(MeshVertexData) / sizeof(vertexDataTextured)
 }
 
 - (void)teardown {

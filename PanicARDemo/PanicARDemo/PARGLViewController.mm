@@ -76,7 +76,7 @@
     
     [EAGLContext setCurrentContext:self.context];
     self.effect = [[GLKBaseEffect alloc] init];
-    self.sphereMesh = [[PARMesh alloc] initWithEffect:self.effect andTextureAtPath:[[NSBundle mainBundle] pathForResource:@"panorama" ofType:@"jpg"]];
+    self.sphereMesh = [[PARMesh alloc] initWithEffect:self.effect andMeshData:MeshVertexData andMeshLength:2904 andTextureAtPath:[[NSBundle mainBundle] pathForResource:@"panorama" ofType:@"jpg"]];
 }
 
 - (void)tearDownGL {
@@ -100,7 +100,7 @@
     
     self.effect.transform.modelviewMatrix = modelViewMatrix;
     
-    _rotation += self.timeSinceLastUpdate * 0.5f;
+    //_rotation += self.timeSinceLastUpdate * 0.5f;
 }
 
 #pragma mark - GLKViewDelegate
