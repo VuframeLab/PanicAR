@@ -7,7 +7,7 @@
 //
 
 #import "PARGLViewController.h"
-#import "PARCubeMesh.h"
+#import "PARMesh.h"
 
 
 @interface PARGLViewController ()
@@ -45,8 +45,6 @@
     _increasing = YES;
     _curRed = 0.0;
     
-    [self createGLKView];
-    
     //self.delegate = self;
     self.preferredFramesPerSecond = 60;
 }
@@ -78,28 +76,6 @@
     self.context = nil;
 }
 
-#pragma mark - Subviews
-
-- (void)createGLKView
-{
-	if (!self.view)
-	{
-		GLKView *view = [[GLKView alloc] initWithFrame:self.view.bounds];
-		view.opaque = NO;
-		view.autoresizesSubviews = YES;
-#if DEBUG
-		view.backgroundColor = [UIColor colorWithRed:1.000 green:0.000 blue:0.000 alpha:0.200];
-#else
-		view.backgroundColor = [UIColor clearColor];
-#endif
-		view.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-		view.multipleTouchEnabled = YES;
-        view.context = self.context;
-        view.delegate = self;
-        self.view = view;
-	}
-}
-
 #pragma mark - GLKViewDelegate
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect {
     
@@ -107,7 +83,7 @@
     glClear(GL_COLOR_BUFFER_BIT);
     [self.effect prepareToDraw];
     
-    PARCubeMeshDraw();
+    [[self cubeMesh] draw];
 }
 
 #pragma mark - GLKViewControllerDelegate
@@ -116,15 +92,16 @@
     
     [EAGLContext setCurrentContext:self.context];
     self.effect = [[GLKBaseEffect alloc] init];
-    PARCubeMeshLoad();
+    self.cubeMesh = [[PARMesh alloc] init];
+    [[self cubeMesh] setup];
 }
 
 - (void)tearDownGL {
     
     [EAGLContext setCurrentContext:self.context];
     
-    glDeleteBuffers(1, &_vertexBuffer);
-    glDeleteBuffers(1, &_indexBuffer);
+    [self.cubeMesh teardown];
+    self.cubeMesh = nil;
     
     self.effect = nil;
 }

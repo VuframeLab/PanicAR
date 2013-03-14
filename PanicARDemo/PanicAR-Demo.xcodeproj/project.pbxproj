@@ -11,6 +11,7 @@
 		996C41AD16F21029009C498A /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9989398716D98D4600B39DF6 /* GLKit.framework */; };
 		996C41AF16F2103C009C498A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 996C41AE16F2103C009C498A /* QuartzCore.framework */; };
 		996C41B016F2104E009C498A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9989398816D98D4600B39DF6 /* OpenGLES.framework */; };
+		996C41B416F211A3009C498A /* PARMesh.mm in Sources */ = {isa = PBXBuildFile; fileRef = 996C41B316F211A3009C498A /* PARMesh.mm */; };
 		9987617816E4EE9E00EAE6CD /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9987617716E4EE9E00EAE6CD /* AVFoundation.framework */; };
 		9987617A16E4EEA500EAE6CD /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9987617916E4EEA500EAE6CD /* CoreLocation.framework */; };
 		9987617C16E4EEAA00EAE6CD /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9987617B16E4EEAA00EAE6CD /* CoreMotion.framework */; };
@@ -64,7 +65,9 @@
 		996C41AA16F21007009C498A /* PARGLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PARGLViewController.h; sourceTree = "<group>"; };
 		996C41AB16F21007009C498A /* PARGLViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PARGLViewController.mm; sourceTree = "<group>"; };
 		996C41AE16F2103C009C498A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		996C41B116F210DA009C498A /* PARCubeMesh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PARCubeMesh.h; sourceTree = "<group>"; };
+		996C41B216F211A3009C498A /* PARMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PARMesh.h; sourceTree = "<group>"; };
+		996C41B316F211A3009C498A /* PARMesh.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PARMesh.mm; sourceTree = "<group>"; };
+		996C41B516F21217009C498A /* PARSphereMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PARSphereMesh.h; sourceTree = "<group>"; };
 		9987617716E4EE9E00EAE6CD /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		9987617916E4EEA500EAE6CD /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		9987617B16E4EEAA00EAE6CD /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
@@ -174,7 +177,9 @@
 			children = (
 				996C41AA16F21007009C498A /* PARGLViewController.h */,
 				996C41AB16F21007009C498A /* PARGLViewController.mm */,
-				996C41B116F210DA009C498A /* PARCubeMesh.h */,
+				996C41B516F21217009C498A /* PARSphereMesh.h */,
+				996C41B216F211A3009C498A /* PARMesh.h */,
+				996C41B316F211A3009C498A /* PARMesh.mm */,
 			);
 			name = "Sample4-Immersive-Panorama";
 			sourceTree = "<group>";
@@ -427,6 +432,7 @@
 				99F94DEF16DD588900871771 /* PARD2DPoiLabelWithAltitude.mm in Sources */,
 				99F94DF516DD59C300871771 /* PARD2DPoiWithAltitudeViewController.mm in Sources */,
 				996C41AC16F21007009C498A /* PARGLViewController.mm in Sources */,
+				996C41B416F211A3009C498A /* PARMesh.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
