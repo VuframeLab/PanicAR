@@ -14,6 +14,11 @@
 
 @property (nonatomic, strong, readonly) EAGLContext *context;
 @property (nonatomic, strong) GLKBaseEffect *effect;
+
+- (IBAction)ResetTouch:(id)sender;
+- (IBAction)ToggleGyro:(id)sender forEvent:(UIEvent *)event;
+
 @property (nonatomic, strong) PARMesh *sphereMesh;
+
 
 @end
