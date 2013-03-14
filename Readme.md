@@ -34,7 +34,7 @@ https://github.com/doPanic/PanicAR/wiki/Troubleshooting
 
 Just add
 
-    pod 'PanicAR', '~> 2.1.2577'
+    pod 'PanicAR', '~> 2.1'
 
 to your podfile and do a
     
