@@ -1,20 +1,20 @@
 <?xml version="1.0" standalone="no"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xmlns:docset="http://developer.apple.com/rss/docset_extensions" xml:lang="en">
-    <id>http://docs.dopanic.com/com.dopanic.PanicARKit.atom/20130304145532</id>
+    <id>http://docs.dopanic.com/com.dopanic.PanicARKit.atom/20130314121428</id>
     <title type="text">PanicARKit Documentation</title>
     <rights>Copyright © 2013 doPanic GmbH. All rights reserved.</rights>
     <link rel="self" href="http://docs.dopanic.com/com.dopanic.PanicARKit.atom"></link>
     <docset:publisherName>doPanic GmbH</docset:publisherName>
     <docset:publisherID>com.dopanic.documentation</docset:publisherID>
-    <updated>2013-03-04T14:55:32+01:00</updated>
+    <updated>2013-03-14T12:14:28+01:00</updated>
     <entry>
-        <id>tag:docs.dopanic.com,2013-03-04:com.dopanic.PanicARKit/2.1.2577</id>
+        <id>tag:docs.dopanic.com,2013-03-14:com.dopanic.PanicARKit/2.1.2583</id>
         <title type="text">PanicARKit Documentation</title>
-        <updated>2013-03-04T14:55:32+01:00</updated>
-        <content type="text">PanicARKit Documentation (v2.1.2577)</content>
-        <link rel="enclosure" type="application/octet-stream" href="http://docs.dopanic.com/com.dopanic.PanicARKit-2.1.2577.xar" length="125709"></link>
+        <updated>2013-03-14T12:14:28+01:00</updated>
+        <content type="text">PanicARKit Documentation (v2.1.2583)</content>
+        <link rel="enclosure" type="application/octet-stream" href="http://docs.dopanic.com/com.dopanic.PanicARKit-2.1.2583.xar" length="123710"></link>
         <docset:identifier>com.dopanic.PanicARKit</docset:identifier>
-        <docset:version>2.1.2577</docset:version>
+        <docset:version>2.1.2583</docset:version>
         <docset:minimumXcodeVersion>3.0.0</docset:minimumXcodeVersion>
     </entry>
 </feed>

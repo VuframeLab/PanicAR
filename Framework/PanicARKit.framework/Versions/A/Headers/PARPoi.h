@@ -46,7 +46,6 @@ extern CGRect _relativeViewportBounds;
 	CGPoint _radarSpace;
 
 	CGPoint _relativeScreenPosition;
-	CGPoint _center;
 	BOOL _useDefaultRadarGfx;
 	double _worldPositionE, _worldPositionN, _worldPositionU;
 
