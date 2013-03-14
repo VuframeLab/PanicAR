@@ -20,6 +20,19 @@ by doPanic GmbH - for sales and support contact info@dopanic.com
 * pay on a per-app basis: a white-label license is really cheap (see here: www.dopanic.com/ar)
 * support for CocoaPods (www.cocoapods.org)
 
+## Get started now – using CocoaPods
+
+Just add
+
+    pod 'PanicAR', '~> 2.1'
+
+to your podfile and do a
+    
+    pod install
+    
+simple as that. Really.
+
+
 ## Read More
 
 Check API Reference
@@ -31,12 +44,3 @@ https://github.com/doPanic/PanicAR/wiki/
 For common build errors and other issues check:
 https://github.com/doPanic/PanicAR/wiki/Troubleshooting
 
-## Install it using CocoaPods
-
-Just add
-
-    pod 'PanicAR', '~> 2.1'
-
-to your podfile and do a
-    
-    pod install
