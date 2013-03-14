@@ -18,11 +18,14 @@
 
 @interface PARGLViewController ()
 @property (nonatomic, strong, readwrite) EAGLContext *context;
+@property (strong, nonatomic) NSMutableArray *touches;
 @end
 
 @implementation PARGLViewController {
-    float _rotation;
     GLKMatrix4 _projectionMatrix;
+    float _rotationX;
+    float _rotationY;
+    BOOL _gyroEnabled;
 }
 
 // temporary storage for the attitude matrix input
@@ -67,6 +70,9 @@ static float _orientationAngle;
         NSLog(@"Failed to create ES context");
     }
 
+    _gyroEnabled = YES;
+    _touches = [[NSMutableArray alloc] init];
+    
     // Register at PanicSensorKit as delegate and for updates on movement
     [[PSKSensorManager sharedSensorManager] setDelegate:self];
     [[PSKSensorManager sharedSensorManager] startForLocationBasedPoiAR];
@@ -95,6 +101,10 @@ static float _orientationAngle;
 
 -(void)viewDidAppear:(BOOL)animated{
     [self setOrientationAngleFromUIInterfaceOrientation:self.interfaceOrientation];
+        self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -179,15 +189,63 @@ static float _orientationAngle;
 }
 
 - (void)update {
-    // Multiply the attitude into the projection matrix
-    GLKMatrix4 _tempProjectionMatrix = GLKMatrix4Multiply(_projectionMatrix, GLKMatrix4MakeWithArray(*[self attitudeMatrix]));
+    if(_gyroEnabled){
+        GLKMatrix4 tempProjectionMatrix = GLKMatrix4Rotate(_projectionMatrix, _rotationX, 1.0f, 0.0f, 0.0f);
+        tempProjectionMatrix = GLKMatrix4Rotate(tempProjectionMatrix, _rotationY, 0.0f, 1.0f, 0.0f);
+        // Multiply the attitude into the projection matrix
 
-    // Rotate the projection  matrix by 90 degrees (as part of the conversion from PSK to GLK).
-    _tempProjectionMatrix = GLKMatrix4Rotate(_tempProjectionMatrix, GLKMathDegreesToRadians(90), 1, 0, 0);
+        tempProjectionMatrix = GLKMatrix4Multiply(tempProjectionMatrix, GLKMatrix4MakeWithArray(*[self attitudeMatrix]));
 
-    // Update the projection matrix
-    self.effect.transform.projectionMatrix = _tempProjectionMatrix;
+        // Rotate the projection  matrix by 90 degrees (as part of the conversion from PSK to GLK).
+        tempProjectionMatrix = GLKMatrix4Rotate(tempProjectionMatrix, GLKMathDegreesToRadians(90), 1, 0, 0);
+
+        // Update the projection matrix
+        self.effect.transform.projectionMatrix = tempProjectionMatrix;}
+    else {
+        GLKMatrix4 tempProjectionMatrix = GLKMatrix4Rotate(_projectionMatrix, _rotationX, 1.0f, 0.0f, 0.0f);
+        tempProjectionMatrix = GLKMatrix4Rotate(tempProjectionMatrix, _rotationY, 0.0f, 1.0f, 0.0f);
+        // Update the projection matrix
+        self.effect.transform.projectionMatrix = tempProjectionMatrix;
+    }
 }
+
+#pragma mark - touches
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [touches anyObject];
+    float distanceY = [touch locationInView:touch.view].y -
+    [touch previousLocationInView:touch.view].y;
+    float distanceX = [touch locationInView:touch.view].x -
+    [touch previousLocationInView:touch.view].x;
+    distanceX *= -0.005;
+    distanceY *= -0.005;
+    _rotationX += distanceY;
+    _rotationY += distanceX;
+}
+
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    for (UITouch *touch in touches) {
+        [_touches removeObject:touch];
+    }
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    for (UITouch *touch in touches) {
+        [_touches addObject:touch];
+    }
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    for (UITouch *touch in touches) {
+        [_touches removeObject:touch];
+    }
+}
+
+
 
 #pragma mark - GLKViewDelegate
 
@@ -234,10 +292,29 @@ static float _orientationAngle;
 	return 128;
 }
 
+
 - (void)setNotification:(NSString *)notification {}
 
 - (void)switchFaceUp:(BOOL)inFaceUp {}
 
 - (void)switchFaceDown:(BOOL)inFaceDown {};
+
+- (IBAction)ResetTouch:(id)sender {
+    _rotationX = 0;
+    _rotationY = 0;
+}
+- (IBAction)ToggleGyro:(id)sender forEvent:(UIEvent *)event {
+    UISegmentedControl *segmentedControl = (UISegmentedControl *) sender;
+
+    NSLog(@"%d",segmentedControl.selectedSegmentIndex);
+        if(segmentedControl.selectedSegmentIndex == 0)
+        {
+            _gyroEnabled = YES;
+        }
+        else if(segmentedControl.selectedSegmentIndex == 1)
+        {
+            _gyroEnabled = NO;
+        }
+}
 
 @end
