@@ -29,3 +29,13 @@ https://github.com/doPanic/PanicAR/wiki/
 
 For common build errors and other issues check:
 https://github.com/doPanic/PanicAR/wiki/Troubleshooting
+
+## Install it using CocoaPods
+
+Just add
+
+    pod 'PanicAR', '~> 2.1.2577'
+
+to your podfile and do a
+    
+    pod install
