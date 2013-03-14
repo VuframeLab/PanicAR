@@ -14,6 +14,6 @@
 
 @property (nonatomic, strong, readonly) EAGLContext *context;
 @property (nonatomic, strong) GLKBaseEffect *effect;
-@property (nonatomic, strong) PARMesh *cubeMesh;
+@property (nonatomic, strong) PARMesh *sphereMesh;
 
 @end

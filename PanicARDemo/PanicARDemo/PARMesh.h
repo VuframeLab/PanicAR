@@ -7,25 +7,27 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <GLKit/GLKit.h>
 
-typedef struct {
-    float Position[3];
-} Vertex;
+struct vertexDataTextured
+{
+	GLKVector3		vertex;
+	GLKVector3		normal;
+	GLKVector2      texCoord;
+};
+typedef struct vertexDataTextured vertexDataTextured;
+typedef vertexDataTextured* vertexDataTexturedPtr;
 
-typedef struct {
-    float Color[4];
-} Color;
+
 
 @interface PARMesh : NSObject {
-    // opengl runtime
-    GLuint _vertexBuffer;
-    GLuint _indexBuffer;
+    GLuint vertexArray;
+    GLuint vertexBuffer;
 }
+@property (strong, nonatomic) GLKTextureInfo *texture;
+@property (strong, nonatomic, readonly) GLKBaseEffect *effect;
 
-- (Vertex[])vertices;
-- (GLubyte[])indices;
-
-- (void)setup;
+- (id)initWithEffect:(GLKBaseEffect *)effect andTextureAtPath:(NSString *)texturePath;
 - (void)draw;
 - (void)teardown;
 
