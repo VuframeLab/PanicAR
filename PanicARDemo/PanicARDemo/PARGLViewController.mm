@@ -1,14 +1,20 @@
 //
 //  PARGLViewController.m
-//  PanicARKit
+//  This advanced demo shows, how to use the attitude
+//  information (your devices orientation in the 3D space) delivered by the
+//  PanicSensorKit SensorManager (PSKSensorManager) to create an immersive
+//  3D Panorama.
 //
-//  Created by Andreas Zeitler on 24.02.13.
+//  The panorama image (originally: rockhal.jpg) is from http://www.crazy8studio.com
+//  and licensed under CC-By-NC http://creativecommons.org/licenses/by-nc/3.0
+//
+//  Created by Andreas Zeitler on 14.03.13.
 //  copyright 2013 doPanic. All rights reserved.
 //
 
 #import "PARGLViewController.h"
 #import "PARMesh.h"
-#import "PARSphereMesh.h"
+#import "sphere_low.h"
 
 @interface PARGLViewController ()
 @property (nonatomic, strong, readwrite) EAGLContext *context;
@@ -16,7 +22,17 @@
 
 @implementation PARGLViewController {
     float _rotation;
+    GLKMatrix4 _projectionMatrix;
 }
+
+// temporary storage for the attitude matrix input
+static PSKMatrix4x4 attituteMatrixInput;
+// temporary storage for the attitude matrix result, use [self attitudeMatrix] to get the attitude matrix, not this
+static PSKMatrix4x4 attitudeMatrixResult;
+// the matrix used for rotating the sphere object, based on the device/interface orientation
+static PSKMatrix4x4 rotationMatrix;
+
+static float _orientationAngle;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -46,10 +62,17 @@
 {
     [super viewDidLoad];
     self.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
-    
+
     if (!self.context) {
         NSLog(@"Failed to create ES context");
     }
+
+    // Register at PanicSensorKit as delegate and for updates on movement
+    [[PSKSensorManager sharedSensorManager] setDelegate:self];
+    [[PSKSensorManager sharedSensorManager] startForLocationBasedPoiAR];
+
+    // Set angle for adjustment to Interface-Orientation changes depending on orientation
+    [self setOrientationAngleFromUIInterfaceOrientation:self.interfaceOrientation];
     
     GLKView *view = (GLKView *)self.view;
     view.context = self.context;
@@ -70,6 +93,65 @@
     self.context = nil;
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    [self setOrientationAngleFromUIInterfaceOrientation:self.interfaceOrientation];
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    [self setOrientationAngleFromUIInterfaceOrientation:self.interfaceOrientation];
+}
+
+# pragma mark - device attitude - Immersive Panorama Demo
+// Set the orientation angle to adapt view to device/interface rotation
+- (void)setOrientationAngleFromUIInterfaceOrientation:(UIInterfaceOrientation)orientation {
+    switch (orientation) {
+        case UIInterfaceOrientationPortraitUpsideDown:
+            [self setOrientationAngle:180];
+            break;
+        case UIInterfaceOrientationLandscapeLeft:
+            [self setOrientationAngle:-90];
+            break;
+        case UIInterfaceOrientationLandscapeRight:
+            [self setOrientationAngle:90];
+            break;
+        case UIInterfaceOrientationPortrait:
+            [self setOrientationAngle:0];
+            break;
+    }
+
+    // update projection matrix
+    float aspect = fabsf(self.view.bounds.size.width / self.view.bounds.size.height);
+    _projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65.0f),
+                                                  aspect,
+                                                  0.1f,
+                                                  100.0f);
+}
+
+- (void)setOrientationAngle:(float)angle {
+    _orientationAngle = angle;
+    PSKMatrixSetZRotationUsingDegrees(rotationMatrix, _orientationAngle);
+}
+
+- (float)orientationAngle {
+    return _orientationAngle;
+}
+
+- (PSKMatrix4x4 *)attitudeMatrix {
+    PSKMatrixCopy(attituteMatrixInput, *[[[PSKSensorManager sharedSensorManager] deviceAttitude] attitudeMatrix]);
+    PSKMatrixFastMultiplyWithMatrix(attitudeMatrixResult, rotationMatrix, attituteMatrixInput);
+    return &attitudeMatrixResult;
+}
+
+#pragma mark - Sensor Delegate
+- (void)didChangeDeviceOrientation:(UIDeviceOrientation)orientation{};
+- (void)didChangeStatus:(PSKSensorManagerStatus)newStatus {};
+- (void)didReceiveErrorCode:(int)code;{};
+- (void)didChangeSensorUpdateMode:(PSKSensorManagerUpdateMode)newUpdateMode fromMode:(PSKSensorManagerUpdateMode)oldUpdateMode{};
+- (void)didUpdateLocation:(CLLocation *)orignewLocationinalLocation{};
+- (void)didUpdateHeading:(CLHeading *)newHeading{};
+- (void)didChangeSignalQuality:(PSKSignalQuality)newSignalQuality{};
+- (void)didChangeAuthorizationStatus:(CLAuthorizationStatus)status{}
+
 #pragma mark - GLKViewControllerDelegate
 
 - (void)setupGL {
@@ -77,10 +159,14 @@
     [EAGLContext setCurrentContext:self.context];
     self.effect = [[GLKBaseEffect alloc] init];
     self.sphereMesh = [[PARMesh alloc] initWithEffect:self.effect
-                                          andMeshData:MeshVertexData
-                                        andMeshLength:2904
+                                          andMeshData:sphere_low_MeshVertexData
+                                        andMeshLength:sphere_low_Length
                                      andTextureAtPath:[[NSBundle mainBundle] pathForResource:@"panorama" ofType:@"jpg"]
                        ];
+
+    GLKMatrix4 modelViewMatrix = GLKMatrix4MakeTranslation(0.0f, 0.0f, 0);
+
+    self.effect.transform.modelviewMatrix = modelViewMatrix;
 }
 
 - (void)tearDownGL {
@@ -93,20 +179,18 @@
 }
 
 - (void)update {
-    float aspect = fabsf(self.view.bounds.size.width / self.view.bounds.size.height);
-    GLKMatrix4 projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65.0f), aspect, 0.1f, 1000.0f);
-    
-    self.effect.transform.projectionMatrix = projectionMatrix;
-    
-    GLKMatrix4 modelViewMatrix = GLKMatrix4MakeTranslation(0.0f, 0.0f, 0);
-    modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix, _rotation, 1.0f, 1.0f, 1.0f);
-    
-    self.effect.transform.modelviewMatrix = modelViewMatrix;
-    
-    //_rotation += self.timeSinceLastUpdate * 0.5f;
+    // Multiply the attitude into the projection matrix
+    GLKMatrix4 _tempProjectionMatrix = GLKMatrix4Multiply(_projectionMatrix, GLKMatrix4MakeWithArray(*[self attitudeMatrix]));
+
+    // Rotate the projection  matrix by 90 degrees (as part of the conversion from PSK to GLK).
+    _tempProjectionMatrix = GLKMatrix4Rotate(_tempProjectionMatrix, GLKMathDegreesToRadians(90), 1, 0, 0);
+
+    // Update the projection matrix
+    self.effect.transform.projectionMatrix = _tempProjectionMatrix;
 }
 
 #pragma mark - GLKViewDelegate
+
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect {
     
     glClearColor(0, 0.65f, 0.65f, 1.0f);
@@ -150,19 +234,10 @@
 	return 128;
 }
 
-- (void)setNotification:(NSString *)notification
-{
-    
-}
+- (void)setNotification:(NSString *)notification {}
 
-- (void)switchFaceUp:(BOOL)inFaceUp
-{
-}
+- (void)switchFaceUp:(BOOL)inFaceUp {}
 
-- (void)switchFaceDown:(BOOL)inFaceDown
-{
-    
-}
-
+- (void)switchFaceDown:(BOOL)inFaceDown {};
 
 @end

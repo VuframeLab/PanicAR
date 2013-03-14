@@ -10,7 +10,7 @@
 
 @class PARMesh;
 
-@interface PARGLViewController : GLKViewController <GLKViewDelegate, PARViewControllerDelegate>
+@interface PARGLViewController : GLKViewController <GLKViewDelegate, PARViewControllerDelegate, PSKSensorDelegate>
 
 @property (nonatomic, strong, readonly) EAGLContext *context;
 @property (nonatomic, strong) GLKBaseEffect *effect;

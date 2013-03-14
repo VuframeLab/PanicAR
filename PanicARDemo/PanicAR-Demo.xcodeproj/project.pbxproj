@@ -63,13 +63,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		930E211A16F23742006C9E92 /* sphere_low.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sphere_low.h; sourceTree = "<group>"; };
 		9966DF8B16F2222B00BB8874 /* panorama.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = panorama.jpg; sourceTree = "<group>"; };
 		996C41AA16F21007009C498A /* PARGLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PARGLViewController.h; sourceTree = "<group>"; };
 		996C41AB16F21007009C498A /* PARGLViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PARGLViewController.mm; sourceTree = "<group>"; };
 		996C41AE16F2103C009C498A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		996C41B216F211A3009C498A /* PARMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PARMesh.h; sourceTree = "<group>"; };
 		996C41B316F211A3009C498A /* PARMesh.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PARMesh.mm; sourceTree = "<group>"; };
-		996C41B516F21217009C498A /* PARSphereMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PARSphereMesh.h; sourceTree = "<group>"; };
 		9987617716E4EE9E00EAE6CD /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		9987617916E4EEA500EAE6CD /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		9987617B16E4EEAA00EAE6CD /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
@@ -177,9 +177,9 @@
 		996C41A816F1EC13009C498A /* Sample4-Immersive-Panorama */ = {
 			isa = PBXGroup;
 			children = (
+				930E211A16F23742006C9E92 /* sphere_low.h */,
 				996C41AA16F21007009C498A /* PARGLViewController.h */,
 				996C41AB16F21007009C498A /* PARGLViewController.mm */,
-				996C41B516F21217009C498A /* PARSphereMesh.h */,
 				9966DF8B16F2222B00BB8874 /* panorama.jpg */,
 				996C41B216F211A3009C498A /* PARMesh.h */,
 				996C41B316F211A3009C498A /* PARMesh.mm */,
