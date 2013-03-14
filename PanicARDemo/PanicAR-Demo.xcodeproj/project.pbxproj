@@ -166,6 +166,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		996C41A716F1EBF6009C498A /* Sample3-3D-POIs-OpenGL */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Sample3-3D-POIs-OpenGL";
+			sourceTree = "<group>";
+		};
+		996C41A816F1EC13009C498A /* Sample4-Immersive-Panorama */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Sample4-Immersive-Panorama";
+			sourceTree = "<group>";
+		};
+		996C41A916F1EC33009C498A /* Sample5-Immersive-Panorama+POIs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Sample5-Immersive-Panorama+POIs";
+			sourceTree = "<group>";
+		};
 		99E57DD416D7E4720093E85F = {
 			isa = PBXGroup;
 			children = (
@@ -206,6 +227,9 @@
 			children = (
 				99F94DF216DD597000871771 /* Sample1-2D-POIs */,
 				99F94DF016DD588C00871771 /* Sample2-POIs-with-altitude */,
+				996C41A716F1EBF6009C498A /* Sample3-3D-POIs-OpenGL */,
+				996C41A816F1EC13009C498A /* Sample4-Immersive-Panorama */,
+				996C41A916F1EC33009C498A /* Sample5-Immersive-Panorama+POIs */,
 				99E57DEF16D7E4720093E85F /* PARDAppDelegate.h */,
 				99E57DF016D7E4720093E85F /* PARDAppDelegate.m */,
 				99E57E3016D7E6350093E85F /* PARDAboutViewController.h */,
@@ -331,7 +355,7 @@
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "doPanic GmbH";
 			};
-			buildConfigurationList = 99E57DD816D7E4720093E85F /* Build configuration list for PBXProject "PanicARDemo" */;
+			buildConfigurationList = 99E57DD816D7E4720093E85F /* Build configuration list for PBXProject "PanicAR-Demo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -535,7 +559,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		99E57DD816D7E4720093E85F /* Build configuration list for PBXProject "PanicARDemo" */ = {
+		99E57DD816D7E4720093E85F /* Build configuration list for PBXProject "PanicAR-Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				99E57E0C16D7E4720093E85F /* Debug */,
