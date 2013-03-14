@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Zb6-E3-FLW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="YHb-7a-E2c">
     <dependencies>
         <deployment version="1280" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
@@ -234,7 +234,7 @@ can be explored using the gyroscope</string>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <connections>
-                                            <segue destination="Dpf-5v-RUE" kind="push" id="7sF-5B-KO9"/>
+                                            <segue destination="YHb-7a-E2c" kind="push" id="0Nr-vb-MYT"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="9cl-IU-sJX" detailTextLabel="JuM-PS-iXc" rowHeight="64" style="IBUITableViewCellStyleSubtitle" id="UWD-ab-8ih">
@@ -580,7 +580,24 @@ for more information!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P4K-SS-4QA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="881" y="815"/>
+            <point key="canvasLocation" x="907" y="1503"/>
+        </scene>
+        <!--GLKit View Controller-->
+        <scene sceneID="M3K-sg-j80">
+            <objects>
+                <glkViewController autoresizesArchivedViewToFullSize="NO" preferredFramesPerSecond="30" id="YHb-7a-E2c" customClass="PARGLViewController" sceneMemberID="viewController">
+                    <glkView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="GBW-jz-Kfs">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <connections>
+                            <outlet property="delegate" destination="YHb-7a-E2c" id="fr4-eT-oMU"/>
+                        </connections>
+                    </glkView>
+                    <navigationItem key="navigationItem" id="9yk-ua-zdk"/>
+                </glkViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n7r-81-06v" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="881" y="807"/>
         </scene>
     </scenes>
     <resources>
@@ -612,6 +629,9 @@ for more information!</string>
                 <relationship kind="action" name="doCompassTracking:"/>
                 <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
             </relationships>
+        </class>
+        <class className="PARGLViewController" superclassName="GLKViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PARGLViewController.h"/>
         </class>
         <class className="PARViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PARViewController.h"/>

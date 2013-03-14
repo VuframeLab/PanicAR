@@ -7,26 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		996C41AC16F21007009C498A /* PARGLViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 996C41AB16F21007009C498A /* PARGLViewController.mm */; };
+		996C41AD16F21029009C498A /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9989398716D98D4600B39DF6 /* GLKit.framework */; };
+		996C41AF16F2103C009C498A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 996C41AE16F2103C009C498A /* QuartzCore.framework */; };
+		996C41B016F2104E009C498A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9989398816D98D4600B39DF6 /* OpenGLES.framework */; };
 		9987617816E4EE9E00EAE6CD /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9987617716E4EE9E00EAE6CD /* AVFoundation.framework */; };
 		9987617A16E4EEA500EAE6CD /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9987617916E4EEA500EAE6CD /* CoreLocation.framework */; };
 		9987617C16E4EEAA00EAE6CD /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9987617B16E4EEAA00EAE6CD /* CoreMotion.framework */; };
 		9987617F16E4FDCA00EAE6CD /* PanicARKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9987617D16E4FDCA00EAE6CD /* PanicARKitResources.bundle */; };
 		9987618016E4FDCA00EAE6CD /* PanicARKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9987617E16E4FDCA00EAE6CD /* PanicARKit.framework */; };
-		9987619016E4FF2700EAE6CD /* Default-568h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 9987618116E4FF2700EAE6CD /* Default-568h@2x~iphone.png */; };
-		9987619116E4FF2700EAE6CD /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 9987618216E4FF2700EAE6CD /* Default-Landscape@2x~ipad.png */; };
-		9987619216E4FF2700EAE6CD /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 9987618316E4FF2700EAE6CD /* Default-Landscape~ipad.png */; };
-		9987619316E4FF2700EAE6CD /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 9987618416E4FF2700EAE6CD /* Default-Portrait@2x~ipad.png */; };
-		9987619416E4FF2700EAE6CD /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 9987618516E4FF2700EAE6CD /* Default-Portrait~ipad.png */; };
-		9987619516E4FF2700EAE6CD /* Default@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 9987618616E4FF2700EAE6CD /* Default@2x~iphone.png */; };
-		9987619616E4FF2700EAE6CD /* Default~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 9987618716E4FF2700EAE6CD /* Default~iphone.png */; };
-		9987619716E4FF2700EAE6CD /* Icon-Small@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 9987618816E4FF2700EAE6CD /* Icon-Small@2x~ipad.png */; };
-		9987619816E4FF2700EAE6CD /* Icon-Small@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 9987618916E4FF2700EAE6CD /* Icon-Small@2x~iphone.png */; };
-		9987619916E4FF2700EAE6CD /* Icon-Small~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 9987618A16E4FF2700EAE6CD /* Icon-Small~ipad.png */; };
-		9987619A16E4FF2700EAE6CD /* Icon-Small~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 9987618B16E4FF2700EAE6CD /* Icon-Small~iphone.png */; };
-		9987619B16E4FF2700EAE6CD /* Icon@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 9987618C16E4FF2700EAE6CD /* Icon@2x~ipad.png */; };
-		9987619C16E4FF2700EAE6CD /* Icon@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 9987618D16E4FF2700EAE6CD /* Icon@2x~iphone.png */; };
-		9987619D16E4FF2700EAE6CD /* Icon~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 9987618E16E4FF2700EAE6CD /* Icon~ipad.png */; };
-		9987619E16E4FF2700EAE6CD /* Icon~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 9987618F16E4FF2700EAE6CD /* Icon~iphone.png */; };
 		998761B616E50C6700EAE6CD /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 998761B516E50C6700EAE6CD /* MapKit.framework */; };
 		99E57DE116D7E4720093E85F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E57DE016D7E4720093E85F /* UIKit.framework */; };
 		99E57DE316D7E4720093E85F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E57DE216D7E4720093E85F /* Foundation.framework */; };
@@ -72,6 +61,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		996C41AA16F21007009C498A /* PARGLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PARGLViewController.h; sourceTree = "<group>"; };
+		996C41AB16F21007009C498A /* PARGLViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PARGLViewController.mm; sourceTree = "<group>"; };
+		996C41AE16F2103C009C498A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		996C41B116F210DA009C498A /* PARCubeMesh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PARCubeMesh.h; sourceTree = "<group>"; };
 		9987617716E4EE9E00EAE6CD /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		9987617916E4EEA500EAE6CD /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		9987617B16E4EEAA00EAE6CD /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
@@ -152,6 +145,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				996C41B016F2104E009C498A /* OpenGLES.framework in Frameworks */,
+				996C41AF16F2103C009C498A /* QuartzCore.framework in Frameworks */,
 				998761B616E50C6700EAE6CD /* MapKit.framework in Frameworks */,
 				9987617C16E4EEAA00EAE6CD /* CoreMotion.framework in Frameworks */,
 				9987617A16E4EEA500EAE6CD /* CoreLocation.framework in Frameworks */,
@@ -160,6 +155,7 @@
 				99E57DE316D7E4720093E85F /* Foundation.framework in Frameworks */,
 				99E57DE516D7E4720093E85F /* CoreGraphics.framework in Frameworks */,
 				9987618016E4FDCA00EAE6CD /* PanicARKit.framework in Frameworks */,
+				996C41AD16F21029009C498A /* GLKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,6 +172,9 @@
 		996C41A816F1EC13009C498A /* Sample4-Immersive-Panorama */ = {
 			isa = PBXGroup;
 			children = (
+				996C41AA16F21007009C498A /* PARGLViewController.h */,
+				996C41AB16F21007009C498A /* PARGLViewController.mm */,
+				996C41B116F210DA009C498A /* PARCubeMesh.h */,
 			);
 			name = "Sample4-Immersive-Panorama";
 			sourceTree = "<group>";
@@ -209,6 +208,7 @@
 			children = (
 				9987617D16E4FDCA00EAE6CD /* PanicARKitResources.bundle */,
 				9987617E16E4FDCA00EAE6CD /* PanicARKit.framework */,
+				996C41AE16F2103C009C498A /* QuartzCore.framework */,
 				998761B516E50C6700EAE6CD /* MapKit.framework */,
 				9987617B16E4EEAA00EAE6CD /* CoreMotion.framework */,
 				9987617916E4EEA500EAE6CD /* CoreLocation.framework */,
@@ -409,21 +409,6 @@
 				99E7F25916D8EA9F00258496 /* signal4.png in Resources */,
 				99E7F25A16D8EA9F00258496 /* signal4@2x.png in Resources */,
 				9987617F16E4FDCA00EAE6CD /* PanicARKitResources.bundle in Resources */,
-				9987619016E4FF2700EAE6CD /* Default-568h@2x~iphone.png in Resources */,
-				9987619116E4FF2700EAE6CD /* Default-Landscape@2x~ipad.png in Resources */,
-				9987619216E4FF2700EAE6CD /* Default-Landscape~ipad.png in Resources */,
-				9987619316E4FF2700EAE6CD /* Default-Portrait@2x~ipad.png in Resources */,
-				9987619416E4FF2700EAE6CD /* Default-Portrait~ipad.png in Resources */,
-				9987619516E4FF2700EAE6CD /* Default@2x~iphone.png in Resources */,
-				9987619616E4FF2700EAE6CD /* Default~iphone.png in Resources */,
-				9987619716E4FF2700EAE6CD /* Icon-Small@2x~ipad.png in Resources */,
-				9987619816E4FF2700EAE6CD /* Icon-Small@2x~iphone.png in Resources */,
-				9987619916E4FF2700EAE6CD /* Icon-Small~ipad.png in Resources */,
-				9987619A16E4FF2700EAE6CD /* Icon-Small~iphone.png in Resources */,
-				9987619B16E4FF2700EAE6CD /* Icon@2x~ipad.png in Resources */,
-				9987619C16E4FF2700EAE6CD /* Icon@2x~iphone.png in Resources */,
-				9987619D16E4FF2700EAE6CD /* Icon~ipad.png in Resources */,
-				9987619E16E4FF2700EAE6CD /* Icon~iphone.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,6 +426,7 @@
 				99E57E3816D7E6350093E85F /* PARD2DPoiViewController.mm in Sources */,
 				99F94DEF16DD588900871771 /* PARD2DPoiLabelWithAltitude.mm in Sources */,
 				99F94DF516DD59C300871771 /* PARD2DPoiWithAltitudeViewController.mm in Sources */,
+				996C41AC16F21007009C498A /* PARGLViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
