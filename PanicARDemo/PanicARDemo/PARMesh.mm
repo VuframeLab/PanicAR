@@ -32,7 +32,6 @@
     glGenBuffers(1, &vertexBuffer);
     glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
     _lengthOfMesh = meshLength;
-    NSLog(@"%d", _lengthOfMesh);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertexDataTextured)*_lengthOfMesh, meshVertexData, GL_STATIC_DRAW);
     
     glEnableVertexAttribArray(GLKVertexAttribPosition);

@@ -76,7 +76,11 @@
     
     [EAGLContext setCurrentContext:self.context];
     self.effect = [[GLKBaseEffect alloc] init];
-    self.sphereMesh = [[PARMesh alloc] initWithEffect:self.effect andMeshData:MeshVertexData andMeshLength:2904 andTextureAtPath:[[NSBundle mainBundle] pathForResource:@"panorama" ofType:@"jpg"]];
+    self.sphereMesh = [[PARMesh alloc] initWithEffect:self.effect
+                                          andMeshData:MeshVertexData
+                                        andMeshLength:2904
+                                     andTextureAtPath:[[NSBundle mainBundle] pathForResource:@"panorama" ofType:@"jpg"]
+                       ];
 }
 
 - (void)tearDownGL {
@@ -85,7 +89,6 @@
     
     [self.sphereMesh teardown];
     self.sphereMesh = nil;
-    
     self.effect = nil;
 }
 
