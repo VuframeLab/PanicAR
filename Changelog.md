@@ -4,6 +4,11 @@
 
 ---
 
+### 2.1 (build 2583)
+
+- fix: PARPoi:initWithImage does not fallback to load from PanicARKitResources.bundle
+- add: sample Poi displaying an image
+
 ### 2.1 (build 2573)
 
 **Updates**
