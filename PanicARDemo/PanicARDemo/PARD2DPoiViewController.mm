@@ -8,13 +8,13 @@
 //  Copyright (c) 2011 doPanic. All rights reserved.
 //
 
-#import "MyARViewController.h"
+#import "PARD2DPoiViewController.h"
 
 // Timer to regularly update GPS information
 static NSTimer *infoTimer = nil;
 bool _areOptionsVisible = false;
 
-@implementation MyARViewController
+@implementation PARD2DPoiViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -55,6 +55,8 @@ bool _areOptionsVisible = false;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
+
     // ensure infoLabels are sorted correctly (storyboard workaround)
     self.infoLabels = [self.infoLabels sortedArrayUsingComparator:^NSComparisonResult(UIView *label1, UIView *label2) {
         if ([label1 tag] < [label2 tag]) return NSOrderedAscending;
@@ -95,6 +97,7 @@ bool _areOptionsVisible = false;
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
     [infoTimer invalidate];
     infoTimer = nil;
 }

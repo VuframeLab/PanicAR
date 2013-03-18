@@ -87,23 +87,24 @@ static float _orientationAngle;
     [self setupGL];
 }
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    
-    [self tearDownGL];
-    
-    if ([EAGLContext currentContext] == self.context) {
-        [EAGLContext setCurrentContext:nil];
-    }
-    self.context = nil;
-}
 
 -(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
     [self setOrientationAngleFromUIInterfaceOrientation:self.interfaceOrientation];
         self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
 }
 -(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+
+    [self tearDownGL];
+
+    if ([EAGLContext currentContext] == self.context) {
+        [EAGLContext setCurrentContext:nil];
+    }
+    self.view = nil;
+    self.context = nil;
+
+        [[PSKSensorManager sharedSensorManager] setDelegate:nil];
     self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
 }
 
@@ -195,9 +196,6 @@ static float _orientationAngle;
 }
 
 - (void)tearDownGL {
-    
-    [EAGLContext setCurrentContext:self.context];
-    
     [self.sphereMesh teardown];
     self.sphereMesh = nil;
     self.effect = nil;
