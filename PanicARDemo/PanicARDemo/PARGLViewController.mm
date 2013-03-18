@@ -168,10 +168,25 @@ static float _orientationAngle;
     
     [EAGLContext setCurrentContext:self.context];
     self.effect = [[GLKBaseEffect alloc] init];
+
+
+    NSString *panoramaTexture = nil;
+
+    int maxTextureSize;
+    glGetIntegerv(GL_MAX_TEXTURE_SIZE, &maxTextureSize);
+
+    // e.g. iPhone 4
+    if (maxTextureSize == 2048) {
+       panoramaTexture = @"panorama2048";
+    } else {
+       panoramaTexture = @"panorama4096";
+    }
+
+
     self.sphereMesh = [[PARMesh alloc] initWithEffect:self.effect
                                           andMeshData:sphere_low_MeshVertexData
                                         andMeshLength:sphere_low_Length
-                                     andTextureAtPath:[[NSBundle mainBundle] pathForResource:@"panorama" ofType:@"jpg"]
+                                     andTextureAtPath:[[NSBundle mainBundle] pathForResource:panoramaTexture ofType:@"jpg"]
                        ];
 
     GLKMatrix4 modelViewMatrix = GLKMatrix4MakeTranslation(0.0f, 0.0f, 0);

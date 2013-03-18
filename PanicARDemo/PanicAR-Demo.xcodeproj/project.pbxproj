@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9966DF8C16F2222B00BB8874 /* panorama.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9966DF8B16F2222B00BB8874 /* panorama.jpg */; };
+		9318066D16F7167600C96632 /* panorama4096.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9318066C16F7167600C96632 /* panorama4096.jpg */; };
+		9966DF8C16F2222B00BB8874 /* panorama2048.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9966DF8B16F2222B00BB8874 /* panorama2048.jpg */; };
 		996C41AC16F21007009C498A /* PARGLViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 996C41AB16F21007009C498A /* PARGLViewController.mm */; };
 		996C41AD16F21029009C498A /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9989398716D98D4600B39DF6 /* GLKit.framework */; };
 		996C41AF16F2103C009C498A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 996C41AE16F2103C009C498A /* QuartzCore.framework */; };
@@ -64,7 +65,8 @@
 
 /* Begin PBXFileReference section */
 		930E211A16F23742006C9E92 /* sphere_low.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sphere_low.h; sourceTree = "<group>"; };
-		9966DF8B16F2222B00BB8874 /* panorama.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = panorama.jpg; sourceTree = "<group>"; };
+		9318066C16F7167600C96632 /* panorama4096.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = panorama4096.jpg; sourceTree = "<group>"; };
+		9966DF8B16F2222B00BB8874 /* panorama2048.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = panorama2048.jpg; sourceTree = "<group>"; };
 		996C41AA16F21007009C498A /* PARGLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PARGLViewController.h; sourceTree = "<group>"; };
 		996C41AB16F21007009C498A /* PARGLViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PARGLViewController.mm; sourceTree = "<group>"; };
 		996C41AE16F2103C009C498A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -177,10 +179,11 @@
 		996C41A816F1EC13009C498A /* Sample4-Immersive-Panorama */ = {
 			isa = PBXGroup;
 			children = (
+				9318066C16F7167600C96632 /* panorama4096.jpg */,
 				930E211A16F23742006C9E92 /* sphere_low.h */,
 				996C41AA16F21007009C498A /* PARGLViewController.h */,
 				996C41AB16F21007009C498A /* PARGLViewController.mm */,
-				9966DF8B16F2222B00BB8874 /* panorama.jpg */,
+				9966DF8B16F2222B00BB8874 /* panorama2048.jpg */,
 				996C41B216F211A3009C498A /* PARMesh.h */,
 				996C41B316F211A3009C498A /* PARMesh.mm */,
 			);
@@ -417,7 +420,8 @@
 				99E7F25916D8EA9F00258496 /* signal4.png in Resources */,
 				99E7F25A16D8EA9F00258496 /* signal4@2x.png in Resources */,
 				9987617F16E4FDCA00EAE6CD /* PanicARKitResources.bundle in Resources */,
-				9966DF8C16F2222B00BB8874 /* panorama.jpg in Resources */,
+				9966DF8C16F2222B00BB8874 /* panorama2048.jpg in Resources */,
+				9318066D16F7167600C96632 /* panorama4096.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
