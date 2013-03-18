@@ -204,39 +204,50 @@ static float _orientationAngle;
 }
 
 - (void)update {
-    if(_gyroEnabled){
-        GLKMatrix4 tempProjectionMatrix = GLKMatrix4Rotate(_projectionMatrix, _rotationX, 1.0f, 0.0f, 0.0f);
-        tempProjectionMatrix = GLKMatrix4Rotate(tempProjectionMatrix, _rotationY, 0.0f, 1.0f, 0.0f);
-        // Multiply the attitude into the projection matrix
+    GLKMatrix4 tempProjectionMatrix;
 
+    // Compute Touch rotation
+    tempProjectionMatrix = GLKMatrix4Rotate(_projectionMatrix, _rotationX, 1.0f, 0.0f, 0.0f);
+    tempProjectionMatrix = GLKMatrix4Rotate(tempProjectionMatrix, _rotationY, 0.0f, 1.0f, 0.0f);
+
+    if(_gyroEnabled){
+
+        // Multiply the attitude into the projection matrix
         tempProjectionMatrix = GLKMatrix4Multiply(tempProjectionMatrix, GLKMatrix4MakeWithArray(*[self attitudeMatrix]));
 
         // Rotate the projection  matrix by 90 degrees (as part of the conversion from PSK to GLK).
         tempProjectionMatrix = GLKMatrix4Rotate(tempProjectionMatrix, GLKMathDegreesToRadians(90), 1, 0, 0);
 
-        // Update the projection matrix
-        self.effect.transform.projectionMatrix = tempProjectionMatrix;}
-    else {
-        GLKMatrix4 tempProjectionMatrix = GLKMatrix4Rotate(_projectionMatrix, _rotationX, 1.0f, 0.0f, 0.0f);
-        tempProjectionMatrix = GLKMatrix4Rotate(tempProjectionMatrix, _rotationY, 0.0f, 1.0f, 0.0f);
-        // Update the projection matrix
-        self.effect.transform.projectionMatrix = tempProjectionMatrix;
     }
-}
+
+    // Update the projection matrix
+    self.effect.transform.projectionMatrix = tempProjectionMatrix;}
 
 #pragma mark - touches
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
+
     UITouch *touch = [touches anyObject];
     float distanceY = [touch locationInView:touch.view].y -
     [touch previousLocationInView:touch.view].y;
+
     float distanceX = [touch locationInView:touch.view].x -
     [touch previousLocationInView:touch.view].x;
+
+    NSLog(@"distanceY/X: %f, %f", distanceY, distanceX);
+
     distanceX *= -0.005;
     distanceY *= -0.005;
+
     _rotationX += distanceY;
     _rotationY += distanceX;
+
+    NSLog(@"x-value: %f, y-value: %f", _rotationX, _rotationY);
+
+    // Limit rotation upwards and downwards
+    if (_rotationX < - 3.141/2) {_rotationX = -3.141/2;};
+    if (_rotationX > 3.141/2) {_rotationX = 3.141/2;};
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
