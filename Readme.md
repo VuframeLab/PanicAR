@@ -9,7 +9,7 @@ by doPanic GmbH - for sales and support contact info@dopanic.com
 * It’s fast, simple and affordable
 * No monthly or annual fees
 * It’s completely customizable
-* It’s small (only ~3 mb)
+* It’s small (only ~4 mb)
 * It's platform agnostic - powered by Cocoa and Cocoa only
 * It’s ridiculously easy to integrate
 
@@ -18,6 +18,20 @@ by doPanic GmbH - for sales and support contact info@dopanic.com
 * does the same things all the other frameworks do: even some more (i.e. "altitude")
 * maintained for you by us: new devices and new OS releases will be supported
 * pay on a per-app basis: a white-label license is really cheap (see here: www.dopanic.com/ar)
+* support for CocoaPods (www.cocoapods.org)
+
+## Get started now – using CocoaPods
+
+Just add
+
+    pod 'PanicAR', '~> 2.1'
+
+to your podfile and do a
+    
+    pod install
+    
+simple as that. Really.
+
 
 ## Read More
 
@@ -29,3 +43,4 @@ https://github.com/doPanic/PanicAR/wiki/
 
 For common build errors and other issues check:
 https://github.com/doPanic/PanicAR/wiki/Troubleshooting
+
