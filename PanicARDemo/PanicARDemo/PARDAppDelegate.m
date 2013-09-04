@@ -13,6 +13,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+   
+    // Allow all devices to use Location Services.
+    [PSKDeviceProperties setSimulateGPSForAllDevices:YES];
+    
     return YES;
 }
 							

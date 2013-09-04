@@ -3,7 +3,7 @@
  *  PanicSensorKit
  *
  *  Created by Andreas Zeitler on 23.11.10.
- *  Copyright 2010 doPanic. All rights reserved.
+ *  copyright 2013 doPanic. All rights reserved.
  *
  */
 

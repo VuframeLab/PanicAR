@@ -73,6 +73,8 @@ typedef enum
  * @remarks internal use only */
 - (BOOL)isUpdatingObjects;
 
+- (void)sortMarkersByDistance;
+
 #pragma mark - Memory and Multitasking
 /*! suspend PARController
  * @remarks Call this from applicationDidEnterBackground in the delegate

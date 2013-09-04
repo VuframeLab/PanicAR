@@ -8,6 +8,7 @@
 
 #import "PSKDeviceProperties.h"
 #import "PSKSensorManager.h"
+#import "PSKDeviceAttitude.h"
 
 #define PSK_DEVICE_MIN_OS_PHONE_3G 3.2
 #define PSK_DEVICE_MAX_OS_PHONE_3G 4.2

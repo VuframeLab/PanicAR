@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		9318066D16F7167600C96632 /* panorama4096.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9318066C16F7167600C96632 /* panorama4096.jpg */; };
+		93D81D2217D75CA600D65275 /* PanicARKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D81D2117D75CA600D65275 /* PanicARKit.framework */; };
+		93D81D2517D765CA00D65275 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D81D2417D765CA00D65275 /* CoreVideo.framework */; };
+		93D81D2717D7663000D65275 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D81D2617D7663000D65275 /* CoreMedia.framework */; };
 		9966DF8C16F2222B00BB8874 /* panorama2048.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9966DF8B16F2222B00BB8874 /* panorama2048.jpg */; };
 		996C41AC16F21007009C498A /* PARGLViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 996C41AB16F21007009C498A /* PARGLViewController.mm */; };
 		996C41AD16F21029009C498A /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9989398716D98D4600B39DF6 /* GLKit.framework */; };
@@ -18,7 +21,6 @@
 		9987617A16E4EEA500EAE6CD /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9987617916E4EEA500EAE6CD /* CoreLocation.framework */; };
 		9987617C16E4EEAA00EAE6CD /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9987617B16E4EEAA00EAE6CD /* CoreMotion.framework */; };
 		9987617F16E4FDCA00EAE6CD /* PanicARKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9987617D16E4FDCA00EAE6CD /* PanicARKitResources.bundle */; };
-		9987618016E4FDCA00EAE6CD /* PanicARKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9987617E16E4FDCA00EAE6CD /* PanicARKit.framework */; };
 		998761B616E50C6700EAE6CD /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 998761B516E50C6700EAE6CD /* MapKit.framework */; };
 		99E57DE116D7E4720093E85F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E57DE016D7E4720093E85F /* UIKit.framework */; };
 		99E57DE316D7E4720093E85F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E57DE216D7E4720093E85F /* Foundation.framework */; };
@@ -66,6 +68,9 @@
 /* Begin PBXFileReference section */
 		930E211A16F23742006C9E92 /* sphere_low.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sphere_low.h; sourceTree = "<group>"; };
 		9318066C16F7167600C96632 /* panorama4096.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = panorama4096.jpg; sourceTree = "<group>"; };
+		93D81D2117D75CA600D65275 /* PanicARKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PanicARKit.framework; path = ../Framework/PanicARKit.framework; sourceTree = "<group>"; };
+		93D81D2417D765CA00D65275 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		93D81D2617D7663000D65275 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		9966DF8B16F2222B00BB8874 /* panorama2048.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = panorama2048.jpg; sourceTree = "<group>"; };
 		996C41AA16F21007009C498A /* PARGLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PARGLViewController.h; sourceTree = "<group>"; };
 		996C41AB16F21007009C498A /* PARGLViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PARGLViewController.mm; sourceTree = "<group>"; };
@@ -76,7 +81,6 @@
 		9987617916E4EEA500EAE6CD /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		9987617B16E4EEAA00EAE6CD /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		9987617D16E4FDCA00EAE6CD /* PanicARKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = PanicARKitResources.bundle; path = ../Framework/PanicARKitResources.bundle; sourceTree = "<group>"; };
-		9987617E16E4FDCA00EAE6CD /* PanicARKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PanicARKit.framework; path = ../Framework/PanicARKit.framework; sourceTree = "<group>"; };
 		9987618116E4FF2700EAE6CD /* Default-568h@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x~iphone.png"; path = "Images/Default-568h@2x~iphone.png"; sourceTree = "<group>"; };
 		9987618216E4FF2700EAE6CD /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape@2x~ipad.png"; path = "Images/Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
 		9987618316E4FF2700EAE6CD /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "Images/Default-Landscape~ipad.png"; sourceTree = "<group>"; };
@@ -152,6 +156,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93D81D2717D7663000D65275 /* CoreMedia.framework in Frameworks */,
+				93D81D2517D765CA00D65275 /* CoreVideo.framework in Frameworks */,
+				93D81D2217D75CA600D65275 /* PanicARKit.framework in Frameworks */,
 				996C41B016F2104E009C498A /* OpenGLES.framework in Frameworks */,
 				996C41AF16F2103C009C498A /* QuartzCore.framework in Frameworks */,
 				998761B616E50C6700EAE6CD /* MapKit.framework in Frameworks */,
@@ -161,7 +168,6 @@
 				99E57DE116D7E4720093E85F /* UIKit.framework in Frameworks */,
 				99E57DE316D7E4720093E85F /* Foundation.framework in Frameworks */,
 				99E57DE516D7E4720093E85F /* CoreGraphics.framework in Frameworks */,
-				9987618016E4FDCA00EAE6CD /* PanicARKit.framework in Frameworks */,
 				996C41AD16F21029009C498A /* GLKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -200,6 +206,9 @@
 		99E57DD416D7E4720093E85F = {
 			isa = PBXGroup;
 			children = (
+				93D81D2617D7663000D65275 /* CoreMedia.framework */,
+				93D81D2417D765CA00D65275 /* CoreVideo.framework */,
+				93D81D2117D75CA600D65275 /* PanicARKit.framework */,
 				99E57DE616D7E4720093E85F /* PanicARDemo */,
 				99E57DDF16D7E4720093E85F /* Frameworks */,
 				99E57DDE16D7E4720093E85F /* Products */,
@@ -218,7 +227,6 @@
 			isa = PBXGroup;
 			children = (
 				9987617D16E4FDCA00EAE6CD /* PanicARKitResources.bundle */,
-				9987617E16E4FDCA00EAE6CD /* PanicARKit.framework */,
 				996C41AE16F2103C009C498A /* QuartzCore.framework */,
 				998761B516E50C6700EAE6CD /* MapKit.framework */,
 				9987617B16E4EEAA00EAE6CD /* CoreMotion.framework */,
@@ -491,7 +499,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -516,7 +524,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";

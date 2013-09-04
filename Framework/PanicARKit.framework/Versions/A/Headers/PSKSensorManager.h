@@ -3,7 +3,7 @@
 //  PanicSensorKit
 //
 //  Created by Andreas Zeitler on 28.02.12.
-//  Copyright 2012 doPanic GmbH. All rights reserved.
+//  copyright 2013 doPanic GmbH. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -11,29 +11,15 @@
 #import <UIKit/UIKit.h>
 #import <CoreMotion/CoreMotion.h>
 #import "PSKMath.h"
+#import "PSKSensorDelegate.h"
 
 //#define AF_MODE AVCaptureFocusModeLocked
 #define AF_MODE AVCaptureFocusModeContinuousAutoFocus
 
+
+
 static const int kPSKErrorRestricted = 10024;
 static const float kPSKHumanEyeHeight = 1.620;
-
-/*! status of the PSKSensorManager update routine 
- see also: @ref start @ref stop */
-typedef enum {
-    PSKSensorManagerUnavailable = 0,
-    PSKSensorManagerIdle,
-    PSKSensorManagerRestricted,
-    PSKSensorManagerDenied,
-    PSKSensorManagerRunning
-} PSKSensorManagerStatus;
-
-typedef NS_OPTIONS(NSUInteger, PSKSensorManagerUpdateMode) {
-    PSKSensorManagerUpdateNone              = 0,
-    PSKSensorManagerUpdateLocation          = 1 << 0,
-    PSKSensorManagerUpdateHeading           = 1 << 1,
-    PSKSensorManagerUpdateGyro              = 1 << 2
-};
 
 
 @class PSKSensorManager;
@@ -41,49 +27,56 @@ typedef NS_OPTIONS(NSUInteger, PSKSensorManagerUpdateMode) {
 @class PSKDeviceAttitude;
 @protocol PSKSensorDelegate;
 
+
+// Type definition to use a block as property, see http://stackoverflow.com/questions/3935574/can-i-use-objective-c-blocks-as-properties
+typedef void (^PSKVoidBlock)();
+
+
 /*!
  @class PSKSensorManager
  @abstract singleton class to handle all sensor input and act as an abstraction layer between doPanic Frameworks and OS sensor output
  */
-@interface PSKSensorManager : NSObject <CLLocationManagerDelegate> {
-    id<PSKSensorDelegate> __weak _delegate; // receives all events
-    CMMotionManager* _motionManager; // CoreMotion interface
-    CLLocationManager* _locationManager; // CoreLocation interface
-    PSKDeviceProperties *_deviceProperties; // device properties abstraction layer
-    PSKDeviceAttitude *_deviceAttitude;
-
-    PSKSensorManagerStatus _status; // current status
-    
-    // setup, start, stop
-    BOOL _shouldUpdateLocation; // should PSK start location updates using CLLocationManager
-    BOOL _shouldUpdateHeading; // should PSK start heading updates using CLLocationManager
-    BOOL _shouldUpdateMotion;
-    CMAttitudeReferenceFrame _motionRefrenceFrame; // the reference frame the motionManager uses
-    
-    // runtime
-    int _numberOfLocationUpdates;
-}
+@interface PSKSensorManager : NSObject <CLLocationManagerDelegate>
 
 #pragma mark -
 /*! shared sensor manager instance */
 + (PSKSensorManager *)sharedSensorManager;
 /*! PSKSensorDelegate delegate object receiving updates from the PSKSensorManager */
-@property (nonatomic, weak) id<PSKSensorDelegate> delegate;
+@property (nonatomic, assign) id<PSKSensorDelegate> delegate;
 
 /*! PSKDeviceProperties reflecting the properties of the currently active device */
-- (PSKDeviceProperties *)deviceProperties;
+@property (nonatomic, strong, readonly) PSKDeviceProperties *deviceProperties;
 
 /*! CLLocationManager instance */
-- (CLLocationManager *)locationManager;
+@property (nonatomic, strong, readonly) CLLocationManager *locationManager;
 
 /*! CMMotionManager instance */
-- (CMMotionManager *)motionManager;
+@property (nonatomic, strong, readonly) CMMotionManager *motionManager;
 
 /*! PSKDeviceAttitude instance that reflects the sensor output from the device */
-- (PSKDeviceAttitude *)deviceAttitude;
+@property (nonatomic, strong, readonly) PSKDeviceAttitude *deviceAttitude;
 
 /*! status - reflects the sensor availability */
 @property (nonatomic, assign, readonly) PSKSensorManagerStatus status;
+
+/*! number of location updates */
+@property (nonatomic, assign, readonly) int numberOfLocationUpdates;
+
+/*! block that is run when manager resumed */
+@property (nonatomic, copy, readonly) PSKVoidBlock willSuspendEvent;
+
+/*! block that is run before manager will suspend */
+@property (nonatomic, copy, readonly) PSKVoidBlock didResumeEvent;
+
+- (void)setDidResumeEvent:(PSKVoidBlock)didResumeEvent;
+- (void)setWillSuspendEvent:(PSKVoidBlock)willSuspendEvent;
+
+
+/*! freeze the motion data as is */
+@property (nonatomic, assign) BOOL freezeMotion;
+
+/*! @property if YES then @ref CLLocationManager setHeadingOrientation is called when the device orientation changes */
+@property (nonatomic, assign) BOOL respectOrientationForHeading;
 
 #pragma mark - setup, start, stop
 /*! @property YES if location should be updated 
@@ -123,6 +116,9 @@ typedef NS_OPTIONS(NSUInteger, PSKSensorManagerUpdateMode) {
 /*! stops the sensor update */
 - (void)stop;
 
+- (BOOL)isUpdatingLocation;
+- (BOOL)isUpdatingHeading;
+- (BOOL)isUpdatingMotion;
 
 
 #pragma mark - helper methods
@@ -130,6 +126,9 @@ NSString* NSStringFromPSKSensorManagerStatus(PSKSensorManagerStatus status);
 NSString* NSStringFromUIInterfaceOrientation(UIInterfaceOrientation orientation);
 NSString* NSStringFromUIDeviceOrientation(UIDeviceOrientation orientation);
 NSString* NSStringFromPSKSensorManagerUpdateMode(PSKSensorManagerUpdateMode sensorUpdateMode);
+NSString* NSStringFromCMAttitudeReferenceFrame(CMAttitudeReferenceFrame attitudeReferenceFrame);
+float PSKOrientationAngleFromUIInterfaceOrientation(UIInterfaceOrientation UIDeviceOrientation);
+float PSKOrientationAngleFromUIDeviceOrientation(UIDeviceOrientation orientation);
 
 /*! @brief calculates the direction towards a location, heads-up line is the north pole at 0 degrees 
  @remarks does not take into account the earth's curve and therefore will grow more inaccurate the farther the locations are apart 

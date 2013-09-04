@@ -4,6 +4,11 @@
 
 ---
 
+### 2.1 (build 2642)
+- fix: ordering of POIs by distance was ignored
+- add: Big Cities Feature: POIFactory knows the locations of the largest 829 cities of the world
+- add: Possibility to tell PSKDeviceProperties to allow AR for non GPS devices.
+
 ### 2.1 (build 2583)
 
 - fix: PARPoi:initWithImage does not fallback to load from PanicARKitResources.bundle

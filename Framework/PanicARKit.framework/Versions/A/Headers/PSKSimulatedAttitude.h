@@ -22,9 +22,6 @@
 @property (nonatomic,assign) BOOL simulateHeading;
 @property (nonatomic,assign) float simulatedHeading;
 
-@property (nonatomic,assign) BOOL disableGyro;
-@property (nonatomic,assign) BOOL disableGyroHeading;
-
 - (void)makeDirty;
 - (BOOL)overridesAnything;
 

@@ -3,7 +3,7 @@
  *  PanicAR
  *
  *  Created by Andreas Zeitler on 24.08.10.
- *  Copyright 2010 doPanic. All rights reserved.
+ *  copyright 2013 doPanic. All rights reserved.
  *
  */
 
@@ -55,21 +55,26 @@ double magnitude(double x, double y, double z);
 double sqrMagnitude(double x, double y, double z);
 void normalize(double *x, double *y, double *z);
 
+#pragma mark - CGPoint Extensions
+CGPoint CGPointRotatePointAboutOrigin(CGPoint point, float angle);
 
 #pragma mark - Vector
-typedef struct {
+typedef struct PSKVector3 {
 	PSK_PRECISION x;
 	PSK_PRECISION y;
 	PSK_PRECISION z;
 } PSKVector3;
-typedef struct {
+typedef struct PSKVector4 {
 	PSK_PRECISION x;
 	PSK_PRECISION y;
 	PSK_PRECISION z;
 	PSK_PRECISION w;
 } PSKVector4;
 
+PSKVector3 PSKVector3RotateXZByAngle(PSKVector3 vec, float deg);
+
 PSKVector3 PSKVector3Normalize(PSKVector3 vec);
+void PSKVector3Normalize_p(PSKVector3 *vec);
 float PSKVector3AngleTowards(PSKVector3 from, PSKVector3 to);
 
 float PSKVector3Angle(PSKVector3 vec);
@@ -95,6 +100,8 @@ void PSKVector3Scalef(PSKVector3 *vec, const float s);
 PSKVector3 PSKVector3Scale(PSKVector3 vec, const float s);
 void PSKVector3Clamp(PSKVector3 *vec, float s);
 void PSKVector3Print(PSKVector3 vec);
+PSKVector3 PSKVector3Multiply(PSKVector3 vec, PSKVector3 mul);
+PSKVector3 PSKVector3Subtract(PSKVector3 from, PSKVector3 vec);
 void PSKVector3PrintWithTitle(NSString *title, PSKVector3 vec);
 
 PSKVector3 PSKVector3Negate(PSKVector3 vector);
@@ -146,13 +153,14 @@ void PSKMatrixFromCMRotationMatrix(PSKMatrix4x4 mout, const CMRotationMatrix *m)
 
 
 #pragma mark - Quaternion
-typedef struct {
+typedef struct PSKQuaternion {
     float x;
     float y;
     float z;
     float w;
 } PSKQuaternion;
 
+PSKQuaternion PSKQuaternionFromCMQuaternion(CMQuaternion q);
 void PSKQuaternionNormalize(PSKQuaternion *quaternion);
 PSKQuaternion PSKQuaternionMakeWithMatrix3D(PSKMatrix4x4 matrix);
 void PSKMatrix4SetUsingQuaternion3D(PSKMatrix4x4 matrix, PSKQuaternion quat);
@@ -185,4 +193,7 @@ void PSKConvertLatLonToEcef(double lat, double lon, double alt, double *x, doubl
 void PSKEcefToEnu(double lat, double lon, double x, double y, double z, double xr, double yr, double zr, double *e, double *n, double *u);
 
 
+#pragma mark - Other Utils
+CGPoint PSKRadarCoordinatesFromVectorWithGravity(PSKVector3 v, PSKVector3 g);
+CGPoint PSKAtittudePitchCoordinates(PSKVector3 v, PSKVector3 g);
 #endif

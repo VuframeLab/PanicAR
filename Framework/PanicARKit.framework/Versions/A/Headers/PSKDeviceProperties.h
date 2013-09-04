@@ -24,7 +24,7 @@ static const int kDeviceiPad3 = 1070;
 static const int kDeviceiPad4 = 1080;
 static const int kDeviceiPod = 180;
 static const int kDeviceiPod4 = 190;
-static const int kDeviceiPod5 = 200;
+static const int kDeviceiPod5 = 1200;
 static const int kDeviceFastGeneration = 1000;
 static const int kDeviceUnkownNewDevice = 1200;
 
@@ -38,16 +38,20 @@ typedef enum {
 } PSKGPSAvailabilityStatus;
 
 
+
+
 /*!  PSKDeviceProperties
  abstraction layer between doPanic Frameworks and iOS
  keeps track of all device and os information 
  allows for simulation of different devices on the same hardware */
 @interface PSKDeviceProperties : NSObject {
+
+ 
     NSString *_deviceName;
     
     int _deviceType;
     BOOL _isPad, _isPod, _isPhone;
-    BOOL _isSlowDevice;
+    BOOL _singleCoreDevice;
     
     float _osVersion;
     float _displayContentScale;
@@ -55,12 +59,18 @@ typedef enum {
     BOOL _hasBackFacingCamera;
     BOOL _hasFrontFacingCamera;
     CGSize _backFacingCameraFOVs;
+    CGSize _deviceMeasurements;
+    CGPoint _deviceCameraOffsetFromTopRightBorder;
+    CGPoint _deviceCameraOffsetFromCenter;
     
     PSKGPSAvailabilityStatus _gpsStatus;
     BOOL _hasCompass;
     BOOL _hasAccelerometer;
     BOOL _hasGyroscope;
 }
+
++ (BOOL)simulateGPSForAllDevices;
++ (void)setSimulateGPSForAllDevices:(BOOL)doSimulateGPSForAllDevices;
 
 /*! shared device properties instance */
 + (PSKDeviceProperties*)sharedDeviceProperties;
@@ -86,8 +96,11 @@ typedef enum {
 - (BOOL)isPad;
 /*!  YES if the device is an iPhone */
 - (BOOL)isPhone;
+/*!  YES if the device has a single-core CPU
+ @deprecated use isSingleCoreDevice instead */
+- (BOOL)isSlowDevice __attribute__((deprecated));
 /*!  YES if the device has a single-core CPU */
-- (BOOL)isSlowDevice;
+- (BOOL)isSingleCoreDevice;
 
 /*!  the installed OS version 
  @remarks only major and minor revision, e.g. 5.1 or 6.0 */
@@ -98,6 +111,8 @@ typedef enum {
 - (BOOL)hasOS43;
 /*!  YES if the device runs at least iOS 5 */
 - (BOOL)hasOS5;
+/*!  YES if the device runs at least iOS 6 */
+- (BOOL)hasOS6;
 
 /*!  the displayContentScale of this device, 2.0f. for retina displays */
 - (float)displayContentScale;
@@ -108,6 +123,11 @@ typedef enum {
 - (BOOL)hasBackFacingCamera;
 /*!  YES if the device has a front facing camera */
 - (BOOL)hasFrontFacingCamera;
+
+- (CGSize)backFacingCameraFovs;
+- (float)backFacingCameraFovPortrait;
+- (float)backFacingCameraFovLandscape;
+- (CGPoint)deviceCameraOffsetFromCenter;
 
 /*!  is a real GPS sensor available on the current device
  @return only returns YES if it is absolutely sure that GPS is available (not only location services using Cell/WiFi positioning */

@@ -18,6 +18,7 @@
 @class PARController;
 @class PSKSensorManager;
 @class PARViewController;
+@class PSKDeviceAttitude;
 
 extern id<PARViewControllerDelegate> _activeViewController;
 
@@ -27,9 +28,9 @@ extern id<PARViewControllerDelegate> _activeViewController;
 @interface PARViewController : UIViewController <PSKSensorDelegate, PARViewControllerDelegate>
 
 /*! the arView of this PARViewController */
-@property (nonatomic, strong, readonly) PARView *arView;
+@property (nonatomic, strong) IBOutlet PARView *arView;
 /*! the arRadarView of this PARViewController */
-@property (nonatomic, strong, readonly) PARRadarView *arRadarView;
+@property (nonatomic, strong) IBOutlet PARRadarView *arRadarView;
 
 /*! the camera view of this PARViewController (if camera is used) */
 @property (nonatomic, strong, readonly) UIView *cameraView;

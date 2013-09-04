@@ -20,4 +20,5 @@
 + (void)createAroundUser:(double)angleBetweenLabels atDistanceIntervals:(double)distanceInterval inRows:(int)numberOfRows;
 + (void)createAroundUser:(double)angleBetweenLabels andOffsetAngle:(double)angleOffset atDistance:(double)distance;
 + (void)createRandom:(int)count;
++ (void)createCitiesAroundUser:(int)count;
 @end

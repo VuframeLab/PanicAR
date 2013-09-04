@@ -45,8 +45,8 @@ bool _areOptionsVisible = false;
     
     [super loadView];
     
+    //set range of radar, all POIs farther away than 1500 meters will appear on the edge of the radar
     [self.arRadarView setRadarRange:1500];
-    // remove deprecated method: [[PSKSensorManager sharedSensorManager] enableUpdateHeadingFromLocationManager];
 }
 
 
@@ -259,7 +259,7 @@ bool _areOptionsVisible = false;
                                                              delegate:self
                                                     cancelButtonTitle:@"Cancel"
                                                destructiveButtonTitle:@"Remove all POIs"
-                                                    otherButtonTitles:@"Re-create sample POIs", @"Create Random POIs", nil];
+                                                    otherButtonTitles:@"Re-create sample POIs", @"Create Random POIs",@"Show Big Cities around me", nil];
         options.tag = 1;
         [options showFromBarButtonItem:self.navigationItem.rightBarButtonItem animated:YES];
     }
@@ -282,7 +282,10 @@ bool _areOptionsVisible = false;
             // Create random POIs
             [PARPoiFactory createAroundUser:50];
             break;
-            
+        case 3:
+            // Create POIs for 6 big cities around the user
+            [PARPoiFactory createCitiesAroundUser:6];
+            break;
         default:
             break;
     }
@@ -300,6 +303,9 @@ bool _areOptionsVisible = false;
     // now create new ones
     id newPoiLabel = nil;
     Class poiLabelClass = [PARPoiLabel class];
+    
+    // Use this to enable stacking
+    //Class poiLabelClass = [PARPoiAdvancedLabel class];
     
     // first: setup a new poi label with title and description at the location you want
     // WARNING: use double-precision coordinates whenever possible (the following coordinates are from Google Maps which only provides 8-9 digit coordinates
