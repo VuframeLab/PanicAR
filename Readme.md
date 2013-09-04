@@ -44,3 +44,70 @@ https://github.com/doPanic/PanicAR/wiki/
 For common build errors and other issues check:
 https://github.com/doPanic/PanicAR/wiki/Troubleshooting
 
+## Frequently Asked Questions
+### How do I enable PanicAR on non-GPS devices?
+
+By default, PanicAR only runs, when the device is GPS enabled (i.e. all iPhones and the 3G/4G iPads), to give the best possible performance.
+However, you can enable PanicAR for all devices, by calling 
+
+    [PSKDeviceProperties setSimulateGPSForAllDevices:YES];
+
+in your appdelegate. 
+
+### My POIs are shown on the edge of the radar instead of the middle.
+
+POIs, which are further away than the radar range, are shown at the edge.
+You can set this range by calling
+
+    [self.arRadarView setRadarRange:1500];
+
+with a higher value in your PARViewController extension.
+The value sets the radius of the radar view in meters.
+
+### I want to replace the image of a POI on the radar view
+
+You can change the image of the POI on the radar view by setting the POIs radarView property:
+
+    PARPoi* poi = [[poiLabelClass alloc] initWithTitle:@"circle"
+                    theDescription:@"circle"
+                    atLocation:[[CLLocation alloc] initWithLatitude:51.500141 longitude:-0.126257]
+    ];
+    poi.radarView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"myDot"]];
+
+### I want to have labels for North/East/South/West on my Radarview
+
+You can achieve this by setting the backgroundImageView property of the RadarView (you need to rotate it depending on the heading).
+
+OR 
+
+by adding 4 POIs, each with an image containing the Letter (N, E, S, W) placed North/East/South/West of the user.
+
+### How do I change a POIs location without making it flicker?
+
+To change the position of an existing POI, use the setLocation method, followed by updateLocation:
+
+    // Move all POIs along the Latitudes.
+    for(PARPoi* poi in [[PARController sharedARController] arObjects]) {
+        CLLocation * loc = [poi location];
+        CLLocationCoordinate2D coord = [loc coordinate];
+        [poi setLocation: [[CLLocation alloc] initWithLatitude:coord.latitude += 0.0001f longitude:coord.longitude]];
+        [poi updateLocation];
+    };
+
+### I get a message "Wrong Orientation!" when looking up
+
+Make sure to override the switchFaceDown method:
+
+    -(void)switchFaceDown:(BOOL)inFaceDown {
+        // make sure this is an empty call; otherwise the PARViewController will display a HUD text once the device goes
+        // into UIDeviceOrientationFaceDown (which it will when the user looks up)
+    }
+
+### How do I get the labels to stack above each other?
+
+Extend PARPoiAdvancedLabel (not just PARPOILabel) and overwrite -(BOOL)stacksInView so that it returns YES
+
+### How can I enable interaction with the POI labels?
+
+POILabels are just views, so anything that is possible with them is also possible with POI labels.
+
