@@ -115,14 +115,12 @@ POILabels are just views, so anything that is possible with them is also possibl
 You need to set the API key via the setApiKey method of [PARController sharedARController].
 You e.g. can do this in the loadView method of your controller:
 
-   - (void)loadView
-    {
-        // IMPORTANT: set Api Key before calling super:loadView!
-        [[PARController sharedARController] setApiKey:@""];
-        [[PARController sharedARController] setDelegate:self];
-        
-        [super loadView];
-    
-        [self.arRadarView setRadarRange:1500];
+     - (void)loadView
+      {
+       // IMPORTANT: set Api Key before calling super:loadView!
+       [[PARController sharedARController] setApiKey:@""];
+       [[PARController sharedARController] setDelegate:self];
+       [super loadView];
+       [self.arRadarView setRadarRange:1500];
     }
 
