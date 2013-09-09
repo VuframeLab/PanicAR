@@ -4,6 +4,9 @@
 
 ---
 
+### 2.1 (build 2646)
+- fix: clean up console output
+
 ### 2.1 (build 2642)
 - fix: ordering of POIs by distance was ignored
 - add: Big Cities Feature: POIFactory knows the locations of the largest 829 cities of the world
