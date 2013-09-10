@@ -124,3 +124,5 @@ You e.g. can do this in the loadView method of your controller:
        [self.arRadarView setRadarRange:1500];
     }
 
+### I get duplicate symbol warnings
+This can happen if the -load_all linker flag is used, reportedly. Try removing it.
