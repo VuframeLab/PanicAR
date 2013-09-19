@@ -72,7 +72,6 @@
 - (CLLocation *)location;
 
 /*! set location of this object
- * @remarks be careful updating the location of existing labels
  * @param theLocation CLLocation location */
 - (void)setLocation:(CLLocation *)theLocation;
 
