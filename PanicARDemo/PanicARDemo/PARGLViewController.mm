@@ -103,7 +103,6 @@ static float _orientationAngle;
     }
     self.view = nil;
     self.context = nil;
-
         [[PSKSensorManager sharedSensorManager] setDelegate:nil];
     self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
 }
@@ -157,7 +156,7 @@ static float _orientationAngle;
 - (void)didChangeDeviceOrientation:(UIDeviceOrientation)orientation{};
 - (void)didChangeStatus:(PSKSensorManagerStatus)newStatus {};
 - (void)didReceiveErrorCode:(int)code;{};
-- (void)didChangeSensorUpdateMode:(PSKSensorManagerUpdateMode)newUpdateMode fromMode:(PSKSensorManagerUpdateMode)oldUpdateMode{};
+- (void)didChangeSensorUpdateMode:(PSKSensorManagerUpdateMode)newUpdateMode fromMode:(PSKSensorManagerUpdateMode)oldUpdateMode motionIncludesHeading:(BOOL)includeHeading{};
 - (void)didUpdateLocation:(CLLocation *)orignewLocationinalLocation{};
 - (void)didUpdateHeading:(CLHeading *)newHeading{};
 - (void)didChangeSignalQuality:(PSKSignalQuality)newSignalQuality{};

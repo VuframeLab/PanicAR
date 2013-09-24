@@ -14,7 +14,11 @@
 static NSTimer *infoTimer = nil;
 bool _areOptionsVisible = false;
 
-@implementation PARD2DPoiViewController
+
+@implementation PARD2DPoiViewController {
+    // stillImageOutput for Screenshot functionality
+    AVCaptureStillImageOutput * _stillImageOutput;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -47,6 +51,8 @@ bool _areOptionsVisible = false;
     
     //set range of radar, all POIs farther away than 1500 meters will appear on the edge of the radar
     [self.arRadarView setRadarRange:1500];
+    
+    [self cameraAvCaptureSession];
 }
 
 
@@ -259,7 +265,7 @@ bool _areOptionsVisible = false;
                                                              delegate:self
                                                     cancelButtonTitle:@"Cancel"
                                                destructiveButtonTitle:@"Remove all POIs"
-                                                    otherButtonTitles:@"Re-create sample POIs", @"Create Random POIs",@"Show Big Cities around me", nil];
+                                                    otherButtonTitles:@"Re-create sample POIs", @"Create Random POIs",@"Show Big Cities around me",@"Take Screenshot", nil];
         options.tag = 1;
         [options showFromBarButtonItem:self.navigationItem.rightBarButtonItem animated:YES];
     }
@@ -286,6 +292,11 @@ bool _areOptionsVisible = false;
             // Create POIs for 6 big cities around the user
             [PARPoiFactory createCitiesAroundUser:6];
             break;
+        case 4:{
+            // take image of cameraView
+            [self captureNow];
+            break;
+        }
         default:
             break;
     }
@@ -351,4 +362,51 @@ bool _areOptionsVisible = false;
     
     _hasARPoiObjects = YES;}
 
+
+-(void) captureNow
+{
+    // only works correctly in portrait mode at the moment
+    if(!_stillImageOutput){
+     _stillImageOutput = [[AVCaptureStillImageOutput alloc] init];
+     NSDictionary *stillImageOutputSettings = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                                  AVVideoCodecJPEG, AVVideoCodecKey, nil];
+     [_stillImageOutput setOutputSettings:stillImageOutputSettings];
+     [self.cameraAvCaptureSession addOutput:_stillImageOutput];
+    }
+
+    AVCaptureConnection *videoConnection = nil;
+    for (AVCaptureConnection *connection in _stillImageOutput.connections)
+    {
+        for (AVCaptureInputPort *port in [connection inputPorts])
+        {
+            if ([[port mediaType] isEqual:AVMediaTypeVideo] )
+            {
+                videoConnection = connection;
+                break;
+            }
+        }
+        if (videoConnection) { break; }
+    }
+    
+    [_stillImageOutput captureStillImageAsynchronouslyFromConnection:videoConnection
+                                                  completionHandler: ^(CMSampleBufferRef imageSampleBuffer, NSError *error)
+     {
+    NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageSampleBuffer];
+
+    CGSize newSize = self.arView.frame.size;
+    UIGraphicsBeginImageContext(newSize);
+    UIImage *image = [[UIImage alloc] initWithData:imageData];
+     
+    [self.arView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *ARimage = UIGraphicsGetImageFromCurrentImageContext();
+
+    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    [ARimage drawInRect:CGRectMake(0,0,newSize.width,newSize.height) blendMode:kCGBlendModeNormal alpha:1.0];
+     
+     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+        
+     UIImageWriteToSavedPhotosAlbum(newImage, nil, nil, nil);
+     UIGraphicsEndImageContext();
+     }];
+}
 @end
