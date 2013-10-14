@@ -61,6 +61,13 @@ static float _orientationAngle;
     self.preferredFramesPerSecond = 60;
 }
 
+
+-(void)awakeFromNib {
+    // Register at PanicSensorKit as delegate and for updates on movement
+    [[PSKSensorManager sharedSensorManager] setDelegate:self];
+    [[PSKSensorManager sharedSensorManager] startForLocationBasedPoiAR];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -73,9 +80,7 @@ static float _orientationAngle;
     _gyroEnabled = YES;
     _touches = [[NSMutableArray alloc] init];
     
-    // Register at PanicSensorKit as delegate and for updates on movement
-    [[PSKSensorManager sharedSensorManager] setDelegate:self];
-    [[PSKSensorManager sharedSensorManager] startForLocationBasedPoiAR];
+
 
     // Set angle for adjustment to Interface-Orientation changes depending on orientation
     [self setOrientationAngleFromUIInterfaceOrientation:self.interfaceOrientation];
@@ -86,6 +91,8 @@ static float _orientationAngle;
     
     [self setupGL];
 }
+
+
 
 
 -(void)viewDidAppear:(BOOL)animated{
