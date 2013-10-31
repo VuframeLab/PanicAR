@@ -19,6 +19,7 @@
 
 
 static const int kPSKErrorRestricted = 10024;
+static const int kPSKErrorCompassCalibrationDisabled = 16770;
 static const float kPSKHumanEyeHeight = 1.620;
 
 
@@ -58,6 +59,7 @@ typedef void (^PSKVoidBlock)();
 
 /*! status - reflects the sensor availability */
 @property (nonatomic, assign, readonly) PSKSensorManagerStatus status;
+
 
 /*! number of location updates */
 @property (nonatomic, assign, readonly) int numberOfLocationUpdates;
@@ -119,7 +121,7 @@ typedef void (^PSKVoidBlock)();
 - (BOOL)isUpdatingLocation;
 - (BOOL)isUpdatingHeading;
 - (BOOL)isUpdatingMotion;
-
+- (BOOL)isCompassCalibrationEnabled;
 
 #pragma mark - helper methods
 NSString* NSStringFromPSKSensorManagerStatus(PSKSensorManagerStatus status);

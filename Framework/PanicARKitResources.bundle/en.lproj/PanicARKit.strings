@@ -28,3 +28,16 @@
 
 /* error: in face down orientation */
 "PSK_STATUS_FACEDOWN" = "Wrong Orientation!";
+
+"PSK_ERROR_COMPASS_CALIBRATION_DISABLED" =  "Compass Calibration is disabled";
+"PSK_ERROR_COMPASS_CALIBRATION_DISABLED_MSG" = "It seems, that Compass Calibration is disabled in the Privacy Settings under Location Services -> System Settings. Enable it to let PanicAR use the compass";
+
+"PSK_ERROR" = "PanicSensorKit Error";
+
+"PSK_ERROR_NETWORK" = "A network error has occured";
+"PSK_ERROR_HEADING_FAILURE" =  "Could not retrieve Heading";
+"PSK_ERROR_DENIED" = "Access to Corelocation was denied";
+"PSK_ERROR_LOCATION_UNKNOWN" = "Unknown Location";
+"PSK_ERROR_RESTRICTED" = "Restricted";
+
+"PSK_ERROR_UNKNOWN" = "An Unknown error has occured";

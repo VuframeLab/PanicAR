@@ -3,6 +3,14 @@
 **Important: Review this document before upgrading your project to a new revisions of PanicAR**
 
 ---
+### 2.1 (build 2652)
+- fix: a Message is shown, if the user has disabled compass calibration in Privacy Settings -> System Services (which breaks the compass)
+- fix: rotation of the radarview was incorrect in landscape
+- fix: ARView is rotated correctly when no navigation controller is used
+- fix: Library did not support Architecture i386 (Simulator)
+- fix: Crash on leaving PARGLViewController
+- fix: RadarDots were not removed when changing Clipping
+- add: Functionality to capture screenshots
 
 ### 2.1 (build 2646)
 - fix: clean up console output
