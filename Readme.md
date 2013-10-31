@@ -126,3 +126,11 @@ You e.g. can do this in the loadView method of your controller:
 
 ### I get duplicate symbol warnings
 This can happen if the -load_all linker flag is used, reportedly. Try removing it.
+
+### Why can PanicAR not be run on the iPod Touch?
+PanicAR is not supported, because the iPod Touch does not have a compass.
+
+### Why does PanicAR drain my battery so fast?
+The main energy consumer in PanicAR is the camera. The native camera app also drains the battery quite fast.
+
+
