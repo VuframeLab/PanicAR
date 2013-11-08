@@ -36,8 +36,15 @@
     
 	// Do any additional setup after loading the view, typically from a nib.
     
-	
-	MKCoordinateRegion region = MKCoordinateRegionMake([[[PSKSensorManager sharedSensorManager] deviceAttitude] locationCoordinate], MKCoordinateSpanMake(0.02, 0.02));
+	CLLocationCoordinate2D currentLocation = [[[PSKSensorManager sharedSensorManager] deviceAttitude] locationCoordinate];
+    
+    // Correct possibly defective coordinates
+    if (currentLocation.latitude == -180.0f) {
+        currentLocation.latitude = 0;
+        currentLocation.longitude = 0;
+    }
+    
+	MKCoordinateRegion region = MKCoordinateRegionMake(currentLocation, MKCoordinateSpanMake(0.02, 0.02));
 	[_mapView setRegion:region animated:TRUE];
 	[_mapView regionThatFits:region];
     [_mapView setUserTrackingMode:MKUserTrackingModeFollowWithHeading];
