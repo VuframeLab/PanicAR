@@ -3,6 +3,10 @@
 **Important: Review this document before upgrading your project to a new revisions of PanicAR**
 
 ---
+### 2.1 (build 2667)
+- fix: A crash, that sometimes occured when opening MapView (Demo)
+- add: Support for 64Bit Simulator
+
 ### 2.1 (build 2652)
 - fix: a Message is shown, if the user has disabled compass calibration in Privacy Settings -> System Services (which breaks the compass)
 - fix: rotation of the radarview was incorrect in landscape
