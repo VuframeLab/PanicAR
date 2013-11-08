@@ -273,7 +273,6 @@ bool _areOptionsVisible = false;
 
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    NSLog(@"action sheet button clicked: %d", buttonIndex);
     switch (buttonIndex) {
         case 0:
             // remove the Objects in the Controller

@@ -335,16 +335,14 @@ static float _orientationAngle;
 }
 - (IBAction)ToggleGyro:(id)sender forEvent:(UIEvent *)event {
     UISegmentedControl *segmentedControl = (UISegmentedControl *) sender;
-
-    NSLog(@"%d",segmentedControl.selectedSegmentIndex);
-        if(segmentedControl.selectedSegmentIndex == 0)
-        {
-            _gyroEnabled = YES;
-        }
-        else if(segmentedControl.selectedSegmentIndex == 1)
-        {
-            _gyroEnabled = NO;
-        }
+     if(segmentedControl.selectedSegmentIndex == 0)
+     {
+         _gyroEnabled = YES;
+     }
+     else if(segmentedControl.selectedSegmentIndex == 1)
+     {
+         _gyroEnabled = NO;
+     }
 }
 
 @end
