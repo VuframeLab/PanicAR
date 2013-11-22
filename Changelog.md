@@ -3,6 +3,11 @@
 **Important: Review this document before upgrading your project to a new revisions of PanicAR**
 
 ---
+### 2.1 (build 2668)
+- fix: fixed a memory leak
+- demo: adapted layout to iOS 7
+- feature: added possibility to fake location (see Demo for code)
+
 ### 2.1 (build 2667)
 - fix: A crash, that sometimes occured when opening MapView (Demo)
 - add: Support for 64Bit Simulator
