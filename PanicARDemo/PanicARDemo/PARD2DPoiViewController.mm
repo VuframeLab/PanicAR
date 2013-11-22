@@ -95,7 +95,7 @@ bool _areOptionsVisible = false;
     infoTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(updateInfoLabel) userInfo:nil repeats:YES];
     
     // setup radar
-    CGRect rect = CGRectMake(0, 44, 0, 32);
+        CGRect rect = CGRectMake(0.0f, 0.0f, 0.0f, 45.0f);
     _radarThumbnailPosition = PARRadarPositionBottomRight;
     [self.arRadarView setRadarToThumbnail:_radarThumbnailPosition withAdditionalOffset:rect];
     [self.arRadarView showRadar];
@@ -125,10 +125,14 @@ bool _areOptionsVisible = false;
 // Define, what happens if you hold the device horizontally, with the face upwards
 - (void)switchFaceUp:(BOOL)inFaceUp {
     if (inFaceUp) {
-        [self.arRadarView setRadarToFullscreen];
+        // Offset of 120.0f fits quite nice fore the ios7 nav bar and tool bar
+        [self.arRadarView setRadarToFullscreen:CGPointMake(0.0f, 0.0f) withSizeOffset:120.0f];
     }
     else {
-        [self.arRadarView setRadarToThumbnail:_radarThumbnailPosition];
+        CGRect rect = CGRectMake(0.0f, 0.0f, 0.0f, 45.0f);
+        _radarThumbnailPosition = PARRadarPositionBottomRight;
+        [self.arRadarView setRadarToThumbnail:_radarThumbnailPosition withAdditionalOffset:rect];
+
     }
 }
 
@@ -265,7 +269,7 @@ bool _areOptionsVisible = false;
                                                              delegate:self
                                                     cancelButtonTitle:@"Cancel"
                                                destructiveButtonTitle:@"Remove all POIs"
-                                                    otherButtonTitles:@"Re-create sample POIs", @"Create Random POIs",@"Show Big Cities around me",@"Take Screenshot", nil];
+                                                    otherButtonTitles:@"Re-create sample POIs", @"Create Random POIs",@"Show Big Cities around me",@"Take Screenshot",@"Fake Location", @"Do not fake Location", nil];
         options.tag = 1;
         [options showFromBarButtonItem:self.navigationItem.rightBarButtonItem animated:YES];
     }
@@ -291,11 +295,19 @@ bool _areOptionsVisible = false;
             // Create POIs for 6 big cities around the user
             [PARPoiFactory createCitiesAroundUser:6];
             break;
-        case 4:{
+        case 4:
             // take image of cameraView
             [self captureNow];
             break;
-        }
+        case 5:
+            // Fake Location to Rome
+            [[PSKSensorManager sharedSensorManager] setFakeLocation:[[CLLocation alloc] initWithLatitude:41.9f longitude:12.5f]];
+            [[PSKSensorManager sharedSensorManager] setUseFakeLocation:YES];
+            break;
+        case 6:
+            // Disable Location faking
+            [[PSKSensorManager sharedSensorManager] setUseFakeLocation:NO];
+            break;
         default:
             break;
     }

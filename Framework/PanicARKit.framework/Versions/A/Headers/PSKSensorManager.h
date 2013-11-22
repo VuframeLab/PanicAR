@@ -77,6 +77,12 @@ typedef void (^PSKVoidBlock)();
 /*! freeze the motion data as is */
 @property (nonatomic, assign) BOOL freezeMotion;
 
+/*! use the fake location */
+@property (nonatomic, assign) BOOL useFakeLocation;
+
+/*! the fake location to use */
+@property (nonatomic, strong) CLLocation *fakeLocation;
+
 /*! @property if YES then @ref CLLocationManager setHeadingOrientation is called when the device orientation changes */
 @property (nonatomic, assign) BOOL respectOrientationForHeading;
 
