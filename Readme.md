@@ -24,7 +24,7 @@ by doPanic GmbH - for sales and support contact info@dopanic.com
 
 Just add
 
-    pod 'PanicAR', '~> 2.1'
+    pod 'PanicAR', :podspec => 'https://raw2.github.com/doPanic/PanicAR/beta/PanicAR.podspec'
 
 to your podfile and do a
     
