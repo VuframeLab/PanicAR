@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "PanicAR"
-  s.version      = "2.0.2642"
+  s.version      = "2.0.2669"
   s.summary      = "Location-based Augmented Reality Framework for point of interest visualization."
   s.homepage     = "http://github.com/doPanic/PanicAR"
   s.license      = {
@@ -14,7 +14,9 @@ Pod::Spec.new do |s|
   }
   s.platform        = :ios, '6.0'
   s.frameworks      =  'AVFoundation', 'CoreLocation', 'CoreMotion', 'CoreVideo', 'CoreMedia', 'CoreGraphics', 'UIKit', 'Foundation', 'QuartzCore', 'MapKit', 'PanicARKit'
-  s.xcconfig        = { 'FRAMEWORK_SEARCH_PATHS' => '"$(PODS_ROOT)/PanicAR/Framework"', 'LIBRARY_SEARCH_PATHS' => '"$(PODS_ROOT)/build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/"' }
+  s.xcconfig        = { 
+    'FRAMEWORK_SEARCH_PATHS' => '"$(PODS_ROOT)/PanicAR/Framework"'
+  }
   s.preserve_paths  = 'Framework/PanicARKit.framework', 'Framework/PanicARKitResources.bundle'
   s.resources       = 'Framework/PanicARKitResources.bundle'
 end
