@@ -206,9 +206,6 @@
 		99E57DD416D7E4720093E85F = {
 			isa = PBXGroup;
 			children = (
-				93D81D2617D7663000D65275 /* CoreMedia.framework */,
-				93D81D2417D765CA00D65275 /* CoreVideo.framework */,
-				93D81D2117D75CA600D65275 /* PanicARKit.framework */,
 				99E57DE616D7E4720093E85F /* PanicARDemo */,
 				99E57DDF16D7E4720093E85F /* Frameworks */,
 				99E57DDE16D7E4720093E85F /* Products */,
@@ -226,6 +223,9 @@
 		99E57DDF16D7E4720093E85F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				93D81D2617D7663000D65275 /* CoreMedia.framework */,
+				93D81D2417D765CA00D65275 /* CoreVideo.framework */,
+				93D81D2117D75CA600D65275 /* PanicARKit.framework */,
 				9987617D16E4FDCA00EAE6CD /* PanicARKitResources.bundle */,
 				996C41AE16F2103C009C498A /* QuartzCore.framework */,
 				998761B516E50C6700EAE6CD /* MapKit.framework */,
