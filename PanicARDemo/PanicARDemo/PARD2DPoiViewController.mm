@@ -329,6 +329,9 @@ bool _areOptionsVisible = false;
     // Use this to enable stacking
     //Class poiLabelClass = [PARPoiAdvancedLabel class];
     
+    // setup factory to use same class – this is used to create a lot of test labels
+    [PARPoiFactory setPoiClass:poiLabelClass];
+    
     // first: setup a new poi label with title and description at the location you want
     // WARNING: use double-precision coordinates whenever possible (the following coordinates are from Google Maps which only provides 8-9 digit coordinates
     newPoiLabel = [[poiLabelClass alloc] initWithTitle:@"Rome"
