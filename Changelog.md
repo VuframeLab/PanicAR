@@ -3,6 +3,12 @@
 **Important: Review this document before upgrading your project to a new revisions of PanicAR**
 
 ---
+### 2.1 (build 2672)
+
+- add: support for iPad Air, iPhone 5c, iPhone 5s
+- demo: fixed some storyboard flags
+- demo: PARPoiFactory now uses same class as defined for sample pois
+
 ### 2.1 (build 2668)
 - fix: fixed a memory leak
 - demo: adapted layout to iOS 7
