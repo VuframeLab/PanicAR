@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>CFBuildDate</key>
-	<string>2012-09-12 10:41:46</string>
-	<key>CFBundleBaseVersion</key>
-	<string>2.1</string>
+	<string>2014-09-03 14:01:39</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
 	<string>libPanicARLib</string>
+	<key>CFBundleFullVersionString</key>
+	<string>2.2.2870</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.dopanic.panicarlib</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -17,10 +17,10 @@
 	<key>CFBundlePackageType</key>
 	<string>FMWK</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.1.2671</string>
+	<string>2.2</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>2671</string>
+	<string>2870</string>
 </dict>
 </plist>

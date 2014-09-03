@@ -225,7 +225,8 @@ static float _orientationAngle;
     }
 
     // Update the projection matrix
-    self.effect.transform.projectionMatrix = tempProjectionMatrix;}
+    self.effect.transform.projectionMatrix = tempProjectionMatrix;
+}
 
 #pragma mark - touches
 

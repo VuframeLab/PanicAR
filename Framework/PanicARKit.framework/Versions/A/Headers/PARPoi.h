@@ -96,6 +96,16 @@ extern CGRect _relativeViewportBounds;
 /*! @return the size of the label used for stacking */
 - (CGSize)stackingSize;
 
+#pragma mark - Utils
+/*! called when POI is added to PARView for rendering */
+- (void)addToView:(PARView *)theView;
+/*! called when POI is removed from PARView because it's clipped or invisible */
+- (void)removeFromView;
+/*! called when POI is added to PARRadarView for rendering */
+- (void)addToRadar:(PARRadarView *)theRadar;
+/*! called when POI is removed from PARRadarView because it's clipped or invisible */
+- (void)removeFromRadar;
+
 #pragma mark - Class Methods
 /*! @return YES if default radar gfx (RadarDot.png) should be loaded automatically when creating a new @ref PAR PoiLabel */
 + (BOOL)loadsDefaultRadarGfx;

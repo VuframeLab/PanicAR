@@ -121,6 +121,9 @@ typedef enum {
 /*!  YES if the device runs at least iOS 7 */
 - (BOOL)hasOS7;
 
+/*!  YES if the device runs at least iOS 8 */
+- (BOOL)hasOS8;
+
 /*!  the displayContentScale of this device, 2.0f. for retina displays */
 - (float)displayContentScale;
 /*!  YES if this device has a retina display (@see displayContentScale) */

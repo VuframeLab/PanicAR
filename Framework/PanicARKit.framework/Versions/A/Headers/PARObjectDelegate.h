@@ -44,6 +44,10 @@
 /*! handles the rendering in the PARView
  * @param theView PARView the object will be rendered in */
 - (void)renderInView:(UIView *)theView;
+/*! determines wether the label is visible in view
+ * @param theView PARView the object will be rendered in
+ * @return YES if label should be renderered, NO if label should be hidden */
+- (BOOL)pointInView:(PARView *)theView;
 /*! handles the rendering in the PARRadarView
  * @param theRadar PARRadarView the object will be rendered in */
 - (void)renderInRadar:(PARRadarView *)theRadar;
