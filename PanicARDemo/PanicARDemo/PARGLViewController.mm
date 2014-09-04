@@ -132,7 +132,9 @@ static float _orientationAngle;
             [self setOrientationAngle:90];
             break;
         case UIInterfaceOrientationPortrait:
+#if defined(__IPHONE_8_0)
         case UIInterfaceOrientationUnknown:
+#endif
             [self setOrientationAngle:0];
             break;
     }
