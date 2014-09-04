@@ -132,6 +132,7 @@ static float _orientationAngle;
             [self setOrientationAngle:90];
             break;
         case UIInterfaceOrientationPortrait:
+        case UIInterfaceOrientationUnknown:
             [self setOrientationAngle:0];
             break;
     }

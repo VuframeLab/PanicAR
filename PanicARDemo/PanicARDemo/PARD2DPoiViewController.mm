@@ -52,7 +52,7 @@ bool _areOptionsVisible = false;
     //set range of radar, all POIs farther away than 1500 meters will appear on the edge of the radar
     [self.arRadarView setRadarRange:1500];
     
-    [self cameraAvCaptureSession];
+    [self cameraCaptureSession];
 }
 
 
@@ -385,7 +385,7 @@ bool _areOptionsVisible = false;
      NSDictionary *stillImageOutputSettings = [[NSDictionary alloc] initWithObjectsAndKeys:
                                                   AVVideoCodecJPEG, AVVideoCodecKey, nil];
      [_stillImageOutput setOutputSettings:stillImageOutputSettings];
-     [self.cameraAvCaptureSession addOutput:_stillImageOutput];
+     [self.cameraCaptureSession addOutput:_stillImageOutput];
     }
 
     AVCaptureConnection *videoConnection = nil;
