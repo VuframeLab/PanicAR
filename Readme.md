@@ -1,5 +1,10 @@
 # PanicAR Framework
 
+![Release](http://img.shields.io/badge/release-v2.2-blue.svg)
+![Platform](http://img.shields.io/badge/platform-ios-lightgrey.svg)
+![CocoaPods](http://img.shields.io/cocoapods/v/PanicAR.svg)
+[![Analytics](https://ga-beacon.appspot.com/UA-47538502-1/PanicAR/github)](https://github.com/igrigorik/ga-beacon)
+
 ![PanicAR Image](https://raw.github.com/doPanic/PanicAR/beta/Screenshots/product.png)
 
 by doPanic GmbH - for sales and support contact info@dopanic.com
