@@ -105,6 +105,8 @@ typedef enum
 + (PARController *)sharedARController;
 /*! @abstract the NSBundle holding all framework resources */
 + (NSBundle *)frameworkBundle;
+/*! @abstract the NSBundle holding all localized strings files */
++ (NSBundle *)localizedStringsBundle;
 
 /*! checks if the device supports Augmented Reality functionality
  * @return YES if AR functionality is supported by the device's sensors

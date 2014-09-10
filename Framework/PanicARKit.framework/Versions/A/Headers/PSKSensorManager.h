@@ -77,6 +77,9 @@ typedef void (^PSKVoidBlock)();
 /*! freeze the motion data as is */
 @property (nonatomic, assign) BOOL freezeMotion;
 
+/*! freeze the motion data as is */
+@property (nonatomic, assign) BOOL freezeLocationAndHeading;
+
 /*! use the fake location */
 @property (nonatomic, assign) BOOL useFakeLocation;
 
