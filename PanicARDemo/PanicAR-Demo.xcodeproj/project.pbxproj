@@ -11,6 +11,7 @@
 		93D81D2217D75CA600D65275 /* PanicARKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D81D2117D75CA600D65275 /* PanicARKit.framework */; };
 		93D81D2517D765CA00D65275 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D81D2417D765CA00D65275 /* CoreVideo.framework */; };
 		93D81D2717D7663000D65275 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D81D2617D7663000D65275 /* CoreMedia.framework */; };
+		99333D6F19C062A400F3632E /* PanicARKit.strings in Resources */ = {isa = PBXBuildFile; fileRef = 99333D6D19C062A400F3632E /* PanicARKit.strings */; };
 		9966DF8C16F2222B00BB8874 /* panorama2048.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9966DF8B16F2222B00BB8874 /* panorama2048.jpg */; };
 		996C41AC16F21007009C498A /* PARGLViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 996C41AB16F21007009C498A /* PARGLViewController.mm */; };
 		996C41AD16F21029009C498A /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9989398716D98D4600B39DF6 /* GLKit.framework */; };
@@ -57,6 +58,7 @@
 		93D81D2117D75CA600D65275 /* PanicARKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PanicARKit.framework; path = ../Framework/PanicARKit.framework; sourceTree = "<group>"; };
 		93D81D2417D765CA00D65275 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		93D81D2617D7663000D65275 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		99333D6E19C062A400F3632E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = PanicARKit.strings; sourceTree = "<group>"; };
 		9966DF8B16F2222B00BB8874 /* panorama2048.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = panorama2048.jpg; sourceTree = "<group>"; };
 		996C41AA16F21007009C498A /* PARGLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PARGLViewController.h; sourceTree = "<group>"; };
 		996C41AB16F21007009C498A /* PARGLViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PARGLViewController.mm; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 		99E57DE716D7E4720093E85F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				99333D6D19C062A400F3632E /* PanicARKit.strings */,
 				99E57DE816D7E4720093E85F /* PanicARDemo-Info.plist */,
 				99E57DE916D7E4720093E85F /* InfoPlist.strings */,
 				99E57DEC16D7E4720093E85F /* main.m */,
@@ -326,6 +329,7 @@
 			files = (
 				99E57DEB16D7E4720093E85F /* InfoPlist.strings in Resources */,
 				99E57DFA16D7E4720093E85F /* MainStoryboard.storyboard in Resources */,
+				99333D6F19C062A400F3632E /* PanicARKit.strings in Resources */,
 				99E57E0216D7E4720093E85F /* first.png in Resources */,
 				99E57E0416D7E4720093E85F /* first@2x.png in Resources */,
 				99E57E0916D7E4720093E85F /* second.png in Resources */,
@@ -369,6 +373,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		99333D6D19C062A400F3632E /* PanicARKit.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				99333D6E19C062A400F3632E /* en */,
+			);
+			name = PanicARKit.strings;
+			path = Assets/en.lproj;
+			sourceTree = "<group>";
+		};
 		99E57DE916D7E4720093E85F /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
