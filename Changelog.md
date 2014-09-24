@@ -3,6 +3,15 @@
 **Important: Review this document before upgrading your project to a new revisions of PanicAR**
 
 ---
+### 2.2 (build 2930)
+
+- demo: added PanicARKit.strings to enable localization
+- fix: localization always loaded from builtin strings file
+
+### 2.2 (build 2870)
+
+- add: support for iOS 8
+
 ### 2.1 (build 2672)
 
 - add: support for iPad Air, iPhone 5c, iPhone 5s

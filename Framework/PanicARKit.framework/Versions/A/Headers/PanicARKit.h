@@ -25,3 +25,4 @@
 #import "PSKMath.h"
 #import "PSKSensorDelegate.h"
 #import "PSKSensorManager.h"
+#import "PARVersion.h"

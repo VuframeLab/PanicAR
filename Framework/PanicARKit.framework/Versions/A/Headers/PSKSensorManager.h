@@ -43,7 +43,7 @@ typedef void (^PSKVoidBlock)();
 /*! shared sensor manager instance */
 + (PSKSensorManager *)sharedSensorManager;
 /*! PSKSensorDelegate delegate object receiving updates from the PSKSensorManager */
-@property (nonatomic, assign) id<PSKSensorDelegate> delegate;
+@property (nonatomic, weak) id<PSKSensorDelegate> delegate;
 
 /*! PSKDeviceProperties reflecting the properties of the currently active device */
 @property (nonatomic, strong, readonly) PSKDeviceProperties *deviceProperties;
@@ -77,11 +77,18 @@ typedef void (^PSKVoidBlock)();
 /*! freeze the motion data as is */
 @property (nonatomic, assign) BOOL freezeMotion;
 
+/*! freeze the motion data as is */
+@property (nonatomic, assign) BOOL freezeLocationAndHeading;
+
 /*! use the fake location */
 @property (nonatomic, assign) BOOL useFakeLocation;
 
 /*! the fake location to use */
 @property (nonatomic, strong) CLLocation *fakeLocation;
+
+/*! by default PanicAR requires GPS to run
+ set this to @ref YES to enable Wifi only positioning */
+@property (nonatomic, assign) BOOL allowWifiOnlyPositioning;
 
 /*! @property if YES then @ref CLLocationManager setHeadingOrientation is called when the device orientation changes */
 @property (nonatomic, assign) BOOL respectOrientationForHeading;
@@ -124,6 +131,10 @@ typedef void (^PSKVoidBlock)();
 /*! stops the sensor update */
 - (void)stop;
 
+/*! @return wrapped call to [CLLocationManager authorizationStatus] */
+- (CLAuthorizationStatus)locationAuthorizationStatus;
+/*! @return check the localization Authorization and on iOS 8 request it when it's not available */
+- (CLAuthorizationStatus)checkAndEnsureLocationAuthorization;
 - (BOOL)isUpdatingLocation;
 - (BOOL)isUpdatingHeading;
 - (BOOL)isUpdatingMotion;

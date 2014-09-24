@@ -57,6 +57,14 @@ typedef enum
 /*! status of PARController functionality */
 - (PARAvailability)availability;
 
+
+/*! full version code */
+- (NSString *)frameworkVersion;
+/*! build number */
+- (NSInteger)frameworkBuild;
+/*! configuration */
+- (NSString *)frameworkConfiguration;
+
 #pragma mark - Api Key
 /*! @param theKey the api key to disable the watermarks */
 - (void)setApiKey:(NSString *)theKey;
@@ -73,7 +81,9 @@ typedef enum
  * @remarks internal use only */
 - (BOOL)isUpdatingObjects;
 
-- (void)sortMarkersByDistance;
+/*! sort markers when distance changes
+ * @remarks internal use only */
+- (void)willRenderObjectsForFirstTime;
 
 #pragma mark - Memory and Multitasking
 /*! suspend PARController
@@ -95,6 +105,8 @@ typedef enum
 + (PARController *)sharedARController;
 /*! @abstract the NSBundle holding all framework resources */
 + (NSBundle *)frameworkBundle;
+/*! @abstract the NSBundle holding all localized strings files */
++ (NSBundle *)localizedStringsBundle;
 
 /*! checks if the device supports Augmented Reality functionality
  * @return YES if AR functionality is supported by the device's sensors

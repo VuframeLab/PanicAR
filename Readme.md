@@ -1,6 +1,6 @@
 # PanicAR Framework
 
-![Release](http://img.shields.io/badge/release-v2.1-blue.svg)
+![Release](http://img.shields.io/badge/release-v2.2-blue.svg)
 ![Platform](http://img.shields.io/badge/platform-ios-lightgrey.svg)
 ![CocoaPods](http://img.shields.io/cocoapods/v/PanicAR.svg)
 [![Analytics](https://ga-beacon.appspot.com/UA-47538502-1/PanicAR/github)](https://github.com/igrigorik/ga-beacon)
@@ -138,4 +138,6 @@ PanicAR is not supported, because the iPod Touch does not have a compass.
 ### Why does PanicAR drain my battery so fast?
 The main energy consumer in PanicAR is the camera. The native camera app also drains the battery quite fast.
 
+### iOS 8 Support
 
+PanicAR works fine with iOS 8. You only have to make a minor change in the apps' s `.plist`  file due to new location permissions in iOS 8.  Add `NSLocationWhenInUseUsageDescription` as key and a string as value describing the purpose of GPS use e.g. `"Your location is used to display the Augmented Reality view."` (for further details see [here](https://developer.apple.com/library/prerelease/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html#//apple_ref/doc/uid/TP40009249-SW1)).

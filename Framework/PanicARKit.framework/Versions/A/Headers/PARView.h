@@ -68,7 +68,10 @@ extern PARView *_activeView;
 
 /*!  base line at which label's y-position is calculated
  * @remarks default = 0.5, i.e. middle of view
- * @param percentage relative y-position of label baseline */
+ * this is how the POI position on screen is calculated:
+    _relativeScreenPosition.x = (p.x + 1.f) * .5f;
+    _relativeScreenPosition.y = (p.y + 1.f) * .5f + (_labelBaseline - 0.5);
+ * @param percentage relative y-position of label baseline, 0.0 for bottom margin of screen, 1.0 for top margin of screen */
 - (void)setLabelBaseline:(float)percentage;
 
 /*! the rotated projection matrix of the camera

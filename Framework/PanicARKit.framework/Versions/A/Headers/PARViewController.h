@@ -34,9 +34,19 @@ extern id<PARViewControllerDelegate> _activeViewController;
 
 /*! the camera view of this PARViewController (if camera is used) */
 @property (nonatomic, strong, readonly) UIView *cameraView;
-@property (nonatomic, strong, readonly) AVCaptureSession *cameraAvCaptureSession;
-@property (nonatomic, strong, readonly) AVCaptureVideoPreviewLayer *cameraAvCaptureVideoPreviewLayer;
+@property (nonatomic, strong, readonly) AVCaptureDevice *cameraDevice;
+@property (nonatomic, strong, readonly) AVCaptureSession *cameraCaptureSession;
+@property (nonatomic, strong, readonly) AVCaptureVideoPreviewLayer *cameraCaptureVideoPreviewLayer;
 @property (nonatomic, assign, readonly) BOOL cameraPreviewVisible;
+/*! 
+ @property the desired auto focus mode for the camera preview
+ @ref AVCaptureFocusMode - default
+ */
+@property (nonatomic, assign) AVCaptureFocusMode desiredCameraFocusMode;
+/*!
+ @property focus point for camera - set to @ref CGPointZero to disable (default)
+ */
+@property (nonatomic, assign) CGPoint cameraFocusPointOfInterest;
 
 @property (nonatomic, assign, readonly) BOOL touched;
 @property (nonatomic, assign, readonly) BOOL touchMoved;
