@@ -2,7 +2,12 @@
 
 **Important: Review this document before upgrading your project to a new revisions of PanicAR**
 
+
 ---
+### 2.2 (build 2955)
+
+- added iOS 8 supporting sensor kit version
+
 ### 2.2 (build 2930)
 
 - demo: added PanicARKit.strings to enable localization
