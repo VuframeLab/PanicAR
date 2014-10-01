@@ -4,9 +4,13 @@
 
 
 ---
+### 2.2 (build 2980)
+
+- fix: description for poilabel on iOS 8 
+
 ### 2.2 (build 2955)
 
-- added iOS 8 supporting sensor kit version
+- add: iOS 8 supporting sensor kit version
 
 ### 2.2 (build 2930)
 
