@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
+#import <AVFoundation/AVFoundation.h>
 
 /*! status of the PSKSensorManager update routine
  see also: @ref start @ref stop */
@@ -39,7 +40,7 @@ typedef enum {
 @protocol PSKSensorDelegate <NSObject>
 
 /*! called when statis of PSKSensorManager changed
- @remarks use this to update UI 
+ @remarks use this to update UI
  @param newStatus the new PSKSensorManagerStatus */
 - (void)didChangeStatus:(PSKSensorManagerStatus)newStatus;
 
@@ -58,16 +59,20 @@ typedef enum {
 /*! called when a heading update was made */
 - (void)didUpdateHeading:(CLHeading *)newHeading;
 
-/*! called when the signal quality changed 
+/*! called when the signal quality changed
  @param newSignalQuality new signal quality*/
 - (void)didChangeSignalQuality:(PSKSignalQuality)newSignalQuality;
 
-/*! called when the device orientation changed 
+/*! called when the device orientation changed
  @param orientation the new device orientation */
 - (void)didChangeDeviceOrientation:(UIDeviceOrientation)orientation;
 
 /*! called when authorization status changed (location services enabled/disabled, etc.)
  @param status the new authorization status */
 - (void)didChangeAuthorizationStatus:(CLAuthorizationStatus)status;
+
+/*! called when camera authorization status changed
+ @param status the new authorization status */
+- (void)didChangeCameraAuthorizationStatus:(AVAuthorizationStatus)status;
 
 @end

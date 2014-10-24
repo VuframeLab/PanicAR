@@ -55,8 +55,9 @@ typedef enum
 @property (nonatomic, assign) BOOL objectsNeedSorting;
 
 /*! status of PARController functionality */
-- (PARAvailability)availability;
-
+- (PARAvailability)locationAvailability;
+/*! status of camera */
+- (PARAvailability)cameraAvailability;
 
 /*! full version code */
 - (NSString *)frameworkVersion;
@@ -73,6 +74,7 @@ typedef enum
 
 
 #pragma mark - Updating
+- (void)setup;
 /*! will be called in PARViewController:viewDidAppear */
 - (void)start;
 /*! will be called in PARViewController:viewWillDisappear */

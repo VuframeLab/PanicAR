@@ -4,6 +4,10 @@
 
 
 ---
+### 2.2 (build 3017)
+
+- add: camera permission handling
+
 ### 2.2 (build 2980)
 
 - fix: description for poilabel on iOS 8 

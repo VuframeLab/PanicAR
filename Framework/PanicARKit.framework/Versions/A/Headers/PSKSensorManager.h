@@ -12,6 +12,7 @@
 #import <CoreMotion/CoreMotion.h>
 #import "PSKMath.h"
 #import "PSKSensorDelegate.h"
+#import <AVFoundation/AVFoundation.h>
 
 //#define AF_MODE AVCaptureFocusModeLocked
 #define AF_MODE AVCaptureFocusModeContinuousAutoFocus
@@ -94,7 +95,7 @@ typedef void (^PSKVoidBlock)();
 @property (nonatomic, assign) BOOL respectOrientationForHeading;
 
 #pragma mark - setup, start, stop
-/*! @property YES if location should be updated 
+/*! @property YES if location should be updated
  @remarks only change this if you know what your doing and when you want to use @ref start instead of @ref startForLocationBasedPoiAR */
 @property (nonatomic,assign,getter = shouldUpdateLocation, setter = setShouldUpdateLocation:) BOOL shouldUpdateLocation;
 
@@ -111,7 +112,7 @@ typedef void (^PSKVoidBlock)();
 @property (nonatomic,assign) CMAttitudeReferenceFrame motionRefrenceFrame;
 
 /*! @property sensorUpdateMode
-    @abstract set the components for which updates should be performed see @ref PSKSensorManagerUpdateMode */
+ @abstract set the components for which updates should be performed see @ref PSKSensorManagerUpdateMode */
 @property (nonatomic,assign) PSKSensorManagerUpdateMode sensorUpdateMode;
 
 /*! @return YES if heading is update by the CMMotionManager */
@@ -139,6 +140,8 @@ typedef void (^PSKVoidBlock)();
 - (BOOL)isUpdatingHeading;
 - (BOOL)isUpdatingMotion;
 - (BOOL)isCompassCalibrationEnabled;
+- (AVAuthorizationStatus)cameraAuthorizationStatus;
+- (AVAuthorizationStatus)checkAndEnsureCameraAuthorizationStatus;
 
 #pragma mark - helper methods
 NSString* NSStringFromPSKSensorManagerStatus(PSKSensorManagerStatus status);
@@ -149,8 +152,8 @@ NSString* NSStringFromCMAttitudeReferenceFrame(CMAttitudeReferenceFrame attitude
 float PSKOrientationAngleFromUIInterfaceOrientation(UIInterfaceOrientation UIDeviceOrientation);
 float PSKOrientationAngleFromUIDeviceOrientation(UIDeviceOrientation orientation);
 
-/*! @brief calculates the direction towards a location, heads-up line is the north pole at 0 degrees 
- @remarks does not take into account the earth's curve and therefore will grow more inaccurate the farther the locations are apart 
+/*! @brief calculates the direction towards a location, heads-up line is the north pole at 0 degrees
+ @remarks does not take into account the earth's curve and therefore will grow more inaccurate the farther the locations are apart
  @param fromLocation location of center point
  @param towardsLocation location of look-at point */
 + (double)bearingTowardsLocation:(CLLocation *)fromLocation to:(CLLocation *)towardsLocation;

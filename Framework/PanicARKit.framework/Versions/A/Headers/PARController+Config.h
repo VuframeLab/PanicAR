@@ -32,7 +32,7 @@
 
 
 /*!  status of the PARController
- * @return YES if @ref availability is kPARStatusReady;
+ * @return YES if @ref locationAvailability and @ref cameraAvailability is kPARStatusReady;
  * @ref availability */
 - (BOOL)isReady  __attribute__ ((deprecated));
 
