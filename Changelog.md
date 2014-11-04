@@ -4,6 +4,10 @@
 
 
 ---
+### 2.2 (build 3025)
+
+- add: missing localized strings
+
 ### 2.2 (build 3017)
 
 - add: camera permission handling
