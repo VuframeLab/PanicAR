@@ -24,7 +24,7 @@
 @property (nonatomic, strong) NSString *sessionPreset;
 @property (nonatomic, weak) id<PSKCameraManagerDelegate> delegate;
 
-- (void)startCameraPreview;
+- (BOOL)startCameraPreview;
 - (void)stopCameraPreview:(BOOL)animated;
 - (void)toggleCameraPreviewPause;
 - (void)unpauseCameraPreview;

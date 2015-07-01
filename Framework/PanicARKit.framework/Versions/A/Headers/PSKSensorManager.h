@@ -32,6 +32,7 @@ static const float kPSKHumanEyeHeight = 1.620;
 
 // Type definition to use a block as property, see http://stackoverflow.com/questions/3935574/can-i-use-objective-c-blocks-as-properties
 typedef void (^PSKVoidBlock)();
+typedef void (^PSKBoolBlock)(BOOL state);
 
 
 /*!
@@ -69,9 +70,9 @@ typedef void (^PSKVoidBlock)();
 @property (nonatomic, copy, readonly) PSKVoidBlock willSuspendEvent;
 
 /*! block that is run before manager will suspend */
-@property (nonatomic, copy, readonly) PSKVoidBlock didResumeEvent;
+@property (nonatomic, copy, readonly) PSKBoolBlock didResumeEvent;
 
-- (void)setDidResumeEvent:(PSKVoidBlock)didResumeEvent;
+- (void)setDidResumeEvent:(PSKBoolBlock)didResumeEvent;
 - (void)setWillSuspendEvent:(PSKVoidBlock)willSuspendEvent;
 
 
@@ -136,6 +137,7 @@ typedef void (^PSKVoidBlock)();
 - (CLAuthorizationStatus)locationAuthorizationStatus;
 /*! @return check the localization Authorization and on iOS 8 request it when it's not available */
 - (CLAuthorizationStatus)checkAndEnsureLocationAuthorization;
+
 - (BOOL)isUpdatingLocation;
 - (BOOL)isUpdatingHeading;
 - (BOOL)isUpdatingMotion;
@@ -164,3 +166,5 @@ float PSKOrientationAngleFromUIDeviceOrientation(UIDeviceOrientation orientation
 + (void)showDefaultErrorMessage:(int)forErrorCode;
 
 @end
+
+NSString* NSStringFromAVAuthorizationStatus(AVAuthorizationStatus authStatus);

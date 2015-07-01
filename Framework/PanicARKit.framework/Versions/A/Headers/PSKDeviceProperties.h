@@ -19,6 +19,9 @@ static const int kDeviceiPhone4s = 1040;
 static const int kDeviceiPhone5 = 1050;
 static const int kDeviceiPhone5c = 1051;
 static const int kDeviceiPhone5s = 1052;
+static const int kDeviceiPhone6 = 1053;
+static const int kDeviceiPhone6Plus = 1054;
+
 static const int kDeviceiPad = 150;
 static const int kDeviceiPad2 = 1060;
 static const int kDeviceiPadMini1 = 1061;
@@ -26,6 +29,9 @@ static const int kDeviceiPad3 = 1070;
 static const int kDeviceiPad4 = 1080;
 static const int kDeviceiPadAir = 1090;
 static const int kDeviceiPadMini2 = 1091;
+static const int kDeviceiPadAir2 = 1092;
+static const int kDeviceiPadMini3 = 1093;
+
 static const int kDeviceiPod = 180;
 static const int kDeviceiPod4 = 190;
 static const int kDeviceiPod5 = 1200;
