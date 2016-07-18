@@ -10,17 +10,21 @@
 /* OK */
 "PSK_OK" = "OK";
 
-/* errors: location */
-"PSK_LOCATION_STATUS_UNAVAILABLE" = "Location not available";
-"PSK_LOCATION_STATUS_NOTDETERMINED" = "Location status not determined";
-"PSK_LOCATION_STATUS_RESTRICTED" = "Location services restricted";
-"PSK_LOCATION_STATUS_DENIED" = "Location services denied";
+/* error: status not determined */
+"PSK_STATUS_NOTDETERMINED" = "Status not determined";
+"PSK_STATUS_NOTDETERMINED_MSG" = "Something went wrong. AR is Not available.";
 
-/* errors: camera */
-"PSK_CAMERA_STATUS_UNAVAILABLE" = "Camera not available";
-"PSK_CAMERA_STATUS_NOTDETERMINED" = "Camera status not determined";
-"PSK_CAMERA_STATUS_RESTRICTED" = "Camera services restricted";
-"PSK_CAMERA_STATUS_DENIED" = "Camera services denied";
+/* error: AR unavailable */
+"PSK_STATUS_UNAVAILABLE" = "AR Not Available";
+"PSK_STATUS_UNAVAILABLE_MSG" = "This device does not support Augmented Reality Functionality!";
+
+/* error: location restricted */
+"PSK_STATUS_RESTRICTED" = "Location Services Restricted";
+"PSK_STATUS_RESTRICTED_MSG" = "You are not allowed to access your Location! Are Company Restrictions enabled or does this device have Parental Controls enabled?";
+
+/* error: location denied */
+"PSK_STATUS_DENIED" = "Location Services Denied";
+"PSK_STATUS_DENIED_MSG" = "This App is not allowed to access your Location! Go to the Preferences to change the Permissions for it!";
 
 /* error: in face down orientation */
 "PSK_STATUS_FACEDOWN" = "Wrong Orientation!";

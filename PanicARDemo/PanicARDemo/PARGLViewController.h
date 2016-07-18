@@ -3,7 +3,7 @@
 //  PanicARKit
 //
 //  Created by Andreas Zeitler on 24.02.13.
-//  copyright 2013 doPanic. All rights reserved.
+//  copyright 2013 Vuframe Lab GmbH. All rights reserved.
 //
 
 #import <GLKit/GLKit.h>

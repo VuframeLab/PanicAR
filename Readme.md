@@ -7,7 +7,7 @@
 
 ![PanicAR Image](https://raw.github.com/doPanic/PanicAR/beta/Screenshots/product.png)
 
-by doPanic GmbH - for sales and support contact info@dopanic.com
+by Vuframe - for sales and support contact info@vuframe.com
 
 ## Why PanicAR?
 
@@ -32,9 +32,9 @@ Just add
     pod 'PanicAR', :podspec => 'https://raw2.github.com/doPanic/PanicAR/beta/PanicAR.podspec'
 
 to your podfile and do a
-    
+
     pod install
-    
+
 simple as that. Really.
 
 
@@ -53,11 +53,11 @@ https://github.com/doPanic/PanicAR/wiki/Troubleshooting
 ### How do I enable PanicAR on non-GPS devices?
 
 By default, PanicAR only runs, when the device is GPS enabled (i.e. all iPhones and the 3G/4G iPads), to give the best possible performance.
-However, you can enable PanicAR for all devices, by calling 
+However, you can enable PanicAR for all devices, by calling
 
     [PSKDeviceProperties setSimulateGPSForAllDevices:YES];
 
-in your appdelegate. 
+in your appdelegate.
 
 ### My POIs are shown on the edge of the radar instead of the middle.
 
@@ -83,7 +83,7 @@ You can change the image of the POI on the radar view by setting the POIs radarV
 
 You can achieve this by setting the backgroundImageView property of the RadarView (you need to rotate it depending on the heading).
 
-OR 
+OR
 
 by adding 4 POIs, each with an image containing the Letter (N, E, S, W) placed North/East/South/West of the user.
 

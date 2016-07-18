@@ -41,9 +41,12 @@ typedef void (^PSKBoolBlock)(BOOL state);
  */
 @interface PSKSensorManager : NSObject <CLLocationManagerDelegate>
 
+
 #pragma mark -
+
 /*! shared sensor manager instance */
 + (PSKSensorManager *)sharedSensorManager;
+
 /*! PSKSensorDelegate delegate object receiving updates from the PSKSensorManager */
 @property (nonatomic, weak) id<PSKSensorDelegate> delegate;
 
@@ -72,7 +75,10 @@ typedef void (^PSKBoolBlock)(BOOL state);
 /*! block that is run before manager will suspend */
 @property (nonatomic, copy, readonly) PSKBoolBlock didResumeEvent;
 
+/*! callback on controller if app resumes */
 - (void)setDidResumeEvent:(PSKBoolBlock)didResumeEvent;
+
+/*! callback on controller if app suspend */
 - (void)setWillSuspendEvent:(PSKVoidBlock)willSuspendEvent;
 
 

@@ -3,7 +3,7 @@
 //  ArchiApp
 //
 //  Created by Andreas Zeitler on 05.06.11.
-//  copyright 2013 doPanic. All rights reserved.
+//  copyright 2013 Vuframe All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

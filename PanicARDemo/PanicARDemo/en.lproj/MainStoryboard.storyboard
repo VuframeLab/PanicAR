@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Zb6-E3-FLW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Zb6-E3-FLW">
     <dependencies>
-        <deployment version="1280" defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <deployment version="2048" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--Poi View Controller - 2D POIs-->
+        <!--2D POIs-->
         <scene sceneID="11">
             <objects>
                 <viewController title="2D POIs" id="2" customClass="PARD2DPoiViewController" sceneMemberID="viewController">
@@ -72,9 +72,6 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                        <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
-                        <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
-                        <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="AR" image="first" id="7"/>
                     <navigationItem key="navigationItem" id="b79-a1-oah">
@@ -98,7 +95,7 @@
             </objects>
             <point key="canvasLocation" x="881" y="-541"/>
         </scene>
-        <!--Table View Controller - PanicAR Demo-->
+        <!--PanicAR Demo-->
         <scene sceneID="f7o-Yb-JbT">
             <objects>
                 <tableViewController id="UkT-s0-7dT" sceneMemberID="viewController">
@@ -113,18 +110,18 @@
                                         <rect key="frame" x="0.0" y="86" width="320" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="taP-J4-CVa" id="Ea4-AH-2oi">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="63"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="63.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="2D POIs" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1BT-l0-o8l">
-                                                    <rect key="frame" x="15" y="4" width="69" height="22"/>
+                                                    <rect key="frame" x="15" y="4" width="69" height="21.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5Zn-k2-DpD">
-                                                    <rect key="frame" x="15" y="26" width="270" height="34"/>
+                                                    <rect key="frame" x="15" y="25.5" width="270" height="34"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <string key="text">UIKit-driven rendering of Points of Interest
 POIs are automatically layouted and stacked</string>
@@ -142,18 +139,18 @@ POIs are automatically layouted and stacked</string>
                                         <rect key="frame" x="0.0" y="150" width="320" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Eeg-Au-o3T" id="aDl-la-7DT">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="63"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="63.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="2D POIs with Altitude" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4OR-UC-5jX">
-                                                    <rect key="frame" x="15" y="4" width="177" height="22"/>
+                                                    <rect key="frame" x="15" y="4" width="184" height="21.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kDD-4K-Waj">
-                                                    <rect key="frame" x="15" y="26" width="270" height="34"/>
+                                                    <rect key="frame" x="15" y="25.5" width="270" height="34"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <string key="text">UIKit-driven rendering of Points of Interest
 uses real altitude (no stacking/layout)</string>
@@ -175,18 +172,18 @@ uses real altitude (no stacking/layout)</string>
                                         <rect key="frame" x="0.0" y="236" width="320" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="agq-Yl-xrb" id="3Ot-Ox-Fcg">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="63"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="63.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="3D POIs (using OpenGL)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0Pr-dv-JuQ">
-                                                    <rect key="frame" x="15" y="4" width="203" height="22"/>
+                                                    <rect key="frame" x="15" y="5" width="208.5" height="21.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="K7X-Vn-C5l">
-                                                    <rect key="frame" x="15" y="26" width="219" height="34"/>
+                                                    <rect key="frame" x="15" y="26.5" width="217.5" height="33.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <string key="text">adds 3d objects to to render POIs
 also includes 2D POIs</string>
@@ -204,18 +201,18 @@ also includes 2D POIs</string>
                                         <rect key="frame" x="0.0" y="300" width="320" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="td7-LV-e6x" id="9uU-tf-vkR">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="63"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="63.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Immersive Panorama" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eFE-EP-FTf">
-                                                    <rect key="frame" x="15" y="4" width="176" height="22"/>
+                                                    <rect key="frame" x="15" y="5" width="181.5" height="21.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="t3e-uV-IA5">
-                                                    <rect key="frame" x="15" y="26" width="265" height="34"/>
+                                                    <rect key="frame" x="15" y="26.5" width="267" height="33.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <string key="text">rendering of a 360° panorama image that
 can be explored using the gyroscope</string>
@@ -233,18 +230,18 @@ can be explored using the gyroscope</string>
                                         <rect key="frame" x="0.0" y="364" width="320" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UWD-ab-8ih" id="mUK-eq-eCg">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="63"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="63.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Immersive Panorama + POIs" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9cl-IU-sJX">
-                                                    <rect key="frame" x="15" y="4" width="237" height="22"/>
+                                                    <rect key="frame" x="15" y="5" width="242.5" height="21.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JuM-PS-iXc">
-                                                    <rect key="frame" x="15" y="26" width="268" height="34"/>
+                                                    <rect key="frame" x="15" y="26.5" width="269" height="33.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <string key="text">rendering of a 360° panorama image and 
 overlaid 2D POIs (fixed tracking)</string>
@@ -266,11 +263,11 @@ overlaid 2D POIs (fixed tracking)</string>
                                         <rect key="frame" x="0.0" y="450" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eP7-ho-J6V" id="Ue0-iK-cjE">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Map View" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xnd-jC-ALd">
-                                                    <rect key="frame" x="15" y="0.0" width="270" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="270" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -286,11 +283,11 @@ overlaid 2D POIs (fixed tracking)</string>
                                         <rect key="frame" x="0.0" y="494" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ROe-PT-kPY" id="rd4-gx-1CZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="About" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Q6B-vX-gmg">
-                                                    <rect key="frame" x="15" y="0.0" width="270" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="270" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -334,7 +331,7 @@ overlaid 2D POIs (fixed tracking)</string>
             </objects>
             <point key="canvasLocation" x="-376" y="536"/>
         </scene>
-        <!--Map View Controller - Second-->
+        <!--Second-->
         <scene sceneID="13">
             <objects>
                 <viewController title="Second" id="3" customClass="PARDMapViewController" sceneMemberID="viewController">
@@ -360,7 +357,7 @@ overlaid 2D POIs (fixed tracking)</string>
             </objects>
             <point key="canvasLocation" x="45" y="1534"/>
         </scene>
-        <!--About View Controller - Second-->
+        <!--Second-->
         <scene sceneID="kqg-sW-E5Z">
             <objects>
                 <viewController title="Second" id="DsQ-2T-876" customClass="PARDAboutViewController" sceneMemberID="viewController">
@@ -393,7 +390,7 @@ overlaid 2D POIs (fixed tracking)</string>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="www.dopanic.com/AR" lineBreakMode="tailTruncation" minimumFontSize="10" id="icb-D1-1E5">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="panicar.vuframe.com" lineBreakMode="tailTruncation" minimumFontSize="10" id="icb-D1-1E5">
                                         <rect key="frame" x="35" y="357" width="239" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="18"/>
@@ -432,9 +429,6 @@ For more information please visit:</string>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
-                                <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
-                                <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -447,7 +441,7 @@ For more information please visit:</string>
             </objects>
             <point key="canvasLocation" x="433" y="1534"/>
         </scene>
-        <!--Poi With Altitude View Controller - 2D POIs-->
+        <!--2D POIs-->
         <scene sceneID="y1g-fE-r9M">
             <objects>
                 <viewController title="2D POIs" id="gOH-kN-OJY" customClass="PARD2DPoiWithAltitudeViewController" sceneMemberID="viewController">
@@ -514,9 +508,6 @@ For more information please visit:</string>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                        <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
-                        <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
-                        <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="AR" image="first" id="MZv-x6-Xg9"/>
                     <navigationItem key="navigationItem" id="YJh-qv-g7q">
@@ -573,7 +564,7 @@ for more information!</string>
             </objects>
             <point key="canvasLocation" x="907" y="1503"/>
         </scene>
-        <!--GLKit View Controller - Immersive Panorama-->
+        <!--Immersive Panorama-->
         <scene sceneID="M3K-sg-j80">
             <objects>
                 <glkViewController autoresizesArchivedViewToFullSize="NO" title="Immersive Panorama" preferredFramesPerSecond="30" id="YHb-7a-E2c" customClass="PARGLViewController" sceneMemberID="viewController">
@@ -619,12 +610,8 @@ for more information!</string>
         <image name="second" width="16" height="16"/>
         <image name="signal0.png" width="128" height="32"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="FvS-2f-qZj"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
 </document>

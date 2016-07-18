@@ -39,6 +39,8 @@
 	<string>2870</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Your location is used to display the Augmented Reality view.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>This App uses the camera for the Location-based Augmented Reality.</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>

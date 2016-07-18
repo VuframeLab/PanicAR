@@ -5,7 +5,7 @@
 //  POIs are automatically layouted and stacked
 //
 //  Created by Andreas Zeitler on 16.10.11.
-//  Copyright (c) 2011 doPanic. All rights reserved.
+//  Copyright (c) 2011 Vuframe Lab GmbH. All rights reserved.
 //
 
 #import "PARD2DPoiViewController.h"
@@ -25,7 +25,7 @@ bool _areOptionsVisible = false;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // set view controller properties and create Options button
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Options" style:UIBarButtonItemStyleBordered target:self action:@selector(showOptions:)];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Options" style:UIBarButtonItemStyleDone target:self action:@selector(showOptions:)];
     }
     return self;
 }
@@ -366,7 +366,7 @@ bool _areOptionsVisible = false;
     // Add another POI, near our Headquarters – display an image on it using a custom PoiLabelTemplate
     newPoiLabel = [[poiLabelClass alloc] initWithTitle:@"Dom"
                                         theDescription:@"Regensburger Dom"
-                                              theImage:[UIImage imageNamed:@"Icon@2x~ipad"]
+                                              theImage:[UIImage imageNamed:@"400.jpeg"]
                                        fromTemplateXib:@"PoiLabelWithImage"
                                             atLocation:[[CLLocation alloc] initWithLatitude:49.019512 longitude:12.097709]
                    ];

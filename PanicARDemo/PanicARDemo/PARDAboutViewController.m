@@ -3,7 +3,7 @@
 //  PanicARDemo
 //
 //  Created by Andreas Zeitler on 22.02.2013
-//  Copyright (c) 2011 doPanic. All rights reserved.
+//  Copyright (c) 2011 Vuframe Lab GmbH. All rights reserved.
 //
 
 #import "PARDAboutViewController.h"
@@ -41,26 +41,6 @@
     // e.g. self.myOutlet = nil;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-	[super viewWillDisappear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-	[super viewDidDisappear:animated];
-}
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
@@ -73,7 +53,7 @@
 }
 
 - (IBAction) webButtonAction {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"http://www.dopanic.com/ar"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"http://panicar.vuframe.com"]];
 }
 
 @end

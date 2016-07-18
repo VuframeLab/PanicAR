@@ -23,6 +23,7 @@
 		9987617C16E4EEAA00EAE6CD /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9987617B16E4EEAA00EAE6CD /* CoreMotion.framework */; };
 		9987617F16E4FDCA00EAE6CD /* PanicARKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9987617D16E4FDCA00EAE6CD /* PanicARKitResources.bundle */; };
 		998761B616E50C6700EAE6CD /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 998761B516E50C6700EAE6CD /* MapKit.framework */; };
+		999AD50C1D3DE9D80005A6B8 /* 400.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 999AD50B1D3DE9D80005A6B8 /* 400.jpeg */; };
 		99E57DE116D7E4720093E85F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E57DE016D7E4720093E85F /* UIKit.framework */; };
 		99E57DE316D7E4720093E85F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E57DE216D7E4720093E85F /* Foundation.framework */; };
 		99E57DE516D7E4720093E85F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E57DE416D7E4720093E85F /* CoreGraphics.framework */; };
@@ -72,6 +73,7 @@
 		998761B516E50C6700EAE6CD /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		9989398716D98D4600B39DF6 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		9989398816D98D4600B39DF6 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		999AD50B1D3DE9D80005A6B8 /* 400.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 400.jpeg; path = Images/400.jpeg; sourceTree = "<group>"; };
 		99E57DDD16D7E4720093E85F /* PanicARDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PanicARDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99E57DE016D7E4720093E85F /* UIKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		99E57DE216D7E4720093E85F /* Foundation.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -237,6 +239,7 @@
 		99E57E2F16D7E5A80093E85F /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				999AD50B1D3DE9D80005A6B8 /* 400.jpeg */,
 				99E57E0116D7E4720093E85F /* first.png */,
 				99E57E0316D7E4720093E85F /* first@2x.png */,
 				99E57E0816D7E4720093E85F /* second.png */,
@@ -331,6 +334,7 @@
 				99E57DFA16D7E4720093E85F /* MainStoryboard.storyboard in Resources */,
 				99333D6F19C062A400F3632E /* PanicARKit.strings in Resources */,
 				99E57E0216D7E4720093E85F /* first.png in Resources */,
+				999AD50C1D3DE9D80005A6B8 /* 400.jpeg in Resources */,
 				99E57E0416D7E4720093E85F /* first@2x.png in Resources */,
 				99E57E0916D7E4720093E85F /* second.png in Resources */,
 				99E57E0B16D7E4720093E85F /* second@2x.png in Resources */,
@@ -413,7 +417,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -426,7 +430,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -445,13 +449,13 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";

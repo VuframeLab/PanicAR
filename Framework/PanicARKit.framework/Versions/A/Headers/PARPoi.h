@@ -3,7 +3,7 @@
 //  PanicARKit
 //
 //  Created by Andreas Zeitler on 13.12.11.
-//  Copyright (c) 2011 doPanic. All rights reserved.
+//  Copyright (c) 2011 Vuframe All rights reserved.
 //
 
 #import <MapKit/MapKit.h>

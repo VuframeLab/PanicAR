@@ -3,7 +3,7 @@
 //  PanicARKit
 //
 //  Created by Andreas Zeitler on 18.10.11.
-//  Copyright (c) 2011 doPanic. All rights reserved.
+//  Copyright (c) 2011 Vuframe All rights reserved.
 //
 
 #import "PARController.h"

@@ -15,7 +15,7 @@
     CALayer *_cameraPreviewLayer;
     CGSize _cameraPreviewImageSize;
     
-    BOOL _cameraPreviewNeedsResize;
+    int _cameraPreviewNeedsResize;
     BOOL _cameraPreviewHadFirstFrame;
     BOOL _videoConnectionSupportsVideoOrientation;
 }

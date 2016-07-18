@@ -28,3 +28,15 @@
 
 /* error: in face down orientation */
 "PSK_STATUS_FACEDOWN" = "Wrong Orientation!";
+
+/* location services status */
+"PSK_LOCATION_STATUS_UNAVAILABLE" = "Location not available";
+"PSK_LOCATION_STATUS_NOTDETERMINED" = "Location pending";
+"PSK_LOCATION_STATUS_RESTRICTED" = "Location restricted";
+"PSK_LOCATION_STATUS_DENIED" = "Location denied";
+
+/* camera access status */
+"PSK_CAMERA_STATUS_UNAVAILABLE" = "Camera not available";
+"PSK_CAMERA_STATUS_NOTDETERMINED" = "Camera pending";
+"PSK_CAMERA_STATUS_RESTRICTED" = "Camera restricted";
+"PSK_CAMERA_STATUS_DENIED" = "Camera denied";

@@ -9,7 +9,7 @@
 //  and licensed under CC-By-NC http://creativecommons.org/licenses/by-nc/3.0
 //
 //  Created by Andreas Zeitler on 14.03.13.
-//  copyright 2013 doPanic. All rights reserved.
+//  copyright 2013 Vuframe Lab GmbH. All rights reserved.
 //
 
 #import "PARGLViewController.h"

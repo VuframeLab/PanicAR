@@ -6,7 +6,7 @@
 // uses real altitude (no stacking/layout)
 //
 //  Created by Andreas Zeitler on 16.10.11.
-//  Copyright (c) 2011 doPanic. All rights reserved.
+//  Copyright (c) 2011 Vuframe Lab GmbH. All rights reserved.
 //
 
 #import "PARD2DPoiWithAltitudeViewController.h"

@@ -3,7 +3,7 @@
 //  PanicARDemo
 //
 //  Created by Andreas Zeitler on 22.02.2013
-//  Copyright (c) 2011 doPanic. All rights reserved.
+//  Copyright (c) 2011 Vuframe Lab GmbH. All rights reserved.
 //
 
 #import "PARDMapViewController.h"

@@ -4,6 +4,15 @@
 
 
 ---
+
+### 3.0 (build 3261)
+
+- add: Bitcode
+- add: 64bit slice
+- add: Xcode 7 support
+- add: latest device definitions (iPad Pro, iPhone SE)
+- add: iOS 9 support
+
 ### 2.2 (build 3025)
 
 - add: missing localized strings
@@ -14,7 +23,7 @@
 
 ### 2.2 (build 2980)
 
-- fix: description for poilabel on iOS 8 
+- fix: description for poilabel on iOS 8
 
 ### 2.2 (build 2955)
 
@@ -136,7 +145,7 @@ _This version of PanicAR brings major updates and heavy refactoring in the API a
 - PARCapabilities has been dropped in favor of the PSKDeviceProperties class
 - PARManager
 	- removed public API _updateAfterLocationChange__ and _sortMarkersByDistance_
-	- deprecated _isFrozen_ and _setFrozen_ use PARViewController _isPaused_ and _setPaused_ for same functionality 
+	- deprecated _isFrozen_ and _setFrozen_ use PARViewController _isPaused_ and _setPaused_ for same functionality
 - PARControllerDelegate: removed _arPreRenderPass_ and _arPostRenderPass_ because they are not used
 - PARViewController
 	- now uses supportedInterfaceOrientations instead of shouldAutorotateToInterfaceOrientation
@@ -168,7 +177,7 @@ fix: tap-interaction sample code in demo app not working -> replaced with showin
 
 ## v1.20
 
-**Major Update:** 
+**Major Update:**
 
 - UIKit-only rendering
 - AVFoundation camera preview
@@ -185,7 +194,7 @@ _This version of PanicAR brings major updates and heavy refactoring in the API a
 	- -> rename all your references using Xcode refactoring
 - the overall architecture changed
 	- the AR framework now adheres to the ViewController-View pattern known from the iOS SDK
-	
+
 - ARController
 	- the ARController class has been split into two seperate classes: the PARController, PARSensorManager and the PARViewController
 	- the PARController now handles configuration and all ar objects while the PARSensorManager handles device sensors and fallbacks and the PARViewController handles rendering
@@ -193,21 +202,21 @@ _This version of PanicAR brings major updates and heavy refactoring in the API a
  	- PARViewController can now be subclassed and extended with own functionality
  	- PARView should not be subclassed
 	- you can have more than one PARViewController (although all will display the same PAR objects)
-- Terminology: 
+- Terminology:
 	- objects displayed in Augmented Reality are now called "AR or PAR (PanicAR) objects"
 	- AR objects tied to a Geolocation (formerly "PARMarkers") are now PanicAR POIs (Points of Interest)
 	- arOrientation now of type UIInterfaceOrientation (previously UIDeviceOrientation)
-	
-- ARMarker 
- 	- ARMarker is now PARPoiLabel 
+
+- ARMarker
+ 	- ARMarker is now PARPoiLabel
 	- is now based on PARPoi which implements MKAnnotation and is the simplest on-screen representation of a POI
 	- PARPoiLabels are not stacked on screen any more – in order to be faster and allow for more POIs on screen – use PARPoiAdvancedLabel instead if you need stacking for your app
 	- PARPoiAdvancedLabel provides a more extensively styled version of ARPoiLabel which changes appearance over distance and is dynamically stacked
-	
-- ARMarkerTemplate 
+
+- ARMarkerTemplate
 	- ARMarkerTemplateis now PARPoiLabelTemplate and can be loaded with custom size allowing for labels of different size
 	- PARPoiLabelTemplate provides an updateAppearance method to update the appearance of a label template based on the distance to the user
-	- PARPoi implements and updateAppearance as well, which will allows to customize a ARPoi's appearance on a per-object basis; in order to be called during the PARPoi's update cycle PARPoi.updatesAppearance must return YES. 
+	- PARPoi implements and updateAppearance as well, which will allows to customize a ARPoi's appearance on a per-object basis; in order to be called during the PARPoi's update cycle PARPoi.updatesAppearance must return YES.
 
 - you can customize a lot of aspects of how POIs are animated and rendered – see the API Documentation for further detail!
 
@@ -222,7 +231,7 @@ _This version of PanicAR brings major updates and heavy refactoring in the API a
 **New Features**
 
 - UIKit-driven Point-Of-Interest visualization
-	- easily exchange existing templates for 
+	- easily exchange existing templates for
 - gyroscope-based tracking with use of optimized iOS 5 features
 - fallbacks for devices without Gyroscope or iOS 5
 - compatible to virtually all UIKit elements (image, text, video, webview, etc.)
@@ -248,7 +257,7 @@ We are offering an advanced edition of PanicAR which includes OpenGL-driven rend
 
 ---
 
-### v1.10 
+### v1.10
 
 **iPad 2 Support**
 

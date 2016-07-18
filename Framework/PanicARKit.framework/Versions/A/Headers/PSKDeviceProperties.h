@@ -15,28 +15,33 @@ static const int kDeviceiPhone = 100;
 static const int kDeviceiPhone3G = 110;
 static const int kDeviceiPhone3Gs = 120;
 static const int kDeviceiPhone4 = 130;
-static const int kDeviceiPhone4s = 1040;
-static const int kDeviceiPhone5 = 1050;
-static const int kDeviceiPhone5c = 1051;
-static const int kDeviceiPhone5s = 1052;
-static const int kDeviceiPhone6 = 1053;
-static const int kDeviceiPhone6Plus = 1054;
+static const int kDeviceiPhone4s = 140;
+static const int kDeviceiPhone5 = 150;
+static const int kDeviceiPhone5c = 151;
+static const int kDeviceiPhone5s = 152;
+static const int kDeviceiPhone6 = 1060;
+static const int kDeviceiPhone6Plus = 1061;
+static const int kDeviceiPhone6s = 1062;
+static const int kDeviceiPhone6sPlus = 1063;
 
-static const int kDeviceiPad = 150;
-static const int kDeviceiPad2 = 1060;
-static const int kDeviceiPadMini1 = 1061;
-static const int kDeviceiPad3 = 1070;
-static const int kDeviceiPad4 = 1080;
-static const int kDeviceiPadAir = 1090;
-static const int kDeviceiPadMini2 = 1091;
-static const int kDeviceiPadAir2 = 1092;
-static const int kDeviceiPadMini3 = 1093;
+static const int kDeviceiPad = 250;
+static const int kDeviceiPad2 = 260;
+static const int kDeviceiPadMini1 = 261;
+static const int kDeviceiPad3 = 270;
+static const int kDeviceiPad4 = 280;
+static const int kDeviceiPadAir = 290;
+static const int kDeviceiPadMini2 = 291;
+static const int kDeviceiPadMini3 = 2092;
+static const int kDeviceiPadAir2 = 2093;
+static const int kDeviceiPadMini4 = 2094;
+static const int kDeviceiPadPro = 2201;
 
 static const int kDeviceiPod = 180;
 static const int kDeviceiPod4 = 190;
-static const int kDeviceiPod5 = 1200;
+static const int kDeviceiPod5 = 155;
+static const int kDeviceiPod6 = 1062;
 static const int kDeviceFastGeneration = 1000;
-static const int kDeviceUnkownNewDevice = 1200;
+static const int kDeviceUnkownNewDevice = 3000;
 
 #define PSK_MINIMUM_OS_FOR_ADVANCED_SENSORS 5.0
 
@@ -129,6 +134,9 @@ typedef enum {
 
 /*!  YES if the device runs at least iOS 8 */
 - (BOOL)hasOS8;
+
+/*!  YES if the device runs at least iOS 9 */
+- (BOOL)hasOS9;
 
 /*!  the displayContentScale of this device, 2.0f. for retina displays */
 - (float)displayContentScale;

@@ -3,7 +3,7 @@
 //  PanicAR
 //
 //  Created by Andreas Zeitler on 01.09.10.
-//  copyright 2013 doPanic. All rights reserved.
+//  copyright 2013 Vuframe All rights reserved.
 //
 
 #import "PARObjectDelegate.h"

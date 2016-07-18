@@ -3,7 +3,7 @@
 //  PanicARKit
 //
 //  Created by Andreas Zeitler on 14.10.11.
-//  copyright 2013 doPanic. All rights reserved.
+//  copyright 2013 Vuframe All rights reserved.
 //
 
 
