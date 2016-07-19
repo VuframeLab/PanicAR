@@ -5,7 +5,7 @@
 ![CocoaPods](http://img.shields.io/cocoapods/v/PanicAR.svg)
 [![Analytics](https://ga-beacon.appspot.com/UA-47538502-1/PanicAR/github)](https://github.com/igrigorik/ga-beacon)
 
-![PanicAR Image](https://raw.github.com/doPanic/PanicAR/beta/Screenshots/product.png)
+![PanicAR Image](https://raw.github.com/Vuframe/PanicAR/beta/Screenshots/product.png)
 
 by Vuframe - for sales and support contact info@vuframe.com
 
@@ -14,7 +14,7 @@ by Vuframe - for sales and support contact info@vuframe.com
 * It’s fast, simple and affordable
 * No monthly or annual fees
 * It’s completely customizable
-* It’s small (only ~4 mb)
+* It’s small (only ~3 mb per slice)
 * It's platform agnostic - powered by Cocoa and Cocoa only
 * It’s ridiculously easy to integrate
 
@@ -22,14 +22,14 @@ by Vuframe - for sales and support contact info@vuframe.com
 
 * does the same things all the other frameworks do: even some more (i.e. "altitude")
 * maintained for you by us: new devices and new OS releases will be supported
-* pay on a per-app basis: a white-label license is really cheap (see here: www.dopanic.com/ar)
+* pay on a per-app basis: a white-label license is really cheap (see here: panicar.vuframe.com)
 * support for CocoaPods (www.cocoapods.org)
 
 ## Get started now – using CocoaPods
 
 Just add
 
-    pod 'PanicAR', :podspec => 'https://raw2.github.com/doPanic/PanicAR/beta/PanicAR.podspec'
+    pod 'PanicAR', :podspec => 'https://raw2.github.com/Vuframe/PanicAR/beta/PanicAR.podspec'
 
 to your podfile and do a
 
@@ -41,13 +41,13 @@ simple as that. Really.
 ## Read More
 
 Check API Reference
-http://docs.dopanic.com/panicar
+http://docs.vuframe.com/panicar
 
 Check the wiki for tipps and guides on how to implement:
-https://github.com/doPanic/PanicAR/wiki/
+https://github.com/Vuframe/PanicAR/wiki/
 
 For common build errors and other issues check:
-https://github.com/doPanic/PanicAR/wiki/Troubleshooting
+https://github.com/Vuframe/PanicAR/wiki/Troubleshooting
 
 ## Frequently Asked Questions
 ### How do I enable PanicAR on non-GPS devices?
