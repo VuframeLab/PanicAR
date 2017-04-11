@@ -1,3 +1,5 @@
+# PanicAR will be sunset April 30th, 2017. If you own a license please contact us at info@dopanic.com to request the source code.
+
 # PanicAR Framework
 
 ![Release](http://img.shields.io/badge/release-v2.2-blue.svg)
