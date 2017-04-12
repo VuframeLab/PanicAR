@@ -1,16 +1,16 @@
 Pod::Spec.new do |s|
   s.name         = "PanicAR"
-  s.version      = "2.2.3017"
+  s.version      = "2.3.2945"
   s.summary      = "Location-based Augmented Reality Framework for point of interest visualization."
-  s.homepage     = "http://github.com/doPanic/PanicAR"
+  s.homepage     = "https://github.com/Vuframe/PanicAR"
   s.license      = {
      :type => 'proprietary',
      :text => 'http://dopanic.com/downloads/ar/PanicARLicenseTermsEN.pdf'
   }
   s.author       = { "Andreas Zeitler" => "azeitler@dopanic.com" }
   s.source       = { 
-    :git => "https://github.com/doPanic/PanicAR.git",
-    :tag => "#{s.version.to_s}"
+    :git => "https://github.com/Vuframe/PanicAR.git",
+    :commit => "0ba009bd7d200724b452d67aa33f1884f53f306d"
   }
   s.platform        = :ios, '7.0'
   s.frameworks      =  'AVFoundation', 'CoreLocation', 'CoreMotion', 'CoreVideo', 'CoreMedia', 'CoreGraphics', 'UIKit', 'Foundation', 'QuartzCore', 'MapKit', 'PanicARKit'
